@@ -1,0 +1,18 @@
+C:\Projects\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\SmartPropertyGridTester.Properties.Resources.resources
+C:\Projects\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\SmartPropertyGridTester.csproj.GenerateResource.Cache
+C:\Projects\SmartPropertyGridTester\SmartPropertyGridTester\bin\Debug\SmartPropertyGridTester.exe
+C:\Projects\SmartPropertyGridTester\SmartPropertyGridTester\bin\Debug\SmartPropertyGridTester.pdb
+C:\Projects\SmartPropertyGridTester\SmartPropertyGridTester\bin\Debug\SmartPropertyGrid.dll
+C:\Projects\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\SmartPropertyGridTester.exe
+C:\Projects\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\SmartPropertyGridTester.pdb
+C:\Projects\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\SmartPropertyGridTester.Form1.resources
+C:\Documents and Settings\Dave Anderson\Desktop\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\SmartPropertyGridTester.exe
+C:\Documents and Settings\Dave Anderson\Desktop\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\SmartPropertyGridTester.pdb
+C:\Documents and Settings\Dave Anderson\Desktop\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Dave Anderson\Desktop\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\SmartPropertyGridTester.Form1.resources
+C:\Documents and Settings\Dave Anderson\Desktop\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\SmartPropertyGridTester.Properties.Resources.resources
+C:\Documents and Settings\Dave Anderson\Desktop\SmartPropertyGridTester\SmartPropertyGridTester\obj\Debug\SmartPropertyGridTester.csproj.GenerateResource.Cache
+C:\Documents and Settings\Dave Anderson\Desktop\SmartPropertyGridTester\SmartPropertyGridTester\bin\Debug\SmartPropertyGridTester.exe
+C:\Documents and Settings\Dave Anderson\Desktop\SmartPropertyGridTester\SmartPropertyGridTester\bin\Debug\SmartPropertyGridTester.pdb
+C:\Documents and Settings\Dave Anderson\Desktop\SmartPropertyGridTester\SmartPropertyGridTester\bin\Debug\SmartPropertyGrid.dll

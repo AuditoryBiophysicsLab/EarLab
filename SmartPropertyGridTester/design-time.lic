@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Licenses>
+	<License signature="pOBwWh9n7lId8QPm3a8giGDFqObegSkkmFVMs1LzxZ5+kzlFkXE+f4/rIz0Lhg05HulSVezh2VaBZac6EceqF+L50WlsoQ5/D6BnZfCqN7QnO7lCBPW8mcIwxLTJoi0xL2VpcE25jiGMHDI1DSUzjBz2tHQUYZvCGbtcYTcZhF0=" version="2.0" assemblyName="SmartPropertyGrid">
+		<Expires>2106-11-30T00:00:00</Expires>
+		<SerialNumber>AC8D4DD0-E2B5-41F2-9E55-8DE4A90A36B2</SerialNumber>
+		<Limits>
+			<Limit type="Designtime" />
+		</Limits>
+		<Values>
+			<Value key="__XL_PRO" value="TRUE" />
+		</Values>
+	</License>
+</Licenses>
