@@ -23,50 +23,9 @@ namespace SmartPropertyGridTester
                 return true;
             return false;
         }
-    }
 
-    public class EarlabArray<T> 
-    {
-        private List<T> theList;
-
-        public EarlabArray()
-        {
-            theList = new List<T>();
-        }
-
-        public EarlabArray(T[] data)
-        {
-            theList = new List<T>(data);
-        }
-
-        public T this[int index]
-        {
-            get { return theList[index]; }
-            set { theList[index] = value; }
-        }
-
-        public int Length { get { return theList.Count; } }
-
-        public T[] Array
-        {
-            get { return theList.ToArray(); }
-            set
-            {
-                theList.Clear();
-                foreach (T elem in value)
-                    theList.Add(elem);
-            }
-        }
-
-        public bool Equals(EarlabArray<T> that)
-        {
-            if (theList.Count != that.theList.Count)
-                return false;
-            for (int i = 0; i < theList.Count; i++)
-                if (!theList[i].Equals(that.theList[i]))
-                    return false;
-            return true;
-        }
+        public abstract bool IsDefault { get;}
+        public abstract override string ToString();
     }
 
     public class EarlabParameter<T> : EarlabParameter
@@ -81,9 +40,40 @@ namespace SmartPropertyGridTester
             this.Value = InitialValue;
         }
 
-        public bool IsDefault
+        public override bool IsDefault
         {
             get { return Value.Equals(Default); }
+        }
+
+        public override string ToString()
+        {
+            Type valueType;
+            int i;
+
+            string result = string.Format("{0,-11} {1,-20}", this.GetType().Name.Remove(0, 6), Name);
+            valueType = Value.GetType();
+            if (!valueType.IsArray)
+                result += Value.ToString();
+            else
+            {
+                int[] itmp = Value as int[];
+                double[] dtmp = Value as double[];
+
+                result += "[ ";
+                if (itmp != null)
+                {
+                    for (i = 0; i < itmp.Length; i++)
+                        result += itmp[i].ToString() + " ";
+                }
+                if (dtmp != null)
+                {
+                    for (i = 0; i < dtmp.Length; i++)
+                        result += dtmp[i].ToString() + " ";
+                }
+                result += "]";
+            }
+
+            return result;
         }
 
         public T Value
@@ -141,17 +131,17 @@ namespace SmartPropertyGridTester
         }
     }
 
-    public class EarlabIntArray : EarlabParameter<EarlabArray<int>>
+    public class EarlabIntArray : EarlabParameter<int[]>
     {
-        public EarlabIntArray(string Name, string Description, EarlabArray<int> Default, EarlabArray<int> InitialValue)
+        public EarlabIntArray(string Name, string Description, int[] Default, int[] InitialValue)
             : base(Name, Description, Default, InitialValue)
         {
         }
     }
 
-    public class EarlabFloatArray : EarlabParameter<EarlabArray<double>>
+    public class EarlabFloatArray : EarlabParameter<double[]>
     {
-        public EarlabFloatArray(string Name, string Description, EarlabArray<double> Default, EarlabArray<double> InitialValue)
+        public EarlabFloatArray(string Name, string Description, double[] Default, double[] InitialValue)
             : base(Name, Description, Default, InitialValue)
         {
         }

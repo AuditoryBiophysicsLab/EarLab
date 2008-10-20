@@ -33,7 +33,7 @@ namespace SmartPropertyGridTester
 
         private void Initialize()
         {
-            PropertyEnumerator curParamEnum, curArrayEnum;
+            PropertyEnumerator curParamEnum;
             int propID = 1;
 
             if (mParamList == null)
@@ -61,29 +61,22 @@ namespace SmartPropertyGridTester
                         break;
                     case "EarlabBoolean":
                         curParamEnum = AppendProperty(mParamsEnum, propID++, param.Name, param, "Value", "");
-                        curParamEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelCheckbox);
+                        curParamEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelList);
                         ExpandProperty(curParamEnum, true);
                         break;
                     case "EarlabIntArray":
-                        int[] theIntArray = ((EarlabIntArray)param).Value.Array;
-                        curParamEnum = AppendManagedProperty(mParamsEnum, propID++, param.Name, typeof(string), "", "");
-                        curParamEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelEdit);
-                        for (int i = 0; i < theIntArray.Length; i++)
-                            curArrayEnum = AppendManagedProperty(curParamEnum, propID++, i.ToString(), typeof(int), theIntArray[i], "");
-                        ExpandProperty(curParamEnum, false);
-                        break;
                     case "EarlabFloatArray":
-                        double[] theDoubleArray = ((EarlabFloatArray)param).Value.Array;
-                        curParamEnum = AppendManagedProperty(mParamsEnum, propID++, param.Name, typeof(string), "", "");
+                        curParamEnum = AppendProperty(mParamsEnum, propID++, param.Name, param, "Value", "");
                         curParamEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelEdit);
-                        for (int i = 0; i < theDoubleArray.Length; i++)
-                            curArrayEnum = AppendManagedProperty(curParamEnum, propID++, i.ToString(), typeof(double), theDoubleArray[i], "");
-                        ExpandProperty(curParamEnum, false);
                         break;
                     default:
                         curParamEnum = AppendManagedProperty(mParamsEnum, propID++, param.Name, typeof(string), "<unknown>", "Unknown parameter type!");
                         break;
                 }
+                if (param.IsDefault)
+                    curParamEnum.Property.Font = new Font(curParamEnum.Property.Font, FontStyle.Regular);
+                else
+                    curParamEnum.Property.Font = new Font(curParamEnum.Property.Font, FontStyle.Bold);
                 TypeString = t.Name.Remove(0, 6);
                 if (param.IsError)
                 {
