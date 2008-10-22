@@ -146,4 +146,45 @@ namespace SmartPropertyGridTester
         {
         }
     }
+
+    static class EarlabParameterFactory
+    {
+        public static EarlabParameter CreateParameter(string ParamType, string ParamName, string Description, string DefaultValue, string InitialValue)
+        {
+            double dblDefault, dblValue;
+            int intDefault, intValue;
+            bool boolDefault, boolValue;
+
+            switch (ParamType.ToLower())
+            {
+                case "float":
+                case "double":
+                    if ((!double.TryParse(DefaultValue, out dblDefault)) || (!double.TryParse(InitialValue, out dblValue)))
+                        return null;
+                    return new EarlabFloat(ParamName, DefaultValue, dblDefault, dblValue);
+                case "int":
+                case "integer":
+                    if ((!int.TryParse(DefaultValue, out intDefault)) || (!int.TryParse(InitialValue, out intValue)))
+                        return null;
+                    return new EarlabFloat(ParamName, DefaultValue, intDefault, intValue);
+                case "bool":
+                case "boolean":
+                    if ((!bool.TryParse(DefaultValue, out boolDefault)) || (!bool.TryParse(InitialValue, out boolValue)))
+                        return null;
+                    return new EarlabBoolean(ParamName, DefaultValue, boolDefault, boolValue);
+                case "string":
+                    return new EarlabString(ParamName, DefaultValue, DefaultValue, InitialValue);
+                case "intarray":
+                case "integerarray":
+                case "int_array":
+                    return null;
+               case "floatarray":
+                case "doublearray":
+                case "float_array":
+                    return null;
+                default:
+                    return null;
+            }
+        }
+    }
 }

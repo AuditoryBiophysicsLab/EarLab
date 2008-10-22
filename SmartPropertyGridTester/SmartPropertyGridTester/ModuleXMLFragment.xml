@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Module>
+  <ModuleInformation>
+    <ExecutableName>DataSource</ExecutableName>
+  </ModuleInformation>
+  <Inputs></Inputs>
+  <Outputs></Outputs>
+  <Parameters>
+    <Parameter>
+      <Name>SampleRate</Name>
+      <Type>Double</Type>
+      <Default>0</Default>
+      <Minimum>1</Minimum>
+      <Maximum>1000000</Maximum>
+      <Units>Hz</Units>
+      <Description>Sample rate, in Hertz</Description>
+    </Parameter>
+    <Parameter>
+      <Name>InputFileName</Name>
+      <Type>String</Type>
+      <Default></Default>
+      <Minimum>1</Minimum>
+      <Maximum>256</Maximum>
+      <Units>Hz</Units>
+      <Description>Sample rate, in Hertz</Description>
+    </Parameter>
+  </Parameters>
+</Module>
