@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 using VisualHint.SmartPropertyGrid;
 
@@ -47,6 +48,16 @@ namespace SmartPropertyGridTester
             foreach (EarlabParameter param in mParamList)
                 display += param.ToString() + "\r\n";
             MessageBox.Show(display, "Parameter display");
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            string moduleXML;
+            EarlabModuleDescriptor[] myModules;
+            StreamReader stream = new StreamReader(@"..\..\ModuleXMLFragment.xml");
+            moduleXML = stream.ReadToEnd();
+
+            myModules = ModuleXMLParser.LoadModuleDescription(moduleXML);
         }
     }
 }

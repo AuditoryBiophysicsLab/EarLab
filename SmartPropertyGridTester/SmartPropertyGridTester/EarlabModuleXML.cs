@@ -5,33 +5,32 @@ using System.Xml;
 
 namespace SmartPropertyGridTester
 {
-    public class EarlabModuleXML
+    public class EarlabModuleDescriptor
     {
-        public readonly EarlabModuleXMLInfo ModuleInfo;
-        readonly List<EarlabModuleXMLParameter> mParameters;
+        public readonly EarlabModuleInformation EarlabModuleInformation;
+        public readonly List<EarlabParameterDefinition> EarlabParameterDefinitions = new List<EarlabParameterDefinition>();
 
-        public EarlabModuleXML(XmlElement moduleElement)
+        public EarlabModuleDescriptor(XmlNode moduleElement)
         {
-            ModuleInfo = new EarlabModuleXMLInfo(moduleElement["ModuleInformation"]);
-            foreach (XmlNode curParam in moduleElement.FirstChild)
+            EarlabModuleInformation = new EarlabModuleInformation(moduleElement["ModuleInformation"]);
+            foreach (XmlNode curParam in moduleElement["Parameters"].ChildNodes)
             {
+                EarlabParameterDefinitions.Add(new EarlabParameterDefinition(curParam));
             }
         }
-
-        public List<EarlabModuleXMLParameter> Parameters { get { return mParameters; } }
     }
 
-    public class EarlabModuleXMLInfo
+    public class EarlabModuleInformation
     {
         public readonly string ExecutableName;
 
-        public EarlabModuleXMLInfo(XmlElement infoElement)
+        public EarlabModuleInformation(XmlElement infoElement)
         {
             ExecutableName = infoElement["ExecutableName"].Value;
         }
     }
 
-    class EarlabModuleXMLParameter
+    public class EarlabParameterDefinition
     {
         public readonly string Name;
         public readonly string DataType;
@@ -40,23 +39,47 @@ namespace SmartPropertyGridTester
         public readonly string Maximum;
         public readonly string Description;
         public readonly string Units;
-        public EarlabModuleXMLParameter(XmlNode paramNode)
+        public EarlabParameterDefinition(XmlNode paramNode)
         {
-            Name = paramNode["Name"].Value;
-            DataType = paramNode["Type"].Value;
-            Default = paramNode["Default"].Value;
-            Minimum = paramNode["Minimum"].Value;
-            Maximum = paramNode["Maximum"].Value;
-            Description = paramNode["Description"].Value;
-            Units = paramNode["Units"].Value;
+            Name = paramNode["Name"].InnerText;
+            DataType = paramNode["Type"].InnerText;
+            Default = paramNode["Default"].InnerText;
+            Minimum = paramNode["Minimum"].InnerText;
+            Maximum = paramNode["Maximum"].InnerText;
+            Description = paramNode["Description"].InnerText;
+            Units = paramNode["Units"].InnerText;
         }
     }
 
-    public class EarlabModuleXMLInput
+    public class EarlabModuleInputDefinition
     {
     }
 
-    public class EarlabModuleXMLOutput
+    public class EarlabModuleOutputDefinition
     {
+    }
+
+    public static class ModuleXMLParser
+    {
+        public static EarlabModuleDescriptor[] LoadModuleDescription(string ModuleXML)
+        {
+            int ModuleCount;
+            int CurModule = 0;
+            EarlabModuleDescriptor[] modules;
+
+            XmlDocument myDoc = new XmlDocument();
+            myDoc.LoadXml(ModuleXML);
+            ModuleCount = myDoc["Modules"].ChildNodes.Count;
+
+            if (ModuleCount < 1)
+                return null;
+            modules = new EarlabModuleDescriptor[ModuleCount];
+
+            foreach (XmlNode curModule in myDoc["Modules"].ChildNodes)
+            {
+                modules[CurModule++] = new EarlabModuleDescriptor(curModule);
+            }
+            return modules;
+        }
     }
 }

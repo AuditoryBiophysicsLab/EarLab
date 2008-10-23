@@ -1,51 +1,101 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Module>
-  <ModuleInformation>
-    <ExecutableName>DataSource</ExecutableName>
-  </ModuleInformation>
-  <Inputs></Inputs>
-  <Outputs></Outputs>
-  <Parameters>
-    <Parameter>
-      <Name>SampleRate</Name>
-      <Type>Double</Type>
-      <Default>0</Default>
-      <Minimum>1</Minimum>
-      <Maximum>1000000</Maximum>
-      <Units>Hz</Units>
-      <Description>Sample rate, in Hertz</Description>
-    </Parameter>
-    <Parameter>
-      <Name>InputFileName</Name>
-      <Type>String</Type>
-      <Default></Default>
-      <Minimum>1</Minimum>
-      <Maximum>256</Maximum>
-      <Description>Name of input file to be read</Description>
-    </Parameter>
-    <Parameter>
-      <Name>InputIsWaveFile</Name>
-      <Type>Boolean</Type>
-      <Default>false</Default>
-      <Description>True if the input file is in .WAV format</Description>
-    </Parameter>
-    <Parameter>
-      <Name>ChannelNumber</Name>
-      <Type>Integer</Type>
-      <Default>0</Default>
-      <Minimum>0</Minimum>
-      <Maximum>63</Maximum>
-      <Description>Channel number of the input, for WAV files only</Description>
-    </Parameter>
-    <Parameter>
-      <Name>IntArrayParam</Name>
-      <Type>IntegerArray</Type>
-      <Description>This is an integer array</Description>
-    </Parameter>
-    <Parameter>
-      <Name>DoubleArrayParam</Name>
-      <Type>DoubleArray</Type>
-      <Description>This is a double array</Description>
-    </Parameter>
-  </Parameters>
-</Module>
+﻿<Modules>
+  <Module>
+    <ModuleInformation>
+      <ExecutableName>DataSource</ExecutableName>
+    </ModuleInformation>
+    <Inputs></Inputs>
+    <Outputs></Outputs>
+    <Parameters>
+      <Parameter>
+        <Name>SampleRate</Name>
+        <Type>Double</Type>
+        <Default>0</Default>
+        <Minimum>1</Minimum>
+        <Maximum>1000000</Maximum>
+        <Units>Hz</Units>
+        <Description>Sample rate, in Hertz</Description>
+      </Parameter>
+      <Parameter>
+        <Name>InputFileName</Name>
+        <Type>String</Type>
+        <Default></Default>
+        <Minimum>1</Minimum>
+        <Maximum>256</Maximum>
+        <Units></Units>
+        <Description>Name of input file to be read</Description>
+      </Parameter>
+      <Parameter>
+        <Name>InputIsWaveFile</Name>
+        <Type>Boolean</Type>
+        <Default>false</Default>
+        <Minimum></Minimum>
+        <Maximum></Maximum>
+        <Units></Units>
+        <Description>True if the input file is in .WAV format</Description>
+      </Parameter>
+      <Parameter>
+        <Name>ChannelNumber</Name>
+        <Type>Integer</Type>
+        <Default>0</Default>
+        <Minimum>0</Minimum>
+        <Maximum>63</Maximum>
+        <Units></Units>
+        <Description>Channel number of the input, for WAV files only</Description>
+      </Parameter>
+      <Parameter>
+        <Name>IntArrayParam</Name>
+        <Type>IntegerArray</Type>
+        <Default></Default>
+        <Minimum></Minimum>
+        <Maximum></Maximum>
+        <Units></Units>
+        <Description>This is an integer array</Description>
+      </Parameter>
+      <Parameter>
+        <Name>DoubleArrayParam</Name>
+        <Type>DoubleArray</Type>
+        <Default></Default>
+        <Minimum></Minimum>
+        <Maximum></Maximum>
+        <Units></Units>
+        <Description>This is a double array</Description>
+      </Parameter>
+    </Parameters>
+  </Module>
+  <Module>
+    <ModuleInformation>
+      <ExecutableName>DataSink</ExecutableName>
+    </ModuleInformation>
+    <Inputs></Inputs>
+    <Outputs></Outputs>
+    <Parameters>
+      <Parameter>
+        <Name>SampleRate</Name>
+        <Type>Double</Type>
+        <Default>0</Default>
+        <Minimum>1</Minimum>
+        <Maximum>1000000</Maximum>
+        <Units>Hz</Units>
+        <Description>Sample rate, in Hertz</Description>
+      </Parameter>
+      <Parameter>
+        <Name>OutputFileName</Name>
+        <Type>String</Type>
+        <Default></Default>
+        <Minimum>1</Minimum>
+        <Maximum>256</Maximum>
+        <Units></Units>
+        <Description>Name of output file to be written</Description>
+      </Parameter>
+      <Parameter>
+        <Name>BinaryOutput</Name>
+        <Type>Boolean</Type>
+        <Default>false</Default>
+        <Minimum></Minimum>
+        <Maximum></Maximum>
+        <Units></Units>
+        <Description>True if the output file is in binary format</Description>
+      </Parameter>
+    </Parameters>
+  </Module>
+</Modules>

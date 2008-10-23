@@ -28,10 +28,11 @@ namespace SmartPropertyGridTester
         /// </summary>
         private void InitializeComponent()
         {
-            VisualHint.SmartPropertyGrid.PropertyComparerDefaultSort propertyComparerDefaultSort2 = new VisualHint.SmartPropertyGrid.PropertyComparerDefaultSort();
+            VisualHint.SmartPropertyGrid.PropertyComparerDefaultSort propertyComparerDefaultSort1 = new VisualHint.SmartPropertyGrid.PropertyComparerDefaultSort();
             this.btnDone = new System.Windows.Forms.Button();
             this.propertyGrid = new SmartPropertyGridTester.ModulePropertyGrid();
             this.btnDisplay = new System.Windows.Forms.Button();
+            this.btnTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDone
@@ -50,7 +51,7 @@ namespace SmartPropertyGridTester
             this.propertyGrid.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.propertyGrid.Location = new System.Drawing.Point(12, 12);
             this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.PropertyComparer = propertyComparerDefaultSort2;
+            this.propertyGrid.PropertyComparer = propertyComparerDefaultSort1;
             this.propertyGrid.Size = new System.Drawing.Size(343, 352);
             this.propertyGrid.TabIndex = 2;
             this.propertyGrid.Text = "propertyGrid1";
@@ -65,11 +66,22 @@ namespace SmartPropertyGridTester
             this.btnDisplay.UseVisualStyleBackColor = true;
             this.btnDisplay.Click += new System.EventHandler(this.btnDisplay_Click);
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(118, 370);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 4;
+            this.btnTest.Text = "Test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(367, 405);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnDisplay);
             this.Controls.Add(this.propertyGrid);
             this.Controls.Add(this.btnDone);
@@ -85,6 +97,7 @@ namespace SmartPropertyGridTester
         private System.Windows.Forms.Button btnDone;
         private ModulePropertyGrid propertyGrid;
         private System.Windows.Forms.Button btnDisplay;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

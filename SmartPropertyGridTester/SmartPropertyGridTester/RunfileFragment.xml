@@ -53,4 +53,29 @@
       </Parameter>
     </Parameters>
   </Module>
+  <Module>
+    <ModuleInformation>
+      <InstanceName>Sink</InstanceName>
+      <ExecutableName>DataSink</ExecutableName>
+    </ModuleInformation>
+    <Inputs></Inputs>
+    <Outputs></Outputs>
+    <Parameters>
+      <Parameter>
+        <Name>SampleRate</Name>
+        <Type>Double</Type>
+        <Value>44100</Value>
+      </Parameter>
+      <Parameter>
+        <Name>OutputFileName</Name>
+        <Type>String</Type>
+        <Value>OutputFile.binary</Value>
+      </Parameter>
+      <Parameter>
+        <Name>BinaryOutput</Name>
+        <Type>Boolean</Type>
+        <Value>true</Value>
+      </Parameter>
+    </Parameters>
+  </Module>
 </Modules>
