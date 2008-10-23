@@ -21,8 +21,31 @@
       <Default></Default>
       <Minimum>1</Minimum>
       <Maximum>256</Maximum>
-      <Units>Hz</Units>
-      <Description>Sample rate, in Hertz</Description>
+      <Description>Name of input file to be read</Description>
+    </Parameter>
+    <Parameter>
+      <Name>InputIsWaveFile</Name>
+      <Type>Boolean</Type>
+      <Default>false</Default>
+      <Description>True if the input file is in .WAV format</Description>
+    </Parameter>
+    <Parameter>
+      <Name>ChannelNumber</Name>
+      <Type>Integer</Type>
+      <Default>0</Default>
+      <Minimum>0</Minimum>
+      <Maximum>63</Maximum>
+      <Description>Channel number of the input, for WAV files only</Description>
+    </Parameter>
+    <Parameter>
+      <Name>IntArrayParam</Name>
+      <Type>IntegerArray</Type>
+      <Description>This is an integer array</Description>
+    </Parameter>
+    <Parameter>
+      <Name>DoubleArrayParam</Name>
+      <Type>DoubleArray</Type>
+      <Description>This is a double array</Description>
     </Parameter>
   </Parameters>
 </Module>
