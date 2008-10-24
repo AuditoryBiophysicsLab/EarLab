@@ -58,6 +58,9 @@ namespace SmartPropertyGridTester
             moduleXML = stream.ReadToEnd();
 
             myModules = ModuleXMLParser.LoadModuleDescription(moduleXML);
+
+            EarlabRunfile theRunfile = new EarlabRunfile();
+            theRunfile.LoadXml(@"..\..\RunfileFragment.xml");
         }
     }
 }

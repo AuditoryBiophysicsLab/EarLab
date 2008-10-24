@@ -8,14 +8,17 @@ namespace SmartPropertyGridTester
     public class EarlabModuleDescriptor
     {
         public readonly EarlabModuleInformation EarlabModuleInformation;
-        public readonly List<EarlabParameterDefinition> EarlabParameterDefinitions = new List<EarlabParameterDefinition>();
+        public readonly EarlabParameterDefinition[] EarlabParameterDefinitions;
 
         public EarlabModuleDescriptor(XmlNode moduleElement)
         {
+            int CurParam = 0;
+
             EarlabModuleInformation = new EarlabModuleInformation(moduleElement["ModuleInformation"]);
+            EarlabParameterDefinitions = new EarlabParameterDefinition[moduleElement["Parameters"].ChildNodes.Count];
             foreach (XmlNode curParam in moduleElement["Parameters"].ChildNodes)
             {
-                EarlabParameterDefinitions.Add(new EarlabParameterDefinition(curParam));
+                EarlabParameterDefinitions[CurParam++] = new EarlabParameterDefinition(curParam);
             }
         }
     }
