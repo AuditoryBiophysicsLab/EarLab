@@ -30,26 +30,26 @@
       </Parameter>
       <Parameter>
         <Name>IntArrayParam</Name>
-        <Type>IntArray</Type>
-        <Array>
-          <Value>1</Value>
-          <Value>2</Value>
-          <Value>3</Value>
-          <Value>4</Value>
-          <Value>5</Value>
-          <Value>6</Value>
-        </Array>
+        <Type>Integer[]</Type>
+        <Value>
+          <Element>1</Element>
+          <Element>2</Element>
+          <Element>3</Element>
+          <Element>4</Element>
+          <Element>5</Element>
+          <Element>6</Element>
+        </Value>
       </Parameter>
       <Parameter>
         <Name>DoubleArrayParam</Name>
-        <Type>DoubleArray</Type>
-        <Array>
-          <Value>1.2</Value>
-          <Value>2.3</Value>
-          <Value>3.4</Value>
-          <Value>3.14159265</Value>
-          <Value>2.71812186</Value>
-        </Array>
+        <Type>Double[]</Type>
+        <Value>
+          <Element>1.2</Element>
+          <Element>2.3</Element>
+          <Element>3.4</Element>
+          <Element>3.14159265</Element>
+          <Element>2.71812186</Element>
+        </Value>
       </Parameter>
     </Parameters>
   </Module>
