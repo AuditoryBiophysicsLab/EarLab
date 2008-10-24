@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SmartPropertyGridTester
+namespace Earlab.Xml
 {
     public abstract class EarlabParameter
     {
