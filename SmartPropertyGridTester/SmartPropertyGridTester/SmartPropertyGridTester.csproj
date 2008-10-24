@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EarlabModuleDescriptor.cs" />
+    <Compile Include="EarlabXML Classes\EarlabModuleDescriptor.cs" />
     <Compile Include="EarlabParameter.cs" />
-    <Compile Include="EarlabRunfile.cs" />
+    <Compile Include="EarlabXML Classes\EarlabRunfile.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
