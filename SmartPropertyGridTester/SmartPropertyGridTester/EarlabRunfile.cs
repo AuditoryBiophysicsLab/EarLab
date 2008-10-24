@@ -104,7 +104,7 @@ namespace SmartPropertyGridTester
         private XmlNode mParamNode;
         public readonly string Name;
         public readonly string DataType;
-        private string mValue;
+        public XmlNode ValueNode;
         public bool IsArray;
 
         public RunfileParameter(XmlNode ParamNode)
@@ -112,21 +112,10 @@ namespace SmartPropertyGridTester
             mParamNode = ParamNode;
             Name = ParamNode["Name"].InnerText;
             DataType = ParamNode["Type"].InnerText;
+            IsArray = false;
             if (DataType.EndsWith("Array") || DataType.EndsWith("[]"))
-            {
-            }
-            else
-                mValue = ParamNode["Value"].InnerText;
-        }
-
-        public string Value
-        {
-            get { return mValue; }
-            set
-            {
-                mValue = value;
-                mParamNode["Value"].InnerText = value;
-            }
+                IsArray = true;
+            ValueNode = ParamNode["Value"];
         }
     }
 
