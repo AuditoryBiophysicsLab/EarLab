@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Earlab\ControlLayer.cs" />
-    <Compile Include="Earlab\EarlabModuleXML.cs" />
+    <Compile Include="Earlab\ModuleXML.cs" />
     <Compile Include="Earlab\EarlabParameter.cs" />
-    <Compile Include="Earlab\EarlabRunfileXML.cs" />
+    <Compile Include="Earlab\RunfileXML.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
