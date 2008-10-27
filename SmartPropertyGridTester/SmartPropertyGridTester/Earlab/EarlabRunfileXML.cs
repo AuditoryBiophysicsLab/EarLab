@@ -4,7 +4,7 @@ using System.Text;
 using System.Xml;
 using System.IO;
 
-namespace Earlab.Xml
+namespace Earlab
 {
     public class EarlabRunfile
     {

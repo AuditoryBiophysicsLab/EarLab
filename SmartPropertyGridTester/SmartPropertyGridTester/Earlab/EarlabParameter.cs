@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
-namespace Earlab.Xml
+namespace Earlab
 {
     public abstract class EarlabParameter
     {
