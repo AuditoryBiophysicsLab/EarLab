@@ -5,35 +5,35 @@ using System.Xml;
 
 namespace Earlab
 {
-    public class EarlabModuleDescriptor
+    public class ModuleDescriptor
     {
-        public readonly EarlabModuleInformation EarlabModuleInformation;
-        public readonly EarlabParameterDefinition[] EarlabParameterDefinitions;
+        public readonly ModuleInformation ModuleInformation;
+        public readonly ParameterDefinition[] ParameterDefinitions;
 
-        public EarlabModuleDescriptor(XmlNode moduleElement)
+        public ModuleDescriptor(XmlNode moduleElement)
         {
             int CurParam = 0;
 
-            EarlabModuleInformation = new EarlabModuleInformation(moduleElement["ModuleInformation"]);
-            EarlabParameterDefinitions = new EarlabParameterDefinition[moduleElement["Parameters"].ChildNodes.Count];
+            ModuleInformation = new ModuleInformation(moduleElement["ModuleInformation"]);
+            ParameterDefinitions = new ParameterDefinition[moduleElement["Parameters"].ChildNodes.Count];
             foreach (XmlNode curParam in moduleElement["Parameters"].ChildNodes)
             {
-                EarlabParameterDefinitions[CurParam++] = new EarlabParameterDefinition(curParam);
+                ParameterDefinitions[CurParam++] = new ParameterDefinition(curParam);
             }
         }
     }
 
-    public class EarlabModuleInformation
+    public class ModuleInformation
     {
         public readonly string ExecutableName;
 
-        public EarlabModuleInformation(XmlElement infoElement)
+        public ModuleInformation(XmlElement infoElement)
         {
             ExecutableName = infoElement["ExecutableName"].Value;
         }
     }
 
-    public class EarlabParameterDefinition
+    public class ParameterDefinition
     {
         public readonly string Name;
         public readonly string DataType;
@@ -42,7 +42,7 @@ namespace Earlab
         public readonly string Maximum;
         public readonly string Description;
         public readonly string Units;
-        public EarlabParameterDefinition(XmlNode paramNode)
+        public ParameterDefinition(XmlNode paramNode)
         {
             Name = paramNode["Name"].InnerText;
             DataType = paramNode["Type"].InnerText;
@@ -54,21 +54,21 @@ namespace Earlab
         }
     }
 
-    public class EarlabModuleInputDefinition
+    public class ModuleInputDefinition
     {
     }
 
-    public class EarlabModuleOutputDefinition
+    public class ModuleOutputDefinition
     {
     }
 
     public static class ModuleXMLParser
     {
-        public static EarlabModuleDescriptor[] LoadModuleDescription(string ModuleXML)
+        public static ModuleDescriptor[] LoadModuleDescription(string ModuleXML)
         {
             int ModuleCount;
             int CurModule = 0;
-            EarlabModuleDescriptor[] modules;
+            ModuleDescriptor[] modules;
 
             XmlDocument myDoc = new XmlDocument();
             myDoc.LoadXml(ModuleXML);
@@ -76,11 +76,11 @@ namespace Earlab
 
             if (ModuleCount < 1)
                 return null;
-            modules = new EarlabModuleDescriptor[ModuleCount];
+            modules = new ModuleDescriptor[ModuleCount];
 
             foreach (XmlNode curModule in myDoc["Modules"].ChildNodes)
             {
-                modules[CurModule++] = new EarlabModuleDescriptor(curModule);
+                modules[CurModule++] = new ModuleDescriptor(curModule);
             }
             return modules;
         }

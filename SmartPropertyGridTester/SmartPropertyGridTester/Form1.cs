@@ -53,7 +53,7 @@ namespace SmartPropertyGridTester
         private void btnTest_Click(object sender, EventArgs e)
         {
             string moduleXML;
-            EarlabModuleDescriptor[] myModules;
+            ModuleDescriptor[] myModules;
             StreamReader stream = new StreamReader(@"..\..\ModuleXMLFragment.xml");
             moduleXML = stream.ReadToEnd();
 
