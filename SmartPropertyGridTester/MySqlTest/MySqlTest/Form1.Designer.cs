@@ -30,58 +30,42 @@ namespace MySqlTest
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.esmeDataSet = new MySqlTest.esmeDataSet();
-            this.environmentdatatypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.environmentdatatypeTableAdapter = new MySqlTest.esmeDataSetTableAdapters.environmentdatatypeTableAdapter();
+            this.cboDataType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnEditDataTypeList = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.environmentdatasetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.environmentdatasetTableAdapter = new MySqlTest.esmeDataSetTableAdapters.environmentdatasetTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.esmeDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.environmentdatatypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.environmentdatasetBindingSource)).BeginInit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtHostname = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(12, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Data Type";
             // 
-            // comboBox1
+            // cboDataType
             // 
-            this.comboBox1.DataSource = this.environmentdatatypeBindingSource;
-            this.comboBox1.DisplayMember = "DataTypeName";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(16, 30);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(94, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.ValueMember = "idEnvironmentDataType";
-            // 
-            // esmeDataSet
-            // 
-            this.esmeDataSet.DataSetName = "esmeDataSet";
-            this.esmeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // environmentdatatypeBindingSource
-            // 
-            this.environmentdatatypeBindingSource.DataMember = "environmentdatatype";
-            this.environmentdatatypeBindingSource.DataSource = this.esmeDataSet;
-            // 
-            // environmentdatatypeTableAdapter
-            // 
-            this.environmentdatatypeTableAdapter.ClearBeforeFill = true;
+            this.cboDataType.DisplayMember = "Name";
+            this.cboDataType.FormattingEnabled = true;
+            this.cboDataType.Location = new System.Drawing.Point(15, 86);
+            this.cboDataType.Name = "cboDataType";
+            this.cboDataType.Size = new System.Drawing.Size(94, 21);
+            this.cboDataType.TabIndex = 1;
+            this.cboDataType.ValueMember = "idEnvironmentDataType";
+            this.cboDataType.SelectedIndexChanged += new System.EventHandler(this.cboDataType_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 68);
+            this.label2.Location = new System.Drawing.Point(15, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 2;
@@ -89,7 +73,7 @@ namespace MySqlTest
             // 
             // btnEditDataTypeList
             // 
-            this.btnEditDataTypeList.Location = new System.Drawing.Point(117, 30);
+            this.btnEditDataTypeList.Location = new System.Drawing.Point(116, 86);
             this.btnEditDataTypeList.Name = "btnEditDataTypeList";
             this.btnEditDataTypeList.Size = new System.Drawing.Size(75, 23);
             this.btnEditDataTypeList.TabIndex = 3;
@@ -99,40 +83,81 @@ namespace MySqlTest
             // 
             // comboBox2
             // 
-            this.comboBox2.DataSource = this.environmentdatasetBindingSource;
-            this.comboBox2.DisplayMember = "DataSetName";
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(16, 84);
+            this.comboBox2.Location = new System.Drawing.Point(15, 140);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(94, 21);
             this.comboBox2.TabIndex = 4;
             this.comboBox2.ValueMember = "idEnvironmentDataSet";
             // 
-            // environmentdatasetBindingSource
+            // label3
             // 
-            this.environmentdatasetBindingSource.DataMember = "environmentdataset";
-            this.environmentdatasetBindingSource.DataSource = this.esmeDataSet;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Database hostname";
             // 
-            // environmentdatasetTableAdapter
+            // txtHostname
             // 
-            this.environmentdatasetTableAdapter.ClearBeforeFill = true;
+            this.txtHostname.Location = new System.Drawing.Point(13, 30);
+            this.txtHostname.Name = "txtHostname";
+            this.txtHostname.Size = new System.Drawing.Size(100, 20);
+            this.txtHostname.TabIndex = 6;
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(121, 30);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(100, 20);
+            this.txtUsername.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(121, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Username";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(229, 30);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.TabIndex = 10;
+            this.txtPassword.UseSystemPasswordChar = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(229, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Password";
             // 
             // frmDatabaseEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 266);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtHostname);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.btnEditDataTypeList);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboDataType);
             this.Controls.Add(this.label1);
             this.Name = "frmDatabaseEditor";
             this.Text = "ESME Environmental Database Editor";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.esmeDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.environmentdatatypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.environmentdatasetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,16 +166,16 @@ namespace MySqlTest
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private esmeDataSet esmeDataSet;
-        private System.Windows.Forms.BindingSource environmentdatatypeBindingSource;
-        private MySqlTest.esmeDataSetTableAdapters.environmentdatatypeTableAdapter environmentdatatypeTableAdapter;
+        private System.Windows.Forms.ComboBox cboDataType;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEditDataTypeList;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.BindingSource environmentdatasetBindingSource;
-        private MySqlTest.esmeDataSetTableAdapters.environmentdatasetTableAdapter environmentdatasetTableAdapter;
-
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtHostname;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label label5;
     }
 }
 

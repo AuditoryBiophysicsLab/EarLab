@@ -33,5 +33,15 @@ namespace MySqlTest.Properties {
                 return ((string)(this["esmeConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=nikon.bu.edu;user id=da;database=esme_environment")]
+        public string esme_environmentConnectionString {
+            get {
+                return ((string)(this["esme_environmentConnectionString"]));
+            }
+        }
     }
 }
