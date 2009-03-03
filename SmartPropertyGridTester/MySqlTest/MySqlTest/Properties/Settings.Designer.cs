@@ -26,18 +26,8 @@ namespace MySqlTest.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=nikon.bu.edu;user id=esme;Password=erb415;database=esme;persist security i" +
-            "nfo=True")]
-        public string esmeConnectionString {
-            get {
-                return ((string)(this["esmeConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=nikon.bu.edu;user id=da;database=esme_environment")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=nikon.bu.edu;user id=da;Password=AmySophie17;persist security info=True;da" +
+            "tabase=esme_environment")]
         public string esme_environmentConnectionString {
             get {
                 return ((string)(this["esme_environmentConnectionString"]));
