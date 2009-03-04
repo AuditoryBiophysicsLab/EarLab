@@ -35,11 +35,11 @@ namespace MySqlTest
             this.esme_environmentDataSet = new MySqlTest.esme_environmentDataSet();
             this.label2 = new System.Windows.Forms.Label();
             this.btnEditDataTypeList = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboDataSet = new System.Windows.Forms.ComboBox();
             this.datasetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.datatypeTableAdapter = new MySqlTest.esme_environmentDataSetTableAdapters.datatypeTableAdapter();
             this.datasetTableAdapter = new MySqlTest.esme_environmentDataSetTableAdapters.datasetTableAdapter();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboSubset = new System.Windows.Forms.ComboBox();
             this.datasubsetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.datasubsetTableAdapter = new MySqlTest.esme_environmentDataSetTableAdapters.datasubsetTableAdapter();
@@ -99,16 +99,17 @@ namespace MySqlTest
             this.btnEditDataTypeList.UseVisualStyleBackColor = true;
             this.btnEditDataTypeList.Click += new System.EventHandler(this.btnEditDataTypeList_Click);
             // 
-            // comboBox2
+            // cboDataSet
             // 
-            this.comboBox2.DataSource = this.datasetBindingSource;
-            this.comboBox2.DisplayMember = "Name";
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(15, 80);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(233, 21);
-            this.comboBox2.TabIndex = 4;
-            this.comboBox2.ValueMember = "idEnvironmentDataSet";
+            this.cboDataSet.DataSource = this.datasetBindingSource;
+            this.cboDataSet.DisplayMember = "Name";
+            this.cboDataSet.FormattingEnabled = true;
+            this.cboDataSet.Location = new System.Drawing.Point(15, 80);
+            this.cboDataSet.Name = "cboDataSet";
+            this.cboDataSet.Size = new System.Drawing.Size(233, 21);
+            this.cboDataSet.TabIndex = 4;
+            this.cboDataSet.ValueMember = "idEnvironmentDataSet";
+            this.cboDataSet.SelectedIndexChanged += new System.EventHandler(this.cboDataSet_SelectedIndexChanged);
             // 
             // datasetBindingSource
             // 
@@ -123,16 +124,17 @@ namespace MySqlTest
             // 
             this.datasetTableAdapter.ClearBeforeFill = true;
             // 
-            // comboBox1
+            // cboSubset
             // 
-            this.comboBox1.DataSource = this.datasubsetBindingSource;
-            this.comboBox1.DisplayMember = "Name";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 136);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(233, 21);
-            this.comboBox1.TabIndex = 6;
-            this.comboBox1.ValueMember = "idEnvironmentDataSet";
+            this.cboSubset.DataSource = this.datasubsetBindingSource;
+            this.cboSubset.DisplayMember = "Name";
+            this.cboSubset.FormattingEnabled = true;
+            this.cboSubset.Location = new System.Drawing.Point(15, 136);
+            this.cboSubset.Name = "cboSubset";
+            this.cboSubset.Size = new System.Drawing.Size(233, 21);
+            this.cboSubset.TabIndex = 6;
+            this.cboSubset.ValueMember = "idEnvironmentDataSet";
+            this.cboSubset.SelectedIndexChanged += new System.EventHandler(this.cboSubset_SelectedIndexChanged);
             // 
             // datasubsetBindingSource
             // 
@@ -157,9 +159,9 @@ namespace MySqlTest
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 472);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboSubset);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cboDataSet);
             this.Controls.Add(this.btnEditDataTypeList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboDataType);
@@ -182,13 +184,13 @@ namespace MySqlTest
         private System.Windows.Forms.ComboBox cboDataType;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEditDataTypeList;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cboDataSet;
         private esme_environmentDataSet esme_environmentDataSet;
         private System.Windows.Forms.BindingSource datatypeBindingSource;
         private MySqlTest.esme_environmentDataSetTableAdapters.datatypeTableAdapter datatypeTableAdapter;
         private System.Windows.Forms.BindingSource datasetBindingSource;
         private MySqlTest.esme_environmentDataSetTableAdapters.datasetTableAdapter datasetTableAdapter;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboSubset;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.BindingSource datasubsetBindingSource;
         private MySqlTest.esme_environmentDataSetTableAdapters.datasubsetTableAdapter datasubsetTableAdapter;

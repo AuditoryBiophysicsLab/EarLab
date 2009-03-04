@@ -40,12 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dbCombo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="dbCombo.Designer.cs">
-      <DependentUpon>dbCombo.cs</DependentUpon>
-    </Compile>
     <Compile Include="esme_environmentDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -57,11 +51,21 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDataType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDataType.Designer.cs">
+      <DependentUpon>frmDataType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDataType.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDataType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
