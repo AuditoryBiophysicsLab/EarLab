@@ -16,6 +16,8 @@ namespace MySqlTest
         public frmDatabaseEditor()
         {
             InitializeComponent();
+            ConnectToDatabase("nikon.bu.edu", "da", "AmySophie17");
+            PopulateDatatype();
         }
 
         private void ConnectToDatabase(string Hostname, string Username, string Password)
@@ -26,28 +28,17 @@ namespace MySqlTest
 
         private void PopulateDatatype()
         {
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM datatype", dbConnection);
-            MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(dataAdapter);
-            DataSet ds = new DataSet();
-            cboDataType.Items.Ad
-            foreach (DataRow curRow in ds.Tables[0].Rows)
-            {
-                cboDataType.Items.Add()
-            }
+            //datasetBindingSource.
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dbConnection = new MySqlConnection("Database=esme_environment;Data Source=nikon.bu.edu;User Id=da;Password=AmySophie17");
-
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM datatype", dbConnection);
-            MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(dataAdapter);
-            DataSet ds = new DataSet();
-            dataAdapter.Fill(ds);
-            DataRow dr = ds.Tables[0].NewRow();
-            dr["Name"] = "New Type";
-            ds.Tables[0].Rows.Add(dr);
-            dataAdapter.Update(ds);
+            // TODO: This line of code loads data into the 'esme_environmentDataSet.datasubset' table. You can move, or remove it, as needed.
+            //this.datasubsetTableAdapter.Fill(this.esme_environmentDataSet.datasubset);
+            // TODO: This line of code loads data into the 'esme_environmentDataSet.dataset' table. You can move, or remove it, as needed.
+            // this.datasetTableAdapter.Fill(this.esme_environmentDataSet.dataset);
+            // TODO: This line of code loads data into the 'esme_environmentDataSet.datatype' table. You can move, or remove it, as needed.
+            this.datatypeTableAdapter.Fill(this.esme_environmentDataSet.datatype);
         }
 
         private void btnEditDataTypeList_Click(object sender, EventArgs e)
@@ -56,7 +47,7 @@ namespace MySqlTest
 
         private void cboDataType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            this.datasetTableAdapter.FillByDataType(this.esme_environmentDataSet.dataset, int.Parse(((DataRowView)(cboDataType.SelectedValue)).Row[0].ToString()));
         }
     }
 }

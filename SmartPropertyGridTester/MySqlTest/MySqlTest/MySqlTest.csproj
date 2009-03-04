@@ -40,6 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dbCombo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dbCombo.Designer.cs">
+      <DependentUpon>dbCombo.cs</DependentUpon>
+    </Compile>
     <Compile Include="esme_environmentDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
