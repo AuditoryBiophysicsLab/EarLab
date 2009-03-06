@@ -49,6 +49,7 @@ namespace MySqlTest
         {
             frmDataType dataType = new frmDataType();
             dataType.ShowDialog();
+            this.datatypeTableAdapter.Fill(this.esme_environmentDataSet.datatype);
         }
 
         private void cboDataType_SelectedIndexChanged(object sender, EventArgs e)

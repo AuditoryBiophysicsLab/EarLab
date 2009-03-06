@@ -30,15 +30,15 @@ namespace MySqlTest
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.esme_environmentDataSet = new MySqlTest.esme_environmentDataSet();
-            this.datatypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.datatypeTableAdapter = new MySqlTest.esme_environmentDataSetTableAdapters.datatypeTableAdapter();
-            this.btnDone = new System.Windows.Forms.Button();
             this.idDataTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datatypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.esme_environmentDataSet = new MySqlTest.esme_environmentDataSet();
+            this.datatypeTableAdapter = new MySqlTest.esme_environmentDataSetTableAdapters.datatypeTableAdapter();
+            this.btnDone = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.esme_environmentDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datatypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.esme_environmentDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -57,18 +57,31 @@ namespace MySqlTest
             this.dataGridView1.Size = new System.Drawing.Size(261, 173);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
             // 
-            // esme_environmentDataSet
+            // idDataTypeDataGridViewTextBoxColumn
             // 
-            this.esme_environmentDataSet.DataSetName = "esme_environmentDataSet";
-            this.esme_environmentDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.idDataTypeDataGridViewTextBoxColumn.DataPropertyName = "idDataType";
+            this.idDataTypeDataGridViewTextBoxColumn.HeaderText = "idDataType";
+            this.idDataTypeDataGridViewTextBoxColumn.Name = "idDataTypeDataGridViewTextBoxColumn";
+            this.idDataTypeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Data Type";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
             // datatypeBindingSource
             // 
             this.datatypeBindingSource.DataMember = "datatype";
             this.datatypeBindingSource.DataSource = this.esme_environmentDataSet;
+            // 
+            // esme_environmentDataSet
+            // 
+            this.esme_environmentDataSet.DataSetName = "esme_environmentDataSet";
+            this.esme_environmentDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // datatypeTableAdapter
             // 
@@ -85,20 +98,6 @@ namespace MySqlTest
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
-            // idDataTypeDataGridViewTextBoxColumn
-            // 
-            this.idDataTypeDataGridViewTextBoxColumn.DataPropertyName = "idDataType";
-            this.idDataTypeDataGridViewTextBoxColumn.HeaderText = "idDataType";
-            this.idDataTypeDataGridViewTextBoxColumn.Name = "idDataTypeDataGridViewTextBoxColumn";
-            this.idDataTypeDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Data Type";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
             // frmDataType
             // 
             this.AcceptButton = this.btnDone;
@@ -111,9 +110,10 @@ namespace MySqlTest
             this.Text = "Data Type editor";
             this.Load += new System.EventHandler(this.frmDataType_Load);
             this.Activated += new System.EventHandler(this.frmDataType_Activated);
+            this.Leave += new System.EventHandler(this.frmDataType_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.esme_environmentDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datatypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.esme_environmentDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

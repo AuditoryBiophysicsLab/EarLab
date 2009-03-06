@@ -10,6 +10,8 @@ namespace MySqlTest
 {
     public partial class frmDataType : Form
     {
+        private bool IsActive = false;
+
         public frmDataType()
         {
             InitializeComponent();
@@ -28,25 +30,32 @@ namespace MySqlTest
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            UpdateDataset();
+            if (IsActive)
+            {
+                UpdateDatabase();
+            }
+        }
+
+        private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (IsActive)
+            {
+                UpdateDatabase();
+            }
+        }
+
+        private void frmDataType_Leave(object sender, EventArgs e)
+        {
+            this.IsActive = false;
         }
 
         private void frmDataType_Activated(object sender, EventArgs e)
         {
             this.datatypeTableAdapter.GetData();
+            this.IsActive = true;
         }
 
-        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            UpdateDataset();
-        }
-
-        private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
-            UpdateDataset();
-        }
-
-        private void UpdateDataset()
+        private void UpdateDatabase()
         {
             try
             {
