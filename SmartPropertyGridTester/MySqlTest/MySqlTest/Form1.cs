@@ -11,27 +11,26 @@ namespace MySqlTest
 {
     public partial class frmDatabaseEditor : Form
     {
-        MySqlConnection dbConnection;
         int curDataTypeID, curDataSetID, CurDataSubsetID;
 
         public frmDatabaseEditor()
         {
             InitializeComponent();
-            ConnectToDatabase("nikon.bu.edu", "da", "AmySophie17");
-            PopulateDatatype();
+            //ConnectToDatabase("nikon.bu.edu", "da", "AmySophie17");
+            //PopulateDatatype();
         }
-
+#if false
         private void ConnectToDatabase(string Hostname, string Username, string Password)
         {
             string ConnectString = "Database=esme_environment;Data Source=" + Hostname + ";User Id=" + Username + ";Password=" + Password;
-            dbConnection = new MySqlConnection(ConnectString);
+            //dbConnection = new MySqlConnection(ConnectString);
         }
 
         private void PopulateDatatype()
         {
             //datasetBindingSource.
         }
-
+#endif
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'esme_environmentDataSet.datasubset' table. You can move, or remove it, as needed.
@@ -72,7 +71,17 @@ namespace MySqlTest
 
         private void cboSubset_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cboSubset.SelectedValue == null)
+                return;
+            CurDataSubsetID = int.Parse(((DataRowView)(cboSubset.SelectedValue)).Row[0].ToString());
+            //this.datasubsetTableAdapter.FillByDataSet(this.esme_environmentDataSet.datasubset, curDataSetID);
+            //this.datasubsetTableAdapter.GetDataByDataSet(curDataSetID);
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmDataSet dataSet = new frmDataSet();
+            dataSet.ShowDialog("Salinity");
         }
 
     }

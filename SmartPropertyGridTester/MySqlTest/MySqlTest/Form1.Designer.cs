@@ -43,6 +43,8 @@ namespace MySqlTest
             this.datasubsetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.datasubsetTableAdapter = new MySqlTest.esme_environmentDataSetTableAdapters.datasubsetTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datatypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.esme_environmentDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datasetBindingSource)).BeginInit();
@@ -91,11 +93,11 @@ namespace MySqlTest
             // 
             // btnEditDataTypeList
             // 
-            this.btnEditDataTypeList.Location = new System.Drawing.Point(254, 26);
+            this.btnEditDataTypeList.Location = new System.Drawing.Point(255, 26);
             this.btnEditDataTypeList.Name = "btnEditDataTypeList";
-            this.btnEditDataTypeList.Size = new System.Drawing.Size(75, 23);
+            this.btnEditDataTypeList.Size = new System.Drawing.Size(95, 23);
             this.btnEditDataTypeList.TabIndex = 3;
-            this.btnEditDataTypeList.Text = "Edit List...";
+            this.btnEditDataTypeList.Text = "Edit Types...";
             this.btnEditDataTypeList.UseVisualStyleBackColor = true;
             this.btnEditDataTypeList.Click += new System.EventHandler(this.btnEditDataTypeList_Click);
             // 
@@ -154,11 +156,32 @@ namespace MySqlTest
             // 
             this.datasubsetTableAdapter.ClearBeforeFill = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(255, 80);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Edit Datasets...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(255, 136);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(95, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Edit Subsets...";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // frmDatabaseEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 472);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cboSubset);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cboDataSet);
@@ -194,6 +217,8 @@ namespace MySqlTest
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.BindingSource datasubsetBindingSource;
         private MySqlTest.esme_environmentDataSetTableAdapters.datasubsetTableAdapter datasubsetTableAdapter;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

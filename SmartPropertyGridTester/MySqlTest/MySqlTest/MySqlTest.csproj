@@ -51,6 +51,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDataSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDataSet.Designer.cs">
+      <DependentUpon>frmDataSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDataType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,10 @@
     <EmbeddedResource Include="Form1.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDataSet.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDataSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDataType.resx">
       <SubType>Designer</SubType>

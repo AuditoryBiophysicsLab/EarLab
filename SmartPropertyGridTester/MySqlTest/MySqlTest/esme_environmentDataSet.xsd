@@ -356,19 +356,19 @@
         <xs:element name="datapoint" msprop:Generator_UserTableName="datapoint" msprop:Generator_RowDeletedName="datapointRowDeleted" msprop:Generator_RowChangedName="datapointRowChanged" msprop:Generator_RowClassName="datapointRow" msprop:Generator_RowChangingName="datapointRowChanging" msprop:Generator_RowEvArgName="datapointRowChangeEvent" msprop:Generator_RowEvHandlerName="datapointRowChangeEventHandler" msprop:Generator_TableClassName="datapointDataTable" msprop:Generator_TableVarName="tabledatapoint" msprop:Generator_RowDeletingName="datapointRowDeleting" msprop:Generator_TablePropName="datapoint">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="idDataPoint" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="idDataPoint" msprop:Generator_ColumnPropNameInRow="idDataPoint" msprop:Generator_ColumnVarNameInTable="columnidDataPoint" msprop:Generator_ColumnPropNameInTable="idDataPointColumn" type="xs:int" />
-              <xs:element name="idDataSubSet" msprop:Generator_UserColumnName="idDataSubSet" msprop:Generator_ColumnPropNameInRow="idDataSubSet" msprop:Generator_ColumnVarNameInTable="columnidDataSubSet" msprop:Generator_ColumnPropNameInTable="idDataSubSetColumn" type="xs:int" />
-              <xs:element name="Latitude" msprop:Generator_UserColumnName="Latitude" msprop:Generator_ColumnPropNameInRow="Latitude" msprop:Generator_ColumnVarNameInTable="columnLatitude" msprop:Generator_ColumnPropNameInTable="LatitudeColumn" type="xs:float" />
-              <xs:element name="Longitude" msprop:Generator_UserColumnName="Longitude" msprop:Generator_ColumnPropNameInRow="Longitude" msprop:Generator_ColumnVarNameInTable="columnLongitude" msprop:Generator_ColumnPropNameInTable="LongitudeColumn" type="xs:float" />
+              <xs:element name="idDataPoint" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="idDataPoint" msprop:Generator_ColumnVarNameInTable="columnidDataPoint" msprop:Generator_ColumnPropNameInRow="idDataPoint" msprop:Generator_ColumnPropNameInTable="idDataPointColumn" type="xs:int" />
+              <xs:element name="idDataSubSet" msprop:Generator_UserColumnName="idDataSubSet" msprop:Generator_ColumnVarNameInTable="columnidDataSubSet" msprop:Generator_ColumnPropNameInRow="idDataSubSet" msprop:Generator_ColumnPropNameInTable="idDataSubSetColumn" type="xs:int" />
+              <xs:element name="Latitude" msprop:Generator_UserColumnName="Latitude" msprop:Generator_ColumnVarNameInTable="columnLatitude" msprop:Generator_ColumnPropNameInRow="Latitude" msprop:Generator_ColumnPropNameInTable="LatitudeColumn" type="xs:float" />
+              <xs:element name="Longitude" msprop:Generator_UserColumnName="Longitude" msprop:Generator_ColumnVarNameInTable="columnLongitude" msprop:Generator_ColumnPropNameInRow="Longitude" msprop:Generator_ColumnPropNameInTable="LongitudeColumn" type="xs:float" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="dataset" msprop:Generator_UserTableName="dataset" msprop:Generator_RowDeletedName="datasetRowDeleted" msprop:Generator_RowChangedName="datasetRowChanged" msprop:Generator_RowClassName="datasetRow" msprop:Generator_RowChangingName="datasetRowChanging" msprop:Generator_RowEvArgName="datasetRowChangeEvent" msprop:Generator_RowEvHandlerName="datasetRowChangeEventHandler" msprop:Generator_TableClassName="datasetDataTable" msprop:Generator_TableVarName="tabledataset" msprop:Generator_RowDeletingName="datasetRowDeleting" msprop:Generator_TablePropName="dataset">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="idDataSet" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="idDataSet" msprop:Generator_ColumnPropNameInRow="idDataSet" msprop:Generator_ColumnVarNameInTable="columnidDataSet" msprop:Generator_ColumnPropNameInTable="idDataSetColumn" type="xs:int" />
-              <xs:element name="idDataType" msprop:Generator_UserColumnName="idDataType" msprop:Generator_ColumnPropNameInRow="idDataType" msprop:Generator_ColumnVarNameInTable="columnidDataType" msprop:Generator_ColumnPropNameInTable="idDataTypeColumn" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInTable="NameColumn">
+              <xs:element name="idDataSet" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="idDataSet" msprop:Generator_ColumnVarNameInTable="columnidDataSet" msprop:Generator_ColumnPropNameInRow="idDataSet" msprop:Generator_ColumnPropNameInTable="idDataSetColumn" type="xs:int" />
+              <xs:element name="idDataType" msprop:Generator_UserColumnName="idDataType" msprop:Generator_ColumnVarNameInTable="columnidDataType" msprop:Generator_ColumnPropNameInRow="idDataType" msprop:Generator_ColumnPropNameInTable="idDataTypeColumn" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="45" />
@@ -381,9 +381,9 @@
         <xs:element name="datasubset" msprop:Generator_UserTableName="datasubset" msprop:Generator_RowDeletedName="datasubsetRowDeleted" msprop:Generator_RowChangedName="datasubsetRowChanged" msprop:Generator_RowClassName="datasubsetRow" msprop:Generator_RowChangingName="datasubsetRowChanging" msprop:Generator_RowEvArgName="datasubsetRowChangeEvent" msprop:Generator_RowEvHandlerName="datasubsetRowChangeEventHandler" msprop:Generator_TableClassName="datasubsetDataTable" msprop:Generator_TableVarName="tabledatasubset" msprop:Generator_RowDeletingName="datasubsetRowDeleting" msprop:Generator_TablePropName="datasubset">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="idDataSubSet" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="idDataSubSet" msprop:Generator_ColumnPropNameInRow="idDataSubSet" msprop:Generator_ColumnVarNameInTable="columnidDataSubSet" msprop:Generator_ColumnPropNameInTable="idDataSubSetColumn" type="xs:int" />
-              <xs:element name="idDataSet" msprop:Generator_UserColumnName="idDataSet" msprop:Generator_ColumnPropNameInRow="idDataSet" msprop:Generator_ColumnVarNameInTable="columnidDataSet" msprop:Generator_ColumnPropNameInTable="idDataSetColumn" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInTable="NameColumn">
+              <xs:element name="idDataSubSet" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="idDataSubSet" msprop:Generator_ColumnVarNameInTable="columnidDataSubSet" msprop:Generator_ColumnPropNameInRow="idDataSubSet" msprop:Generator_ColumnPropNameInTable="idDataSubSetColumn" type="xs:int" />
+              <xs:element name="idDataSet" msprop:Generator_UserColumnName="idDataSet" msprop:Generator_ColumnVarNameInTable="columnidDataSet" msprop:Generator_ColumnPropNameInRow="idDataSet" msprop:Generator_ColumnPropNameInTable="idDataSetColumn" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="45" />
@@ -396,8 +396,8 @@
         <xs:element name="datatype" msprop:Generator_UserTableName="datatype" msprop:Generator_RowDeletedName="datatypeRowDeleted" msprop:Generator_RowChangedName="datatypeRowChanged" msprop:Generator_RowClassName="datatypeRow" msprop:Generator_RowChangingName="datatypeRowChanging" msprop:Generator_RowEvArgName="datatypeRowChangeEvent" msprop:Generator_RowEvHandlerName="datatypeRowChangeEventHandler" msprop:Generator_TableClassName="datatypeDataTable" msprop:Generator_TableVarName="tabledatatype" msprop:Generator_RowDeletingName="datatypeRowDeleting" msprop:Generator_TablePropName="datatype">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="idDataType" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="idDataType" msprop:Generator_ColumnPropNameInRow="idDataType" msprop:Generator_ColumnVarNameInTable="columnidDataType" msprop:Generator_ColumnPropNameInTable="idDataTypeColumn" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInTable="NameColumn">
+              <xs:element name="idDataType" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="idDataType" msprop:Generator_ColumnVarNameInTable="columnidDataType" msprop:Generator_ColumnPropNameInRow="idDataType" msprop:Generator_ColumnPropNameInTable="idDataTypeColumn" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="45" />
@@ -410,10 +410,10 @@
         <xs:element name="datum" msprop:Generator_UserTableName="datum" msprop:Generator_RowDeletedName="datumRowDeleted" msprop:Generator_RowChangedName="datumRowChanged" msprop:Generator_RowClassName="datumRow" msprop:Generator_RowChangingName="datumRowChanging" msprop:Generator_RowEvArgName="datumRowChangeEvent" msprop:Generator_RowEvHandlerName="datumRowChangeEventHandler" msprop:Generator_TableClassName="datumDataTable" msprop:Generator_TableVarName="tabledatum" msprop:Generator_RowDeletingName="datumRowDeleting" msprop:Generator_TablePropName="datum">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="idDatum" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="idDatum" msprop:Generator_ColumnPropNameInRow="idDatum" msprop:Generator_ColumnVarNameInTable="columnidDatum" msprop:Generator_ColumnPropNameInTable="idDatumColumn" type="xs:int" />
-              <xs:element name="idDataPoint" msprop:Generator_UserColumnName="idDataPoint" msprop:Generator_ColumnPropNameInRow="idDataPoint" msprop:Generator_ColumnVarNameInTable="columnidDataPoint" msprop:Generator_ColumnPropNameInTable="idDataPointColumn" type="xs:int" />
-              <xs:element name="Depth_Meters" msprop:Generator_UserColumnName="Depth_Meters" msprop:Generator_ColumnPropNameInRow="Depth_Meters" msprop:Generator_ColumnVarNameInTable="columnDepth_Meters" msprop:Generator_ColumnPropNameInTable="Depth_MetersColumn" type="xs:float" />
-              <xs:element name="Datum" msprop:Generator_UserColumnName="Datum" msprop:Generator_ColumnPropNameInRow="Datum" msprop:Generator_ColumnVarNameInTable="columnDatum" msprop:Generator_ColumnPropNameInTable="DatumColumn" type="xs:float" />
+              <xs:element name="idDatum" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="idDatum" msprop:Generator_ColumnVarNameInTable="columnidDatum" msprop:Generator_ColumnPropNameInRow="idDatum" msprop:Generator_ColumnPropNameInTable="idDatumColumn" type="xs:int" />
+              <xs:element name="idDataPoint" msprop:Generator_UserColumnName="idDataPoint" msprop:Generator_ColumnVarNameInTable="columnidDataPoint" msprop:Generator_ColumnPropNameInRow="idDataPoint" msprop:Generator_ColumnPropNameInTable="idDataPointColumn" type="xs:int" />
+              <xs:element name="Depth_Meters" msprop:Generator_UserColumnName="Depth_Meters" msprop:Generator_ColumnVarNameInTable="columnDepth_Meters" msprop:Generator_ColumnPropNameInRow="Depth_Meters" msprop:Generator_ColumnPropNameInTable="Depth_MetersColumn" type="xs:float" />
+              <xs:element name="Datum" msprop:Generator_UserColumnName="Datum" msprop:Generator_ColumnVarNameInTable="columnDatum" msprop:Generator_ColumnPropNameInRow="Datum" msprop:Generator_ColumnPropNameInTable="DatumColumn" type="xs:float" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
