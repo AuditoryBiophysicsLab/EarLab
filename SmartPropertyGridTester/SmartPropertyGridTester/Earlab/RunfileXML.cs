@@ -15,6 +15,17 @@ namespace Earlab
         {
         }
 
+        public EarlabRunfile(string RunfileXML)
+        {
+            Xml = RunfileXML;
+        }
+
+        public EarlabRunfile(TextReader XMLStream)
+        {
+            string RunfileXML = XMLStream.ReadToEnd();
+            Xml = RunfileXML;
+        }
+
         public string[] UniqueModuleExecutableNames
         {
             get
@@ -68,17 +79,6 @@ namespace Earlab
                     throw new IndexOutOfRangeException("The requested module at index " + ModuleIndex + " was not found in the runfile");
                 return RunfileModuleDescriptors[ModuleIndex];
             }
-        }
-
-        public EarlabRunfile(string RunfileXML)
-        {
-            Xml = RunfileXML;
-        }
-
-        public EarlabRunfile(TextReader XMLStream)
-        {
-            string RunfileXML = XMLStream.ReadToEnd();
-            Xml = RunfileXML;
         }
 
         public void LoadXml(string XmlFilename)
