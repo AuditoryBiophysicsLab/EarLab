@@ -54,12 +54,12 @@ namespace SmartPropertyGridTester
         {
             string moduleXML;
             ModuleDescriptor[] myModules;
-            StreamReader stream = new StreamReader(@"..\..\ModuleXMLFragment.xml");
+            StreamReader stream = new StreamReader(@"..\..\XML Test Files\ModuleXMLFragment.xml");
             moduleXML = stream.ReadToEnd();
 
             myModules = ModuleXMLParser.LoadModuleDescription(moduleXML);
 
-            EarlabRunfile theRunfile = new EarlabRunfile(@"..\..\RunfileFragment.xml");
+            EarlabRunfile theRunfile = new EarlabRunfile(@"..\..\XML Test Files\RunfileFragment.xml");
             //theRunfile["ModuleName"]
         }
     }

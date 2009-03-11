@@ -15,9 +15,9 @@ namespace Earlab
         {
         }
 
-        public EarlabRunfile(string RunfileXML)
+        public EarlabRunfile(string XMLRunfile)
         {
-            Xml = RunfileXML;
+            LoadXml(XMLRunfile);
         }
 
         public EarlabRunfile(TextReader XMLStream)
