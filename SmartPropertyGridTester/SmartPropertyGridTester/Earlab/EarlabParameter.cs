@@ -43,7 +43,7 @@ namespace Earlab
 
         public override bool IsDefault
         {
-            get { return Value.Equals(Default); }
+            get { return mValue.Equals(Default); }
         }
 
         public override string ToString()
@@ -167,7 +167,7 @@ namespace Earlab
                 case "integer":
                     if ((!int.TryParse(DefaultValue, out intDefault)) || (!int.TryParse(InitialValue, out intValue)))
                         return null;
-                    return new EarlabFloat(ParamName, DefaultValue, intDefault, intValue);
+                    return new EarlabInteger(ParamName, DefaultValue, intDefault, intValue);
                 case "bool":
                 case "boolean":
                     if ((!bool.TryParse(DefaultValue, out boolDefault)) || (!bool.TryParse(InitialValue, out boolValue)))

@@ -15,6 +15,61 @@ namespace Earlab
         {
         }
 
+        public string[] UniqueModuleExecutableNames
+        {
+            get
+            {
+                List<string> results = new List<string>();
+                bool foundMatch;
+
+                foreach (RunfileModuleDescriptor curModule in RunfileModuleDescriptors)
+                {
+                    string curModuleName = curModule.ModuleInformation.ExecutableName;
+
+                    if (results.Count == 0)
+                        results.Add(curModuleName);
+                    else
+                    {
+                        foundMatch = false;
+                        foreach (string UniqueName in results)
+                        {
+                            if (UniqueName.ToLower() == curModuleName.ToLower())
+                            {
+                                foundMatch = true;
+                                break;
+                            }
+                        }
+                        if (!foundMatch)
+                            results.Add(curModuleName);
+                    }
+                }
+                return results.ToArray();
+            }
+        }
+
+        public RunfileModuleDescriptor this[string ModuleName]
+        {
+            get
+            {
+                foreach (RunfileModuleDescriptor curModule in RunfileModuleDescriptors)
+                {
+                    if (curModule.ModuleInformation.ExecutableName == ModuleName)
+                        return curModule;
+                }
+                throw new IndexOutOfRangeException("The requested module executable \"" + ModuleName + "\" was not found in the runfile");
+            }
+        }
+
+        public RunfileModuleDescriptor this[int ModuleIndex]
+        {
+            get
+            {
+                if ((ModuleIndex < 0) || (ModuleIndex >= RunfileModuleDescriptors.Count))
+                    throw new IndexOutOfRangeException("The requested module at index " + ModuleIndex + " was not found in the runfile");
+                return RunfileModuleDescriptors[ModuleIndex];
+            }
+        }
+
         public EarlabRunfile(string RunfileXML)
         {
             Xml = RunfileXML;

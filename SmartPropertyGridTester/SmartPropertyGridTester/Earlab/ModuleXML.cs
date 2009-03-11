@@ -42,6 +42,7 @@ namespace Earlab
         public readonly string Maximum;
         public readonly string Description;
         public readonly string Units;
+
         public ParameterDefinition(XmlNode paramNode)
         {
             Name = paramNode["Name"].InnerText;
