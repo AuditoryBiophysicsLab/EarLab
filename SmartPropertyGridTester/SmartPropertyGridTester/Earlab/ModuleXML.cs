@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.IO;
 
 namespace Earlab
 {
@@ -29,7 +30,7 @@ namespace Earlab
 
         public ModuleInformation(XmlElement infoElement)
         {
-            ExecutableName = infoElement["ExecutableName"].Value;
+            ExecutableName = infoElement["ExecutableName"].InnerText;
         }
     }
 
@@ -65,7 +66,15 @@ namespace Earlab
 
     public static class ModuleXMLParser
     {
-        public static ModuleDescriptor[] LoadModuleDescription(string ModuleXML)
+        public static ModuleDescriptor[] LoadModuleDescriptionFile(string ModuleXMLFilename)
+        {
+            string moduleXML;
+            StreamReader stream = new StreamReader(ModuleXMLFilename);
+            moduleXML = stream.ReadToEnd();
+            return LoadModuleDescriptionXML(moduleXML);
+        }
+
+        public static ModuleDescriptor[] LoadModuleDescriptionXML(string ModuleXML)
         {
             int ModuleCount;
             int CurModule = 0;

@@ -52,15 +52,21 @@ namespace SmartPropertyGridTester
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            string moduleXML;
             ModuleDescriptor[] myModules;
-            StreamReader stream = new StreamReader(@"..\..\XML Test Files\ModuleXMLFragment.xml");
-            moduleXML = stream.ReadToEnd();
 
-            myModules = ModuleXMLParser.LoadModuleDescription(moduleXML);
+            myModules = ModuleXMLParser.LoadModuleDescriptionFile(@"..\..\XML Test Files\ModuleXMLFragment.xml");
 
             EarlabRunfile theRunfile = new EarlabRunfile(@"..\..\XML Test Files\RunfileFragment.xml");
-            //theRunfile["ModuleName"]
+
+            for (int i = 0; i < theRunfile.ModuleCount; i++)
+            {
+                string curModuleExecutable;
+                EarlabModule newModule;
+                curModuleExecutable = theRunfile[i].ModuleInformation.ExecutableName;
+
+                newModule = new EarlabModule(myModules[curModuleExecutable], theRunfile[i]);
+                //string newXML += newModule.XML;
+            }
         }
     }
 }

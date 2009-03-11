@@ -26,6 +26,8 @@ namespace Earlab
             Xml = RunfileXML;
         }
 
+        public int ModuleCount { get { return RunfileModuleDescriptors.Count; } }
+
         public string[] UniqueModuleExecutableNames
         {
             get
