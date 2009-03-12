@@ -40,6 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cboDropdown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cboDropdown.Designer.cs">
+      <DependentUpon>cboDropdown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnvironmentalDatabaseReader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EnvironmentalDatabaseReader.Designer.cs">
+      <DependentUpon>EnvironmentalDatabaseReader.cs</DependentUpon>
+    </Compile>
     <Compile Include="esme_environmentDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -65,6 +77,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="cboDropdown.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>cboDropdown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnvironmentalDatabaseReader.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EnvironmentalDatabaseReader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Form1.cs</DependentUpon>
