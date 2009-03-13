@@ -41,6 +41,7 @@ namespace MySqlTest
             this.cboCombo.Name = "cboCombo";
             this.cboCombo.Size = new System.Drawing.Size(158, 21);
             this.cboCombo.TabIndex = 0;
+            this.cboCombo.SelectedValueChanged += new System.EventHandler(this.cboCombo_SelectedValueChanged);
             // 
             // lblText
             // 
@@ -55,6 +56,7 @@ namespace MySqlTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.lblText);
             this.Controls.Add(this.cboCombo);
             this.Name = "cboDropdown";

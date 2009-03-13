@@ -8,6 +8,8 @@ using System.Windows.Forms;
 
 namespace MySqlTest
 {
+    [ToolboxItem(typeof(EnvironmentalDatabaseReader))]
+    [DesignTimeVisible(true)]
     public partial class EnvironmentalDatabaseReader : UserControl
     {
         public EnvironmentDataType EnvironmentDataType;
@@ -59,6 +61,49 @@ namespace MySqlTest
                 e.Effect = DragDropEffects.Copy; // Okay
             else
                 e.Effect = DragDropEffects.None; // Unknown data, ignore it
+        }
+    }
+
+    public struct SoundSpeedField
+    {
+        public List<SoundSpeedProfile> List;
+
+        public SoundSpeedField(int InitialElementCount)
+        {
+            List = new List<SoundSpeedProfile>(InitialElementCount);
+        }
+
+        public void Add(float Lat_Deg, float Long_Deg, float[] Depths, float[] Temps, float[] Salinities, float[] SoundSpeeds)
+        {
+            List.Add(new SoundSpeedProfile(Lat_Deg, Long_Deg, Depths, Temps, Salinities, SoundSpeeds));
+        }
+    }
+
+    public struct SoundSpeedProfile
+    {
+        public float Lat_Deg, Long_Deg;
+        public SoundSpeedReading[] Readings;
+        public SoundSpeedProfile(float Lat_Deg, float Long_Deg, float[] Depths, float[] Temps, float[] Salinities, float[] SoundSpeeds)
+        {
+            this.Lat_Deg = Lat_Deg;
+            this.Long_Deg = Long_Deg;
+            if ((Depths.Length != Temps.Length) || (Temps.Length != Salinities.Length) || (Salinities.Length != SoundSpeeds.Length))
+                throw new Exception("Lengths of the Depth, Temperature, Salinity and Sound Speed vectors do not match");
+            Readings = new SoundSpeedReading[Depths.Length];
+            for (int i = 0; i < Depths.Length; i++)
+                Readings[i] = new SoundSpeedReading(Depths[i], Temps[i], Salinities[i], SoundSpeeds[i]);
+        }
+    }
+
+    public struct SoundSpeedReading
+    {
+        public float Depth_Meters, Temp_C, Salinity, SoundSpeed_MperS;
+        public SoundSpeedReading(float Depth, float Temp, float Salinity, float SoundSpeed)
+        {
+            Depth_Meters = Depth;
+            Temp_C = Temp;
+            this.Salinity = Salinity;
+            SoundSpeed_MperS = SoundSpeed;
         }
     }
 

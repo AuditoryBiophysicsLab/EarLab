@@ -1,6 +1,6 @@
 namespace MySqlTest
 {
-    partial class EnvironmentalDatabaseReader
+    partial class UserControl1
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,21 +30,16 @@ namespace MySqlTest
         {
             this.SuspendLayout();
             // 
-            // EnvironmentalDatabaseReader
+            // UserControl1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "EnvironmentalDatabaseReader";
-            this.Size = new System.Drawing.Size(223, 150);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.EnvironmentalDatabaseReader_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.EnvironmentalDatabaseReader_DragEnter);
+            this.Name = "UserControl1";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-
     }
 }

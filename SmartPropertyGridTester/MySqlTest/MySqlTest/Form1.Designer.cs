@@ -45,6 +45,10 @@ namespace MySqlTest
             this.datasubsetTableAdapter = new MySqlTest.esme_environmentDataSetTableAdapters.datasubsetTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.environmentalDatabaseReader1 = new MySqlTest.EnvironmentalDatabaseReader();
+            this.cboDropdown1 = new MySqlTest.cboDropdown();
+            this.button3 = new System.Windows.Forms.Button();
+            this.cboDropdown2 = new MySqlTest.cboDropdown();
             ((System.ComponentModel.ISupportInitialize)(this.datatypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.esme_environmentDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datasetBindingSource)).BeginInit();
@@ -175,11 +179,51 @@ namespace MySqlTest
             this.button2.Text = "Edit Subsets...";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // environmentalDatabaseReader1
+            // 
+            this.environmentalDatabaseReader1.AllowDrop = true;
+            this.environmentalDatabaseReader1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.environmentalDatabaseReader1.Location = new System.Drawing.Point(159, 310);
+            this.environmentalDatabaseReader1.Name = "environmentalDatabaseReader1";
+            this.environmentalDatabaseReader1.Size = new System.Drawing.Size(223, 150);
+            this.environmentalDatabaseReader1.TabIndex = 9;
+            // 
+            // cboDropdown1
+            // 
+            this.cboDropdown1.BackColor = System.Drawing.SystemColors.Control;
+            this.cboDropdown1.Location = new System.Drawing.Point(15, 183);
+            this.cboDropdown1.Name = "cboDropdown1";
+            this.cboDropdown1.Size = new System.Drawing.Size(233, 40);
+            this.cboDropdown1.TabIndex = 10;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(254, 200);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // cboDropdown2
+            // 
+            this.cboDropdown2.BackColor = System.Drawing.SystemColors.Control;
+            this.cboDropdown2.Location = new System.Drawing.Point(18, 229);
+            this.cboDropdown2.Name = "cboDropdown2";
+            this.cboDropdown2.Size = new System.Drawing.Size(233, 40);
+            this.cboDropdown2.TabIndex = 12;
+            // 
             // frmDatabaseEditor
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 472);
+            this.Controls.Add(this.cboDropdown2);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.cboDropdown1);
+            this.Controls.Add(this.environmentalDatabaseReader1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cboSubset);
@@ -219,6 +263,10 @@ namespace MySqlTest
         private MySqlTest.esme_environmentDataSetTableAdapters.datasubsetTableAdapter datasubsetTableAdapter;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private EnvironmentalDatabaseReader environmentalDatabaseReader1;
+        private cboDropdown cboDropdown1;
+        private System.Windows.Forms.Button button3;
+        private cboDropdown cboDropdown2;
     }
 }
 

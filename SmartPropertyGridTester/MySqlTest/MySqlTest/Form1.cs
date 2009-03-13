@@ -42,6 +42,7 @@ namespace MySqlTest
             this.datatypeTableAdapter.ClearBeforeFill = true;
             this.datasetTableAdapter.ClearBeforeFill = true;
             this.datasubsetTableAdapter.ClearBeforeFill = true;
+            cboDropdown1.SelectedValueChanged += new EventHandler(cboDropdown1_SelectedValueChanged);
         }
 
         private void btnEditDataTypeList_Click(object sender, EventArgs e)
@@ -82,6 +83,34 @@ namespace MySqlTest
         {
             frmDataSet dataSet = new frmDataSet();
             dataSet.ShowDialog("Salinity");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            cboDropdown1.Server = "nikon.bu.edu";
+            cboDropdown1.Username = "da";
+            cboDropdown1.Password = "AmySophie17";
+            cboDropdown1.Table = "DataType";
+            cboDropdown1.DisplayColumnName = "Name";
+            cboDropdown1.ValueColumnName = "idDataType";
+            cboDropdown1.Open();
+            cboDropdown1.Fill();
+            cboDropdown2.Server = "nikon.bu.edu";
+            cboDropdown2.Username = "da";
+            cboDropdown2.Password = "AmySophie17";
+            cboDropdown2.Table = "DataSet";
+            cboDropdown2.DisplayColumnName = "Name";
+            cboDropdown2.ValueColumnName = "idDataSet";
+            cboDropdown2.ForeignKeyName = "idDataType";
+        }
+
+        void cboDropdown1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("New selected value is " + cboDropdown1.SelectedValue);
+            cboDropdown2.ForeignKeyValue = cboDropdown1.SelectedValue;
+            if (cboDropdown2.State != ConnectionState.Open)
+                cboDropdown2.Open();
+            cboDropdown2.Fill();
         }
 
     }
