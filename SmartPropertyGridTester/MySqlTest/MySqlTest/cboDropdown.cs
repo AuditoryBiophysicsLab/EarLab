@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -76,23 +77,26 @@ namespace MySqlTest
                 command = new MySqlCommand("SELECT " + DisplayColumnName + ",  " + ValueColumnName + " FROM " + Table + ";", mDB);
             else
                 command = new MySqlCommand("SELECT " + DisplayColumnName + ",  " + ValueColumnName + " FROM " + Table + " WHERE " + ForeignKeyName + " = " + ForeignKeyValue.ToString() + ";", mDB);
+#if false
             MySqlDataAdapter data = new MySqlDataAdapter(command);
             DataSet ds = new DataSet();
             data.Fill(ds);
             cboCombo.DataSource = ds.Tables[0];
             cboCombo.DisplayMember = DisplayColumnName;
             cboCombo.ValueMember = ValueColumnName;
-#if false
+#else
+            ArrayList myList = new ArrayList();
             MySqlDataReader reader = command.ExecuteReader();
             if (!reader.HasRows)
                 return;
 
-            cboCombo.DisplayMember = "Display";
-            cboCombo.ValueMember = "Value";
             while (reader.Read())
             {
-                cboCombo.Items.Add(new ComboData(reader.GetString(DisplayColumnName), reader.GetInt32(ValueColumnName)));
+                myList.Add(new ComboData(reader.GetString(DisplayColumnName), reader.GetInt32(ValueColumnName)));
             }
+            cboCombo.DataSource = myList;
+            cboCombo.DisplayMember = "Display";
+            cboCombo.ValueMember = "Value";
 #endif
         }
         public event EventHandler SelectedValueChanged;

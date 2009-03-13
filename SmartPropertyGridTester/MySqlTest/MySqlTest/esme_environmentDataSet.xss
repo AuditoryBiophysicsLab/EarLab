@@ -7,57 +7,57 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="-10" ViewPortY="-47" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:datapoint" ZOrder="9" X="70" Y="70" Height="139" Width="196" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="92" />
-    <Shape ID="DesignTable:dataset" ZOrder="8" X="610" Y="70" Height="139" Width="193" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="75" />
-    <Shape ID="DesignTable:datasubset" ZOrder="7" X="336" Y="70" Height="139" Width="274" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="75" />
-    <Shape ID="DesignTable:datatype" ZOrder="6" X="864" Y="70" Height="105" Width="192" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="58" />
-    <Shape ID="DesignTable:datum" ZOrder="5" X="336" Y="262" Height="139" Width="178" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="92" />
+    <Shape ID="DesignTable:dataset" ZOrder="1" X="761" Y="64" Height="139" Width="193" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="75" />
+    <Shape ID="DesignTable:datasubset" ZOrder="8" X="349" Y="75" Height="139" Width="274" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="75" />
+    <Shape ID="DesignTable:datatype" ZOrder="7" X="1094" Y="68" Height="105" Width="192" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="58" />
+    <Shape ID="DesignTable:datum" ZOrder="6" X="336" Y="262" Height="139" Width="178" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="92" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:datapoint_ibfk_1" ZOrder="4" LineWidth="11">
+    <Connector ID="DesignRelation:datapoint_ibfk_1" ZOrder="5" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>336</X>
-          <Y>131</Y>
+          <X>349</X>
+          <Y>130</Y>
         </Point>
         <Point>
           <X>266</X>
-          <Y>131</Y>
+          <Y>130</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:dataset_ibfk_1" ZOrder="3" LineWidth="11">
+    <Connector ID="DesignRelation:dataset_ibfk_1" ZOrder="4" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>864</X>
-          <Y>122</Y>
+          <X>1094</X>
+          <Y>114</Y>
         </Point>
         <Point>
-          <X>803</X>
-          <Y>122</Y>
+          <X>954</X>
+          <Y>114</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:datasubset_ibfk_1" ZOrder="2" LineWidth="11">
+    <Connector ID="DesignRelation:datasubset_ibfk_1" ZOrder="3" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>618</X>
-          <Y>70</Y>
+          <X>769</X>
+          <Y>64</Y>
         </Point>
         <Point>
-          <X>618</X>
-          <Y>40</Y>
+          <X>769</X>
+          <Y>-23</Y>
         </Point>
         <Point>
-          <X>602</X>
-          <Y>40</Y>
+          <X>615</X>
+          <Y>-23</Y>
         </Point>
         <Point>
-          <X>602</X>
-          <Y>70</Y>
+          <X>615</X>
+          <Y>75</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:datum_ibfk_1" ZOrder="1" LineWidth="11">
+    <Connector ID="DesignRelation:datum_ibfk_1" ZOrder="2" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>249</X>
