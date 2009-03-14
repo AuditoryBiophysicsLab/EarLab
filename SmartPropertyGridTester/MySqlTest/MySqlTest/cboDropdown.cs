@@ -12,46 +12,42 @@ namespace MySqlTest
 {
     public partial class cboDropdown : UserControl
     {
-        private MySqlConnection mDB = new MySqlConnection();
-        private string mHostname, mUsername, mPassword;
-        private int mPort = -100;
-        public string Table, DisplayColumnName, ValueColumnName, ForeignKeyName;
-        public int ForeignKeyValue;
+        #region Private data
+        private MySqlConnection mDB;
+        private bool mDatasetIsValid = false;
+        #endregion
 
+        #region Constructors
         public cboDropdown()
         {
             InitializeComponent();
-            this.lblText.Text = "Text";
         }
 
-        public cboDropdown(string Hostname, string Username, string Password)
+        public cboDropdown(MySqlConnection SqlConnection)
         {
             InitializeComponent();
-            mHostname = Hostname;
-            mUsername = Username;
-            mPassword = Password;
-            ConnectToDatabase();
+            mDB = SqlConnection;
         }
+        #endregion
 
-        public cboDropdown(string Hostname, int Port, string Username, string Password)
-        {
-            InitializeComponent();
-            mHostname = Hostname;
-            mPort = Port;
-            mUsername = Username;
-            mPassword = Password;
-            ConnectToDatabase();
-        }
+        #region Events
+        public event EventHandler SelectedValueChanged;
+        #endregion
 
-        public string Server { set { mHostname = value; } }
-        public string Username { set { mUsername = value;} }
-        public string Password { set { mPassword = value;} }
-        public int Port { set { mPort = value;} }
-        public override string Text
+        #region Public Properties
+        
+        public string Table, DisplayColumnName, ValueColumnName, ForeignKeyName;
+        public int ForeignKeyValue;
+
+        public MySqlConnection MySqlConnection { set { mDB = value; } get { return mDB; } }
+
+        public ConnectionState State { get { return mDB.State; } }
+        public string Caption
         {
             set { lblText.Text = value; }
             get { return lblText.Text; }
         }
+        
         public int SelectedValue 
         { 
             get 
@@ -61,114 +57,80 @@ namespace MySqlTest
                 if (cboCombo.SelectedValue is DataRowView)
                     return (int)(((DataRowView)(cboCombo.SelectedValue)).Row[1]);
                 return -1;
-            } 
+            }
         }
+        #endregion
 
+        #region Public methods
         public void Fill()
         {
-            cboCombo.Items.Clear();
+            MySqlCommand command;
+            ArrayList myList = new ArrayList();
+            MySqlDataReader reader;
 
             if ((Table == null) || (DisplayColumnName == null) || (ValueColumnName == null))
                 return;
 
-            MySqlCommand command;
+            if (mDB == null)
+                return;
+
+            if (mDB.State != ConnectionState.Open)
+                mDB.Open();
 
             if (ForeignKeyName == null)
                 command = new MySqlCommand("SELECT " + DisplayColumnName + ",  " + ValueColumnName + " FROM " + Table + ";", mDB);
             else
                 command = new MySqlCommand("SELECT " + DisplayColumnName + ",  " + ValueColumnName + " FROM " + Table + " WHERE " + ForeignKeyName + " = " + ForeignKeyValue.ToString() + ";", mDB);
-#if false
-            MySqlDataAdapter data = new MySqlDataAdapter(command);
-            DataSet ds = new DataSet();
-            data.Fill(ds);
-            cboCombo.DataSource = ds.Tables[0];
-            cboCombo.DisplayMember = DisplayColumnName;
-            cboCombo.ValueMember = ValueColumnName;
-#else
-            ArrayList myList = new ArrayList();
-            MySqlDataReader reader = command.ExecuteReader();
-            if (!reader.HasRows)
-                return;
 
-            while (reader.Read())
+            reader = command.ExecuteReader();
+            if (!reader.HasRows)
             {
-                myList.Add(new ComboData(reader.GetString(DisplayColumnName), reader.GetInt32(ValueColumnName)));
+                reader.Close();
+                mDB.Close();
+                mDatasetIsValid = false;
+                cboCombo.DataSource = null;
+                cboCombo.Items.Clear();
+                //cboCombo.Items.Add("<null>");
+                //cboCombo.SelectedIndex = 0;
+                cboCombo.Enabled = false;
+                return;
             }
+
+            cboCombo.Enabled = true;
+            while (reader.Read())
+                myList.Add(new ComboData(reader.GetString(DisplayColumnName), reader.GetInt32(ValueColumnName)));
+            reader.Close();
+            mDB.Close();
+
+            mDatasetIsValid = true;
             cboCombo.DataSource = myList;
             cboCombo.DisplayMember = "Display";
             cboCombo.ValueMember = "Value";
-#endif
         }
-        public event EventHandler SelectedValueChanged;
+        #endregion
 
-        public void Open()
-        {
-            TryConnect();
-        }
-
-        public ConnectionState State { get { return mDB.State; } }
-
-        public cboDropdown(MySqlConnection SqlConnection)
-        {
-            InitializeComponent();
-
-            mDB = SqlConnection;
-
-            if (mDB.State != ConnectionState.Open)
-            {
-                mDB.Open();
-                if (mDB.State != ConnectionState.Open)
-                    throw new Exception("Supplied MySqlConnection is not connected to any database");
-            }
-        }
-
-        private bool TryConnect()
-        {
-            try
-            {
-                if ((mHostname != null) && (mUsername != null) && (mPassword != null))
-                    ConnectToDatabase();
-                return true;
-            }
-            catch (Exception)
-            {
-            }
-            return false;
-        }
-
-        private void ConnectToDatabase()
-        {
-            string ConnectString;
-            
-            if (mPort != -100)
-                ConnectString = "Database=esme_environment;Server=" + mHostname + ";Port=" + mPort + ";User Id=" + mUsername + ";Password=" + mPassword;
-            else
-                ConnectString = "Database=esme_environment;Server=" + mHostname + ";User Id=" + mUsername + ";Password=" + mPassword;
-            mDB = new MySqlConnection(ConnectString);
-            mDB.Open();
-            if (mDB.State != ConnectionState.Open)
-            {
-                if (mDB.State != ConnectionState.Open)
-                    throw new Exception("Cannot connect to database with supplied credentials");
-            }
-        }
-
+        #region Private methods
         private void cboCombo_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (SelectedValueChanged != null)
+            if ((SelectedValueChanged != null) && (mDatasetIsValid))
                 SelectedValueChanged(sender, e);
         }
+        #endregion
     }
 
-    public class ComboData
+    internal class ComboData
     {
-        public string Display;
-        public int Value;
+        private string mDisplay;
+        private int mValue;
 
         public ComboData(string Display, int Value)
         {
-            this.Display = Display;
-            this.Value = Value;
+            mDisplay = Display;
+            mValue = Value;
         }
+
+        public string Display { get { return mDisplay; } }
+        public int Value { get { return mValue; } }
+        public override string ToString() { return mDisplay; }
     }
 }

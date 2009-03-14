@@ -37,16 +37,16 @@ namespace MySqlTest
             this.cboCombo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.cboCombo.FormattingEnabled = true;
-            this.cboCombo.Location = new System.Drawing.Point(3, 16);
+            this.cboCombo.Location = new System.Drawing.Point(0, 16);
             this.cboCombo.Name = "cboCombo";
-            this.cboCombo.Size = new System.Drawing.Size(158, 21);
+            this.cboCombo.Size = new System.Drawing.Size(163, 21);
             this.cboCombo.TabIndex = 0;
             this.cboCombo.SelectedValueChanged += new System.EventHandler(this.cboCombo_SelectedValueChanged);
             // 
             // lblText
             // 
             this.lblText.AutoSize = true;
-            this.lblText.Location = new System.Drawing.Point(3, 0);
+            this.lblText.Location = new System.Drawing.Point(-3, 0);
             this.lblText.Name = "lblText";
             this.lblText.Size = new System.Drawing.Size(35, 13);
             this.lblText.TabIndex = 1;
@@ -60,7 +60,7 @@ namespace MySqlTest
             this.Controls.Add(this.lblText);
             this.Controls.Add(this.cboCombo);
             this.Name = "cboDropdown";
-            this.Size = new System.Drawing.Size(164, 40);
+            this.Size = new System.Drawing.Size(163, 37);
             this.ResumeLayout(false);
             this.PerformLayout();
 
