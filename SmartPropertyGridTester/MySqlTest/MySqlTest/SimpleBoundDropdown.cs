@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace MySqlTest
 {
-    public partial class cboDropdown : UserControl
+    public partial class SimpleBoundDropdown : UserControl
     {
         #region Private data
         private MySqlConnection mDB;
@@ -18,12 +18,12 @@ namespace MySqlTest
         #endregion
 
         #region Constructors
-        public cboDropdown()
+        public SimpleBoundDropdown()
         {
             InitializeComponent();
         }
 
-        public cboDropdown(MySqlConnection SqlConnection)
+        public SimpleBoundDropdown(MySqlConnection SqlConnection)
         {
             InitializeComponent();
             mDB = SqlConnection;

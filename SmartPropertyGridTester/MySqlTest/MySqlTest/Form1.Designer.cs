@@ -31,8 +31,8 @@ namespace MySqlTest
             this.btnEditDataTypeList = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.cboDataSet = new MySqlTest.cboDropdown();
-            this.cboDataType = new MySqlTest.cboDropdown();
+            this.cboDataSet = new MySqlTest.SimpleBoundDropdown();
+            this.cboDataType = new MySqlTest.SimpleBoundDropdown();
             this.environmentalDatabaseReader1 = new MySqlTest.EnvironmentalDatabaseReader();
             this.SuspendLayout();
             // 
@@ -119,8 +119,8 @@ namespace MySqlTest
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private EnvironmentalDatabaseReader environmentalDatabaseReader1;
-        private cboDropdown cboDataType;
-        private cboDropdown cboDataSet;
+        private SimpleBoundDropdown cboDataType;
+        private SimpleBoundDropdown cboDataSet;
     }
 }
 

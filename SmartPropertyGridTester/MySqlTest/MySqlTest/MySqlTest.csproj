@@ -40,11 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cboDropdown.cs">
+    <Compile Include="SimpleBoundDropdown.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cboDropdown.Designer.cs">
-      <DependentUpon>cboDropdown.cs</DependentUpon>
+    <Compile Include="SimpleBoundDropdown.Designer.cs">
+      <DependentUpon>SimpleBoundDropdown.cs</DependentUpon>
     </Compile>
     <Compile Include="EnvironmentalDatabaseReader.cs">
       <SubType>UserControl</SubType>
@@ -77,9 +77,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="cboDropdown.resx">
+    <EmbeddedResource Include="SimpleBoundDropdown.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>cboDropdown.cs</DependentUpon>
+      <DependentUpon>SimpleBoundDropdown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EnvironmentalDatabaseReader.resx">
       <SubType>Designer</SubType>

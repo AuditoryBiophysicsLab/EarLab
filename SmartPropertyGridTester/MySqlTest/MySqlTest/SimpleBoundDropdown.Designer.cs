@@ -1,6 +1,6 @@
 namespace MySqlTest
 {
-    partial class cboDropdown
+    partial class SimpleBoundDropdown
     {
         /// <summary> 
         /// Required designer variable.
