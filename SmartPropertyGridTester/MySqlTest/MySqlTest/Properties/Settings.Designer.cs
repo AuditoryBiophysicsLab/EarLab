@@ -23,14 +23,15 @@ namespace MySqlTest.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=nikon.bu.edu;user id=da;Password=AmySophie17;persist security info=True;da" +
-            "tabase=esme_environment")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string esme_environmentConnectionString {
             get {
                 return ((string)(this["esme_environmentConnectionString"]));
+            }
+            set {
+                this["esme_environmentConnectionString"] = value;
             }
         }
     }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using CustomControls;
 
 namespace MySqlTest
 {
@@ -24,20 +25,20 @@ namespace MySqlTest
 
             DataType.MySqlConnection = connection;
             DataType.Table = "DataType";
-            DataType.DisplayColumnName = "Name";
-            DataType.ValueColumnName = "idDataType";
+            DataType.DisplayColumn = "Name";
+            DataType.ValueColumn = "idDataType";
 
             DataSet.MySqlConnection = DataType.MySqlConnection;
             DataSet.Table = "DataSet";
-            DataSet.DisplayColumnName = "Name";
-            DataSet.ValueColumnName = "idDataSet";
-            DataSet.ForeignKeyName = "idDataType";
+            DataSet.DisplayColumn = "Name";
+            DataSet.ValueColumn = "idDataSet";
+            DataSet.ForeignKey = "idDataType";
 
             DataSubset.MySqlConnection = DataSet.MySqlConnection;
             DataSubset.Table = "DataSubSet";
-            DataSubset.DisplayColumnName = "Name";
-            DataSubset.ValueColumnName = "idDataSubSet";
-            DataSubset.ForeignKeyName = "idDataSet";
+            DataSubset.DisplayColumn = "Name";
+            DataSubset.ValueColumn = "idDataSubSet";
+            DataSubset.ForeignKey = "idDataSet";
 
             DataType.Fill();
         }
@@ -68,20 +69,20 @@ namespace MySqlTest
         }
         #endregion
 
-        #region Dropdown selection changed event handlers
-        private void DataType_SelectedValueChanged(object sender, EventArgs e)
+        #region Dropdown KeyChanged event handlers
+        private void DataType_KeyChanged(object sender, KeyChangedEventArgs e)
         {
-            DataSet.ForeignKeyValue = DataType.SelectedValue;
+            DataSet.ForeignKeyValue = e.NewKey;
             DataSet.Fill();
         }
 
-        private void DataSet_SelectedValueChanged(object sender, EventArgs e)
+        private void DataSet_KeyChanged(object sender, KeyChangedEventArgs e)
         {
-            DataSubset.ForeignKeyValue = DataSet.SelectedValue;
+            DataSubset.ForeignKeyValue = e.NewKey;
             DataSubset.Fill();
         }
 
-        private void DataSubset_SelectedValueChanged(object sender, EventArgs e)
+        private void DataSubset_KeyChanged(object sender, KeyChangedEventArgs e)
         {
 
         }
@@ -95,8 +96,8 @@ namespace MySqlTest
 
         private void btnEditSets_Click(object sender, EventArgs e)
         {
-            frmDataSet dataSet = new frmDataSet(connection);
-            dataSet.ShowDialog(DataType.SelectedValue);
         }
+
+
     }
 }

@@ -20,7 +20,6 @@ namespace MySqlTest
         private void frmDataType_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'esme_environmentDataSet.datatype' table. You can move, or remove it, as needed.
-            this.datatypeTableAdapter.Fill(this.esme_environmentDataSet.datatype);
         }
 
         private void btnDone_Click(object sender, EventArgs e)
@@ -51,7 +50,6 @@ namespace MySqlTest
 
         private void frmDataType_Activated(object sender, EventArgs e)
         {
-            this.datatypeTableAdapter.GetData();
             this.IsActive = true;
         }
 
@@ -61,7 +59,6 @@ namespace MySqlTest
             {
                 this.Validate();
                 this.datatypeBindingSource.EndEdit();
-                this.datatypeTableAdapter.Update(this.esme_environmentDataSet.datatype);
             }
             catch (System.Exception ex)
             {

@@ -52,23 +52,6 @@
     <Compile Include="EnvironmentalDatabaseReader.Designer.cs">
       <DependentUpon>EnvironmentalDatabaseReader.cs</DependentUpon>
     </Compile>
-    <Compile Include="esme_environmentDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>esme_environmentDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmDataSet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDataSet.Designer.cs">
-      <DependentUpon>frmDataSet.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmDataType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,14 +68,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>EnvironmentalDatabaseReader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDataSet.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmDataSet.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmDataType.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmDataType.cs</DependentUpon>
@@ -105,19 +80,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <None Include="esme_environmentDataSet.xsc">
-      <DependentUpon>esme_environmentDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="esme_environmentDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>esme_environmentDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="esme_environmentDataSet.xss">
-      <DependentUpon>esme_environmentDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

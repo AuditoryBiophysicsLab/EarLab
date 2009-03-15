@@ -33,12 +33,7 @@ namespace MySqlTest
             this.idDataTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datatypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.esme_environmentDataSet = new MySqlTest.esme_environmentDataSet();
-            this.datatypeTableAdapter = new MySqlTest.esme_environmentDataSetTableAdapters.datatypeTableAdapter();
             this.btnDone = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.datatypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.esme_environmentDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -73,20 +68,6 @@ namespace MySqlTest
             this.nameDataGridViewTextBoxColumn.HeaderText = "Data Type";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
-            // datatypeBindingSource
-            // 
-            this.datatypeBindingSource.DataMember = "datatype";
-            this.datatypeBindingSource.DataSource = this.esme_environmentDataSet;
-            // 
-            // esme_environmentDataSet
-            // 
-            this.esme_environmentDataSet.DataSetName = "esme_environmentDataSet";
-            this.esme_environmentDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // datatypeTableAdapter
-            // 
-            this.datatypeTableAdapter.ClearBeforeFill = true;
-            // 
             // btnDone
             // 
             this.btnDone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -111,9 +92,6 @@ namespace MySqlTest
             this.Load += new System.EventHandler(this.frmDataType_Load);
             this.Activated += new System.EventHandler(this.frmDataType_Activated);
             this.Leave += new System.EventHandler(this.frmDataType_Leave);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.datatypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.esme_environmentDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -121,9 +99,7 @@ namespace MySqlTest
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private esme_environmentDataSet esme_environmentDataSet;
         private System.Windows.Forms.BindingSource datatypeBindingSource;
-        private MySqlTest.esme_environmentDataSetTableAdapters.datatypeTableAdapter datatypeTableAdapter;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
