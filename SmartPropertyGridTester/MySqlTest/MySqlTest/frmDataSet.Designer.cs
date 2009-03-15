@@ -30,14 +30,17 @@ namespace MySqlTest
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataSetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datasetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.esme_environmentDataSet = new MySqlTest.esme_environmentDataSet();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDone = new System.Windows.Forms.Button();
-            this.cboDataType = new System.Windows.Forms.ComboBox();
-            this.datatypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.esme_environmentDataSet = new MySqlTest.esme_environmentDataSet();
-            this.datatypeTableAdapter = new MySqlTest.esme_environmentDataSetTableAdapters.datatypeTableAdapter();
+            this.datasetTableAdapter = new MySqlTest.esme_environmentDataSetTableAdapters.datasetTableAdapter();
+            this.DataType = new CustomControls.SimpleBoundDropdown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.datatypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datasetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.esme_environmentDataSet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,11 +49,50 @@ namespace MySqlTest
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataSetDataGridViewTextBoxColumn,
+            this.idDataTypeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.datasetBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(13, 78);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(279, 212);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
+            // 
+            // idDataSetDataGridViewTextBoxColumn
+            // 
+            this.idDataSetDataGridViewTextBoxColumn.DataPropertyName = "idDataSet";
+            this.idDataSetDataGridViewTextBoxColumn.HeaderText = "idDataSet";
+            this.idDataSetDataGridViewTextBoxColumn.Name = "idDataSetDataGridViewTextBoxColumn";
+            this.idDataSetDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idDataTypeDataGridViewTextBoxColumn
+            // 
+            this.idDataTypeDataGridViewTextBoxColumn.DataPropertyName = "idDataType";
+            this.idDataTypeDataGridViewTextBoxColumn.HeaderText = "idDataType";
+            this.idDataTypeDataGridViewTextBoxColumn.Name = "idDataTypeDataGridViewTextBoxColumn";
+            this.idDataTypeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Data Set";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // datasetBindingSource
+            // 
+            this.datasetBindingSource.DataMember = "dataset";
+            this.datasetBindingSource.DataSource = this.esme_environmentDataSet;
+            // 
+            // esme_environmentDataSet
+            // 
+            this.esme_environmentDataSet.DataSetName = "esme_environmentDataSet";
+            this.esme_environmentDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label2
             // 
@@ -71,46 +113,37 @@ namespace MySqlTest
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             // 
-            // cboDataType
+            // datasetTableAdapter
             // 
-            this.cboDataType.DataSource = this.datatypeBindingSource;
-            this.cboDataType.DisplayMember = "Name";
-            this.cboDataType.FormattingEnabled = true;
-            this.cboDataType.Location = new System.Drawing.Point(12, 28);
-            this.cboDataType.Name = "cboDataType";
-            this.cboDataType.Size = new System.Drawing.Size(279, 21);
-            this.cboDataType.TabIndex = 7;
-            this.cboDataType.ValueMember = "idDataType";
-            this.cboDataType.SelectedIndexChanged += new System.EventHandler(this.cboDataType_SelectedIndexChanged);
+            this.datasetTableAdapter.ClearBeforeFill = true;
             // 
-            // datatypeBindingSource
+            // DataType
             // 
-            this.datatypeBindingSource.DataMember = "datatype";
-            this.datatypeBindingSource.DataSource = this.esme_environmentDataSet;
-            // 
-            // esme_environmentDataSet
-            // 
-            this.esme_environmentDataSet.DataSetName = "esme_environmentDataSet";
-            this.esme_environmentDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // datatypeTableAdapter
-            // 
-            this.datatypeTableAdapter.ClearBeforeFill = true;
+            this.DataType.BackColor = System.Drawing.SystemColors.Control;
+            this.DataType.Caption = "Data Type";
+            this.DataType.Location = new System.Drawing.Point(13, 13);
+            this.DataType.MySqlConnection = null;
+            this.DataType.Name = "DataType";
+            this.DataType.Size = new System.Drawing.Size(279, 37);
+            this.DataType.TabIndex = 7;
+            this.DataType.SelectedValueChanged += new System.EventHandler(this.DataType_SelectedValueChanged);
+            this.DataType.Leave += new System.EventHandler(this.DataType_Leave);
             // 
             // frmDataSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(304, 331);
-            this.Controls.Add(this.cboDataType);
+            this.Controls.Add(this.DataType);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmDataSet";
             this.Text = "frmDataSet";
             this.Load += new System.EventHandler(this.frmDataSet_Load);
+            this.Activated += new System.EventHandler(this.frmDataSet_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.datatypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datasetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.esme_environmentDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -122,9 +155,12 @@ namespace MySqlTest
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDone;
-        private System.Windows.Forms.ComboBox cboDataType;
+        private CustomControls.SimpleBoundDropdown DataType;
         private esme_environmentDataSet esme_environmentDataSet;
-        private System.Windows.Forms.BindingSource datatypeBindingSource;
-        private MySqlTest.esme_environmentDataSetTableAdapters.datatypeTableAdapter datatypeTableAdapter;
+        private System.Windows.Forms.BindingSource datasetBindingSource;
+        private MySqlTest.esme_environmentDataSetTableAdapters.datasetTableAdapter datasetTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataSetDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
     }
 }

@@ -40,11 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SimpleBoundDropdown.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="EnvironmentalDatabaseImporter.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SimpleBoundDropdown.Designer.cs">
-      <DependentUpon>SimpleBoundDropdown.cs</DependentUpon>
+    <Compile Include="EnvironmentalDatabaseImporter.Designer.cs">
+      <DependentUpon>EnvironmentalDatabaseImporter.cs</DependentUpon>
     </Compile>
     <Compile Include="EnvironmentalDatabaseReader.cs">
       <SubType>UserControl</SubType>
@@ -77,9 +77,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="SimpleBoundDropdown.resx">
+    <EmbeddedResource Include="EnvironmentalDatabaseImporter.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>SimpleBoundDropdown.cs</DependentUpon>
+      <DependentUpon>EnvironmentalDatabaseImporter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EnvironmentalDatabaseReader.resx">
       <SubType>Designer</SubType>
@@ -101,10 +101,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl1.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -131,12 +127,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
+      <Project>{AD8D4D45-00A5-4759-8FF1-1BBAF5D8932F}</Project>
+      <Name>CustomControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

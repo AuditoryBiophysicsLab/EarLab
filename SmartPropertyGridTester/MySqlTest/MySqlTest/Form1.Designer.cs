@@ -31,9 +31,10 @@ namespace MySqlTest
             this.btnEditDataTypeList = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.cboDataSet = new MySqlTest.SimpleBoundDropdown();
-            this.cboDataType = new MySqlTest.SimpleBoundDropdown();
+            this.cboDataSet = new CustomControls.SimpleBoundDropdown();
+            this.cboDataType = new CustomControls.SimpleBoundDropdown();
             this.environmentalDatabaseReader1 = new MySqlTest.EnvironmentalDatabaseReader();
+            this.cboDataSubset = new CustomControls.SimpleBoundDropdown();
             this.SuspendLayout();
             // 
             // btnEditDataTypeList
@@ -58,7 +59,7 @@ namespace MySqlTest
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(255, 136);
+            this.button2.Location = new System.Drawing.Point(251, 134);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 23);
             this.button2.TabIndex = 8;
@@ -74,6 +75,7 @@ namespace MySqlTest
             this.cboDataSet.Name = "cboDataSet";
             this.cboDataSet.Size = new System.Drawing.Size(233, 40);
             this.cboDataSet.TabIndex = 12;
+            this.cboDataSet.SelectedValueChanged += new System.EventHandler(this.cboDataSet_SelectedValueChanged);
             // 
             // cboDataType
             // 
@@ -84,6 +86,7 @@ namespace MySqlTest
             this.cboDataType.Name = "cboDataType";
             this.cboDataType.Size = new System.Drawing.Size(233, 40);
             this.cboDataType.TabIndex = 10;
+            this.cboDataType.SelectedValueChanged += new System.EventHandler(this.cboDataType_SelectedValueChanged);
             // 
             // environmentalDatabaseReader1
             // 
@@ -94,12 +97,24 @@ namespace MySqlTest
             this.environmentalDatabaseReader1.Size = new System.Drawing.Size(223, 150);
             this.environmentalDatabaseReader1.TabIndex = 9;
             // 
+            // cboSubset
+            // 
+            this.cboDataSubset.BackColor = System.Drawing.SystemColors.Control;
+            this.cboDataSubset.Caption = "Data Subset";
+            this.cboDataSubset.Location = new System.Drawing.Point(12, 119);
+            this.cboDataSubset.MySqlConnection = null;
+            this.cboDataSubset.Name = "cboSubset";
+            this.cboDataSubset.Size = new System.Drawing.Size(233, 40);
+            this.cboDataSubset.TabIndex = 13;
+            this.cboDataSubset.SelectedValueChanged += new System.EventHandler(this.cboDataSubset_SelectedValueChanged);
+            // 
             // frmDatabaseEditor
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 472);
+            this.Controls.Add(this.cboDataSubset);
             this.Controls.Add(this.cboDataSet);
             this.Controls.Add(this.cboDataType);
             this.Controls.Add(this.environmentalDatabaseReader1);
@@ -119,8 +134,9 @@ namespace MySqlTest
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private EnvironmentalDatabaseReader environmentalDatabaseReader1;
-        private SimpleBoundDropdown cboDataType;
-        private SimpleBoundDropdown cboDataSet;
+        private CustomControls.SimpleBoundDropdown cboDataType;
+        private CustomControls.SimpleBoundDropdown cboDataSet;
+        private CustomControls.SimpleBoundDropdown cboDataSubset;
     }
 }
 

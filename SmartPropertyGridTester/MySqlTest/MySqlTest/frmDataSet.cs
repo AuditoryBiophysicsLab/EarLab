@@ -5,43 +5,84 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace MySqlTest
 {
     public partial class frmDataSet : Form
     {
-        int curDataTypeID;
+        private int mKey;
+        private bool IsActive;
 
-        public frmDataSet()
+        public frmDataSet(MySqlConnection Connection)
         {
             InitializeComponent();
+            DataType.MySqlConnection = Connection;
+            DataType.Table = "DataType";
+            DataType.DisplayColumnName = "Name";
+            DataType.ValueColumnName = "idDataType";
+            DataType.Fill();
+        }
+
+        public DialogResult ShowDialog(int Key)
+        {
+            mKey = Key;
+            DataType.Find(mKey);
+            return this.ShowDialog();
         }
 
         private void frmDataSet_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'esme_environmentDataSet.datatype' table. You can move, or remove it, as needed.
-            this.datatypeTableAdapter.Fill(this.esme_environmentDataSet.datatype);
-            // TODO: This line of code loads data into the 'esme_environmentDataSet.dataset' table. You can move, or remove it, as needed.
-            // this.datasetTableAdapter.Fill(this.esme_environmentDataSet.dataset);
-
-            // TODO: This line of code loads data into the 'esme_environmentDataSet.datatype' table. You can move, or remove it, as needed.
-            this.datatypeTableAdapter.Fill(this.esme_environmentDataSet.datatype);
-            this.datatypeTableAdapter.ClearBeforeFill = true;
+            this.datasetTableAdapter.FillByDataType(this.esme_environmentDataSet.dataset, mKey);
         }
 
-        public DialogResult ShowDialog(string DataTypeName)
+        private void UpdateDatabase()
         {
-            cboDataType.SelectedIndex = cboDataType.FindStringExact(DataTypeName);
-            return this.ShowDialog();
+            try
+            {
+                this.Validate();
+                this.datasetBindingSource.EndEdit();
+                this.datasetTableAdapter.Update(this.esme_environmentDataSet.dataset);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Update failed: " + ex.ToString());
+            }
         }
 
-        private void cboDataType_SelectedIndexChanged(object sender, EventArgs e)
+        private void DataType_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cboDataType.SelectedValue == null)
-                return;
-            curDataTypeID = int.Parse(((DataRowView)(cboDataType.SelectedValue)).Row[0].ToString());
-            //this.datasetTableAdapter.FillByDataType(this.esme_environmentDataSet.dataset, curDataTypeID);
-            //this.datasetTableAdapter.GetDataByDataType(curDataTypeID);
+            mKey = DataType.SelectedValue;
+            this.datasetTableAdapter.FillByDataType(this.esme_environmentDataSet.dataset, mKey);
+            dataGridView1.Columns["idDataSetDataGridViewTextBoxColumn"].Visible = false;
+        }
+
+        private void DataType_Leave(object sender, EventArgs e)
+        {
+            this.IsActive = false;
+        }
+
+        private void frmDataSet_Activated(object sender, EventArgs e)
+        {
+            this.datasetTableAdapter.GetDataByDataType(mKey);
+            this.IsActive = true;
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (IsActive)
+            {
+                dataGridView1.SelectedRows[0].Cells["idDataSetDataGridViewTextBoxColumn"].Value = mKey;
+                UpdateDatabase();
+            }
+        }
+
+        private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (IsActive)
+            {
+                UpdateDatabase();
+            }
         }
     }
 }

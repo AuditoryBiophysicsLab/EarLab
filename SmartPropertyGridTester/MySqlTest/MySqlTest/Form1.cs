@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using CustomControls;
 
 namespace MySqlTest
 {
@@ -22,8 +23,6 @@ namespace MySqlTest
         {
             connection = ConnectToDatabase("nikon.bu.edu", "esme_environment", "da", "AmySophie17");
 
-            cboDataType.SelectedValueChanged += new EventHandler(cboDropdown1_SelectedValueChanged);
-
             cboDataType.MySqlConnection = connection;
             cboDataType.Table = "DataType";
             cboDataType.DisplayColumnName = "Name";
@@ -34,6 +33,12 @@ namespace MySqlTest
             cboDataSet.DisplayColumnName = "Name";
             cboDataSet.ValueColumnName = "idDataSet";
             cboDataSet.ForeignKeyName = "idDataType";
+
+            cboDataSubset.MySqlConnection = connection;
+            cboDataSubset.Table = "DataSubSet";
+            cboDataSubset.DisplayColumnName = "Name";
+            cboDataSubset.ValueColumnName = "idDataSubSet";
+            cboDataSubset.ForeignKeyName = "idDataSet";
 
             cboDataType.Fill();
         }
@@ -46,15 +51,25 @@ namespace MySqlTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmDataSet dataSet = new frmDataSet();
-            dataSet.ShowDialog("Salinity");
         }
 
-        void cboDropdown1_SelectedValueChanged(object sender, EventArgs e)
+        #region Dropdown selection changed event handlers
+        void cboDataType_SelectedValueChanged(object sender, EventArgs e)
         {
             cboDataSet.ForeignKeyValue = cboDataType.SelectedValue;
             cboDataSet.Fill();
         }
+
+        private void cboDataSet_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboDataSubset_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
 
         private MySqlConnection ConnectToDatabase(string Server, string Database, string Username, string Password)
         {
