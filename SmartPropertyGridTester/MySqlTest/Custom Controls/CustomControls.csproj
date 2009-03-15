@@ -38,7 +38,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleBoundDropdown.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SimpleBoundDropdown.Designer.cs">
       <DependentUpon>SimpleBoundDropdown.cs</DependentUpon>

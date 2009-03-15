@@ -10,12 +10,13 @@ using MySql.Data.MySqlClient;
 
 namespace CustomControls
 {
-    public partial class SimpleBoundDropdown : UserControl
+    public partial class SimpleBoundDropdown : ComboBox
     {
         #region Private data
         private MySqlConnection mDB;
-        private bool mDatasetIsValid = false;
         ArrayList mList = new ArrayList();
+        private string mTable, mDisplayColumn, mValueColumn, mForeignKey;
+        private int mForeignKeyValue;
         #endregion
 
         #region Constructors
@@ -31,35 +32,43 @@ namespace CustomControls
         }
         #endregion
 
-        #region Events
-        public event EventHandler SelectedValueChanged;
-        #endregion
-
         #region Public Properties
-        
-        public string Table, DisplayColumnName, ValueColumnName, ForeignKeyName;
-        public int ForeignKeyValue;
+        [BrowsableAttribute(true),
+        CategoryAttribute("Data"),
+        DescriptionAttribute("The name of the database table used to populate the control.")]
+        public string Table { get { return mTable; } set { mTable = value; } }
 
+        [BrowsableAttribute(true),
+        CategoryAttribute("Data"),
+        DescriptionAttribute("The name of the column in the specified Table used for display.")]
+        public string DisplayColumn { get { return mDisplayColumn; } set { mDisplayColumn = value; } }
+
+        [BrowsableAttribute(true),
+        CategoryAttribute("Data"),
+        DescriptionAttribute("The name of the column in the specified Table used as the Key value. This value is returned by the KeyChanged event.")]
+        public string ValueColumn { get { return mValueColumn; } set { mValueColumn = value; } }
+
+        [BrowsableAttribute(true),
+        CategoryAttribute("Data"),
+        DescriptionAttribute("The name of the column in the specified Table used as the Foreign Key value.  Data is selected from the specified Table based on the value of this property.")]
+        public string ForeignKey { get { return mForeignKey; } set { mForeignKey = value; } }
+
+        [BrowsableAttribute(true),
+        CategoryAttribute("Data"),
+        DescriptionAttribute("The value of the foreign key used to populate the control.  This value is used to restrict the selection of data from the specified Table")]
+        public int ForeignKeyValue { get { return mForeignKeyValue; } set { mForeignKeyValue = value; } }
+
+        [BrowsableAttribute(false)]
         public MySqlConnection MySqlConnection { set { mDB = value; } get { return mDB; } }
 
+        [BrowsableAttribute(false)]
         public ConnectionState State { get { return mDB.State; } }
-        public string Caption
-        {
-            set { lblText.Text = value; }
-            get { return lblText.Text; }
-        }
-        
-        public int SelectedValue 
-        { 
-            get 
-            {
-                if (cboCombo.SelectedValue is int)
-                    return (int)cboCombo.SelectedValue;
-                if (cboCombo.SelectedValue is DataRowView)
-                    return (int)(((DataRowView)(cboCombo.SelectedValue)).Row[1]);
-                return -1;
-            }
-        }
+
+        [BrowsableAttribute(false)]
+        public new string DisplayMember { set { } }
+
+        [BrowsableAttribute(false)]
+        public new string ValueMember { set { } }
         #endregion
 
         #region Public methods
@@ -69,7 +78,7 @@ namespace CustomControls
             MySqlDataReader reader;
             ArrayList newList = new ArrayList();
 
-            if ((Table == null) || (DisplayColumnName == null) || (ValueColumnName == null))
+            if ((mTable == null) || (mDisplayColumn == null) || (mValueColumn == null))
                 return;
 
             if (mDB == null)
@@ -78,34 +87,32 @@ namespace CustomControls
             if (mDB.State != ConnectionState.Open)
                 mDB.Open();
 
-            if (ForeignKeyName == null)
-                command = new MySqlCommand("SELECT " + DisplayColumnName + ",  " + ValueColumnName + " FROM " + Table + ";", mDB);
+            if (mForeignKey == null)
+                command = new MySqlCommand("SELECT " + mDisplayColumn + ", " + mValueColumn + " FROM " + mTable + ";", mDB);
             else
-                command = new MySqlCommand("SELECT " + DisplayColumnName + ",  " + ValueColumnName + " FROM " + Table + " WHERE " + ForeignKeyName + " = " + ForeignKeyValue.ToString() + ";", mDB);
+                command = new MySqlCommand("SELECT " + mDisplayColumn + ", " + mValueColumn + " FROM " + mTable + " WHERE " + mForeignKey + " = " + ForeignKeyValue.ToString() + ";", mDB);
 
             reader = command.ExecuteReader();
             if (!reader.HasRows)
             {
                 reader.Close();
                 mDB.Close();
-                mDatasetIsValid = false;
-                cboCombo.DataSource = null;
-                cboCombo.Items.Clear();
-                cboCombo.Enabled = false;
+                DataSource = null;
+                Items.Clear();
+                this.Enabled = false;
                 mList = null;
                 return;
             }
 
-            cboCombo.Enabled = true;
+            this.Enabled = true;
             while (reader.Read())
-                newList.Add(new ComboData(reader.GetString(DisplayColumnName), reader.GetInt32(ValueColumnName)));
+                newList.Add(new ComboData(reader.GetString(mDisplayColumn), reader.GetInt32(mValueColumn), ForeignKeyValue));
             reader.Close();
             mDB.Close();
 
-            mDatasetIsValid = true;
-            cboCombo.DataSource = newList;
-            cboCombo.DisplayMember = "Display";
-            cboCombo.ValueMember = "Value";
+            DataSource = newList;
+            DisplayMember = "Name";
+            ValueMember = "Key";
             mList = newList;
         }
 
@@ -116,37 +123,68 @@ namespace CustomControls
             for (int i = 0; i < mList.Count; i++)
             {
                 ComboData curItem = (ComboData)mList[i];
-                if (curItem.Value == Key)
+                if (curItem.Key == Key)
                 {
-                    cboCombo.SelectedIndex = i;
+                    SelectedIndex = i;
                     return;
                 }
             }
         }
         #endregion
 
-        #region Private methods
-        private void cboCombo_SelectedValueChanged(object sender, EventArgs e)
+        #region Event Handlers
+        [CategoryAttribute("Data"),
+        DescriptionAttribute("Occurs when the selected value changes, and provides the new key value associated with the selected value.")]
+        public event EventHandler<KeyChangedEventArgs> KeyChanged;
+        protected void OnKeyChanged(KeyChangedEventArgs NewKey)
         {
-            if ((SelectedValueChanged != null) && (mDatasetIsValid))
-                SelectedValueChanged(sender, e);
+            // Make a temporary copy of the event to avoid possibility of
+            // a race condition if the last subscriber unsubscribes
+            // immediately after the null check and before the event is raised.
+            EventHandler<KeyChangedEventArgs> temp = KeyChanged;
+            if (temp != null)
+                temp(this, NewKey);
+        }
+
+        protected override void OnSelectedValueChanged(EventArgs e)
+        {
+            base.OnSelectedValueChanged(e);
+            if (SelectedValue is CustomControls.ComboData)
+                OnKeyChanged(new KeyChangedEventArgs((int)((CustomControls.ComboData)(SelectedValue)).Key));
+            else if (SelectedValue is int)
+                OnKeyChanged(new KeyChangedEventArgs((int)SelectedValue));
         }
         #endregion
     }
 
-    internal class ComboData
+    public class KeyChangedEventArgs : EventArgs
     {
-        private string mDisplay;
-        private int mValue;
+        public int newKey;
 
-        public ComboData(string Display, int Value)
+        public KeyChangedEventArgs(int NewKey)
         {
-            mDisplay = Display;
-            mValue = Value;
+            this.NewKey = NewKey;
         }
 
-        public string Display { get { return mDisplay; } }
-        public int Value { get { return mValue; } }
-        public override string ToString() { return mDisplay; }
+        public int NewKey { get { return newKey; } set { newKey = value; } }
+    }
+
+    internal class ComboData
+    {
+        private string mName;
+        private int mKey;
+        private int mForeignKey;
+
+        public ComboData(string Name, int Key, int ForeignKey)
+        {
+            mName = Name;
+            mKey = Key;
+            mForeignKey = ForeignKey;
+        }
+
+        public string Name { get { return mName; } }
+        public int Key { get { return mKey; } }
+        public int ForeignKey { get { return mForeignKey; } }
+        public override string ToString() { return mName; }
     }
 }
