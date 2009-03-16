@@ -43,12 +43,6 @@
     <Compile Include="SimpleBoundDropdown.Designer.cs">
       <DependentUpon>SimpleBoundDropdown.cs</DependentUpon>
     </Compile>
-    <Compile Include="SimpleDataGrid.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="SimpleDataGrid.Designer.cs">
-      <DependentUpon>SimpleDataGrid.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SimpleBoundDropdown.resx">

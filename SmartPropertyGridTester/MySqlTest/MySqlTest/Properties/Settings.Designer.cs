@@ -22,17 +22,5 @@ namespace MySqlTest.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string esme_environmentConnectionString {
-            get {
-                return ((string)(this["esme_environmentConnectionString"]));
-            }
-            set {
-                this["esme_environmentConnectionString"] = value;
-            }
-        }
     }
 }

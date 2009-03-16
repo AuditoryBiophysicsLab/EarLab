@@ -90,7 +90,7 @@ namespace MySqlTest
 
         private void btnEditTypes_Click(object sender, EventArgs e)
         {
-            frmDataType dataType = new frmDataType();
+            frmDataType dataType = new frmDataType(connection);
             dataType.ShowDialog();
         }
 

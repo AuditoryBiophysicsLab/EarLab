@@ -52,6 +52,11 @@
     <Compile Include="EnvironmentalDatabaseReader.Designer.cs">
       <DependentUpon>EnvironmentalDatabaseReader.cs</DependentUpon>
     </Compile>
+    <Compile Include="esme_environmentDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>esme_environmentDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmDataType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +88,17 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="esme_environmentDataSet.xsc">
+      <DependentUpon>esme_environmentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="esme_environmentDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>esme_environmentDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="esme_environmentDataSet.xss">
+      <DependentUpon>esme_environmentDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
