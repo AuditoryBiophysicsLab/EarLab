@@ -96,6 +96,14 @@ namespace MySqlTest
 
         private void btnEditSets_Click(object sender, EventArgs e)
         {
+            frmDataSet dataSet = new frmDataSet(connection);
+            dataSet.ShowDialog();
+        }
+
+        private void btnEditSubsets_Click(object sender, EventArgs e)
+        {
+            frmDataType2 dataType2 = new frmDataType2(connection);
+            dataType2.ShowDialog();
         }
 
 

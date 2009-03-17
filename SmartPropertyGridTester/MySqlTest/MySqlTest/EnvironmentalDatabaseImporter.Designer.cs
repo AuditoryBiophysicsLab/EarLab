@@ -70,6 +70,7 @@ namespace MySqlTest
             this.btnEditSubsets.TabIndex = 5;
             this.btnEditSubsets.Text = "Edit...";
             this.btnEditSubsets.UseVisualStyleBackColor = true;
+            this.btnEditSubsets.Click += new System.EventHandler(this.btnEditSubsets_Click);
             // 
             // DataSubset
             // 

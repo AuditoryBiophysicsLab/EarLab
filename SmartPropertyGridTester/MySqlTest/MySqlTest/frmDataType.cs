@@ -44,11 +44,20 @@ namespace MySqlTest
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             //Without the MySqlCommandBuilder this line would fail 
-            myDataAdapter.Update(myDataSet, "datatype");
+            dataGridView1.EndEdit();
+            myDataSet.Tables["datatype"].Rows[e.RowIndex][e.ColumnIndex] = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+            myDataSet.AcceptChanges();
         }
 
         private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
+            myDataSet.Tables["datatype"].Rows.Add();
+            //myDataSet.Tables["datatype"].Rows.Add(
+        }
+
+        private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            //e.Row.Cells[""].Value = value
         }
     }
 }

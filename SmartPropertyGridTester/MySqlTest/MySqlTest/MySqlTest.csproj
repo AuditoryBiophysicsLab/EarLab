@@ -28,6 +28,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v8.3, Version=8.3.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v8.3, Version=8.3.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v8.3, Version=8.3.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v8.3, Version=8.3.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v8.3, Version=8.3.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="MySql.Data, Version=5.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\WINDOWS\assembly\GAC_MSIL\MySql.Data\5.2.5.0__c5687fc88969c44d\MySql.Data.dll</HintPath>
@@ -35,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -57,11 +63,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>esme_environmentDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmDataSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDataSet.Designer.cs">
+      <DependentUpon>frmDataSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDataType.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDataType.Designer.cs">
       <DependentUpon>frmDataType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDataType2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDataType2.Designer.cs">
+      <DependentUpon>frmDataType2.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,10 +91,19 @@
       <SubType>Designer</SubType>
       <DependentUpon>EnvironmentalDatabaseReader.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDataSet.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDataSet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDataType.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmDataType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDataType2.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDataType2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
