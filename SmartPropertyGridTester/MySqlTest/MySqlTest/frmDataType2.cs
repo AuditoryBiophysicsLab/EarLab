@@ -28,5 +28,11 @@ namespace MySqlTest
             dataGridView1.EndEdit();
             this.datatypeTableAdapter.Update(this.esme_environmentDataSet.datatype);
         }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            DataRow dr = this.esme_environmentDataSet.datatype.NewRow();
+            dr["Name"] = "";
+        }
     }
 }
