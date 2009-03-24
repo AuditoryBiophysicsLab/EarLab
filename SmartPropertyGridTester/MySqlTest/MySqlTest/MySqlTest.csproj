@@ -58,6 +58,7 @@
     <Compile Include="EnvironmentalDatabaseReader.Designer.cs">
       <DependentUpon>EnvironmentalDatabaseReader.cs</DependentUpon>
     </Compile>
+    <Compile Include="esme_environment.cs" />
     <Compile Include="esme_environmentDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -2,29 +2,37 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using MySql.Data.MySqlClient;
+using System.Data;
 
-namespace MySqlTest
+namespace ESME.Environment
 {
-    public class esme_environment
+    public class Database
     {
         private MySqlConnection sqlConnection;
+        private List<DataType> mDataTypes = new List<DataType>();
 
-        public esme_environment(string server, string username, string password)
+        public Database(string server, string username, string password)
         {
-            sqlConnection = ConnectToDatabase(server, username, password);
-        }
-        
-        private MySqlConnection ConnectToDatabase(string Server, string Database, string Username, string Password)
-        {
-            return ConnectToDatabase("Server=" + Server + ";Database=" + Database + ";User Id=" + Username + ";Password=" + Password);
+            sqlConnection = Connect(server, "esme_environment", username, password);
         }
 
-        private MySqlConnection ConnectToDatabase(string Server, string Database, string Username, string Password, int Port)
+        public Database(string server, string username, string password, int port)
         {
-            return ConnectToDatabase("Server=" + Server + ";Database=" + Database + ";Port=" + Port + ";User Id=" + Username + ";Password=" + Password);
+            sqlConnection = Connect(server, "esme_environment", username, password, port);
         }
 
-        private MySqlConnection ConnectToDatabase(string ConnectString)
+        #region Database connection routines
+        private MySqlConnection Connect(string Server, string Database, string Username, string Password)
+        {
+            return Connect("Server=" + Server + ";Database=" + Database + ";User Id=" + Username + ";Password=" + Password);
+        }
+
+        private MySqlConnection Connect(string Server, string Database, string Username, string Password, int Port)
+        {
+            return Connect("Server=" + Server + ";Database=" + Database + ";Port=" + Port + ";User Id=" + Username + ";Password=" + Password);
+        }
+
+        private MySqlConnection Connect(string ConnectString)
         {
             MySqlConnection connection;
             connection = new MySqlConnection(ConnectString);
@@ -37,10 +45,72 @@ namespace MySqlTest
             connection.Close();
             return connection;
         }
+        #endregion
+
+        public void GetDatatypes()
+        {
+            MySqlCommand command;
+            if (sqlConnection.State != ConnectionState.Open)
+                sqlConnection.Open();
+            mDataTypes.Clear();
+            command = new MySqlCommand("SELECT * from datatype;", sqlConnection);
+            using (MySqlDataReader data = command.ExecuteReader())
+            {
+                if (data.HasRows)
+                {
+                    while (data.Read())
+                        mDataTypes.Add(new DataType(data.GetInt32("idDataType"), data.GetString("Name")));
+                }
+            }
+            sqlConnection.Close();
+        }
+
     }
 
-    public class esme_environment_data_type
+    public class DataTypeTable
     {
+        private List<DataType> mDataTypes = new List<DataType>();
+        MySqlConnection sqlConnection;
+
+        public DataTypeTable(MySqlConnection Connection)
+        {
+            MySqlCommand command;
+
+            sqlConnection = Connection;
+            if (sqlConnection.State != ConnectionState.Open)
+                sqlConnection.Open();
+            mDataTypes.Clear();
+            command = new MySqlCommand("SELECT * from datatype;", sqlConnection);
+            using (MySqlDataReader data = command.ExecuteReader())
+            {
+                if (data.HasRows)
+                {
+                    while (data.Read())
+                        mDataTypes.Add(new DataType(data.GetInt32("idDataType"), data.GetString("Name")));
+                }
+            }
+            sqlConnection.Close();
+        }
+
+        public Nullable<int> this[int id]
+        {
+
+        }
+    }
+
+    public class DataType
+    {
+        private int mDatatypeID;
+        private string mDatatypeName;
+
+        public DataType(int DatatypeID, string DatatypeName)
+        {
+            mDatatypeID = DatatypeID;
+            mDatatypeName = DatatypeName;
+        }
+
+        public int idDataType { get { return mDatatypeID; } }
+        public string Name { get { return mDatatypeName; } }
     }
 
     public class esme_environment_data_set
