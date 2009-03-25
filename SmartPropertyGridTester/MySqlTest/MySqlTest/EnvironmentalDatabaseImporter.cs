@@ -14,7 +14,7 @@ namespace MySqlTest
     public partial class EnvironmentalDatabaseImporter : Form
     {
         private MySqlConnection connection;
-        private ESME.Environment.Database myEnvironmentDB = new Database("nikon.bu.edu", "da", "AmySophie17");
+        private ESME.Environment.Database myEnvironmentDB = new Database("nikon.bu.edu", "test_environment", "da", "AmySophie17");
 
         public EnvironmentalDatabaseImporter()
         {
@@ -126,6 +126,7 @@ namespace MySqlTest
             myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "November");
             myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "December");
 #else
+            myEnvironmentDB.Create("test_environment");
             PointID = myEnvironmentDB.AddDataPoint(2, 42.802101f, -70.875807f);
             myEnvironmentDB.AddDatum(PointID, 10, 100);
             myEnvironmentDB.AddDatum(PointID, 20, 90);
@@ -134,7 +135,6 @@ namespace MySqlTest
             myEnvironmentDB.AddDatum(PointID, 50, 60);
             myEnvironmentDB.AddDatum(PointID, 60, 50);
             myEnvironmentDB.AddDatum(PointID, 70, 40);
-            myEnvironmentDB.ClearSubset(2);
 #endif
         }
     }

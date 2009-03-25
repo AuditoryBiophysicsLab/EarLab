@@ -11,14 +11,14 @@ namespace ESME.Environment
         private MySqlConnection sqlConnection;
 
         #region Constructors
-        public Database(string server, string username, string password)
+        public Database(string server, string database, string username, string password)
         {
-            sqlConnection = Connect(server, "esme_environment", username, password);
+            sqlConnection = Connect(server, database, username, password);
         }
 
-        public Database(string server, string username, string password, int port)
+        public Database(string server, string database, string username, string password, int port)
         {
-            sqlConnection = Connect(server, "esme_environment", username, password, port);
+            sqlConnection = Connect(server, database, username, password, port);
         }
         
         #endregion
@@ -46,6 +46,98 @@ namespace ESME.Environment
             }
             connection.Close();
             return connection;
+        }
+        #endregion
+
+        #region Database and table creation
+
+        public void Create(string DatabaseName)
+        {
+            if (sqlConnection.State != ConnectionState.Open)
+                sqlConnection.Open();
+
+            // (Re)create the database if it does not exist
+            ExecuteSQL("DROP DATABASE IF EXISTS " + DatabaseName + ";");
+            ExecuteSQL("CREATE DATABASE IF NOT EXISTS " + DatabaseName + " CHARACTER SET latin1 COLLATE latin1_bin;");
+            ExecuteSQL("USE " + DatabaseName + ";");
+
+            ExecuteSQL("CREATE TABLE IF NOT EXISTS DataType " +
+                       //"COMMENT 'ESME Environmental data types are stored here.  Only modify this table if you are SURE you know what you are doing!' " +
+                       "(" +
+                       "    idDataType INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                       "    Name VARCHAR(45) NOT NULL UNIQUE KEY" +
+                       ")" +
+                       ";");
+
+            ExecuteSQL("CREATE TABLE IF NOT EXISTS DataSet " +
+                       //"COMMENT 'Environmental data sets are stored here.  If you have a new data set for any of the predefined types in the DataType table, feel free to add it here' " +
+                       "(" +
+                       "    idDataSet INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                       "    idDataType INT NOT NULL, " +
+                       "    Name VARCHAR(45) NOT NULL, " +
+                       "    FOREIGN KEY (idDataType) REFERENCES DataType(idDataType) ON DELETE CASCADE " +
+                       ")" +
+                       ";");
+
+            ExecuteSQL("CREATE TABLE IF NOT EXISTS DataSubSet " +
+                       //"COMMENT 'Environmental data subsets are stored here.  If you have a new subset for a previously defined data set, feel free to add it here' " +
+                       "(" +
+                       "    idDataSubSet INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                       "    idDataSet INT NOT NULL, " +
+                       "    Name VARCHAR(45) NOT NULL, " +
+                       "    FOREIGN KEY (idDataSet) REFERENCES DataSet(idDataSet) ON DELETE CASCADE " +
+                       ")" +
+                       ";");
+
+            ExecuteSQL("CREATE TABLE IF NOT EXISTS DataPoint " +
+                       //"COMMENT 'Data points for environmental data are stored here.  If you have a new data point for a previously defined data subset, feel free to add it here' " +
+                       "(" +
+                       "    idDataPoint INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                       "    idDataSubSet INT NOT NULL, " +
+                       "    Latitude FLOAT NOT NULL, " +
+                       "    Longitude FLOAT NOT NULL, " +
+                       "    FOREIGN KEY (idDataSubSet) REFERENCES DataSubSet(idDataSubSet) ON DELETE CASCADE " +
+                       ")" +
+                       ";");
+
+            ExecuteSQL("CREATE TABLE IF NOT EXISTS Datum " +
+                       //"COMMENT 'Environmental data are stored here.  If you have data for a previously defined data point, feel free to add it here.  Depths (below sea level) are POSITIVE, elevations (above sea level, i.e. land) are NEGATIVE' " +
+                       "(" +
+                       "    idDatum INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                       "    idDataPoint INT NOT NULL, " +
+                       "    Depth_Meters FLOAT NOT NULL, " +
+                       "    Datum FLOAT NOT NULL, " +
+                       "    FOREIGN KEY (idDataPoint) REFERENCES DataPoint(idDataPoint) ON DELETE CASCADE " +
+                       ")" +
+                       ";");
+
+            string[] types = {"Bathymetry", "Salinity",     "Temperature",  "Sound Speed",              "Salinity Standard Deviation",  "Temperature Standard Deviation"};
+            string[] sets =  {"DBDB-V",     "GDEM-V 3.0",   "GDEM-V 3.0",   "Computed from GDEM-V 3.0", "GDEM-V 3.0",                   "GDEM-V 3.0"};
+            string[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+            for (int i = 0; i < types.Length; i++)
+            {
+                AddDataType(types[i]);
+                AddDataSet(types[i], sets[i]);
+                if (types[i] != "Bathymetry")
+                {
+                    foreach (string month in months)
+                        AddDataSubset(types[i], sets[i], month);
+                }
+            }
+#if false
+            ExecuteSQL("DROP TRIGGER IF EXISTS DataPoint_deletion");
+            ExecuteSQL("CREATE TRIGGER DataPoint_deletion BEFORE DELETE " +
+                       "ON DataPoint FOR EACH ROW " +
+                       "BEGIN " +
+                       "    DELETE FROM Datum WHERE idDataPoint=OLD.idDataPoint; " +
+                       "END");
+            
+#endif
+        }
+        private void ExecuteSQL(string SQL)
+        {
+            MySqlCommand command = new MySqlCommand(SQL, sqlConnection);
+            command.ExecuteNonQuery();
         }
         #endregion
 
@@ -203,14 +295,14 @@ namespace ESME.Environment
             Insert = "INSERT INTO DataPoint (Latitude, Longitude, idDataSubset) VALUES (" + Latitude + ", " + Longitude + ", " + DataSubsetID + ");";
             MySqlCommand command = new MySqlCommand(Insert, sqlConnection);
             command.ExecuteNonQuery();
-            Query = "SELECT idDataPoint FROM DataPoint WHERE idDataSubset=" + DataSubsetID + " ORDER BY idDataPoint DESC;";
+            Query = "SELECT LAST_INSERT_ID();";
             using (MySqlDataReader data = DoSelect(Query))
             {
                 if (data.HasRows)
                 {
                     foundit = true;
                     data.Read();
-                    result = data.GetInt32("idDataPoint");
+                    result = data.GetInt32(0);
                 }
             }
             sqlConnection.Close();
