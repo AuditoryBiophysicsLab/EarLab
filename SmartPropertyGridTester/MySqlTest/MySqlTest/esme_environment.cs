@@ -393,4 +393,42 @@ namespace ESME.Environment
         }
         #endregion
     }
+
+    public class DataPoint
+    {
+        private float latitudeDegrees, longitudeDegrees;
+
+        /// <summary>
+        /// Create a new DataPoint, given Latitude and Longitude (in degrees)
+        /// </summary>
+        /// <param name="Latitude">Specified in degrees</param>
+        /// <param name="Longitude">Specified in degrees</param>
+        public DataPoint(float Latitude, float Longitude)
+        {
+            latitudeDegrees = Latitude;
+            longitudeDegrees = Longitude;
+        }
+
+        /// <summary>
+        /// Latitude, in degrees
+        /// </summary>
+        public float Latitude { get { return latitudeDegrees; } }
+
+        /// <summary>
+        /// Longitude, in degrees
+        /// </summary>
+        public float Longitude { get { return longitudeDegrees; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newDatum"></param>
+        public void AddDatum(Datum newDatum)
+        {
+        }
+    }
+
+    public class Datum
+    {
+    }
 }
