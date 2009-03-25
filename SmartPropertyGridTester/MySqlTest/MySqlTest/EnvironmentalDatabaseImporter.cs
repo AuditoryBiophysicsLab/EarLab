@@ -7,12 +7,14 @@ using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using CustomControls;
+using ESME.Environment;
 
 namespace MySqlTest
 {
     public partial class EnvironmentalDatabaseImporter : Form
     {
         private MySqlConnection connection;
+        private ESME.Environment.Database myEnvironmentDB = new Database("nikon.bu.edu", "da", "AmySophie17");
 
         public EnvironmentalDatabaseImporter()
         {
@@ -106,6 +108,34 @@ namespace MySqlTest
             dataType2.ShowDialog();
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int PointID;
+#if false
+            myEnvironmentDB.AddDataType("Test");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "January");
+		    myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "February");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "March");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "April");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "May");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "June");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "July");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "August");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "September");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "October");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "November");
+            myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "December");
+#else
+            PointID = myEnvironmentDB.AddDataPoint(2, 42.802101f, -70.875807f);
+            myEnvironmentDB.AddDatum(PointID, 10, 100);
+            myEnvironmentDB.AddDatum(PointID, 20, 90);
+            myEnvironmentDB.AddDatum(PointID, 30, 80);
+            myEnvironmentDB.AddDatum(PointID, 40, 70);
+            myEnvironmentDB.AddDatum(PointID, 50, 60);
+            myEnvironmentDB.AddDatum(PointID, 60, 50);
+            myEnvironmentDB.AddDatum(PointID, 70, 40);
+            myEnvironmentDB.ClearSubset(2);
+#endif
+        }
     }
 }
