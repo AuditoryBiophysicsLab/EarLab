@@ -124,15 +124,6 @@ namespace ESME.Environment
                         AddDataSubset(types[i], sets[i], month);
                 }
             }
-#if false
-            ExecuteSQL("DROP TRIGGER IF EXISTS DataPoint_deletion");
-            ExecuteSQL("CREATE TRIGGER DataPoint_deletion BEFORE DELETE " +
-                       "ON DataPoint FOR EACH ROW " +
-                       "BEGIN " +
-                       "    DELETE FROM Datum WHERE idDataPoint=OLD.idDataPoint; " +
-                       "END");
-            
-#endif
         }
         private void ExecuteSQL(string SQL)
         {
@@ -319,6 +310,12 @@ namespace ESME.Environment
                 AddDatum(DataPointID, Depths[i], Data[i]);
         }
 
+        public void AddData(int DataPointID, Datum[] Data)
+        {
+            for (int i = 0; i < Data.Length; i++)
+                AddDatum(DataPointID, Data[i].Depth, Data[i].Value);
+        }
+
         public void AddDatum(int DataPointID, float Depth, float Datum)
         {
             string Insert;
@@ -346,6 +343,16 @@ namespace ESME.Environment
             MySqlCommand command = new MySqlCommand(Insert, sqlConnection);
             command.ExecuteNonQuery();
             sqlConnection.Close();
+        }
+
+        public void Add(string DataType, string DataSet, string DataSubset, DataPoint DataPoint)
+        {
+            Add(GetDataSubsetID(DataType, DataSet, DataSubset), DataPoint);
+        }
+
+        public void Add(int DataSubsetID, DataPoint DataPoint)
+        {
+            AddData(AddDataPoint(DataSubsetID, DataPoint.Latitude, DataPoint.Longitude), DataPoint.Data);
         }
         #endregion
 
@@ -397,6 +404,7 @@ namespace ESME.Environment
     public class DataPoint
     {
         private float latitudeDegrees, longitudeDegrees;
+        private List<Datum> dataList = new List<Datum>();
 
         /// <summary>
         /// Create a new DataPoint, given Latitude and Longitude (in degrees)
@@ -420,15 +428,60 @@ namespace ESME.Environment
         public float Longitude { get { return longitudeDegrees; } }
 
         /// <summary>
-        /// 
+        /// Add a new Datum object to the DataPoint
         /// </summary>
-        /// <param name="newDatum"></param>
-        public void AddDatum(Datum newDatum)
+        /// <param name="NewDatum"></param>
+        public void AddDatum(Datum NewDatum)
         {
+            dataList.Add(NewDatum);
         }
+
+        public void AddDatum(float Depth, float Value)
+        {
+            dataList.Add(new Datum(Depth, Value));
+        }
+
+        /// <summary>
+        /// Retrieve the datum at the specified index
+        /// </summary>
+        /// <param name="index">Index of the requested Datum</param>
+        /// <returns>The Datum at the specified index</returns>
+        public Datum this[int index] { get { return dataList[index]; } }
+
+        /// <summary>
+        /// The number of Datum objects in the current DataPoint's collection
+        /// </summary>
+        public int Count { get { return dataList.Count; } }
+
+        /// <summary>
+        /// Return all the current Datum objects as an array
+        /// </summary>
+        public Datum[] Data { get { return dataList.ToArray(); } }
     }
 
     public class Datum
     {
+        private float depth, value;
+
+        /// <summary>
+        /// Create a new Datum object
+        /// </summary>
+        /// <param name="Depth">Depth, in meters.  Depths below sea level are positive, elevations above sea level are negative</param>
+        /// <param name="Value">Whatever parameter value is present at the indicated Depth</param>
+        public Datum(float Depth, float Value)
+        {
+            depth = Depth;
+            value = Value;
+        }
+
+        /// <summary>
+        /// Depth, in meters.  Depths below sea level are positive, elevations above sea level are negative
+        /// </summary>
+        public float Depth { get { return depth; } }
+
+        /// <summary>
+        /// Whatever parameter value is present at the indicated Depth
+        /// </summary>
+        public float Value { get { return value; } }
     }
 }

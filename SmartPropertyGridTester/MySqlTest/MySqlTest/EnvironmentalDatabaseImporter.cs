@@ -110,8 +110,8 @@ namespace MySqlTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int PointID;
 #if false
+            int PointID;
             myEnvironmentDB.AddDataType("Test");
             myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "January");
 		    myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "February");
@@ -125,8 +125,6 @@ namespace MySqlTest
             myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "October");
             myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "November");
             myEnvironmentDB.AddDataSubset("Salinity", "GDEM-V 3.0", "December");
-#else
-            myEnvironmentDB.Create("test_environment");
             PointID = myEnvironmentDB.AddDataPoint(2, 42.802101f, -70.875807f);
             myEnvironmentDB.AddDatum(PointID, 10, 100);
             myEnvironmentDB.AddDatum(PointID, 20, 90);
@@ -135,6 +133,19 @@ namespace MySqlTest
             myEnvironmentDB.AddDatum(PointID, 50, 60);
             myEnvironmentDB.AddDatum(PointID, 60, 50);
             myEnvironmentDB.AddDatum(PointID, 70, 40);
+            myEnvironmentDB.Create("test_environment");
+#else
+            DataPoint dp = new DataPoint(42.802101f, -70.875807f);
+            dp.AddDatum(11, 101);
+            dp.AddDatum(21, 91);
+            dp.AddDatum(31, 81);
+            dp.AddDatum(41, 71);
+            dp.AddDatum(51, 61);
+            dp.AddDatum(61, 51);
+            dp.AddDatum(71, 41);
+            myEnvironmentDB.Add("Salinity", "GDEM-V 3.0", "January", dp);
+            int mySubsetID = myEnvironmentDB.GetDataSubsetID("Salinity", "GDEM-V 3.0", "January");
+            //myEnvironmentDB.AddDataPoint();
 #endif
         }
     }
