@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunFile>
+  <RunFileInformation>
+    <Author> Blah Smith </Author>
+    <Abstract> afldlkdklasdjsad </Abstract>
+    <EditDate> 1/1/01</EditDate>
+    <ImageLocation> image.jpg </ImageLocation>
+  </RunFileInformation>
+  <Modules>
+    <Module>
+      <ModuleInformation>
+        <InstanceName>Left_Pinna</InstanceName>
+        <ExecutableName>DataSource</ExecutableName>
+      </ModuleInformation>
+      <Inputs />
+      <Outputs />
+      <Parameters>
+        <Parameter>
+          <Name>SampleRate</Name>
+          <Type>Double</Type>
+          <Value>441</Value>
+        </Parameter>
+        <Parameter>
+          <Name>InputFileName</Name>
+          <Type>String</Type>
+          <Value>InputFile.wav</Value>
+        </Parameter>
+        <Parameter>
+          <Name>InputIsWaveFile</Name>
+          <Type>Boolean</Type>
+          <Value>True</Value>
+        </Parameter>
+        <Parameter>
+          <Name>ChannelNumber</Name>
+          <Type>Integer</Type>
+          <Value>0</Value>
+        </Parameter>
+        <Parameter>
+          <Name>IntArrayParam</Name>
+          <Type>Integer[]</Type>
+          <Value>
+            <Element>1</Element>
+            <Element>2</Element>
+            <Element>3</Element>
+            <Element>4</Element>
+            <Element>5</Element>
+            <Element>6</Element>
+          </Value>
+        </Parameter>
+        <Parameter>
+          <Name>DoubleArrayParam</Name>
+          <Type>Double[]</Type>
+          <Value>
+            <Element>1.2</Element>
+            <Element>2.3</Element>
+            <Element>3.4</Element>
+            <Element>4.14159265</Element>
+            <Element>5.71812186</Element>
+            <Element>6.71812186</Element>
+          </Value>
+        </Parameter>
+      </Parameters>
+    </Module>
+    <Module>
+      <ModuleInformation>
+        <InstanceName>Sink</InstanceName>
+        <ExecutableName>DataSink</ExecutableName>
+      </ModuleInformation>
+      <Inputs />
+      <Outputs />
+      <Parameters>
+        <Parameter>
+          <Name>SampleRate</Name>
+          <Type>Double</Type>
+          <Value>4410334556</Value>
+        </Parameter>
+        <Parameter>
+          <Name>OutputFileName</Name>
+          <Type>String</Type>
+          <Value>OutputFile.binary</Value>
+        </Parameter>
+        <Parameter>
+          <Name>binaryoutput</Name>
+          <Type>boolean</Type>
+          <Value>True</Value>
+        </Parameter>
+      </Parameters>
+    </Module>
+  </Modules>
+</RunFile>

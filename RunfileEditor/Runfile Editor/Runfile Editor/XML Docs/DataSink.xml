@@ -1,0 +1,39 @@
+﻿  <Module>
+    <ModuleInformation>
+      <ExecutableName>DataSink</ExecutableName>
+    </ModuleInformation>
+    <Inputs></Inputs>
+    <Outputs></Outputs>
+    <Parameters>
+      <Parameter>
+        <Name>SampleRate</Name>
+        <Type>Double</Type>
+        <Default>0.00</Default>
+        <Minimum>1.001</Minimum>
+        <Maximum>1000000.111111</Maximum>
+        <Units>Hz</Units>
+        <Description>Sample rate, in Hertz</Description>
+      </Parameter>
+      <Parameter>
+        <Name>OutputFileName</Name>
+        <Type>String</Type>
+        <!-- string is a problem ?? how do you deal with defaults etc? value or length?-->
+        <!-- So this is a major problem-->
+        <Default></Default>
+        <Minimum></Minimum>
+        <Maximum></Maximum>
+        <Units>blaze</Units>
+        <Description>Name of input file to be read</Description>
+      </Parameter>
+      <Parameter>
+        <Name>binaryoutput</Name>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Minimum>false</Minimum>
+        <Maximum>true</Maximum>
+        <Units>blh blah</Units>
+        <Description>True if the input file is in .WAV format</Description>
+      </Parameter>
+    </Parameters>
+  </Module>
+  

@@ -78,12 +78,31 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="XML Docs\modules.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XML Docs\modules.xsx">
+      <DependentUpon>modules.xsd</DependentUpon>
+    </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RunFileXML.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XML Docs\DataSink.xml" />
+    <Content Include="XML Docs\datasource.xml" />
+    <Content Include="XML Docs\ModuleXMLFrag2.xml" />
+    <Content Include="XML Docs\ModuleXMLFragment.xml" />
+    <Content Include="XML Docs\RunfileFragment.xml" />
+    <Content Include="XML Docs\RunfileFragment2.xml" />
+    <Content Include="XML Docs\RunfileFragment3.xml" />
+    <Content Include="XML Docs\saveit.xml" />
+    <Content Include="XML Docs\tester.xml" />
+    <Content Include="XML Test Files\ModuleXMLFragment.xml" />
+    <Content Include="XML Test Files\RunfileFragment.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
