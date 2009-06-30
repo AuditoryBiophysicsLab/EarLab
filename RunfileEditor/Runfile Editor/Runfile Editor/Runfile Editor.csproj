@@ -48,6 +48,7 @@
     <Compile Include="EarLabFactories.cs" />
     <Compile Include="EarLabSession.cs" />
     <Compile Include="EFI2ME.cs" />
+    <Compile Include="EFI_Interaction.cs" />
     <Compile Include="errorLog.cs" />
     <Compile Include="FileConvertors.cs" />
     <Compile Include="Form1.cs">
@@ -106,6 +107,7 @@
     <Compile Include="TestBed.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EFI_Interaction_Sketch.txt" />
     <Content Include="XML Docs\DataSink.xml" />
     <Content Include="XML Docs\datasource.xml" />
     <Content Include="XML Docs\ModuleXMLFrag2.xml" />

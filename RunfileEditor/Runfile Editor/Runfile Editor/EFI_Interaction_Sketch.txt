@@ -1,0 +1,563 @@
+//Create the XmlDocument from reader code fragment
+    XmlDocument doc = new XmlDocument();
+
+    //Load the the document with the last book node.
+    XmlTextReader reader = new XmlTextReader("books.xml");
+    //reader.WhitespaceHandling = WhitespaceHandling.None;
+    /reader.MoveToContent();
+    //reader.Read();
+    //reader.Skip(); //Skip the first book.
+    //reader.Skip(); //Skip the second book.
+    doc.Load(reader);
+//=======================================================================//
+
+
+Sketch:
+streamwriter class for Runfile Editor
+    URL
+    String
+    Xml
+    Stream
+           -----------> XML Document
+           <----------
+         
+
+EFI
+
+Code:
+XSD validation code
+p.929
+MDI GUI paradigm
+Picture
+
+string to xml
+
+public static xmldocument EscapeXml(string s)
+{
+  XmlDocument doc = new XmlDocument();
+  XmlElement element = doc.CreateElement("temp");
+  element.InnerText = s;
+  return element.InnerXml;
+}
+
+http://dirtydogstink.com/blog/how2-convert-an-xml-document-to-a-string-with-c/
+<------------<start code here>
+
+        static string GetXmlString(string strFile)
+{
+        // Load the xml file into XmlDocument object.
+        XmlDocument xmlDoc = new XmlDocument();
+        try
+        {
+                xmlDoc.Load(strFile);
+        }
+        catch (XmlException e)
+        {
+               //Routine to write to error log
+
+        }
+        // Now create StringWriter object to get data from xml document.
+        StringWriter sw = new StringWriter();
+        XmlTextWriter xw = new XmlTextWriter(sw);
+        xmlDoc.WriteTo(xw);
+        return sw.ToString();
+}   
+<------------<end code here>
+
+string to xml
+
+
+XmlReader to XmlDocument
+
+[C#] 
+using System;
+using System.IO;
+using System.Xml;
+
+public class Sample
+{
+  public static void Main()
+  {
+    //Create the XmlDocument.
+    XmlDocument doc = new XmlDocument();
+
+    //Load the the document with the last book node.
+    XmlTextReader reader = new XmlTextReader("books.xml");
+    //reader.WhitespaceHandling = WhitespaceHandling.None;
+    /reader.MoveToContent();
+    //reader.Read();
+    //reader.Skip(); //Skip the first book.
+    //reader.Skip(); //Skip the second book.
+    doc.Load(reader);
+
+    doc.Save(Console.Out);
+  }
+}
+
+
+My Array Parser
+
+ public static bool intArrayReturn(XmlNode ParameterNode, out int[] intArray)
+        {
+
+            List<int> ParameterValues = new List<int>();
+            int singleInteger;
+
+
+            //(xml statement)
+            XmlNodeList arrayValues = ParameterNode.ChildNodes;
+
+            foreach (XmlElement arrayPoint in arrayValues)
+            {
+
+                //add value from point to the next.
+                if (int.TryParse(arrayPoint.InnerText, out singleInteger))
+                {
+                    ParameterValues.Add(singleInteger);
+                }
+                else
+                {
+                    intArray = null;
+                    return false;
+                }
+            }
+
+            intArray = ParameterValues.ToArray();
+            return true;
+        }
+
+
+file exist?
+private static bool checkFileExistence(string sFileName)
+{
+    try
+        {
+            if (File.Exists(sFileName) == true)
+                 {
+                        return true;
+                 }
+                                      
+            else
+                 { 
+                    return false; 
+                 }
+        }
+
+    catch (Exception ex)
+        {   
+            //Ok we'll have to log this error
+            //Console.WriteLine(ex.Message);
+            return false;
+        }
+}
+
+
+
+
+0.) MDI model.
+Much larger interface driven by SPG in 1,2,3 format with a consistent error panel.
+
+1. Open --- a.) Saved File b.) Model
+
+2.) Edit 
+
+3.) Send
+
+4.) Save
+
+
+
+1.) ErrorLogger         -- I wrote an error logger for all the try-catches added in the main body.   x
+--integrated on one error -- routine mostly works...
+--problem writing the error to text box.
+http://www.developerfusion.com/article/1772/smtp-mailing-application/
+
+2.) EFI                 -- I started pseudo code for the EFI .dll (I have .dll wrapping walk-through)
+--walk-through the pseudo.
+--redundancy in API?
+--error message (XML ...) decide how.
+
+A.) Module Error XML?
+--gets data from ModuleXML and applies? What does EFI check that Module XML doesnt?
+
+B.) process errorEFI XML ?
+
+
+3.) SchemaCheck         -- I started pseudo code for schemaCheck routine.
+--I have code, now need to get a test bed
+
+
+4.) Stream              -- I still don't quite get.
+?I need a sketch of this.
+
+
+
+
+
+
+
+EFI --Pseudo
+
+http://www.c-sharpcorner.com/UploadFile/mahesh/dll12222005064058AM/dll.aspx
+http://www.csharpfriends.com/Articles/getArticle.aspx?articleID=219
+(How to make a .dll)
+
+All the API calls use the following structure ---
+1.) Parameter                        [XML document]
+2.) Out Parameter                    [usually XML]
+3.) Returns a bool as a flag         [success: true, failure: false]
+
+
+1.) checkModules
+
+What the EFI does:
+The module can either be present or not.
+If all the modules are present, then we return a true.
+else we return false and list the modules that are absent.
+
+
+//WE will need directory information for all
+string ModuleXmlPath;
+string ModuleXmlPathStart = "@C:\..Projects\Runfile Editor\Runfile Editor\XML Docs\"; 
+string ModuleSchemaXmlPath = "@C:\..Projects\Runfile Editor\Runfile Editor\XML Docs\moduleInformation.xsd";
+
+
+If there is a module, but no modulexml --- return an empty module block <modulexml></modulexml>
+
+public static bool checkModules(List<string> UniqueModulesNeeded, out List<string> ModulesMissing, out string ModuleXML)
+        {
+                //ModuleXML -- a string of all modules that are good
+                
+                bool cflag = true;
+
+                foreach string moduleName in UniqueModulesNeeded 
+                {
+                    //if false add the name.
+                    if( ! checkModule (moduleName) )
+                        {
+                                ModulesMissing.add(moduleName)
+                                cflag = false;
+                        
+                                
+
+
+                        }
+                    else 
+                     {
+                            // if it is good we add it to the string of good Module XML.
+
+
+
+                      }
+
+                }
+
+                //instead of cflag could also check ModulesMissing.
+
+                return cflag;
+
+         
+        }  
+         
+
+
+
+private static bool checkModule(string moduleName)
+        {
+            //look in directory.
+            ModuleXmlPath = ModuleXmlPathStart.ToString() + moduleName.ToString() + ".xml";
+
+            //check if doc is there? 
+            if ( checkFileExistence(ModuleXmlPath) )
+                    
+                    {
+                        //check if it is schema valid?
+                        if ( checkSchema(string schemaFileName, string moduleName) )
+                            {return true;}
+                        
+                        else
+                            {return false;}
+
+                    }
+
+
+            else
+                {return false;}
+
+        }
+
+
+private static bool checkFileExistence(string sFileName)
+{
+    try
+        {
+            if (File.Exists(sFileName) == true)
+                 {
+                        return true;
+                 }
+                                      
+            else
+                 { 
+                    return false; 
+                 }
+        }
+
+    catch (Exception ex)
+        {   
+            //Ok we'll have to log this error
+            //Console.WriteLine(ex.Message);
+            return false;
+        }
+}
+
+public static bool ModuleXmlValidate(string strXMLDoc, XmlDocument moduleName.xsd)
+
+---Not quite finished with the validator part.
+
+
+RunfileEditor:
+Error -- if a module is NOT there do something
+
+
+
+
+
+
+
+
+
+2.)getModuleXmls
+        Sends back the xmls for all modules in a collection of Module XML docs
+        
+        signature like tryParse True = there, False = not there.
+
+a.) CheckModules
+b.) getModuleXmls
+    i.) getModuleXml
+
+
+public static bool getModuleXmls(string array ModuleNames,out  List<moduleXml> ModuleXmls)
+
+        a.) I have a special accessor so this is the format I want a List back.
+        b.) Pseudo code I have these two already in program
+
+            
+
+private static bool getModuleXml(string ModuleName,out  XmlDocument ModuleXml)
+
+    if we get a false we have to end the program
+In the runfileObject
+    bool moduleThere?
+
+This part is done.
+
+3.) Chk Errors
+        EFI checks each module.
+
+public static bool checkRunfile(runfileXml theRunfileXml, out  XmlDocument errorRunfile)
+
+1.) Are all modules there?
+2.) if ok check runfile
+3.) check each module
+        public static bool checkModule( earlabModuleObject theModule, moduleXml theModuleXml, out XmlNode ModuleErrorXml)
+4.)Check inputs
+        
+5.) Check outputs
+
+6.) Check params
+ 
+New XML -- a schema is not really needed, since it cannot be edited.
+
+1.) RunfileErrorXml
+2.) ModuleErrorXml
+
+
+
+1.) RunfileErrorXml
+
+
+
+
+
+
+
+
+
+4.) Send EFI
+        checkRunfile
+        send.
+
+public static bool processRunfile(runfileXml RunfileXml, out  XmlDocument errorEFI)
+
+
+A.) Module Error XML?
+B.) process errorEFI XML ?
+
+
+
+
+
+1.) On RunfileEditor Side
+
+a.) A runfileObject class changes to handle Errors
+        Each module, and IOP  ----\/ (created with an object factory first -- then runfile created from objects)
+        a.) --Color --- severity (
+        b.) --Error Message from errorRunfile.
+
+            SPG 
+                severity   -> change the color
+                msg        -> display a message that the given data is not acceptable.
+
+            GUI
+                Displays Runfile Error Summary
+                Like compile error
+                total # of errors | total # of modules in error
+                # of errors       | module error
+                
+               
+                
+           >Go back and do MVC!!! abstraction.
+           
+           >Editor only
+				--Take command line only main [args]--to use the command line
+				--launch existing desktop earlab to handle the actual simulation
+				--use to call the existing simulation engine.
+				
+				>launch from command line.
+				
+		   >Xml Layer
+		   
+		   
+		   Handling Directories!
+		   //settings.save() <-- saves in the path the users was just in.
+		   //building paths use path.combine() -- static function in
+		   //settings to remember the last place the user saves
+		   //MyDocuments --what the default places to save.
+				//Earlab
+						//
+						
+						
+->		Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+->		Environment.GetFolderPath(Environment.SpecialFolder.Personal)
+Environment.SpecialFolder.MyDocuments
+Environment.SpecialFolder.Desktop
+Environment.SpecialFolder.ApplicationData
+Environment.SpecialFolder.History
+Environment.SpecialFolder.ProgramFiles
+
+Gets the path
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Net.Mail;
+using System.IO;
+
+
+//to send messages via the application!
+namespace EmailApp
+{
+public sealed class EmailHandler
+{
+private static char[] charSeparators = new char[] {  };
+private static String[] result;
+
+
+  public static void SendMailMessage(string smtpHost, MailAddress from, string to, string subject, string message)
+        {
+            try
+            {
+                MailMessage mailMsg = new MailMessage();
+                result = to.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
+                for (int count = 0; count < result.Length; count++)
+                { mailMsg.To.Add(new MailAddress(result[count])); }
+                mailMsg.From = from;
+                mailMsg.Subject = subject;
+                mailMsg.Body = message;
+                mailMsg.Priority = AppHandler.EmailPriority;
+                mailMsg.BodyEncoding = AppHandler.EmailEncoding;
+                SmtpClient smtpClient = new SmtpClient(smtpHost);
+                smtpClient.Send(mailMsg);
+
+            }
+            catch (Exception exc)
+            {
+             
+            }
+        }}
+}
+The AppHandler class makes the application parameters accessible as static variables in the EmailHandler class.
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Net.Mail;
+
+
+namespace EmailApp
+{
+public static class AppHandler
+{
+private static MailAddress emailRecipient;
+private static String emailSender;
+private static String emailCopy;
+private static String emailPriority;
+private static String emailEncoding;
+private static String emailSubject;
+private static String emailMessage;
+private static String emailSmtp;
+
+public static MailAddress EmailRecipient
+{
+get { return emailRecipient; }
+set { emailRecipient = value; }
+}
+public static String EmailSender
+{
+get { return emailSender; }
+set { emailSender = value; }
+}
+public static String EmailCopy
+{
+get { return emailCopy; }
+set { emailCopy = value; }
+}
+public static String EmailPriority
+{
+get { return emailPriority; }
+set { emailPriority = value; }
+}
+public static String EmailEncoding
+{
+get { return emailEncoding; }
+set { emailEncoding = value; }
+}
+public static String EmailSubject
+{
+get { return emailSubject; }
+set { emailSubject = value; }
+}
+public static String EmailMessage
+{
+get { return emailMessage; }
+set { emailMessage = value; }
+}
+}
+}
+The EmailHandler usage involves setting the configuration parameters and calling one line of code.
+AppHandler.EmailRecipient = new MailAddress(System.Configuration.ConfigurationManager.AppSettings["Email.Recipient"]);
+AppHandler.EmailSender =   System.Configuration.ConfigurationManager.AppSettings["Email.Sender"];
+AppHandler.EmailCopy = System.Configuration.ConfigurationManager.AppSettings["Email.Copy"];
+AppHandler.EmailPriority = System.Configuration.ConfigurationManager.AppSettings["Email.Priority"];
+AppHandler.EmailEncoding = System.Configuration.ConfigurationManager.AppSettings["Email.Encoding"];
+AppHandler.EmailSubject = System.Configuration.ConfigurationManager.AppSettings["Email.Subject"];
+AppHandler.EmailMessage = System.Configuration.ConfigurationManager.AppSettings["Email.Message"];
+AppHandler.EmailSmtp = System.Configuration.ConfigurationManager.AppSettings["Email.Smtp"];
+           
+EmailHandler.SendEmail(AppHandler.EmailSmtp, AppHandler.EmailSender, AppHandler.EmailRecipient, AppHandler.EmailSubject, AppHandler.EmailMessage);
+Kara Hewett is a software developer at RBS Greenwich Capital Markets. She earned a MBA in Information Systems, Finance and Accounting from New York University and a BS in Economics from the Wharton School of Business. Her past experience includes numerous consulting and development projects for SAC Capital, Lehman Brothers, J P Morgan Chase, American Stock Exchange, and Deutsche Bank.
+iphone
+change phone
