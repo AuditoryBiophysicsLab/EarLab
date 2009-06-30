@@ -1,5 +1,4 @@
 using System;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics; 
 using System.IO;
@@ -63,15 +62,19 @@ using System.IO;
 /// 
 /// every option should be logged
 /// 
-/// if & try-catch
+/// if & try-catch on all potentially error filled sections, streams, etc.
+/// 
+///     1.) Log error
+///     2.) Pop error msg.
+///     3.) At any time give option to send errors.
 /// 
 /// </summary>
 /// 
 namespace RunfileEditor
 {
-    class clsErrorLog
+    class errorLog
     {
-        //=================== Instance members ====================
+        //=================== Instance members =====================//
         private string fileName;
         private string pathName;
         private string errorMessage;
@@ -80,8 +83,8 @@ namespace RunfileEditor
         StreamWriter sw = null;
         StreamReader sr = null;
 
-        //Constructor =========================//
-        public clsErrorLog(string msg)
+        //Constructor ==============================================//
+        public errorLog(string msg)
         {
             errorMessage = msg;
             errorFlag = 0;

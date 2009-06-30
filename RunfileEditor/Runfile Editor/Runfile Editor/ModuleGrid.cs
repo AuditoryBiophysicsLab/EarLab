@@ -19,7 +19,7 @@ namespace RunfileEditor
 
     //New class that inherits from tabpage -- constructor take in earlab module
     //adds controls to itself - from spg and any buttons and gifs
-public partial class Form1 : Form
+public partial class frmContainer : Form
     {
 
         //private vars

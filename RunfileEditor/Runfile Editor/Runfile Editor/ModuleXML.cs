@@ -100,6 +100,7 @@ namespace RunfileEditor
                     if (theModuleXML.theModuleXmlInformation.ModuleXMLExecutablename.ToLower() == ModuleName.ToLower())
                         return theModuleXML;
                 }
+                //(Error Log)
                 throw new IndexOutOfRangeException("The requested module executable \"" + ModuleName + "\" was not found in the Module Directory");
             
             }
@@ -193,11 +194,17 @@ namespace RunfileEditor
             //string ModuleXMLDocument;
             //Sends the list of all the Modules we want.
             //theDescriptorList
-
+            //Create the proper path as a 
+            //C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\EarLab-SPG-Tester-JLW\WindowsApplication4\XML Docs\DataSource.xml'.
+            //C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\Runfile Editor\Runfile Editor\XML Docs
             //1.) Initize and Load XML Document
 
             int count = 0;
+            string ModuleXmlPathStart;
             string ModuleXmlPath;
+            ModuleXmlPathStart = "C:\\Documents and Settings\\Jon\\My Documents\\Visual Studio 2005\\Projects\\Runfile Editor\\Runfile Editor\\XML Docs\\";    //+ LoadXmlItem.ToString() + ".xml";
+
+
 
             //replace in foreach
             while (count < UniqueEarLabModuleXMLs.Length )
@@ -206,10 +213,10 @@ namespace RunfileEditor
                 XmlDocument ModuleXMLDocument = new XmlDocument();
                 LoadXmlItem = UniqueEarLabModuleXMLs[count];
 
-                //Create the proper path as a 
-                //C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\EarLab-SPG-Tester-JLW\WindowsApplication4\XML Docs\DataSource.xml'.
+                ////Create the proper path as a 
+                ////C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\EarLab-SPG-Tester-JLW\WindowsApplication4\XML Docs\DataSource.xml'.
 
-                ModuleXmlPath = "C:\\Documents and Settings\\Jon\\My Documents\\Visual Studio 2005\\Projects\\EarLab-SPG-Tester-JLW\\WindowsApplication4\\XML Docs\\" + LoadXmlItem.ToString() + ".xml";
+                ModuleXmlPath = ModuleXmlPathStart.ToString() + LoadXmlItem.ToString() + ".xml";
 
 
                 //Add try -- fail error

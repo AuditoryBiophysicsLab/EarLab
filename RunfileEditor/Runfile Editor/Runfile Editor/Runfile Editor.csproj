@@ -7,7 +7,7 @@
     <ProjectGuid>{B5A0B8BA-F2E3-40C1-A5BF-B5676746CAA4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Runfile_Editor</RootNamespace>
+    <RootNamespace>RunfileEditor</RootNamespace>
     <AssemblyName>Runfile Editor</AssemblyName>
     <SccProjectName>Svn</SccProjectName>
     <SccLocalPath>Svn</SccLocalPath>
@@ -48,11 +48,18 @@
     <Compile Include="EarLabFactories.cs" />
     <Compile Include="EarLabSession.cs" />
     <Compile Include="EFI2ME.cs" />
+    <Compile Include="errorLog.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChild.Designer.cs">
+      <DependentUpon>frmChild.cs</DependentUpon>
     </Compile>
     <Compile Include="GuiHelpers.cs" />
     <Compile Include="ModuleGrid.cs">
@@ -65,6 +72,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmChild.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmChild.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -73,6 +84,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -90,6 +102,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RunFileXML.cs" />
+    <Compile Include="TestBed.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="XML Docs\DataSink.xml" />

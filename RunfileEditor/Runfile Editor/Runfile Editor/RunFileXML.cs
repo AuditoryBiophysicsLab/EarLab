@@ -1,11 +1,14 @@
 using System;
 using System.Text;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using VisualHint.SmartPropertyGrid;
 using System.Globalization;
 using System.Resources;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Xml;
+using System.IO;
 
 #region Notes on File
 //These classes take a RunFile in XML and convert them to a RunFile Object containing strings.
@@ -585,12 +588,14 @@ namespace RunfileEditor
         public string RunFileInformationAbstract;
         public string RunFileInformationEditDate;
         public string RunFileInformationImageLocation;
-
+        public string RunFileModelImageLocation;
+        public Image RunFileModelImage;
 
         public RunFileInformation()
         {
         }
-
+        
+        //public Bitmap ( string filename ); 
 
         public RunFileInformation(XmlNode theRunFileInfoNode)
         {
@@ -606,6 +611,16 @@ namespace RunfileEditor
             RunFileInformationAbstract = RunFileInformationNode["Abstract"].InnerText;
             RunFileInformationImageLocation = RunFileInformationNode["ImageLocation"].InnerText;
             RunFileInformationEditDate = RunFileInformationNode["EditDate"].InnerText;
+            RunFileModelImageLocation = RunFileInformationNode["ImageLocation"].InnerText;
+
+            //ImageLocation
+            //Adding the information to handle the image
+            //Documents and Settings\\Jon\\My Documents\\Visual Studio 2005\\Projects\\Runfile Editor\\Runfile Editor\\XML Docs\\image\\modelImage.jpg 
+            RunFileModelImage = new Bitmap(RunFileModelImageLocation);
+
+
+
+
         }
     }
 

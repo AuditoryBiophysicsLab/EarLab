@@ -12,11 +12,12 @@ using System.IO;
 
 namespace RunfileEditor
 {
-    public partial class Form1 : Form
+    public partial class frmContainer : Form
     {
 
         #region Data members
         private string theRunFile;
+        private string err;
         private XmlDocument RunFileDocument;
         private EarLabRunFile RunFileObject;
 
@@ -24,13 +25,16 @@ namespace RunfileEditor
         #endregion
 
 
-        public Form1()
+        public frmContainer()
         {
             InitializeComponent();
+            //Create a new instance of the child form.
+            
+            //RunfileEditor.frmChild child = new RunfileEditor.frmChild(this);
+            //Show the form
+            //child.Show(); --> pops it from start.
+            
         }
-
-
-
 
         private void SaveXMLFile_Click(object sender, EventArgs e)
         {
@@ -52,7 +56,7 @@ namespace RunfileEditor
         }
 
         ////////////////////////Some other ways to input the runfile
-
+        [STAThread]
         private void OpenFile_Click(object sender, EventArgs e)
         {
             OpenXMLFile();
@@ -90,7 +94,7 @@ namespace RunfileEditor
         }
         #endregion
 
-
+        [STAThread]
         private void openSavedRunFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenXMLFile2();
@@ -118,6 +122,7 @@ namespace RunfileEditor
 
         }
 
+        [STAThread]
         private void SaveXmlFile()
         {
 
@@ -202,11 +207,12 @@ namespace RunfileEditor
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+
             }
 
         }
 
-
+        [STAThread]
         private void OpenXMLFile()
         {
 
@@ -220,18 +226,18 @@ namespace RunfileEditor
                     //Some Checking
                     RunFileDocument.Load(textBox1.Text);
                 }
-                if (radioButton2.Checked)
-                {
-                    //Some Checking
-                    FileStream stream = new FileStream(textBox1.Text, FileMode.Open);
-                    RunFileDocument.Load(stream);
-                    stream.Close();
-                }
-                if (radioButton3.Checked)
-                {
-                    //Some Checking
-                    RunFileDocument.LoadXml(textBox1.Text);
-                }
+                //if (radioButton2.Checked)
+                //{
+                //    //Some Checking
+                //    FileStream stream = new FileStream(textBox1.Text, FileMode.Open);
+                //    RunFileDocument.Load(stream);
+                //    stream.Close();
+                //}
+                //if (radioButton3.Checked)
+                //{
+                //    //Some Checking
+                //    RunFileDocument.LoadXml(textBox1.Text);
+                //}
 
                 //if button 4
                 if (radioButton4.Checked)
@@ -298,7 +304,7 @@ namespace RunfileEditor
                 //Using the tabcreation class
 
                 //Change the image?????????????????
-                string thedamnimage = RunFileObject.RunFileInformation.RunFileInformationImageLocation.ToString();
+                //string thedamnimage = RunFileObject.RunFileInformation.RunFileInformationImageLocation.ToString();
 
                 //this.pictureBox1.ImageLocation = thedamnimage;
 
@@ -309,6 +315,9 @@ namespace RunfileEditor
                     ModuleTab(elModule);
                     //ModuleTab();
                 }
+                //set information fro the user
+                //Abstract data, model image etc...
+                pictureBox1.Image = new Bitmap(RunFileObject.RunFileInformation.RunFileModelImageLocation);
 
                 //Change the image in the picture box
                 //this.pictureBox1.ImageLocation = "image.jpg";
@@ -316,14 +325,42 @@ namespace RunfileEditor
                 //Some Feedback
                 MessageBox.Show("RunFile Document Opened Successfully!");
             }
+
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                err = ex.StackTrace;
+
+                //lastly make the recording to the errorlog
+                //Going to have to make a "catch flag" to log errors
+                {   
+                    //!!/write to error pop-up
+                    errorLog currentLog = new errorLog(err);
+                    currentLog.PathName = Application.StartupPath;
+                    currentLog.WriteErrorLog();
+
+                    RunfileEditor.frmChild child = new RunfileEditor.frmChild(this);
+                    //Show the form
+                    child.Show(); //--> pops it from start.
+                    child.BringToFront();//brings it to front
+
+                    child.txtErrorMsgs.Text = currentLog.ReadErrorLog();
+                    //Error Logging works --- need to work on windows type display.
+                    //textBox1.Text = currentLog.ReadErrorLog();
+
+                    //errorBox errorForm = new errorBox();
+                    //errorForm.ShowDialog();
+                    //!!/write to error pop-up
+                }
+
+
             }
+
 
         }
 
-
+        [STAThread]
         private void OpenXMLFile2()
         {
 
@@ -434,6 +471,11 @@ namespace RunfileEditor
 
                 Application.Exit();
             }
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
 
