@@ -221,11 +221,11 @@ namespace RunfileEditor
                 //XmlDocument doc = new XmlDocument();
                 RunFileDocument = new XmlDocument();
 
-                if (radioButton1.Checked)
-                {
-                    //Some Checking
-                    RunFileDocument.Load(textBox1.Text);
-                }
+                //if (radioButton1.Checked)
+                //{
+                //    //Some Checking
+                //    RunFileDocument.Load(textBox1.Text);
+                //}
                 //if (radioButton2.Checked)
                 //{
                 //    //Some Checking

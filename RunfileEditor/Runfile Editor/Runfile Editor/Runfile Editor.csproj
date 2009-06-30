@@ -49,6 +49,7 @@
     <Compile Include="EarLabSession.cs" />
     <Compile Include="EFI2ME.cs" />
     <Compile Include="errorLog.cs" />
+    <Compile Include="FileConvertors.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

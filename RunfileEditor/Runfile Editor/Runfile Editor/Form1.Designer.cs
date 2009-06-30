@@ -31,11 +31,9 @@ namespace RunfileEditor
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.OpenXMLRunFile = new System.Windows.Forms.Button();
             this.OpenFile = new System.Windows.Forms.Button();
             this.SendFileXMLToEFI = new System.Windows.Forms.Button();
@@ -51,8 +49,8 @@ namespace RunfileEditor
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -70,14 +68,12 @@ namespace RunfileEditor
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.radioButton4);
+            this.tabPage1.Controls.Add(this.richTextBox1);
+            this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.radioButton1);
             this.tabPage1.Controls.Add(this.OpenXMLRunFile);
             this.tabPage1.Controls.Add(this.OpenFile);
             this.tabPage1.Controls.Add(this.SendFileXMLToEFI);
@@ -92,27 +88,16 @@ namespace RunfileEditor
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(615, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(697, 278);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(252, 210);
+            this.pictureBox1.Size = new System.Drawing.Size(252, 187);
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(87, 57);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(75, 17);
-            this.radioButton4.TabIndex = 16;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Saved File";
-            this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(678, 3);
+            this.label3.Location = new System.Drawing.Point(765, 222);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 13);
             this.label3.TabIndex = 15;
@@ -121,7 +106,7 @@ namespace RunfileEditor
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 77);
+            this.label2.Location = new System.Drawing.Point(13, 296);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 12;
@@ -131,29 +116,18 @@ namespace RunfileEditor
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 22);
+            this.label1.Location = new System.Drawing.Point(215, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "Open XML RunFile document from :";
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(34, 57);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 17);
-            this.radioButton1.TabIndex = 8;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "URL";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // OpenXMLRunFile
             // 
             this.OpenXMLRunFile.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.OpenXMLRunFile.Location = new System.Drawing.Point(34, 178);
+            this.OpenXMLRunFile.Location = new System.Drawing.Point(17, 150);
             this.OpenXMLRunFile.Name = "OpenXMLRunFile";
-            this.OpenXMLRunFile.Size = new System.Drawing.Size(372, 53);
+            this.OpenXMLRunFile.Size = new System.Drawing.Size(254, 53);
             this.OpenXMLRunFile.TabIndex = 7;
             this.OpenXMLRunFile.Text = "Open RunFile  Document";
             this.OpenXMLRunFile.UseVisualStyleBackColor = true;
@@ -161,9 +135,9 @@ namespace RunfileEditor
             // 
             // OpenFile
             // 
-            this.OpenFile.Location = new System.Drawing.Point(34, 363);
+            this.OpenFile.Location = new System.Drawing.Point(309, 222);
             this.OpenFile.Name = "OpenFile";
-            this.OpenFile.Size = new System.Drawing.Size(372, 50);
+            this.OpenFile.Size = new System.Drawing.Size(254, 50);
             this.OpenFile.TabIndex = 3;
             this.OpenFile.Text = "Bye Bye";
             this.OpenFile.UseVisualStyleBackColor = true;
@@ -171,9 +145,9 @@ namespace RunfileEditor
             // 
             // SendFileXMLToEFI
             // 
-            this.SendFileXMLToEFI.Location = new System.Drawing.Point(34, 237);
+            this.SendFileXMLToEFI.Location = new System.Drawing.Point(309, 150);
             this.SendFileXMLToEFI.Name = "SendFileXMLToEFI";
-            this.SendFileXMLToEFI.Size = new System.Drawing.Size(372, 50);
+            this.SendFileXMLToEFI.Size = new System.Drawing.Size(254, 53);
             this.SendFileXMLToEFI.TabIndex = 2;
             this.SendFileXMLToEFI.Text = "Send XML Run File to EarLab";
             this.SendFileXMLToEFI.UseVisualStyleBackColor = true;
@@ -181,9 +155,9 @@ namespace RunfileEditor
             // 
             // SaveXMLRunFile
             // 
-            this.SaveXMLRunFile.Location = new System.Drawing.Point(34, 293);
+            this.SaveXMLRunFile.Location = new System.Drawing.Point(17, 222);
             this.SaveXMLRunFile.Name = "SaveXMLRunFile";
-            this.SaveXMLRunFile.Size = new System.Drawing.Size(372, 50);
+            this.SaveXMLRunFile.Size = new System.Drawing.Size(254, 50);
             this.SaveXMLRunFile.TabIndex = 1;
             this.SaveXMLRunFile.Text = "Save XML Run File";
             this.SaveXMLRunFile.UseVisualStyleBackColor = true;
@@ -273,23 +247,24 @@ namespace RunfileEditor
             this.toolStripMenuItem17.Size = new System.Drawing.Size(142, 22);
             this.toolStripMenuItem17.Text = "EarLab Help";
             // 
-            // label4
+            // richTextBox1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(591, 237);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "label4";
+            this.richTextBox1.Location = new System.Drawing.Point(16, 278);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(547, 187);
+            this.richTextBox1.TabIndex = 18;
+            this.richTextBox1.Text = "";
             // 
-            // textBox1
+            // radioButton4
             // 
-            this.textBox1.Location = new System.Drawing.Point(34, 93);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(430, 79);
-            this.textBox1.TabIndex = 13;
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(16, 108);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(79, 17);
+            this.radioButton4.TabIndex = 19;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "radioButton\r\n";
+            this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // frmContainer
             // 
@@ -321,9 +296,7 @@ namespace RunfileEditor
         private System.Windows.Forms.Button SaveXMLRunFile;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button OpenXMLRunFile;
-        private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Label label3;
         //private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip2;
@@ -338,8 +311,8 @@ namespace RunfileEditor
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RadioButton radioButton4;
 
 
     }
