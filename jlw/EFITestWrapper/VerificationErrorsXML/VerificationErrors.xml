@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RunfileVerificationResults>
+  <VerificationEvent>
+    <Severity>
+      Warning
+    </Severity>
+    <Path>
+      LeftPinna.Parameters.Parameter.SampleRate_Hz
+    </Path>
+    <Message>
+      Parameter out of range
+    </Message>
+  </VerificationEvent>
+  <VerificationEvent>
+    <Severity>
+      Warning
+    </Severity>
+    <Path>
+      LeftMiddleEar
+    </Path>
+    <Message>
+      Module does not support ModuleXML Interface
+    </Message>
+  </VerificationEvent>
+  <VerificationEvent>
+    <Severity>
+      Error
+    </Severity>
+    <Path>
+      LeftCochlea
+    </Path>
+    <Message>
+      Module does not exist
+    </Message>
+  </VerificationEvent>
+</RunfileVerificationResults>

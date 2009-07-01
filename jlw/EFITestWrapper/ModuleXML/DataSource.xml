@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Module>
+  <ModuleInformation>
+    <ExecutableName>DataSource</ExecutableName>
+    <Abstract></Abstract>
+  </ModuleInformation>
+  <Inputs>
+  </Inputs>
+  <Outputs>
+    <Output>
+      <Number>1</Number>
+      <Name>Output</Name>
+      <Type>Any</Type>
+      <Required>true</Required>
+      <Description></Description>
+      <Units></Units>
+      <Dimensions>
+        <Minimum>1</Minimum>
+        <Maximum>10</Maximum>
+      </Dimensions>
+    </Output>
+  </Outputs>
+  <Parameters>
+    <Parameter>
+      <Name>SampleRate</Name>
+      <Type>Double</Type>
+      <Default>
+        <Double>0</Double>
+      </Default>
+      <Minimum>
+        <Double>1</Double>
+      </Minimum>
+      <Maximum>
+        <Double>1000000</Double>
+      </Maximum>
+      <Units>Hz</Units>
+      <Description>Sample rate, in Hertz</Description>
+    </Parameter>
+    <Parameter>
+      <Name>InputFileName</Name>
+      <Type>String</Type>
+      <Default></Default>
+      <Minimum>
+        <Integer>1</Integer>
+      </Minimum>
+      <Maximum>
+        <Integer>256</Integer>
+      </Maximum>
+      <Units></Units>
+      <Description>Name of input file to be read</Description>
+    </Parameter>
+    <Parameter>
+      <Name>InputIsWaveFile</Name>
+      <Type>Boolean</Type>
+      <Default>
+        <Boolean>false</Boolean>
+      </Default>
+      <Minimum></Minimum>
+      <Maximum></Maximum>
+      <Units></Units>
+      <Description>True if the input file is in .WAV format</Description>
+    </Parameter>
+    <Parameter>
+      <Name>ChannelNumber</Name>
+      <Type>Integer</Type>
+      <Default>
+        <Integer>0</Integer>
+      </Default>
+      <Minimum>
+        <Integer>0</Integer>
+      </Minimum>
+      <Maximum>
+        <Integer>63</Integer>
+      </Maximum>
+      <Units></Units>
+      <Description>Channel number of the input, for WAV files only</Description>
+    </Parameter>
+    <Parameter>
+      <Name>IntArrayParam</Name>
+      <Type>IntegerArray</Type>
+      <Default></Default>
+      <Minimum></Minimum>
+      <Maximum></Maximum>
+      <Units></Units>
+      <Description>This is an integer array</Description>
+    </Parameter>
+    <Parameter>
+      <Name>DoubleArrayParam</Name>
+      <Type>DoubleArray</Type>
+      <Default></Default>
+      <Minimum></Minimum>
+      <Maximum></Maximum>
+      <Units></Units>
+      <Description>This is a double array</Description>
+    </Parameter>
+  </Parameters>
+</Module>
