@@ -78,9 +78,9 @@ namespace RunfileEditor
         //3.) Parameters
         public EarLabModuleInformation theEarLabModuleInformation;
 
-        public List<EarLabParameter> EarLabParameters = new List<EarLabParameter>();
-        public List<EarLabInput> EarLabInputs = new List<EarLabInput>();
-        public List<EarLabOutput> EarLabOutputs = new List<EarLabOutput>();
+        public List<EarLabParameter> EarlabParameters = new List<EarLabParameter>();
+        public List<EarLabInput> EarlabInputs = new List<EarLabInput>();
+        public List<EarLabOutput> EarlabOutputs = new List<EarLabOutput>();
 
         #endregion
 
@@ -109,7 +109,7 @@ namespace RunfileEditor
                     //1.) Inputs
                     //EarLabInputs(EarLabInputFactory.Make(rInput, theModuleInfo[rInput.InputName, rInput.InputType.ToLower()]);
 
-                }
+                 }
 
             foreach (RunFileOutput rOutput in StringModule.theRunFileOutputs)
                 {
@@ -121,7 +121,7 @@ namespace RunfileEditor
             foreach (RunFileParameter Param in StringModule.RunFileParameters)
                {
                  //3.)(?) Parameters need to fix!
-                 EarLabParameters.Add( EarLabParameterFactory.Make(Param, theModuleInfo[Param.ParameterName.ToLower(), Param.ParameterType.ToLower()]) );
+                 EarlabParameters.Add( EarLabParameterFactory.Make(Param, theModuleInfo[Param.ParameterName.ToLower(), Param.ParameterType.ToLower()]) );
 
                }
 

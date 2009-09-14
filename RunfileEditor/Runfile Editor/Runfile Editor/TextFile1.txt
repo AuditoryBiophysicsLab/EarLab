@@ -1,0 +1,49 @@
+
+
+
+
+
+
+
+
+//(a)static routine to take the whole xml return collection of event objects.
+1.) Take event xml
+2.) Store full xml into a collection of event nodes.
+
+	foreach(xmlnode in xmlnodelist)
+	{ 
+		get path
+		split path
+		get status
+		get msg
+				//start looking for the proper object to update
+				foreach( module in runfileobject.modules)
+					{
+						if (path[index++] == module.name)
+								{
+									if( path[index++] != "null")
+									
+										{
+												switch
+												
+													(Each I-O-P 
+												
+												
+														switch
+																here update object
+																	// 1.) warning <- xml.warning;
+																	// 2.) msg	   <- xml.msg.
+														default
+															ex
+												default
+													ex
+								
+										}
+										
+									else
+										{
+										 //there is a problem with the module
+										
+										
+										
+										}	

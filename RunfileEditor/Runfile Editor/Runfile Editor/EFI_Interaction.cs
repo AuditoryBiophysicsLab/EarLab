@@ -145,6 +145,62 @@ return flag;
 }
 
 
+//This is pseudo code 
+
+public static EFInteraction(     )
+{
+
+//(a)static routine to take the whole xml return collection of event objects.
+//1.) Take event xml
+//2.) Store full xml into a collection of event nodes.
+
+	foreach(xmlnode xNode in xmlnodelist)
+	    { 
+		//get path
+		//split path
+		//get status
+		//get msg
+
+				//start looking for the proper object to update
+				foreach(module RunfileModules in runfileobject.modules)
+					{
+						if (path[index++] == module.name)
+								{
+									if( path[index++] != "null")
+									
+										{
+												switch
+												
+													(Each I-O-P 
+												
+												
+														switch
+																here update object
+																	// 1.) warning <- xml.warning;
+																	// 2.) msg	   <- xml.msg.
+														default
+															ex
+												default
+													ex
+								
+										}
+										
+									else
+										{
+										 //there is a problem with the module
+										
+										
+										
+										}	
+
+
+                        }
+
+
+                }
+
+    }
+
 //3.)getModuleXmls
 //        Sends back the xmls for all modules in a collection of Module XML docs
         

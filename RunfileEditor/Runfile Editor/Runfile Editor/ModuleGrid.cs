@@ -154,13 +154,13 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
 
             //if module has params
-            if (theEarLabModule.EarLabParameters.Count > 0)
+            if (theEarLabModule.EarlabParameters.Count > 0)
             {
                 //start param, this works!
                 catEnum = AppendRootCategory(propertyID++, "Parameters");
 
                 //A method to make the ALL the parameters.
-                MakeParameters(theEarLabModule.EarLabParameters, catEnum, ref propertyID);
+                MakeParameters(theEarLabModule.EarlabParameters, catEnum, ref propertyID);
 
             }
             else
@@ -171,7 +171,7 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
             //if module has inputs
             // same code
-            if (theEarLabModule.EarLabInputs.Count > 0)
+            if (theEarLabModule.EarlabInputs.Count > 0)
             {
                 //start param
                 catEnum = AppendRootCategory(propertyID++, "Inputs");
@@ -188,7 +188,7 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
             //if module has outputs
             //same code, you can't use "null" as a conditional b/c there is something in there.
-            if (theEarLabModule.EarLabOutputs.Count > 0)
+            if (theEarLabModule.EarlabOutputs.Count > 0)
             {
                 //start param
                 catEnum = AppendRootCategory(propertyID++, "Outputs");
