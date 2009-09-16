@@ -34,10 +34,10 @@ namespace RunfileEditor
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.OpenXMLRunFile = new System.Windows.Forms.Button();
+            this.OpenXMLRunfile = new System.Windows.Forms.Button();
             this.OpenFile = new System.Windows.Forms.Button();
             this.SendFileXMLToEFI = new System.Windows.Forms.Button();
-            this.SaveXMLRunFile = new System.Windows.Forms.Button();
+            this.SaveXMLRunfile = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,10 +74,10 @@ namespace RunfileEditor
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.OpenXMLRunFile);
+            this.tabPage1.Controls.Add(this.OpenXMLRunfile);
             this.tabPage1.Controls.Add(this.OpenFile);
             this.tabPage1.Controls.Add(this.SendFileXMLToEFI);
-            this.tabPage1.Controls.Add(this.SaveXMLRunFile);
+            this.tabPage1.Controls.Add(this.SaveXMLRunfile);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -120,18 +120,18 @@ namespace RunfileEditor
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 13);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Open XML RunFile document from :";
+            this.label1.Text = "Open XML Runfile document from :";
             // 
-            // OpenXMLRunFile
+            // OpenXMLRunfile
             // 
-            this.OpenXMLRunFile.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.OpenXMLRunFile.Location = new System.Drawing.Point(17, 150);
-            this.OpenXMLRunFile.Name = "OpenXMLRunFile";
-            this.OpenXMLRunFile.Size = new System.Drawing.Size(254, 53);
-            this.OpenXMLRunFile.TabIndex = 7;
-            this.OpenXMLRunFile.Text = "Open RunFile  Document";
-            this.OpenXMLRunFile.UseVisualStyleBackColor = true;
-            this.OpenXMLRunFile.Click += new System.EventHandler(this.OpenFile_Click);
+            this.OpenXMLRunfile.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.OpenXMLRunfile.Location = new System.Drawing.Point(17, 150);
+            this.OpenXMLRunfile.Name = "OpenXMLRunfile";
+            this.OpenXMLRunfile.Size = new System.Drawing.Size(254, 53);
+            this.OpenXMLRunfile.TabIndex = 7;
+            this.OpenXMLRunfile.Text = "Open Runfile  Document";
+            this.OpenXMLRunfile.UseVisualStyleBackColor = true;
+            this.OpenXMLRunfile.Click += new System.EventHandler(this.OpenFile_Click);
             // 
             // OpenFile
             // 
@@ -149,19 +149,19 @@ namespace RunfileEditor
             this.SendFileXMLToEFI.Name = "SendFileXMLToEFI";
             this.SendFileXMLToEFI.Size = new System.Drawing.Size(254, 53);
             this.SendFileXMLToEFI.TabIndex = 2;
-            this.SendFileXMLToEFI.Text = "Send XML Run File to EarLab";
+            this.SendFileXMLToEFI.Text = "Send XML Run File to Earlab";
             this.SendFileXMLToEFI.UseVisualStyleBackColor = true;
             this.SendFileXMLToEFI.Click += new System.EventHandler(this.SendFileXMLToEFI_Click);
             // 
-            // SaveXMLRunFile
+            // SaveXMLRunfile
             // 
-            this.SaveXMLRunFile.Location = new System.Drawing.Point(17, 222);
-            this.SaveXMLRunFile.Name = "SaveXMLRunFile";
-            this.SaveXMLRunFile.Size = new System.Drawing.Size(254, 50);
-            this.SaveXMLRunFile.TabIndex = 1;
-            this.SaveXMLRunFile.Text = "Save XML Run File";
-            this.SaveXMLRunFile.UseVisualStyleBackColor = true;
-            this.SaveXMLRunFile.Click += new System.EventHandler(this.SaveXMLFile_Click);
+            this.SaveXMLRunfile.Location = new System.Drawing.Point(17, 222);
+            this.SaveXMLRunfile.Name = "SaveXMLRunfile";
+            this.SaveXMLRunfile.Size = new System.Drawing.Size(254, 50);
+            this.SaveXMLRunfile.TabIndex = 1;
+            this.SaveXMLRunfile.Text = "Save XML Run File";
+            this.SaveXMLRunfile.UseVisualStyleBackColor = true;
+            this.SaveXMLRunfile.Click += new System.EventHandler(this.SaveXMLFile_Click);
             // 
             // menuStrip2
             // 
@@ -183,7 +183,7 @@ namespace RunfileEditor
             this.toolStripMenuItem5});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(73, 20);
-            this.toolStripMenuItem2.Text = "EarLab GUI";
+            this.toolStripMenuItem2.Text = "Earlab GUI";
             // 
             // toolStripMenuItem3
             // 
@@ -219,7 +219,7 @@ namespace RunfileEditor
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
             this.toolStripMenuItem13.Size = new System.Drawing.Size(197, 22);
             this.toolStripMenuItem13.Text = "Open Saved Run File...";
-            this.toolStripMenuItem13.Click += new System.EventHandler(this.openSavedRunFileToolStripMenuItem_Click);
+            this.toolStripMenuItem13.Click += new System.EventHandler(this.openSavedRunfileToolStripMenuItem_Click);
             // 
             // toolStripMenuItem14
             // 
@@ -245,7 +245,7 @@ namespace RunfileEditor
             // 
             this.toolStripMenuItem17.Name = "toolStripMenuItem17";
             this.toolStripMenuItem17.Size = new System.Drawing.Size(142, 22);
-            this.toolStripMenuItem17.Text = "EarLab Help";
+            this.toolStripMenuItem17.Text = "Earlab Help";
             // 
             // richTextBox1
             // 
@@ -275,7 +275,7 @@ namespace RunfileEditor
             this.Controls.Add(this.tabControl1);
             this.IsMdiContainer = true;
             this.Name = "frmContainer";
-            this.Text = "EarLab GUI version .2";
+            this.Text = "Earlab GUI version .2";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -293,10 +293,10 @@ namespace RunfileEditor
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button OpenFile;
         private System.Windows.Forms.Button SendFileXMLToEFI;
-        private System.Windows.Forms.Button SaveXMLRunFile;
+        private System.Windows.Forms.Button SaveXMLRunfile;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button OpenXMLRunFile;
+        private System.Windows.Forms.Button OpenXMLRunfile;
         private System.Windows.Forms.Label label3;
         //private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip2;

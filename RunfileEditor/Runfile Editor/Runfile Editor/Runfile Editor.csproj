@@ -45,9 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayCheck.cs" />
-    <Compile Include="EarLabFactories.cs" />
     <Compile Include="EarLabSession.cs" />
-    <Compile Include="EFI2ME.cs" />
     <Compile Include="EFI_Interaction.cs" />
     <Compile Include="errorLog.cs" />
     <Compile Include="FileConvertors.cs" />
@@ -65,7 +63,7 @@
     </Compile>
     <Compile Include="GuiHelpers.cs" />
     <Compile Include="ModuleGrid.cs">
-      <SubType>Component</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuleXML.cs" />
     <Compile Include="Program.cs" />
@@ -88,6 +86,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="EarLabFactories.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,7 +103,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RunFileXML.cs" />
-    <Compile Include="TestBed.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="EFI_Interaction_Sketch.txt" />

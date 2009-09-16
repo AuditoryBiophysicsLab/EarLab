@@ -16,8 +16,8 @@ namespace MyTestApp
     public class GuiFile
     {
         //data members given basically static methods???
-        //Perhaps theRunFileName gets returned or?
-        //public string theRunFileName;
+        //Perhaps theRunfileName gets returned or?
+        //public string theRunfileName;
 
         public GuiFile()
         {
@@ -29,7 +29,7 @@ namespace MyTestApp
         public static string OpenFile()
         {
             //
-            string theValidRunFile;
+            string theValidRunfile;
 
 
             //Create form inherited bit.
@@ -41,25 +41,25 @@ namespace MyTestApp
                 System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
 
-            //.xml ToDo: own "file format" .earlab hehe
-            openFileDialog1.Filter = "XML|*.xml|EARLAB|*.earlab";
+            //.xml ToDo: own "file format" .Earlab hehe
+            openFileDialog1.Filter = "XML|*.xml|Earlab|*.Earlab";
 
 
-            //Open Dialogue box to get a runFile
+            //Open Dialogue box to get a Runfile
             //Some error handling here
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
             {
                 MessageBox.Show("cancel button clicked");
-                theValidRunFile = null;
+                theValidRunfile = null;
                 return null;
             }
             //store document into the xml object.
-            theValidRunFile = openFileDialog1.FileName;
+            theValidRunfile = openFileDialog1.FileName;
             //Error handling here
 
             //return
 
-            return theValidRunFile;
+            return theValidRunfile;
 
         } // The user of this function has to handle null values
 
@@ -73,7 +73,7 @@ namespace MyTestApp
         public static void SaveFile()
         {
 
-            string theValidRunFile;
+            string theValidRunfile;
 
             //Create form inherited bit.
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -94,20 +94,20 @@ namespace MyTestApp
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
             {
                 MessageBox.Show("cancel button clicked");
-                theValidRunFile = null;
+                theValidRunfile = null;
                 //return null;
                 
             }
             else
             {
-                theValidRunFile = saveFileDialog1.FileName;
+                theValidRunfile = saveFileDialog1.FileName;
 
             }
 
         }
 
         //Validating methods
-        public static bool ValidateRunFile(/*RunFile Xml*/)
+        public static bool ValidateRunfile(/*Runfile Xml*/)
         {
             //Use XSD scheme to validate file
             return true;

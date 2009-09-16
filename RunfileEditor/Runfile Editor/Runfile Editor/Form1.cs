@@ -16,10 +16,10 @@ namespace RunfileEditor
     {
 
         #region Data members
-        private string theRunFile;
+        private string theRunfile;
         private string err;
-        private XmlDocument RunFileDocument;
-        private EarLabRunFile RunFileObject;
+        private XmlDocument RunfileDocument;
+        private EarlabRunfile RunfileObject;
 
 
         #endregion
@@ -46,7 +46,7 @@ namespace RunfileEditor
         private void SendFileXMLToEFI_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
-            "This would send the RunFile to EarLab.",
+            "This would send the Runfile to Earlab.",
             "Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -55,7 +55,7 @@ namespace RunfileEditor
             ExitRoutine();
         }
 
-        ////////////////////////Some other ways to input the runfile
+        ////////////////////////Some other ways to input the Runfile
         [STAThread]
         private void OpenFile_Click(object sender, EventArgs e)
         {
@@ -95,7 +95,7 @@ namespace RunfileEditor
         #endregion
 
         [STAThread]
-        private void openSavedRunFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openSavedRunfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenXMLFile2();
         }
@@ -110,7 +110,7 @@ namespace RunfileEditor
             SaveXmlFile();
         }
 
-        private void earLabHelpToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EarlabHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
             "This would be the help information.",
@@ -129,22 +129,22 @@ namespace RunfileEditor
             try
             {
 
-                //1.) Use RunFileObject Function
-                XmlDocument NewXmlRunFile = new XmlDocument();
-                string theValidRunFile;
+                //1.) Use RunfileObject Function
+                XmlDocument NewXmlRunfile = new XmlDocument();
+                string theValidRunfile;
 
                 //2.) Give user options on saving
-                //.earlab file cannot be over-written
+                //.Earlab file cannot be over-written
 
                 //3.) Save Runfile
 
                 //Need to error check to ensure we have an object.
 
-                if (RunFileObject == null)
+                if (RunfileObject == null)
                 {
                     //some feedback
                     MessageBox.Show(
-                        "You don't have an active RunFile",
+                        "You don't have an active Runfile",
                         "Some Feedback.",
                          MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -152,7 +152,7 @@ namespace RunfileEditor
                 else
                 {
 
-                    NewXmlRunFile = RunFileObject.RunFileXMLCreate();
+                    NewXmlRunfile = RunfileObject.RunfileXMLCreate();
 
                     //Create form inherited bit.
                     SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -161,7 +161,7 @@ namespace RunfileEditor
                     //Set items to the last used directory
                     saveFileDialog1.InitialDirectory =
                         System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                    saveFileDialog1.Filter = "XML|*.xml|EARLAB|*.earlab";
+                    saveFileDialog1.Filter = "XML|*.xml|Earlab|*.Earlab";
 
 
                     //not sure about this part.
@@ -173,7 +173,7 @@ namespace RunfileEditor
                     if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                     {
 
-                        theValidRunFile = null;
+                        theValidRunfile = null;
 
                         //some feedback
                         MessageBox.Show(
@@ -186,9 +186,9 @@ namespace RunfileEditor
                     else
                     {
 
-                        theValidRunFile = saveFileDialog1.FileName;
+                        theValidRunfile = saveFileDialog1.FileName;
 
-                        NewXmlRunFile.Save(theValidRunFile);
+                        NewXmlRunfile.Save(theValidRunfile);
                         //save("c:\pavel.xml")
 
                         //some feedback    
@@ -200,7 +200,7 @@ namespace RunfileEditor
                     //SaveFile()
                     //4.) How do you want to save this new document?
                     //Old file name, newfile name. -- This is in GUI Helper class
-                    //NewXmlRunFile.Save("tester.xml");
+                    //NewXmlRunfile.Save("tester.xml");
 
                 }
             }
@@ -219,24 +219,24 @@ namespace RunfileEditor
             try
             {
                 //XmlDocument doc = new XmlDocument();
-                RunFileDocument = new XmlDocument();
+                RunfileDocument = new XmlDocument();
 
                 //if (radioButton1.Checked)
                 //{
                 //    //Some Checking
-                //    RunFileDocument.Load(textBox1.Text);
+                //    RunfileDocument.Load(textBox1.Text);
                 //}
                 //if (radioButton2.Checked)
                 //{
                 //    //Some Checking
                 //    FileStream stream = new FileStream(textBox1.Text, FileMode.Open);
-                //    RunFileDocument.Load(stream);
+                //    RunfileDocument.Load(stream);
                 //    stream.Close();
                 //}
                 //if (radioButton3.Checked)
                 //{
                 //    //Some Checking
-                //    RunFileDocument.LoadXml(textBox1.Text);
+                //    RunfileDocument.LoadXml(textBox1.Text);
                 //}
 
                 //if button 4
@@ -257,11 +257,11 @@ namespace RunfileEditor
                         System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
 
-                    //.xml ToDo: own "file format" .earlab hehe
-                    openFileDialog1.Filter = "XML|*.xml|Earlab|*.earlab";
+                    //.xml ToDo: own "file format" .Earlab hehe
+                    openFileDialog1.Filter = "XML|*.xml|Earlab|*.Earlab";
 
 
-                    //Open Dialogue box to get a runFile
+                    //Open Dialogue box to get a Runfile
                     //Some error handling here
                     if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                     {
@@ -282,34 +282,34 @@ namespace RunfileEditor
 
                     if (FileNameTemp != null)
                     {
-                        theRunFile = FileNameTemp;
+                        theRunfile = FileNameTemp;
                         //2.) Initize and Load XML Document
-                        //RunFileDocument = new XmlDocument();
-                        RunFileDocument.Load(theRunFile);
+                        //RunfileDocument = new XmlDocument();
+                        RunfileDocument.Load(theRunfile);
                     }
 
 
                 }// end button 4
 
-                //3.) Create a RunFileObject
-                //This should have entire runfile in testRunfile
-                RunFileObject = new EarLabRunFile(RunFileDocument);
+                //3.) Create a RunfileObject
+                //This should have entire Runfile in testRunfile
+                RunfileObject = new EarlabRunfile(RunfileDocument);
 
                 //3.5) Clear tabs -- probably want an error check here
-                //Do you really want to load a new runfile?
+                //Do you really want to load a new Runfile?
                 ModuleClearTabs();
 
                 //4.) Create the Grids on the Form
-                //Now For Each Module in RunFile build a sample grid
+                //Now For Each Module in Runfile build a sample grid
                 //Using the tabcreation class
 
                 //Change the image?????????????????
-                //string thedamnimage = RunFileObject.RunFileInformation.RunFileInformationImageLocation.ToString();
+                //string thedamnimage = RunfileObject.RunfileInformation.RunfileInformationImageLocation.ToString();
 
                 //this.pictureBox1.ImageLocation = thedamnimage;
 
                 //this part works, module works, ModuleTab doesnt'
-                foreach (EarLabModule elModule in RunFileObject.EarLabModules)
+                foreach (EarlabModule elModule in RunfileObject.EarlabModules)
                 {
                     //create a new tab on the form
                     ModuleTab(elModule);
@@ -317,13 +317,13 @@ namespace RunfileEditor
                 }
                 //set information fro the user
                 //Abstract data, model image etc...
-                pictureBox1.Image = new Bitmap(RunFileObject.RunFileInformation.RunFileModelImageLocation);
+                pictureBox1.Image = new Bitmap(RunfileObject.RunfileInformation.RunfileModelImageLocation);
 
                 //Change the image in the picture box
                 //this.pictureBox1.ImageLocation = "image.jpg";
 
                 //Some Feedback
-                MessageBox.Show("RunFile Document Opened Successfully!");
+                MessageBox.Show("Runfile Document Opened Successfully!");
             }
 
 
@@ -367,7 +367,7 @@ namespace RunfileEditor
             try
             {
                     //XmlDocument doc = new XmlDocument();
-                    RunFileDocument = new XmlDocument();
+                    RunfileDocument = new XmlDocument();
 
                     string FileNameTemp;
                     //1.) Open File
@@ -384,11 +384,11 @@ namespace RunfileEditor
                         System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
 
-                    //.xml ToDo: own "file format" .earlab hehe
-                    openFileDialog1.Filter = "XML|*.xml|EARLAB|*.earlab";
+                    //.xml ToDo: own "file format" .Earlab hehe
+                    openFileDialog1.Filter = "XML|*.xml|Earlab|*.Earlab";
 
 
-                    //Open Dialogue box to get a runFile
+                    //Open Dialogue box to get a Runfile
                     //Some error handling here
                     if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                     {
@@ -409,35 +409,35 @@ namespace RunfileEditor
 
                     if (FileNameTemp != null)
                     {
-                        theRunFile = FileNameTemp;
+                        theRunfile = FileNameTemp;
                         //2.) Initize and Load XML Document
-                        //RunFileDocument = new XmlDocument();
-                        RunFileDocument.Load(theRunFile);
+                        //RunfileDocument = new XmlDocument();
+                        RunfileDocument.Load(theRunfile);
                     }
 
 
 
-                //3.) Create a RunFileObject
-                //This should have entire runfile in testRunfile
-                RunFileObject = new EarLabRunFile(RunFileDocument);
+                //3.) Create a RunfileObject
+                //This should have entire Runfile in testRunfile
+                RunfileObject = new EarlabRunfile(RunfileDocument);
 
                 //3.5) Clear tabs -- probably want an error check here
-                //Do you really want to load a new runfile?
+                //Do you really want to load a new Runfile?
                 ModuleClearTabs();
 
                 //4.) Create the Grids on the Form
-                //Now For Each Module in RunFile build a sample grid
+                //Now For Each Module in Runfile build a sample grid
                 //Using the tabcreation class
 
                 //Change the image?????????????????
-                //string thedamnimage = RunFileObject.RunFileInformation.RunFileInformationImageLocation.ToString();
+                //string thedamnimage = RunfileObject.RunfileInformation.RunfileInformationImageLocation.ToString();
 
-                //string thedamnimage = "C:\\Documents and Settings\\Jon\\My Documents\\Visual Studio 2005\\Projects\\Ear Lab Project\\EarLab-SPG-Tester-JLW\\WindowsApplication4\\resources\\image.jpg";
+                //string thedamnimage = "C:\\Documents and Settings\\Jon\\My Documents\\Visual Studio 2005\\Projects\\Ear Lab Project\\Earlab-SPG-Tester-JLW\\WindowsApplication4\\resources\\image.jpg";
 
                 //this.pictureBox1.ImageLocation ;
                 //= thedamnimage;
                 //this part works, module works, ModuleTab doesnt'
-                foreach (EarLabModule elModule in RunFileObject.EarLabModules)
+                foreach (EarlabModule elModule in RunfileObject.EarlabModules)
                 {
                     //create a new tab on the form
                     ModuleTab(elModule);
@@ -448,7 +448,7 @@ namespace RunfileEditor
                 //this.pictureBox1.ImageLocation = "image.jpg";
 
                 //Some Feedback
-                MessageBox.Show("RunFile Document Opened Successfully!");
+                MessageBox.Show("Runfile Document Opened Successfully!");
             }
             catch (Exception ex)
             {

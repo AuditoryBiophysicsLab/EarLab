@@ -14,7 +14,7 @@ namespace RunfileEditor
     /// This is a static class that simulates interaction with the EFI
     /// 
     /// </summary>
-    static class EFIInteraction
+static class EFIInteraction
     {
         //WE will need directory information for all
         public static string ModuleXmlPath;
@@ -162,7 +162,7 @@ public static EFInteraction(     )
 		//get msg
 
 				//start looking for the proper object to update
-				foreach(module RunfileModules in runfileobject.modules)
+				foreach(module RunfileModules in Runfileobject.modules)
 					{
 						if (path[index++] == module.name)
 								{
@@ -221,7 +221,7 @@ public static EFInteraction(     )
 //private static bool getModuleXml(string ModuleName,out  XmlDocument ModuleXml)
 
 //    if we get a false we have to end the program
-//In the runfileObject
+//In the RunfileObject
 //    bool moduleThere?
 
 
@@ -231,12 +231,12 @@ public static EFInteraction(     )
 //3.) Chk Errors
 //        EFI checks each module.
 
-//public static bool checkRunfile(runfileXml theRunfileXml, out  XmlDocument errorRunfile)
+//public static bool checkRunfile(RunfileXml theRunfileXml, out  XmlDocument errorRunfile)
 
 //1.) Are all modules there?
-//2.) if ok check runfile
+//2.) if ok check Runfile
 //3.) check each module
-//        public static bool checkModule( earlabModuleObject theModule, moduleXml theModuleXml, out XmlNode ModuleErrorXml)
+//        public static bool checkModule( EarlabModuleObject theModule, moduleXml theModuleXml, out XmlNode ModuleErrorXml)
 //4.)Check inputs
         
 //5.) Check outputs
@@ -264,7 +264,7 @@ public static EFInteraction(     )
 //        checkRunfile
 //        send.
 
-//public static bool processRunfile(runfileXml RunfileXml, out  XmlDocument errorEFI)
+//public static bool processRunfile(RunfileXml RunfileXml, out  XmlDocument errorEFI)
 
 
 //A.) Module Error XML?

@@ -1,11 +1,5 @@
 
 
-
-
-
-
-
-
 //(a)static routine to take the whole xml return collection of event objects.
 1.) Take event xml
 2.) Store full xml into a collection of event nodes.
@@ -17,7 +11,7 @@
 		get status
 		get msg
 				//start looking for the proper object to update
-				foreach( module in runfileobject.modules)
+				foreach( module in Runfileobject.modules)
 					{
 						if (path[index++] == module.name)
 								{

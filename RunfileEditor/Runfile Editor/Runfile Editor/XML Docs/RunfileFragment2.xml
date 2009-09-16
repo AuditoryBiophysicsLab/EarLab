@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RunFile>
+<Runfile>
   
-    <RunFileInformation>
+    <RunfileInformation>
       <Author> Blah Smith </Author>
       <Abstract> afldlkdklasdjsad </Abstract>
       <EditDate> 1/1/01</EditDate>
       <ImageLocation> /image/image.jpg </ImageLocation>
-    </RunFileInformation>
+    </RunfileInformation>
     
   
 <Modules>
@@ -147,4 +147,4 @@
     </Parameters>
   </Module>
 </Modules>
-</RunFile>
+</Runfile>

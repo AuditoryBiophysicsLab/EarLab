@@ -17,7 +17,7 @@ namespace RunfileEditor
     /// Need to do a LOT!!! with the Module Grid class!!
     /// </summary>
 
-    //New class that inherits from tabpage -- constructor take in earlab module
+    //New class that inherits from tabpage -- constructor take in Earlab module
     //adds controls to itself - from spg and any buttons and gifs
 public partial class frmContainer : Form
     {
@@ -50,7 +50,7 @@ public partial class frmContainer : Form
             tabControl1.TabPages.Add(tabPage);
         }
 
-        public void ModuleTab(EarLabModule theEarLabModule)
+        public void ModuleTab(EarlabModule theEarlabModule)
         {
             //This class creates tab on the form
 
@@ -60,11 +60,11 @@ public partial class frmContainer : Form
             ModuleGrid myModuleGrid = new ModuleGrid();
 
             //takes the module and creates the SPG
-            myModuleGrid.Initialize(theEarLabModule);
+            myModuleGrid.Initialize(theEarlabModule);
 
 
             //A.) Need to get a TITLE to push into it.
-            string ModuleTitle = theEarLabModule.theEarLabModuleInformation.InstanceName;
+            string ModuleTitle = theEarlabModule.theEarlabModuleInformation.InstanceName;
 
 
             //2.) Add Module Grid to Tab
@@ -112,7 +112,7 @@ public partial class frmContainer : Form
 
     }//  You'll need to take this and throw this into the form.
 
-//ModuleGrid takes the EarLabModule -> to 
+//ModuleGrid takes the EarlabModule -> to 
 
 public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
     {
@@ -140,8 +140,8 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
 
     //initialize a module which works for
-    //test runfile modules
-    public void Initialize(EarLabModule theEarLabModule)
+    //test Runfile modules
+    public void Initialize(EarlabModule theEarlabModule)
         {
             //Information directly from the Module
             //This just mirrors everything else.
@@ -154,13 +154,13 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
 
             //if module has params
-            if (theEarLabModule.EarlabParameters.Count > 0)
+            if (theEarlabModule.EarlabParameters.Count > 0)
             {
                 //start param, this works!
                 catEnum = AppendRootCategory(propertyID++, "Parameters");
 
                 //A method to make the ALL the parameters.
-                MakeParameters(theEarLabModule.EarlabParameters, catEnum, ref propertyID);
+                MakeParameters(theEarlabModule.EarlabParameters, catEnum, ref propertyID);
 
             }
             else
@@ -171,13 +171,13 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
             //if module has inputs
             // same code
-            if (theEarLabModule.EarlabInputs.Count > 0)
+            if (theEarlabModule.EarlabInputs.Count > 0)
             {
                 //start param
                 catEnum = AppendRootCategory(propertyID++, "Inputs");
 
                 //A method of all the inputs
-                //MakeInputs(theEarLabModule.EarLabInputs, catEnum, ref propertyID);
+                //MakeInputs(theEarlabModule.EarlabInputs, catEnum, ref propertyID);
 
             }
             else
@@ -188,13 +188,13 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
             //if module has outputs
             //same code, you can't use "null" as a conditional b/c there is something in there.
-            if (theEarLabModule.EarlabOutputs.Count > 0)
+            if (theEarlabModule.EarlabOutputs.Count > 0)
             {
                 //start param
                 catEnum = AppendRootCategory(propertyID++, "Outputs");
 
                 //A method of all the outputs
-                //MakeOutputs(theEarLabModule.EarLabOutputs, catEnum, ref propertyID);
+                //MakeOutputs(theEarlabModule.EarlabOutputs, catEnum, ref propertyID);
             }
             else
             {
@@ -243,16 +243,16 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
     }
 
     //Makes the parameters all at once
-    public void MakeParameters(List<EarLabParameter> Parameters, PropertyEnumerator catEnum, ref int propertyID)
+    public void MakeParameters(List<EarlabParameter> Parameters, PropertyEnumerator catEnum, ref int propertyID)
     {
 
         PropertyEnumerator propEnum;
 
-        foreach (EarLabParameter EarLabParam in Parameters)
+        foreach (EarlabParameter EarlabParam in Parameters)
 
         {
             //???
-            string paramType = EarLabParam.PType.ToLower();
+            string paramType = EarlabParam.PType.ToLower();
             paramType = paramType.Replace(" ", "");
 
             //*Split into the broad categories of display type.
@@ -271,8 +271,8 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                     propEnum = AppendProperty(
                         catEnum,
                         propertyID++,
-                        EarLabParam.PName,  //Name of the Parameter
-                        EarLabParam,        //Object reference
+                        EarlabParam.PName,  //Name of the Parameter
+                        EarlabParam,        //Object reference
                         "PValue",           //String name of the Parameter Value, given via reflection
                         "it works"          //The comment, which will need to be updated.
                         );                  //end
@@ -291,8 +291,8 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                     propEnum = AppendProperty(
                                     catEnum,
                                     propertyID++,
-                                    EarLabParam.PName,  //Name of the Parameter
-                                    EarLabParam,        //Object reference
+                                    EarlabParam.PName,  //Name of the Parameter
+                                    EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
                                     "it works");        //The comment, which will need to be updated.
 
@@ -308,8 +308,8 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                     propEnum = AppendProperty(
                                     catEnum,
                                     propertyID++,
-                                    EarLabParam.PName,  //Name of the Parameter
-                                    EarLabParam,        //Object reference
+                                    EarlabParam.PName,  //Name of the Parameter
+                                    EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
                                     "it works");        //The comment, which will need to be updated.
 
@@ -324,8 +324,8 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                     propEnum = AppendProperty(
                                     catEnum,
                                     propertyID++,
-                                    EarLabParam.PName,  //Name of the Parameter
-                                    EarLabParam,        //Object reference
+                                    EarlabParam.PName,  //Name of the Parameter
+                                    EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
                                     "it works");        //The comment, which will need to be updated.
 
@@ -345,8 +345,8 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                     propEnum = AppendProperty(
                                     catEnum,
                                     propertyID++,
-                                    EarLabParam.PName,  //Name of the Parameter
-                                    EarLabParam,        //Object reference
+                                    EarlabParam.PName,  //Name of the Parameter
+                                    EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
                                     "it works");        //The comment, which will need to be updated.
 
@@ -365,8 +365,8 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                     propEnum = AppendProperty(
                                     catEnum,
                                     propertyID++,
-                                    EarLabParam.PName,  //Name of the Parameter
-                                    EarLabParam,        //Object reference
+                                    EarlabParam.PName,  //Name of the Parameter
+                                    EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
                                     "it works");        //The comment, which will need to be updated.
 
@@ -388,7 +388,7 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
     }
 
     //Makes the inputs all at once
-    public void MakeInputs(List<EarLabInput> Inputs, PropertyEnumerator catEnum, ref int propertyID)
+    public void MakeInputs(List<EarlabInput> Inputs, PropertyEnumerator catEnum, ref int propertyID)
     {
 
         //create inputs
@@ -397,7 +397,7 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
     }
     
     //Makes the outputs all at once
-    public void MakeOutputs(List<EarLabOutput> Outputs, PropertyEnumerator catEnum, ref int propertyID)
+    public void MakeOutputs(List<EarlabOutput> Outputs, PropertyEnumerator catEnum, ref int propertyID)
     {
 
         //make outputs

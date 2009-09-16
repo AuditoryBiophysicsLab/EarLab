@@ -12,48 +12,44 @@ using System.Xml;
 
 #region Module XML Notes
 /// <summary>
-///
+    //<Module>
+    //<ModuleInformation>
+    //  <ExecutableName>DataSource</ExecutableName>
+    //</ModuleInformation>
+    //<Inputs></Inputs>
+    //<Outputs></Outputs>
+    //<Parameters>
+    //  <Parameter>
+    //    <Name>SampleRate</Name>
+    //    <Type>Double</Type>
+    //    <Default>0</Default>
+    //    <Minimum>1</Minimum>
+    //    <Maximum>1000000</Maximum>
+    //    <Units>Hz</Units>
+    //    <Description>Sample rate, in Hertz</Description>
+    //  </Parameter>
+    //</Module>
 
-/* Summary description for Class1
-     <Module>
-    <ModuleInformation>
-      <ExecutableName>DataSource</ExecutableName>
-    </ModuleInformation>
-    <Inputs></Inputs>
-    <Outputs></Outputs>
-    <Parameters>
-      <Parameter>
-        <Name>SampleRate</Name>
-        <Type>Double</Type>
-        <Default>0</Default>
-        <Minimum>1</Minimum>
-        <Maximum>1000000</Maximum>
-        <Units>Hz</Units>
-        <Description>Sample rate, in Hertz</Description>
-      </Parameter>
- */
-
-/*
-         public RunfileModuleDescriptor this[string ModuleName]
-        {
-            get
-            {
-                //Search for the Matching moduleName
-                foreach (RunfileModuleDescriptor currentModule in theRunFileModuleDescriptors)
-                {
-                    if (currentModule.ModuleInformation.ExecutableName == ModuleName)
-                        return currentModule;
-                }
-                throw new IndexOutOfRangeException("The requested module executable \"" + ModuleName + "\" was not found in the runfile");
-            }
-        }
+        // public RunfileModuleDescriptor this[string ModuleName]
+        //{
+        //    get
+        //    {
+        //        //Search for the Matching moduleName
+        //        foreach (RunfileModuleDescriptor currentModule in theRunfileModuleDescriptors)
+        //        {
+        //            if (currentModule.ModuleInformation.ExecutableName == ModuleName)
+        //                return currentModule;
+        //        }
+        //        throw new IndexOutOfRangeException("The requested module executable \"" + ModuleName + "\" was not found in the Runfile");
+        //    }
+        //}
  
- */
+
 // (I-O-P) 
-// public EarLabParameter this[string ModuleName, string ParamName] 
+// public EarlabParameter this[string ModuleName, string ParamName] 
 // or
-// public EarLabInput this[string InputName]
-// public EarLabOutput this[string OutputName]
+// public EarlabInput this[string InputName]
+// public EarlabOutput this[string OutputName]
 // maybe data structure has all modules?
 
 
@@ -188,14 +184,14 @@ namespace RunfileEditor
         //For each of these lists might do the following
         //1.) Interact with the EFI
         //2.) Just load them out of the directory for now.
-        public ModuleDirectory(string[] UniqueEarLabModuleXMLs)
+        public ModuleDirectory(string[] UniqueEarlabModuleXMLs)
         {
             string LoadXmlItem;
             //string ModuleXMLDocument;
             //Sends the list of all the Modules we want.
             //theDescriptorList
             //Create the proper path as a 
-            //C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\EarLab-SPG-Tester-JLW\WindowsApplication4\XML Docs\DataSource.xml'.
+            //C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\Earlab-SPG-Tester-JLW\WindowsApplication4\XML Docs\DataSource.xml'.
             //C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\Runfile Editor\Runfile Editor\XML Docs
             //1.) Initize and Load XML Document
 
@@ -207,14 +203,14 @@ namespace RunfileEditor
 
 
             //replace in foreach
-            while (count < UniqueEarLabModuleXMLs.Length )
+            while (count < UniqueEarlabModuleXMLs.Length )
             {
                 //1.) Get Name
                 XmlDocument ModuleXMLDocument = new XmlDocument();
-                LoadXmlItem = UniqueEarLabModuleXMLs[count];
+                LoadXmlItem = UniqueEarlabModuleXMLs[count];
 
                 ////Create the proper path as a 
-                ////C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\EarLab-SPG-Tester-JLW\WindowsApplication4\XML Docs\DataSource.xml'.
+                ////C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\Earlab-SPG-Tester-JLW\WindowsApplication4\XML Docs\DataSource.xml'.
 
                 ModuleXmlPath = ModuleXmlPathStart.ToString() + LoadXmlItem.ToString() + ".xml";
 
@@ -363,7 +359,7 @@ namespace RunfileEditor
         </ModuleInformation
         */
 
-            //works just like RunFileInformation
+            //works just like RunfileInformation
 
             #region Data Members
             //public Data
@@ -428,7 +424,7 @@ namespace RunfileEditor
              */
 
             /* 
-              integer int from runfile
+              integer int from Runfile
               <Parameter>
                    <Name>ChannelNumber</Name>
                    <Type>Integer</Type>
@@ -438,17 +434,17 @@ namespace RunfileEditor
             #endregion
 
             #region Data Members
-            //Public data
-            public string ParameterName;
-            public string ParameterType;
-            public string ParameterUnits;
-            public string ParameterDescription;
-            public bool isArray;
+                //Public data
+                public string ParameterName;
+                public string ParameterType;
+                public string ParameterUnits;
+                public string ParameterDescription;
+                public bool isArray;
 
-            //Public Xml Node Data
-            public XmlNode ParameterDefaultValue;
-            public XmlNode ParameterMinimumValue;
-            public XmlNode ParameterMaximumValue;
+                //Public Xml Node Data
+                public XmlNode ParameterDefaultValue;
+                public XmlNode ParameterMinimumValue;
+                public XmlNode ParameterMaximumValue;
             #endregion
 
             #region Constructors

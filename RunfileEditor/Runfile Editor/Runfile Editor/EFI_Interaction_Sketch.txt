@@ -346,7 +346,7 @@ public static bool getModuleXmls(string array ModuleNames,out  List<moduleXml> M
 private static bool getModuleXml(string ModuleName,out  XmlDocument ModuleXml)
 
     if we get a false we have to end the program
-In the runfileObject
+In the RunfileObject
     bool moduleThere?
 
 This part is done.
@@ -354,12 +354,12 @@ This part is done.
 3.) Chk Errors
         EFI checks each module.
 
-public static bool checkRunfile(runfileXml theRunfileXml, out  XmlDocument errorRunfile)
+public static bool checkRunfile(RunfileXml theRunfileXml, out  XmlDocument errorRunfile)
 
 1.) Are all modules there?
-2.) if ok check runfile
+2.) if ok check Runfile
 3.) check each module
-        public static bool checkModule( earlabModuleObject theModule, moduleXml theModuleXml, out XmlNode ModuleErrorXml)
+        public static bool checkModule( EarlabModuleObject theModule, moduleXml theModuleXml, out XmlNode ModuleErrorXml)
 4.)Check inputs
         
 5.) Check outputs
@@ -387,7 +387,7 @@ New XML -- a schema is not really needed, since it cannot be edited.
         checkRunfile
         send.
 
-public static bool processRunfile(runfileXml RunfileXml, out  XmlDocument errorEFI)
+public static bool processRunfile(RunfileXml RunfileXml, out  XmlDocument errorEFI)
 
 
 A.) Module Error XML?
@@ -399,8 +399,8 @@ B.) process errorEFI XML ?
 
 1.) On RunfileEditor Side
 
-a.) A runfileObject class changes to handle Errors
-        Each module, and IOP  ----\/ (created with an object factory first -- then runfile created from objects)
+a.) A RunfileObject class changes to handle Errors
+        Each module, and IOP  ----\/ (created with an object factory first -- then Runfile created from objects)
         a.) --Color --- severity (
         b.) --Error Message from errorRunfile.
 
@@ -420,7 +420,7 @@ a.) A runfileObject class changes to handle Errors
            
            >Editor only
 				--Take command line only main [args]--to use the command line
-				--launch existing desktop earlab to handle the actual simulation
+				--launch existing desktop Earlab to handle the actual simulation
 				--use to call the existing simulation engine.
 				
 				>launch from command line.

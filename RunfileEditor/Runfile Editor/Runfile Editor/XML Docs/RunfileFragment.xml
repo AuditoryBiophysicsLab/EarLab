@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RunFile>
+<Runfile>
   
-    <RunFileInformation>
+    <RunfileInformation>
       <Author> Blah Smith </Author>
       <Abstract> afldlkdklasdjsad </Abstract>
       <EditDate> 1/1/01</EditDate>
       <ImageLocation> C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\Runfile Editor\Runfile Editor\XML Docs\image\modelImage.jpg </ImageLocation>
-    </RunFileInformation>
+    </RunfileInformation>
     
   
 <Modules>
@@ -97,4 +97,4 @@
     </Parameters>
   </Module>
 </Modules>
-</RunFile>
+</Runfile>
