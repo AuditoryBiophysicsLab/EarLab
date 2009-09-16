@@ -12,15 +12,15 @@ namespace RunfileEditor
     /// <summary>
     /// This is an Object Factory that return an EarLabInput
     /// </summary>
-    public class EarLabInputFactory
+    public class EarlabInputFactory
     {
-        public EarLabInputFactory()
+        public EarlabInputFactory()
         {
         }
 
-        public static EarLabInput Make(RunFileInput RFInput, ModuleXmlInput XmlInput)
+        public static EarlabInput Make(RunfileInput RFInput, ModuleXmlInput XmlInput)
         {
-            EarLabInput Dummy = new EarLabInputInt();
+            EarlabInput Dummy = new EarlabInputInt();
             return Dummy;
         }
 
@@ -30,16 +30,16 @@ namespace RunfileEditor
     /// This is an Object Factory that return an EarLabOutput
     /// Grabs the XML node.
     /// </summary>
-    public class EarLabOutputFactory
+    public class EarlabOutputFactory
     {
 
-        public EarLabOutputFactory()
+        public EarlabOutputFactory()
         {
         }
 
-        public static EarLabOutput Make(RunFileOutput RFOutput, ModuleXmlOutput XmlOutput)
+        public static EarlabOutput Make(RunFileOutput RFOutput, ModuleXmlOutput XmlOutput)
         {
-            EarLabOutput Dummy = new EarLabOutputInt();
+            EarlabOutput Dummy = new EarlabOutputInt();
             return Dummy;
         }
 
@@ -52,11 +52,11 @@ namespace RunfileEditor
     /// This is an Object Factory that return an EarLabParameter
     /// Grabs XML node.
     /// </summary>
-    public class EarLabParameterFactory
+    public class EarlabParameterFactory
     {
 
 
-        public EarLabParameterFactory()
+        public EarlabParameterFactory()
         {
         }
 
@@ -67,15 +67,14 @@ namespace RunfileEditor
         //  XML Module which gives instructions on creating the EarLabParameter.
         // Do we really need the 
 
-        public static EarLabParameter Make(RunFileParameter RFParameter, ModuleXmlParameter XmlParameter)
+        public static EarlabParameter Make(RunfileParameter RFParameter, ModuleXmlParameter XmlParameter)
         {
-            #region Notes on EarLab Notes
+            #region Notes on Earlab Notes
 
-            /*
-            Each Parameter has the following items inside:
-             * RunFile: Value
-             * Module File: Max, Min, Default, Units, Description
-            */
+           
+            //Each Parameter has the following items inside:
+            // * RunFile: Value
+            // * Module File: Max, Min, Default, Units, Description
 
 
             //going to have to add an error-check routine here.
@@ -115,27 +114,24 @@ namespace RunfileEditor
 
 
             #region Data Members
-            string ParameterName;
-            string ParameterType;
-            string ParameterUnits;
-            string ParameterDescription;
+                string ParameterName;
+                string ParameterType;
+                string ParameterUnits;
+                string ParameterDescription;
 
-            //Private Actual values single values
-            //Private Actual values Arrays
-            //string[] stringArrayDefault, stringArrayMin, stringArrayMax, stringArrayValue;
-            //bool[] boolArrayDefault, boolArrayMin, boolArrayMax, boolArrayValue;
+                //Private Actual values single values
+                //Private Actual values Arrays
+                //string[] stringArrayDefault, stringArrayMin, stringArrayMax, stringArrayValue;
+                //bool[] boolArrayDefault, boolArrayMin, boolArrayMax, boolArrayValue;
 
 
-            ParameterName = XmlParameter.ParameterName;
-            ParameterType = XmlParameter.ParameterType;
-            ParameterUnits = XmlParameter.ParameterUnits;
-            ParameterDescription = XmlParameter.ParameterDescription;
+                ParameterName = XmlParameter.ParameterName;
+                ParameterType = XmlParameter.ParameterType;
+                ParameterUnits = XmlParameter.ParameterUnits;
+                ParameterDescription = XmlParameter.ParameterDescription;
             #endregion
 
-
-
-
-          
+        
             switch (ParameterType.ToLower())
             {
                 case "integer":
@@ -190,12 +186,6 @@ namespace RunfileEditor
                 //I'll have to add some error checking here
                 // an array of bool vars, and a method that checks
                 // if any of the bools are false?
-
-
-
-                //return null EL Param
-
-
 
                 case "string":
                 case "str":
