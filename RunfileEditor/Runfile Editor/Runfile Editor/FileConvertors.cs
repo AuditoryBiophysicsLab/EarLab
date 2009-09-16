@@ -11,12 +11,14 @@ namespace RunfileEditor
 
 
     /// <summary>
-    /// This is a static class that does file conversions
-    /// Use a static class as a unit of organization for methods not associated with particular objects.
+    /// This is a static class that does file conversions.
+    /// From stream to string etc.
+    /// 
+    /// [Use a static class as a unit of organization for methods not associated with particular objects.
     /// Also, a static class can make your implementation simpler and faster because 
     /// you do not have to create an object in order to call its methods. 
     /// It is useful to organize the methods inside the class in a meaningful way, 
-    /// such as the methods of the Math class in the System namespace.
+    /// such as the methods of the Math class in the System namespace.]
     /// 
     /// </summary>
     static class FileConvertors

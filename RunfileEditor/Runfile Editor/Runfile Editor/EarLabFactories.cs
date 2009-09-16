@@ -10,7 +10,7 @@ namespace RunfileEditor
 {
 
     /// <summary>
-    /// This is an Object Factory that return an EarLabInput
+    /// This is an Object Factory that return an EarlabInput
     /// </summary>
     public class EarlabInputFactory
     {
@@ -27,7 +27,7 @@ namespace RunfileEditor
     }
 
     /// <summary>
-    /// This is an Object Factory that return an EarLabOutput
+    /// This is an Object Factory that return an EarlabOutput
     /// Grabs the XML node.
     /// </summary>
     public class EarlabOutputFactory
@@ -37,7 +37,7 @@ namespace RunfileEditor
         {
         }
 
-        public static EarlabOutput Make(RunFileOutput RFOutput, ModuleXmlOutput XmlOutput)
+        public static EarlabOutput Make(RunfileOutput RFOutput, ModuleXmlOutput XmlOutput)
         {
             EarlabOutput Dummy = new EarlabOutputInt();
             return Dummy;
@@ -49,7 +49,7 @@ namespace RunfileEditor
 
 
     /// <summary>
-    /// This is an Object Factory that return an EarLabParameter
+    /// This is an Object Factory that return an EarlabParameter
     /// Grabs XML node.
     /// </summary>
     public class EarlabParameterFactory
@@ -62,9 +62,9 @@ namespace RunfileEditor
 
         //Not sure what this takes in.
         //It needs information from:
-        //  XML RunFile Data in string form
+        //  XML Runfile Data in string form
         //  AND
-        //  XML Module which gives instructions on creating the EarLabParameter.
+        //  XML Module which gives instructions on creating the EarlabParameter.
         // Do we really need the 
 
         public static EarlabParameter Make(RunfileParameter RFParameter, ModuleXmlParameter XmlParameter)
@@ -73,7 +73,7 @@ namespace RunfileEditor
 
            
             //Each Parameter has the following items inside:
-            // * RunFile: Value
+            // * Runfile: Value
             // * Module File: Max, Min, Default, Units, Description
 
 
@@ -149,7 +149,7 @@ namespace RunfileEditor
                         return null;
 
                     else
-                        return new EarLabParameterInteger(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
+                        return new EarlabParameterInteger(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
                             intDefault, intMin, intMax, intValue);
 
 
@@ -166,7 +166,7 @@ namespace RunfileEditor
                         !double.TryParse(XmlParameter.ParameterMaximumValue.InnerText, out dblMax) ||
                         !double.TryParse(RFParameter.ParameterValue.InnerText, out dblValue)
                        ) return null;
-                    return new EarLabParameterDouble(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
+                    return new EarlabParameterDouble(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
                                                 dblDefault, dblMin, dblMax, dblValue);
 
                 case "boolean":
@@ -181,7 +181,7 @@ namespace RunfileEditor
                        !bool.TryParse(RFParameter.ParameterValue.InnerText, out boolValue)
                        ) return null;
 
-                    return new EarLabParameterBoolean(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
+                    return new EarlabParameterBoolean(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
                                                 boolDefault, boolMin, boolMax, boolValue);
                 //I'll have to add some error checking here
                 // an array of bool vars, and a method that checks
@@ -199,7 +199,7 @@ namespace RunfileEditor
                     //I'll have to add some error checking here
                     // an array of bool vars, and a method that checks
                     // if any of the bools are false?
-                    return new EarLabParameterString(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
+                    return new EarlabParameterString(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
                                             stringDefault, stringMin, stringMax, stringValue);
 
 
@@ -224,7 +224,7 @@ namespace RunfileEditor
                        !ArrayCheck.intArrayReturn(RFParameter.ParameterValue, out intArrayValue)
                         ) { return null; }
 
-                    return new EarLabParameterIntegerArray(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
+                    return new EarlabParameterIntegerArray(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
                                                 intArrayDefault, intArrayMin, intArrayMax, intArrayValue);
 
 
@@ -254,7 +254,7 @@ namespace RunfileEditor
                          )
                     { return null; }
 
-                    return new EarLabParameterDoubleArray(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
+                    return new EarlabParameterDoubleArray(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
                                                 dblArrayDefault, dblArrayMin, dblArrayMax, dblArrayValue);
 
                 //string Array is sort of a problem -- how do you check a string?

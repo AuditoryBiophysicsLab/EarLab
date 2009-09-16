@@ -317,7 +317,7 @@ namespace RunfileEditor
                 }
                 //set information fro the user
                 //Abstract data, model image etc...
-                pictureBox1.Image = new Bitmap(RunfileObject.RunfileInformation.RunfileModelImageLocation);
+                //pictureBox1.Image = new Bitmap(RunfileObject.RunfileInformation.RunfileModelImageLocation);
 
                 //Change the image in the picture box
                 //this.pictureBox1.ImageLocation = "image.jpg";
