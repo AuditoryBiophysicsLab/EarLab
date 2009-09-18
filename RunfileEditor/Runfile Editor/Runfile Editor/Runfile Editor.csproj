@@ -107,6 +107,7 @@
   <ItemGroup>
     <Content Include="EFI_Interaction_Sketch.txt" />
     <Content Include="TextFile1.txt" />
+    <Content Include="TextFile2.txt" />
     <Content Include="XML Docs\DataSink.xml" />
     <Content Include="XML Docs\datasource.xml" />
     <Content Include="XML Docs\ModuleXMLFrag2.xml" />
