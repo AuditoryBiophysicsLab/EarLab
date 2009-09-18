@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayCheck.cs" />
+    <Compile Include="EarlabInputFactory.cs" />
+    <Compile Include="EarlabOutputFactory.cs" />
+    <Compile Include="EarlabParameterFactory.cs" />
     <Compile Include="EarLabSession.cs" />
     <Compile Include="EFI_Interaction.cs" />
     <Compile Include="errorLog.cs" />
@@ -86,7 +89,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="EarLabFactories.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

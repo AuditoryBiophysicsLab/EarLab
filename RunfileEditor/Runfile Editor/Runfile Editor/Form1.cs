@@ -345,6 +345,7 @@ namespace RunfileEditor
                     child.Show(); //--> pops it from start.
                     child.BringToFront();//brings it to front
 
+                    //[error]
                     child.txtErrorMsgs.Text = currentLog.ReadErrorLog();
                     //Error Logging works --- need to work on windows type display.
                     //textBox1.Text = currentLog.ReadErrorLog();
