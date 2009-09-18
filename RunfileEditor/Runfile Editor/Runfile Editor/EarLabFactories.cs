@@ -4,20 +4,32 @@ using System.Text;
 using System.Xml;
 
 /// <summary>
-/// Summary description for Class1
+/// This File holds all the object factory classes that create 
 /// </summary>
 namespace RunfileEditor
 {
 
     /// <summary>
-    /// This is an Object Factory that return an EarlabInput
+    /// This is an Object Factory that takes an EarlabInput node as an input and returns
+    /// an EarlabInput Object.  Later this object is used in spg for the display purposes.
     /// </summary>
     public class EarlabInputFactory
     {
+        /// <summary>
+        /// The default constructor is not used.
+        /// </summary>
         public EarlabInputFactory()
         {
         }
 
+        /// <summary>
+        /// The constructor that takes an Earlab Input XML Node 
+        /// and produces a EarlabInput Object.  
+        /// Later this object is used in spg for the display purposes.
+        /// </summary>
+        /// <param name="RFInput"></param>
+        /// <param name="XmlInput"></param>
+        /// <returns></returns>
         public static EarlabInput Make(RunfileInput RFInput, ModuleXmlInput XmlInput)
         {
             EarlabInput Dummy = new EarlabInputInt();
@@ -32,11 +44,21 @@ namespace RunfileEditor
     /// </summary>
     public class EarlabOutputFactory
     {
-
+        /// <summary>
+        /// The default constructor is not used
+        /// </summary>
         public EarlabOutputFactory()
         {
         }
 
+        /// <summary>
+        /// The constructor that takes an Earlab Input XML Node 
+        /// and produces a EarlabInput Object.  
+        /// Later this object is used in spg for the display purposes.
+        /// </summary>
+        /// <param name="RFOutput"></param>
+        /// <param name="XmlOutput"></param>
+        /// <returns></returns>
         public static EarlabOutput Make(RunfileOutput RFOutput, ModuleXmlOutput XmlOutput)
         {
             EarlabOutput Dummy = new EarlabOutputInt();
@@ -48,6 +70,8 @@ namespace RunfileEditor
     }
 
 
+
+    //Done and working!
     /// <summary>
     /// This is an Object Factory that return an EarlabParameter
     /// Grabs XML node.
@@ -55,30 +79,34 @@ namespace RunfileEditor
     public class EarlabParameterFactory
     {
 
-
+        /// <summary>
+        /// The default constructor is not used.
+        /// </summary>
         public EarlabParameterFactory()
         {
         }
 
-        //Not sure what this takes in.
-        //It needs information from:
-        //  XML Runfile Data in string form
-        //  AND
-        //  XML Module which gives instructions on creating the EarlabParameter.
-        // Do we really need the 
 
+        /// <summary>
+        /// It needs information from:
+        ///  XML Runfile Data in string form
+        ///  AND
+        ///  XML Module which gives instructions on creating the EarlabParameter.
+        /// Do we really need the 
+        /// </summary>
+        /// <param name="RFParameter"></param>
+        /// <param name="XmlParameter"></param>
+        /// <returns></returns>
         public static EarlabParameter Make(RunfileParameter RFParameter, ModuleXmlParameter XmlParameter)
         {
             #region Notes on Earlab Notes
 
-           
             //Each Parameter has the following items inside:
-            // * Runfile: Value
-            // * Module File: Max, Min, Default, Units, Description
+            //Runfile:       Value
+            //Module File:   Max, Min, Default, Units, Description
 
-
-            //going to have to add an error-check routine here.
-            //would I want a generic rountine to parce?
+            //[2Write]Going to have to add an error-check routine here on the RFParameter routine.
+            //Would I want a generic rountine to parse?
             //Yes, b/c this will be reused on all numbers 
             //And also need a routine to handle arrays and error checking
             //It will parse, and if OK send, if bad it will flag as false

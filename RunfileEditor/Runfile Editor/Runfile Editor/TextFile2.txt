@@ -3,8 +3,12 @@
 
 Meta 
 1.) File Locations
+Need to be noted in the code //[File Location]
+
 2.) Runfile Premade model extensions
+
 3.) EFI interaction with the dummy
+
 4.) New Grapical User Interface Paradigm
 
 
@@ -12,5 +16,7 @@ Errors
 
 ErrorLog Program
 	Rewrite this program so that it can perform
+
+
 
 

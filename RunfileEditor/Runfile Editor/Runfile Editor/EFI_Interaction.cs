@@ -16,13 +16,14 @@ namespace RunfileEditor
     /// </summary>
 static class EFIInteraction
     {
-        //WE will need directory information for all
+        //We will need directory information for all
+        //[File Location]
         public static string ModuleXmlPath;
         public static string ModuleXmlPathStart = "C:\\..Projects\\Runfile Editor\\Runfile Editor\\XML Docs\\";
         public static string ModuleSchemaXmlPath = "C:\\..Projects\\Runfile Editor\\Runfile Editor\\XML Docs\\moduleInformation.xsd";
 
         //Some static vars to handle the lists of stuff.
-                        //ModuleXML -- a string of all modules that are good
+        //ModuleXML -- a string of all modules that are good
         public static List<XmlDocument> ModuleXMLs;
         public static List<string> mMissing;
         public static List<XmlDocument> mModuleXmls;
