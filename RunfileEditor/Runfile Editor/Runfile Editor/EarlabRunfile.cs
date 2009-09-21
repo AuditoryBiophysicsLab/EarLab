@@ -48,10 +48,20 @@ namespace RunfileEditor
         //-------------------------------------------------------------------->
         //Constructors
 
+        /// <summary>
+        /// Here is the default constructor, it is unused.
+        /// </summary>
         public EarlabRunfile()
         {
         }
 
+        /// <summary>
+        /// Here is the constructor that is used.
+        /// This constructor takes a valid Runfile as input, and then creates the RunfileObject.
+        /// The RunfileObject is a collection of objects that comprise the information in the XML Runfile Document
+        /// The constructor relies on the intialization method
+        /// </summary>
+        /// <param name="Runfile"></param>
         public EarlabRunfile(XmlDocument Runfile)
         {
             Initialize(Runfile);
@@ -82,6 +92,7 @@ namespace RunfileEditor
             //3.) Hey EFI give me those Module XMLs i want.
             //(?) For now use the contructor on ModuleDirectory
             //ModuleDirectory interacts with the EFI and gets what is necessary
+            //
             ModuleDirectory = new ModuleDirectory(UniqueEarlabModuleXMLs);
 
             //4.) Run File -- Earlab Modules using EarlabModule and loop
