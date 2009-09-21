@@ -1,0 +1,22 @@
+Meta 
+1.) File Locations
+a.) Need to be noted in the code //[File Location]
+b.) Runfile Premade model extensions
+
+EFI
+2.) EFI interaction with the dummy
+a.) getting back info
+b.) lighting up gui via off-on part in data
+
+GUI
+3.) New Grapical User Interface Paradigm
+
+
+Errors
+
+ErrorLog Program
+	Rewrite this program so that it can perform
+
+
+
+
