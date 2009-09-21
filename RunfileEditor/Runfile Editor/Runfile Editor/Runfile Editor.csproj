@@ -48,6 +48,7 @@
     <Compile Include="EarlabInputFactory.cs" />
     <Compile Include="EarlabOutputFactory.cs" />
     <Compile Include="EarlabParameterFactory.cs" />
+    <Compile Include="EarlabRunfile.cs" />
     <Compile Include="EarLabSession.cs" />
     <Compile Include="EFI_Interaction.cs" />
     <Compile Include="FileConvertors.cs" />
@@ -65,7 +66,7 @@
     </Compile>
     <Compile Include="GuiHelpers.cs" />
     <Compile Include="ModuleGrid.cs">
-      <SubType>Form</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ModuleXML.cs" />
     <Compile Include="Program.cs" />
@@ -103,6 +104,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RunfileInformation.cs" />
+    <Compile Include="RunfileInput.cs" />
+    <Compile Include="RunfileModule.cs" />
+    <Compile Include="RunfileModuleInformation.cs" />
+    <Compile Include="RunfileOutput.cs" />
+    <Compile Include="RunfileParameter.cs" />
     <Compile Include="RunFileXML.cs" />
   </ItemGroup>
   <ItemGroup>
