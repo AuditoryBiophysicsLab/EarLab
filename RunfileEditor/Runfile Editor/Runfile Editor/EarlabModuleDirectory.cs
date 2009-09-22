@@ -60,13 +60,14 @@ using System.Xml;
 namespace RunfileEditor
 {
     /// <summary>
-    /// This produces a directory of the modules given back
-    /// from the EFI
+    /// This produces a directory of the modules given back from the EFI
     /// </summary>
     public class ModuleDirectory
     {
 
         #region Data members
+        //
+        //
         //list of module xml data
         //
         List<ModuleXML> ModuleXmlList = new List<ModuleXML>();
@@ -77,6 +78,17 @@ namespace RunfileEditor
         // or
 
         #region Data Properties
+        //
+        //
+        //
+        /// <summary>
+        /// This is a "string index" method.
+        /// It allows you to use the following protocol to request module XML
+        /// 
+        /// ModuleDirectory["SpecificModule_String"]
+        /// </summary>
+        /// <param name="ModuleName"></param>
+        /// <returns></returns>
         public ModuleXML this[string ModuleName]
         {
 

@@ -68,7 +68,7 @@
     </Compile>
     <Compile Include="GuiHelpers.cs" />
     <Compile Include="ModuleGrid.cs">
-      <SubType>Component</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuleXML.cs" />
     <Compile Include="Program.cs" />
