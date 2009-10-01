@@ -12,9 +12,14 @@ namespace EFITestWrapperTester
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(EFI.GetModuleXML("DataSource"));
-            Console.WriteLine(EFI.GetModuleXML("DataSink"));
-            Console.WriteLine(EFI.VerifyRunfile("stuff"));
+            string ModuleXML;
+
+            if (EFI.GetModuleXML("DataSource", out ModuleXML))
+                Console.WriteLine("DataSource Module XML follows:\n{0}", ModuleXML);
+            else
+                Console.WriteLine("DataSource Module XML not found!");
+            //Console.WriteLine(EFI.GetModuleXML("DataSink"));
+            //Console.WriteLine(EFI.VerifyRunfile("stuff"));
         }
 
         static void OldMain(string[] args)
