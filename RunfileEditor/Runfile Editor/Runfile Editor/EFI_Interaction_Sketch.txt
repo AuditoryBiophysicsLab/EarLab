@@ -397,53 +397,7 @@ B.) process errorEFI XML ?
 
 
 
-1.) On RunfileEditor Side
 
-a.) A RunfileObject class changes to handle Errors
-        Each module, and IOP  ----\/ (created with an object factory first -- then Runfile created from objects)
-        a.) --Color --- severity (
-        b.) --Error Message from errorRunfile.
-
-            SPG 
-                severity   -> change the color
-                msg        -> display a message that the given data is not acceptable.
-
-            GUI
-                Displays Runfile Error Summary
-                Like compile error
-                total # of errors | total # of modules in error
-                # of errors       | module error
-                
-               
-                
-           >Go back and do MVC!!! abstraction.
-           
-           >Editor only
-				--Take command line only main [args]--to use the command line
-				--launch existing desktop Earlab to handle the actual simulation
-				--use to call the existing simulation engine.
-				
-				>launch from command line.
-				
-		   >Xml Layer
-		   
-		   
-		   Handling Directories!
-		   //settings.save() <-- saves in the path the users was just in.
-		   //building paths use path.combine() -- static function in
-		   //settings to remember the last place the user saves
-		   //MyDocuments --what the default places to save.
-				//Earlab
-						//
-						
-						
-->		Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-->		Environment.GetFolderPath(Environment.SpecialFolder.Personal)
-Environment.SpecialFolder.MyDocuments
-Environment.SpecialFolder.Desktop
-Environment.SpecialFolder.ApplicationData
-Environment.SpecialFolder.History
-Environment.SpecialFolder.ProgramFiles
 
 Gets the path
 
@@ -561,3 +515,7 @@ EmailHandler.SendEmail(AppHandler.EmailSmtp, AppHandler.EmailSender, AppHandler.
 Kara Hewett is a software developer at RBS Greenwich Capital Markets. She earned a MBA in Information Systems, Finance and Accounting from New York University and a BS in Economics from the Wharton School of Business. Her past experience includes numerous consulting and development projects for SAC Capital, Lehman Brothers, J P Morgan Chase, American Stock Exchange, and Deutsche Bank.
 iphone
 change phone
+
+
+///////////////////////////////////////////////////////////////////////
+

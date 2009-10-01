@@ -220,8 +220,6 @@ namespace RunfileEditor
                     return new EarlabParameterDoubleArray(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
                                                 dblArrayDefault, dblArrayMin, dblArrayMax, dblArrayValue);
 
-                //string Array is sort of a problem -- how do you check a string?
-
 
             }
 

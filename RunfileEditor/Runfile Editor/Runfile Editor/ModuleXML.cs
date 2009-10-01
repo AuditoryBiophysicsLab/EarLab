@@ -60,17 +60,9 @@ using System.Xml;
 namespace RunfileEditor
 {
 
-    //We return the data... 
-    public class EfiXmlData
-    {
-        //Maybe some information from the EFI
-        //(?)
-
-
-    }
 
     //parses module xml into something useful
-    public class ModuleXML: EfiXmlData
+    public class ModuleXML
     {
         #region Data Members
         //1.) (!) Meta info
@@ -86,7 +78,12 @@ namespace RunfileEditor
         //which one is more useful? index on directory at large
         //or index at each bit.
         //Indexed by Parameter Type, Parameter Name
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ParameterName"></param>
+        /// <param name="ParameterType"></param>
+        /// <returns></returns>
         #region Data Properties
         public ModuleXmlParameter this[string ParameterName, string ParameterType]
         {
@@ -115,7 +112,6 @@ namespace RunfileEditor
         }
 
         #endregion
-
 
         #region Constructors
         //blank constructor
@@ -169,10 +165,10 @@ namespace RunfileEditor
 
 
     }
-
         //(!) Works just like ModuleInformation.
         // end duplicaton or?
-    public class ModuleXmlInformation : EfiXmlData
+
+    public class ModuleXmlInformation
         {
         /*
         <ModuleInformation>
@@ -199,7 +195,7 @@ namespace RunfileEditor
         }
 
         //(?) needs info
-    public class ModuleXmlInput : EfiXmlData
+    public class ModuleXmlInput
         {
 
 
@@ -212,7 +208,7 @@ namespace RunfileEditor
         }
 
         //(?) needs info
-    public class ModuleXmlOutput : EfiXmlData
+    public class ModuleXmlOutput
         {
             //public data
 
@@ -225,7 +221,7 @@ namespace RunfileEditor
         }
 
         //(!)works!
-    public class ModuleXmlParameter : EfiXmlData
+    public class ModuleXmlParameter
         {
             #region ModuleXMLParameter Notes
             //NEW NOTE!!!

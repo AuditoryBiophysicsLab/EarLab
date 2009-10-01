@@ -1,22 +1,81 @@
 Meta 
 1.) File Locations
-a.) Need to be noted in the code //[File Location]
-b.) Runfile Premade model extensions
+	a.) Need to be noted in the code //[File Location]
+2.) Runfile Premade model extensions
+3.) Validate XML routine
+4.) New standard XML files
+---runfile, runfile error, module xml
 
-EFI
-2.) EFI interaction with the dummy
-a.) getting back info
-b.) lighting up gui via off-on part in data
+Qs?
+File locations?
+
+EFI -- rewrote and it is ok
+1.) EFI class interaction with the dummy
+	a.) getting back info
+	b.) lighting up gui via off-on part in data
+	
+Qs?
+Created the .dll -- fairly easy.
+How do I create the "fake" xml files in the .dll?
+
+Object
+1.) rewrite items
+a.) to meet new XML
+b.) up/down color
+c.) msg
+
 
 GUI
 3.) New Grapical User Interface Paradigm
+--use graphical editor demo tool
 
+////////////////////////////////////////////////////////////////////
+1.) On RunfileEditor Side
 
-Errors
+a.) A RunfileObject class changes to handle Errors
+        Each module, and IOP  ----\/ (created with an object factory first -- then Runfile created from objects)
+        a.) --Severity (0-1-2-3-4-etc.)
+        b.) --Error Message from errorRunfile.
 
-ErrorLog Program
-	Rewrite this program so that it can perform
+            SPG 
+                severity   -> change the color
+                msg        -> display a message that the given data is not acceptable.
 
-
+            GUI
+                Displays Runfile Error Summary
+                Like compile error
+                total # of errors | total # of modules in error
+                # of errors       | module error
+                
+               
+                
+           >Go back and do MVC!!! abstraction.
+           
+           >Editor only
+				--Take command line only main [args]--to use the command line
+				--launch existing desktop Earlab to handle the actual simulation
+				--use to call the existing simulation engine.
+				
+				>launch from command line.
+				
+		   >Xml Layer
+		   
+		   
+		   Handling Directories!
+		   //settings.save() <-- saves in the path the users was just in.
+		   //building paths use path.combine() -- static function in
+		   //settings to remember the last place the user saves
+		   //MyDocuments --what the default places to save.
+				//Earlab
+						//
+						
+						
+->		Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+->		Environment.GetFolderPath(Environment.SpecialFolder.Personal)
+Environment.SpecialFolder.MyDocuments
+Environment.SpecialFolder.Desktop
+Environment.SpecialFolder.ApplicationData
+Environment.SpecialFolder.History
+Environment.SpecialFolder.ProgramFiles
 
 
