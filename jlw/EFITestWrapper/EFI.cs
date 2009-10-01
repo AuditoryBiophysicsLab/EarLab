@@ -17,29 +17,28 @@ namespace EFITestWrapper
         }
 
         // This returns the <Module>...</Module> XML metadata for a given module EXE name
-        public static string GetModuleXML(string ModuleExeName)
+        public static bool GetModuleXML(string ModuleExeName, out string ModuleXML)
         {
-            string resourceName = "EFITestWrapper.ModuleXML." + ModuleExeName + ".xml";
-            ManifestResourceInfo info = _assembly.GetManifestResourceInfo(resourceName);
-            
-            if (info == null)
-                return null;
-            using (StreamReader _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream(resourceName)))
-            {
-                return _textStreamReader.ReadToEnd();
-            }
+            return GetXMLFile(Path.Combine("ModuleXML", ModuleExeName + ".xml"), out ModuleXML);
         }
 
-        public static string VerifyRunfile(string RunfileXML)
+        public static bool VerifyRunfile(string RunfileXML, out string VerificationXML)
         {
-            string resourceName = "EFITestWrapper.VerificationErrorsXML.VerificationErrors.xml";
-            ManifestResourceInfo info = _assembly.GetManifestResourceInfo(resourceName);
+            return GetXMLFile(Path.Combine("VerificationErrorsXML", Path.GetFileNameWithoutExtension(RunfileXML) + "_V.xml"), 
+                out VerificationXML);
+        }
 
-            if (info == null)
-                return null;
-            using (StreamReader _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream(resourceName)))
+        private static bool GetXMLFile(string XMLFile, out string XMLContents)
+        {
+            string curDir = Path.GetDirectoryName(_assembly.Location);
+            XMLFile = Path.Combine(curDir, XMLFile);
+            XMLContents = null;
+            if (!File.Exists(XMLFile))
+                return false;
+            using (StreamReader _textStreamReader = new StreamReader(XMLFile))
             {
-                return _textStreamReader.ReadToEnd();
+                XMLContents = _textStreamReader.ReadToEnd();
+                return true;
             }
         }
     }
