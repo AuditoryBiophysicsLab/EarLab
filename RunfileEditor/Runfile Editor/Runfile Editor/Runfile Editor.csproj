@@ -55,7 +55,6 @@
     <Compile Include="EarlabParameterFactory.cs" />
     <Compile Include="EarlabRunfile.cs" />
     <Compile Include="EarLabSession.cs" />
-    <Compile Include="EFI_Interaction.cs" />
     <Compile Include="errorLog.cs" />
     <Compile Include="FileConvertors.cs" />
     <Compile Include="Form1.cs">

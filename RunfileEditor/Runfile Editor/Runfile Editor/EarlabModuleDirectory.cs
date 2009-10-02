@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Resources;
 using System.Reflection;
 using System.Collections.Generic;
+using EFITestWrapper;
 using System.Xml;
 
 #region Module XML Notes
@@ -208,13 +209,13 @@ namespace RunfileEditor
             //1.) Initize and Load XML Document
 
             int count = 0;
-            string ModuleXmlPathStart;
-            string ModuleXmlPath;
-            ModuleXmlPathStart = "C:\\Documents and Settings\\Jon\\My Documents\\Visual Studio 2005\\Projects\\Runfile Editor\\Runfile Editor\\XML Docs\\";    //+ LoadXmlItem.ToString() + ".xml";
+            //string ModuleXmlPathStart;
+            //string ModuleXmlPath;
+            //ModuleXmlPathStart = "C:\\Documents and Settings\\Jon\\My Documents\\Visual Studio 2005\\Projects\\Runfile Editor\\Runfile Editor\\XML Docs\\";    //+ LoadXmlItem.ToString() + ".xml";
 
 
 
-            //replace in foreach
+            //replace in foreach here is where we 
             while (count < UniqueEarlabModuleXMLs.Length)
             {
                 //1.) Get Name
@@ -223,15 +224,27 @@ namespace RunfileEditor
 
                 ////Create the proper path as a 
                 ////C:\Documents and Settings\Jon\My Documents\Visual Studio 2005\Projects\Earlab-SPG-Tester-JLW\WindowsApplication4\XML Docs\DataSource.xml'.
+               
+                
+                //[Here is where We interact with the EFIInteraction]
+                //ModuleXmlPath = ModuleXmlPathStart.ToString() + LoadXmlItem.ToString() + ".xml";
 
-                ModuleXmlPath = ModuleXmlPathStart.ToString() + LoadXmlItem.ToString() + ".xml";
+                //efi rather than our path
 
+                        string ModuleXMLstr;
+                        //EFI.GetModuleXML(LoadXmlItem, out ModuleXMLstr);
+                        if ( EFI.GetModuleXML(LoadXmlItem, out ModuleXMLstr) )
+                        { ModuleXMLDocument.Load(ModuleXMLstr); }
+                        else
+                        {
+                            //error!!!
+                        }
 
                 //Add try -- fail error
                 //Load it from ModuleXML directory for now
 
                 //(Problem is here now 3/31)
-                ModuleXMLDocument.Load(ModuleXmlPath);
+                //ModuleXMLDocument.Load(ModuleXmlPath);
 
 
                 //2.) Load Document from Module Directory

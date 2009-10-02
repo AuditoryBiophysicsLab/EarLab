@@ -1,15 +1,21 @@
 Meta 
 1.) File Locations
 	a.) Need to be noted in the code //[File Location]
+Use path settings, relative to the executable file.
+
 2.) Runfile Premade model extensions
+
 3.) Validate XML routine
+Have validate xml routine.
+
 4.) New standard XML files
 ---runfile, runfile error, module xml
 
 Qs?
 File locations?
+X
 
-EFI -- rewrote and it is ok
+EFI -- rewrote and it is ok (this works, need to do the switch to the XML Document)
 1.) EFI class interaction with the dummy
 	a.) getting back info
 	b.) lighting up gui via off-on part in data
@@ -34,7 +40,7 @@ GUI
 
 a.) A RunfileObject class changes to handle Errors
         Each module, and IOP  ----\/ (created with an object factory first -- then Runfile created from objects)
-        a.) --Severity (0-1-2-3-4-etc.)
+        a.) --Severity {display what's there, -- (Warning, Error, OK)}
         b.) --Error Message from errorRunfile.
 
             SPG 

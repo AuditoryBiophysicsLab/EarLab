@@ -9,6 +9,11 @@ using System.Xml;
 
 namespace RunfileEditor
 {
+
+    /// <summary>
+    /// This class creates the RunfileObject that contains all the XML information in a class structure.
+    /// This also 
+    /// </summary>
     public class EarlabRunfile
     {
 
@@ -30,22 +35,29 @@ namespace RunfileEditor
         //This is not needed
         //public string RunfileXMLString;
         //
-        //
-        //These are the unique EarlabModule titles that are needed from the EFI
-        //Something back from EFI
+        /// <summary>
+        /// The module directory is ...
+        /// These are the unique EarlabModule titles that are needed from the EFI
+        /// </summary>
         public ModuleDirectory ModuleDirectory;
-        //Has the Runfile changed?
+        //
+        //
         private bool changed1 = false;
 
         //Runfile Data Structures
         //
-        //Run File Information -- contains informaiton about the model
+        /// <summary>
+        /// Run File Information -- contains informaiton about the model
+        /// </summary>
         public RunfileInformation RunfileInformation;
         //
-        //This is the list of Modules contained in the Runfile
+        /// <summary>
+        /// This is the list of Modules contained in the Runfile
+        /// </summary>
         public List<RunfileModule> RunfileModules = new List<RunfileModule>();
-        //
-        //Modules carry two data structures: (XML data as strings),(XML data as the appropriate value)
+        /// <summary>
+        /// Modules carry two data structures: (XML data as strings),(XML data as the appropriate value)
+        /// </summary>
         public List<EarlabModule> EarlabModules = new List<EarlabModule>();
         //
         #endregion
@@ -196,6 +208,7 @@ namespace RunfileEditor
         } 
         #endregion Constructors
 
+        #region This is the Controller Section of the EarlabRunfileObject
         //[Move] This needs to be moved to a static controller class
         //Takes in XML Document produces Model Object
         public void Initialize(XmlDocument Runfile)
@@ -305,6 +318,9 @@ namespace RunfileEditor
          */
         #endregion
 
+        //[EFITestWrapper Hook to update the RunfileObject]
+        //
+        //public void EFIUpdate(XmlDocument VerificationErrors)
 
         //Need to divide this guy up
         //Takes in the Model Object produces XML
@@ -551,6 +567,9 @@ namespace RunfileEditor
             //6.) Send file back
             return NewRunfile;
         }
+
+        #endregion
+
 
     }
 

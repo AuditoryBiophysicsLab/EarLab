@@ -45,9 +45,37 @@ namespace RunfileEditor
 
         private void SendFileXMLToEFI_Click(object sender, EventArgs e)
         {
+            //This is the part that needs to be updated from the Verification.dll
             MessageBox.Show(
             "This would send the Runfile to Earlab.",
             "Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Send to EFI
+            //1.) Write the RunfileObject to an XML string
+                    
+            //2.) Send the Runfile XML string to the EFI and Receive XML Errors back
+            //3.) if xml has errors
+                //4.) RunfileObject.EFIUpdate(string VerificationErrors) to update spg
+                //     Update Runfile Object
+                //     Update display automatically
+                //     Use older code to use the path to update necessary RunfileObjects
+            //X.) else
+                //6.) Allow desktop earlab to run.
+
+
+            ///////to do this
+            //a.) RunfileObject --
+                //i.) str. severity, (already here) message on each parameter item.
+                //ii.)
+
+            //Do some operations on the Runfile Object ....
+
+            //Clear the old errors
+
+            //Discard any old verification information
+
+
+
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -346,7 +374,7 @@ namespace RunfileEditor
                     child.BringToFront();//brings it to front
 
                     //[error]
-                    child.txtErrorMsgs.Text = currentLog.ReadErrorLog();
+                    //child.txtErrorMsgs.Text = currentLog.ReadErrorLog();
                     //Error Logging works --- need to work on windows type display.
                     //textBox1.Text = currentLog.ReadErrorLog();
 
