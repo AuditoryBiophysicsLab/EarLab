@@ -46,33 +46,49 @@ namespace RunfileEditor
         private void SendFileXMLToEFI_Click(object sender, EventArgs e)
         {
             //This is the part that needs to be updated from the Verification.dll
-            MessageBox.Show(
-            "This would send the Runfile to Earlab.",
-            "Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Send to EFI
             //1.) Write the RunfileObject to an XML string
-                    
-            //2.) Send the Runfile XML string to the EFI and Receive XML Errors back
-            //3.) if xml has errors
+
+            if (RunfileObject != null)
+            {
+
+                RunfileDocument = RunfileObject.RunfileXMLCreate();
+                //2.) Send the Runfile XML string to the EFI and Receive XML Errors back
+                //3.) if xml has errors
                 //4.) RunfileObject.EFIUpdate(string VerificationErrors) to update spg
                 //     Update Runfile Object
                 //     Update display automatically
                 //     Use older code to use the path to update necessary RunfileObjects
-            //X.) else
+                //X.) else
                 //6.) Allow desktop earlab to run.
 
 
-            ///////to do this
-            //a.) RunfileObject --
+                ///////to do this
+                //a.) RunfileObject --
                 //i.) str. severity, (already here) message on each parameter item.
                 //ii.)
 
-            //Do some operations on the Runfile Object ....
+                //Do some operations on the Runfile Object ....
 
-            //Clear the old errors
+                //Clear the old errors
 
-            //Discard any old verification information
+                //Discard any old verification information
+
+
+            }
+            else
+            {
+                MessageBox.Show(
+                "This occurs b/c you don't have a runfile object yet",
+                "Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //MessageBox.Show(
+                //"This would send the Runfile to Earlab.",
+                //"Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+
 
 
 
