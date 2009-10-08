@@ -237,7 +237,7 @@ namespace RunfileEditor
             //3.) Hey EFI give me those Module XMLs i want.
             //(?) For now use the contructor on ModuleDirectory
             //ModuleDirectory interacts with the EFI and gets what is necessary
-            //
+          
             ModuleDirectory = new ModuleDirectory(UniqueEarlabModuleXMLs);
 
             //4.) Run File -- Earlab Modules using EarlabModule and loop

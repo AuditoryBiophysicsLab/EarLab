@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using EFITestWrapper;
 using System.Xml;
+using System.IO;
 
 #region Module XML Notes
 /// <summary>
@@ -61,7 +62,8 @@ using System.Xml;
 namespace RunfileEditor
 {
     /// <summary>
-    /// This produces a directory of the modules given back from the EFI
+    /// This produces a directory of the module xmls given back from the EFI
+    /// The name should probably be changed to something else
     /// </summary>
     public class ModuleDirectory
     {
@@ -234,7 +236,7 @@ namespace RunfileEditor
                         string ModuleXMLstr;
                         //EFI.GetModuleXML(LoadXmlItem, out ModuleXMLstr);
                         if ( EFI.GetModuleXML(LoadXmlItem, out ModuleXMLstr) )
-                        { ModuleXMLDocument.Load(ModuleXMLstr); }
+                        { ModuleXMLDocument.Load( new StringReader(ModuleXMLstr) ); }
                         else
                         {
                             //error!!!
