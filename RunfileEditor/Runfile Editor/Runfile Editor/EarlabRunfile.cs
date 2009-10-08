@@ -6,6 +6,8 @@ using System.Resources;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Xml;
+using System.IO;
+
 
 namespace RunfileEditor
 {
@@ -25,6 +27,9 @@ namespace RunfileEditor
         //There is the actual XmlDocument that has been validated
         public XmlDocument RunfileXML;
         //
+        //
+        //These are the errors from the EFI processing the Runfile
+        public XmlDocument RunfileVerificationErrors;
         //
         //Still a bit unsure about this, but this is the Runfile xml Node
         //This is the Modules Node that contains all the individual child modules
@@ -318,6 +323,43 @@ namespace RunfileEditor
          */
         #endregion
 
+        /// <summary>
+        /// Send the runfile in to the EFI
+        /// Receive the verfication email back from the EFI
+        /// </summary>
+        /// <param name="Runfile"></param>
+        /// <param name="RunfileVerificationErrors"></param>
+        /// <returns></returns>
+        public bool RunfileEFIUpdate(XmlDocument Runfile, out XmlDocument RunfileVerificationErrors)
+        {
+            //StringWriter sw = new StringWriter(); 
+            //XmlTextWriter xw = new XmlTextWriter(sw); 
+            //xmlDoc.WriteTo(xw); 
+            //return sw.ToString();
+            string VErrors;
+
+         
+
+            if (EFITestWrapper.EFI.VerifyRunfile( Xml2Str(Runfile), out VErrors))
+            {
+                //some errors
+
+                RunfileVerificationErrors.Load(new StringReader(VErrors));
+                return true;
+            }
+            else
+            {
+                //no errors
+                RunfileVerificationErrors = null;
+                return false;
+
+            }
+            //public static bool VerifyRunfile(string RunfileXML, out string VerificationXML)
+
+
+        }
+
+
         //[EFITestWrapper Hook to update the RunfileObject]
         //
         //public void EFIUpdate(XmlDocument VerificationErrors)
@@ -567,6 +609,9 @@ namespace RunfileEditor
             //6.) Send file back
             return NewRunfile;
         }
+
+
+
 
         #endregion
 

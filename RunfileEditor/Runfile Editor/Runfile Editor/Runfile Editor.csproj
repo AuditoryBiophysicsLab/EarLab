@@ -116,6 +116,7 @@
     <Compile Include="RunfileOutput.cs" />
     <Compile Include="RunfileParameter.cs" />
     <Compile Include="RunFileXML.cs" />
+    <Compile Include="XmlUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="EFI_Interaction_Sketch.txt" />
