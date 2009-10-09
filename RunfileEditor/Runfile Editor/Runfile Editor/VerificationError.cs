@@ -13,7 +13,7 @@ namespace RunfileEditor
 
     public class VerificationError
     {
-        #region Data Members
+        #region Data Members  -- Just a copy of the XML Node
         private XmlNode ErrorNode;
         //<VerificationEvent>
         //  <Severity>
@@ -30,135 +30,165 @@ namespace RunfileEditor
 
         #region Properties
 
-        public string FullErrorPath
+            public string FullErrorPath
+            {
+
+                get
+                {
+                    //ErrorNode.GetElementsByTagName("Severity");
+                    //ErrorNode.SelectSingleNode("Severity").InnerText
+                    return ErrorNode["Path"].InnerText;
+                }
+
+            }
+
+            /// <summary>
+            /// 0.) Module Name
+            /// 1.) This position is discarded as a result of the XML.
+            /// 2.) A label for a input, output or parameter.
+            /// 3.) The name of the input, output or parameter.
+            /// </summary>
+            public string[] PathArray
+            {
+
+                #region Some Notes
+                //<Path>
+                    //  LeftPinna.Parameters.Parameter.SampleRate_Hz
+                    //</Path>
+                    //Path Splitter
+
+
+                    //Checker
+                    //foreach (string item in PathArray)
+                    //{
+                    //    Console.WriteLine(item);
+                //)
+                #endregion
+
+                get
+                {
+                    //string path = ErrorNode.["Path"].InnerText;
+                    string[] PathArray = FullErrorPath.Split('.');
+                    return PathArray;
+                }
+
+            }
+
+            public string ModuleName
+            {
+                get
+                {
+                    return PathArray[0];      
+                }
+
+            }
+
+            public string IOPName
+            {
+                get
+                {
+                    if( PathArray[3] != null)
+                    { return PathArray[3].ToString();}
+
+                    else
+                    { return null; }
+                }
+
+
+            }
+
+            public string Severity
+            {
+                get
+                {
+
+                    return ErrorNode["Severity"].InnerText;
+                }
+
+            }
+
+            public string Message
+            {
+
+                get
+                {
+                    return ErrorNode["Message"].InnerText;
+                }
+
+            }
+
+            //This way we can use a very easy Case statement to handle 
+            //Updating the RunfileObject
+            public bool input
         {
 
             get
             {
-                //ErrorNode.GetElementsByTagName("Severity");
-                //ErrorNode.SelectSingleNode("Severity").InnerText
-                return ErrorNode["Severity"].InnerText;
+                if (PathArray[2].ToString().ToLower() == "input")
+                { return true; }
+
+                else
+                { return false; }
+            }
+
+
+        }
+
+            public bool output
+        {
+
+            get
+            {
+                if (PathArray[2].ToString().ToLower() == "output")
+                { return true; }
+
+                else
+                { return false; }
             }
 
         }
 
-
-
-
-        public string ModuleName
+            public bool parameter
         {
             get
             {
-               
-                
+                if (PathArray[2].ToString().ToLower() == "parameter")
+                { return true; }
+
+                else
+                { return false; }
             }
 
         }
 
-        public string IOPName
-        {
-            get
-            {
-
-            }
-
-
-        }
-
-
-        public string Severity
-        {
-            get
-            {
-            }
-
-        }
-
-        public string Message
+            public bool module
         {
 
             get
             {
+                if (PathArray[2].ToString().ToLower() == "module")
+                { return true; }
 
-            }
-
-        }
-
-        public bool parameter
-        {
-            get
-            {
-                
-            }
-
-        }
-
-
-        public bool input
-        {
-
-            get
-            {
-
-            }
-
-
-        }
-
-        public bool output
-        {
-
-            get
-            {
-            }
-
-        }
-
-
-
-        public bool module
-        {
-
-            get
-            {
+                else
+                { return false; }
             }
 
         }
 
         #endregion
 
-
         #region Constructors
-
         public VerificationError(XmlNode VError)
         {
             ErrorNode = VError;
 
         }
-        
+
+       
+
         #endregion 
 
-
-        #region methods
-
-        //the split path
-        private string[] path;
- 
-
-
-
-
-
-
-
-
-
-        #endregion
-
-
-
     }
-
 
 
     //class ErrorDirectory

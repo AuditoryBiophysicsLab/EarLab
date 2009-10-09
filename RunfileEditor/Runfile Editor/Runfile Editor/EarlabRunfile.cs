@@ -199,14 +199,14 @@ namespace RunfileEditor
         /// </summary>
         /// <param name="VError"></param>
         /// <returns></returns>
-        public EarlabSession this[VerificationError VError]
-        {
-            get
-            {
-               //
+        //public EarlabSession this[VerificationError VError]
+        //{
+        //    get
+        //    {
+        //       //
 
-            }
-        }
+        //    }
+        //}
 
 
 
