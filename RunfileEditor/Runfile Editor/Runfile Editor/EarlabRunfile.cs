@@ -14,7 +14,10 @@ namespace RunfileEditor
 
     /// <summary>
     /// This class creates the RunfileObject that contains all the XML information in a class structure.
-    /// This also 
+    /// This also has a directory accessor that allows you to return any object:
+    /// 1.) Module
+    /// 2.) I-O-P
+    /// as a 
     /// </summary>
     public class EarlabRunfile
     {
@@ -187,7 +190,42 @@ namespace RunfileEditor
             }
         }
         //
-         #endregion
+
+        /// <summary>
+        /// This allows you to access the Earlabsession object you want by using the path.
+        /// 1.) Module
+        /// 2.) I-O-P
+        /// 3.) Thus you have to cast the object when you want to use it.
+        /// </summary>
+        /// <param name="VError"></param>
+        /// <returns></returns>
+        public EarlabSession this[VerificationError VError]
+        {
+            get
+            {
+               //
+
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// The business end here
+        /// </summary>
+        /// <param name="ErrorPath"></param>
+        /// <returns></returns>
+        //public EarlabSession this[string ErrorPath]
+        //{
+        //    get
+        //    {
+
+
+        //    }
+        //}
+
+        #endregion
         
         #region Constructors
         //-------------------------------------------------------------------->
@@ -337,14 +375,14 @@ namespace RunfileEditor
             //xmlDoc.WriteTo(xw); 
             //return sw.ToString();
             string VErrors;
+            RunfileVerificationErrors = null;
+        
 
-         
-
-            if (EFITestWrapper.EFI.VerifyRunfile( Xml2Str(Runfile), out VErrors))
+            if (EFITestWrapper.EFI.VerifyRunfile( XmlUtilities.Xml2Str(Runfile), out VErrors))
             {
                 //some errors
-
-                RunfileVerificationErrors.Load(new StringReader(VErrors));
+                
+                RunfileVerificationErrors.Load( new StringReader(VErrors) );
                 return true;
             }
             else
@@ -359,13 +397,6 @@ namespace RunfileEditor
 
         }
 
-
-        //[EFITestWrapper Hook to update the RunfileObject]
-        //
-        //public void EFIUpdate(XmlDocument VerificationErrors)
-
-        //Need to divide this guy up
-        //Takes in the Model Object produces XML
         public XmlDocument RunfileXMLCreate()
         {
             XmlDocument NewRunfile = new XmlDocument();
