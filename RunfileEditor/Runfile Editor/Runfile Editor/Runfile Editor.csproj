@@ -116,7 +116,6 @@
     <Compile Include="RunfileModuleInformation.cs" />
     <Compile Include="RunfileOutput.cs" />
     <Compile Include="RunfileParameter.cs" />
-    <Compile Include="RunFileXML.cs" />
     <Compile Include="XmlUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
