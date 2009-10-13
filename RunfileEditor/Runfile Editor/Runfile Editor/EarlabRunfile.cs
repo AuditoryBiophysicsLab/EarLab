@@ -213,7 +213,7 @@ namespace RunfileEditor
                 
 
                    //string searchString = VError.IOPName;
-                    //module
+                   //module
                    if (VError.IOPName == null )
                    {
                        foreach (EarlabModule currentModule in EarlabModules)
@@ -223,28 +223,37 @@ namespace RunfileEditor
                        }
 
                    }
+
+
                     //this is a input-output-parameter
-                       //VError.IOPType.ToLower()
+                    //VError.IOPType.ToLower()
                    else
                    {
                        
-
+                       //go through each module
                        foreach (EarlabModule currentModule in EarlabModules)
                        {
-                           if (currentModule.theEarlabModuleInformation.ExecutableName.ToLower() == VError.ModuleName)
+                           //We have the right module now
+                           if (VError.ModuleName == currentModule.theEarlabModuleInformation.ExecutableName.ToLower())
                            {
-                               //EarlabSession TheVar;
+                               
+                               //Now we need the input output or parameter
                                switch (VError.IOPType.ToLower())
                                {
 
                                    case "parameter":  
-                                 
+                                           //code pattern for finding the IOP
                                            foreach (EarlabParameter parameter in currentModule.EarlabParameters)
                                            {
                                                if (parameter.PName == VError.IOPName)
                                                    return parameter;
+
+                                               //we have some error
+                                               else
+                                                   return null;
                                            }
-                                       
+                                           break;
+
                                    case "input":
                                        
                                            //foreach (EarlabInput input in currentModule.EarlabInputs)
@@ -266,14 +275,22 @@ namespace RunfileEditor
                                            return null;
                                            //}
                                        
-                                       
+                                   default:
+                                        throw new System.NotSupportedException("The Error type " + VError.IOPType + " is not recognized.");
 
                                }//end switch
-
-                               throw new System.NotSupportedException("The pError type " + VError.IOPType + " is not recognized.");
                            }//end if
-                       }//end else
-                   }//end get
+
+                           //module name is not recognized what would this mean?
+                           //else
+                           //throw new System.NotSupportedException("The Error type " + VError.ModuleName + " is not recognized.");
+
+                       }//end foreach
+                       //this is the same problem as above -- module name not recognized, no reason to have the code twice.
+                     throw new System.NotSupportedException("The Error type " + VError.ModuleName + " is not recognized.");
+                   }//end else
+
+             throw new System.NotSupportedException("The Full Verification Error type with path" + VError.FullErrorPath + "is not recognized.");
             }
         }
 
