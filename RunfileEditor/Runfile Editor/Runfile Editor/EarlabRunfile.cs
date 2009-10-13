@@ -199,31 +199,87 @@ namespace RunfileEditor
         /// </summary>
         /// <param name="VError"></param>
         /// <returns></returns>
-        //public EarlabSession this[VerificationError VError]
-        //{
-        //    get
-        //    {
-        //       //
+        public EarlabSession this[VerificationError VError]
+        {
+            //problem if module error and parameter error.
+            //how to you return the problem twice.
+            //no problem, b/c there will be two diffferetn paths
+            //VError.ModuleName
+            //VError.parameter
+            //VError.IOPName
 
-        //    }
-        //}
+            get
+            {
+                
+
+                   //string searchString = VError.IOPName;
+                    //module
+                   if (VError.IOPName == null )
+                   {
+                       foreach (EarlabModule currentModule in EarlabModules)
+                       {
+                           if (currentModule.theEarlabModuleInformation.ExecutableName.ToLower() == VError.ModuleName)
+                               return currentModule;
+                       }
+
+                   }
+                    //this is a input-output-parameter
+                       //VError.IOPType.ToLower()
+                   else
+                   {
+                       
+
+                       foreach (EarlabModule currentModule in EarlabModules)
+                       {
+                           if (currentModule.theEarlabModuleInformation.ExecutableName.ToLower() == VError.ModuleName)
+                           {
+                               //EarlabSession TheVar;
+                               switch (VError.IOPType.ToLower())
+                               {
+
+                                   case "parameter":  
+                                 
+                                           foreach (EarlabParameter parameter in currentModule.EarlabParameters)
+                                           {
+                                               if (parameter.PName == VError.IOPName)
+                                                   return parameter;
+                                           }
+                                       
+                                   case "input":
+                                       
+                                           //foreach (EarlabInput input in currentModule.EarlabInputs)
+                                           //{
+                                           //    if (input.PName == VError.IOPName)
+                                           //        TheVar = input;
+                                           return null;
+
+                                           //}
+                                       
+                                       
+
+                                   case "output":
+                                       
+                                           //foreach (EarlabOutput output in currentModule.EarlabOutputs)
+                                           //{
+                                           //    if (output.PName == VError.IOPName)
+                                           //        TheVar = output;
+                                           return null;
+                                           //}
+                                       
+                                       
+
+                               }//end switch
+
+                               throw new System.NotSupportedException("The pError type " + VError.IOPType + " is not recognized.");
+                           }//end if
+                       }//end else
+                   }//end get
+            }
+        }
 
 
 
 
-        /// <summary>
-        /// The business end here
-        /// </summary>
-        /// <param name="ErrorPath"></param>
-        /// <returns></returns>
-        //public EarlabSession this[string ErrorPath]
-        //{
-        //    get
-        //    {
-
-
-        //    }
-        //}
 
         #endregion
         
@@ -396,6 +452,22 @@ namespace RunfileEditor
 
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ErrorObject"></param>
+        /// <returns></returns>
+        //public bool RunfileErrorUpdate(VerificationError ErrorObject)
+        //{
+        //    //1.)
+        //    //public EarlabSession this[VerificationError VError]
+        //        EarlabSession ESession = this[ErrorObject];
+
+
+
+
+        //}
 
         public XmlDocument RunfileXMLCreate()
         {
@@ -640,9 +712,6 @@ namespace RunfileEditor
             //6.) Send file back
             return NewRunfile;
         }
-
-
-
 
         #endregion
 
