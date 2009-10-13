@@ -10,7 +10,9 @@ namespace RunfileEditor
 
         //
 
-
+    /// <summary>
+    /// Creates a Verification object from the verification event node
+    /// </summary>
     public class VerificationError
     {
         #region Data Members  -- Just a copy of the XML Node
@@ -175,6 +177,25 @@ namespace RunfileEditor
 
         }
 
+            public string IOPType
+        {
+
+
+            get
+            {
+                if (input)
+                    return "input";
+                if (output)
+                    return "output";
+                if (parameter)
+                    return "parameter";
+                else
+                    return "error";
+
+            }
+
+        }
+
         #endregion
 
         #region Constructors
@@ -187,85 +208,9 @@ namespace RunfileEditor
        
 
         #endregion 
-
     }
 
 
-    //class ErrorDirectory
-    //{
-    //    //        #region Data Members
 
-    //    //        //
-    //    //        //
-    //    //        //list of Verification Error xml data
-    //    //        //
-    //    //        List<VErrorDataXML> ErrorXmlList = new List<VErrorDataXml>();
-    //    //        List<ErrorObject> ErrorObjectCollection = new List<ErrorObject>();
-
-
-    //    //         ///<summary>
-    //    //         ///Takes in the Runfile errors in xml
-    //    //         ///1.) Parses the errors
-    //    //         ///2.) Updates the Runfile Object with the errors
-    //    //         ///</summary>
-    //    //         ///<param name="RunfileVerificationErrors"></param>
-    //    //         ///<returns></returns>
-    //    //        public bool RunfileObjectUpdate(XmlDocument RunfileVerificationErrors)
-    //    //        {
-    //    //                          //<RunfileVerificationResults>
-    //    //                          //<VerificationEvent>
-    //    //                          //  <Severity>
-    //    //                          //    Warning
-    //    //                          //  </Severity>
-    //    //                          //  <Path>
-    //    //                          //    LeftMiddleEar
-    //    //                          //  </Path>
-    //    //                          //  <Message>
-    //    //                          //    Module does not support ModuleXML Interface
-    //    //                          //  </Message>
-    //    //                          //</VerificationEvent>
-    //    //                         //</RunfileVerificationResults>
-
-    //    //                XmlNodeList VerificationEventList = RunfileVerificationErrors.GetElementsByTagName("VerificationEvent");
-    //    //                foreach (XmlNode VerificationEvent in VerificationEventList)
-    //    //                {
-    //    //                    /// Converts XML Node Module into the collection of ModuleInfo and IOP 
-
-    //    //                        //<Path>
-    //    //                        //LeftPinna.Parameters.Parameter.SampleRate_Hz
-    //    //                        //</Path>
-    //    //                    //1.) Store Path
-    //    //                        //Module.Name
-    //    //                        //Module.Parameter.SampleRate_Hz
-
-
-    //    //                    //2.) Find I-O-P
-
-
-    //    //                    //3.) 
-
-
-
-    //    //                }
-    //    //        }
-
-    //    //        private bool VerificationEventParser(XmlNode VerificationNode)
-    //    //        {
-
-
-
-
-    //    //        }
-
-    //    //        [EFITestWrapper Hook to update the RunfileObject]
-
-    //    //        public void EFIUpdate(XmlDocument VerificationErrors)
-
-    //    //        Need to divide this guy up
-    //    //        Takes in the Model Object produces XML
-
-
-    //    //    }
-    //    //}
-    //}
+   
 }

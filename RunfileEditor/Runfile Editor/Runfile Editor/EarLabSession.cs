@@ -41,6 +41,10 @@ namespace RunfileEditor
             //Add on the Child items back into the top.    
             private List<EarlabSession> mChildren = new List<EarlabSession>();
 
+            //4.) Verification Errors
+            public string Severity;
+            public string Message;
+
         #endregion
 
         #region Data Properties
@@ -86,6 +90,11 @@ namespace RunfileEditor
             public List<EarlabParameter> EarlabParameters = new List<EarlabParameter>();
             public List<EarlabInput> EarlabInputs = new List<EarlabInput>();
             public List<EarlabOutput> EarlabOutputs = new List<EarlabOutput>();
+
+            //4.) Verification Errors
+            //public string Severity;
+            //public string Message;
+
         #endregion
 
 

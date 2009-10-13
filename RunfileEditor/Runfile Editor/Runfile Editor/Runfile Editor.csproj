@@ -72,7 +72,7 @@
     </Compile>
     <Compile Include="GuiHelpers.cs" />
     <Compile Include="ModuleGrid.cs">
-      <SubType>Form</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ModuleXML.cs" />
     <Compile Include="Program.cs" />
