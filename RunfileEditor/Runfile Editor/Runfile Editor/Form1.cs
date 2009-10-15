@@ -46,9 +46,8 @@ namespace RunfileEditor
         {
             if (RunfileObject != null)
             {
-                XmlDocument RunfileVerificationErrors;
-                RunfileDocument = RunfileObject.RunfileXMLCreate();
-                EFIVerification.GetRunfileEFIError(RunfileDocument, out RunfileVerificationErrors);
+                EFI_Run();
+
             }
             else
             {
@@ -61,6 +60,21 @@ namespace RunfileEditor
                 //"Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+        private void EFI_Run()
+        {
+            XmlDocument RunfileVerificationErrors;
+            RunfileDocument = RunfileObject.RunfileXMLCreate();
+
+            //need to give doc a title?
+
+            EFIVerification.GetRunfileEFIError(RunfileDocument, out RunfileVerificationErrors);
+
+            // 
+            //Process errors
+            RunfileObject.AllEarlabObjectUpdate(RunfileVerificationErrors);
+        
         }
 
         private void Exit_Click(object sender, EventArgs e)
