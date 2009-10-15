@@ -39,43 +39,16 @@ namespace RunfileEditor
         private void SaveXMLFile_Click(object sender, EventArgs e)
         {
             SaveXmlFile();
-
         }
 
 
         private void SendFileXMLToEFI_Click(object sender, EventArgs e)
         {
-            //This is the part that needs to be updated from the Verification.dll
-
-            //Send to EFI
-            //1.) Write the RunfileObject to an XML string
-
             if (RunfileObject != null)
             {
-
+                XmlDocument RunfileVerificationErrors;
                 RunfileDocument = RunfileObject.RunfileXMLCreate();
-                //2.) Send the Runfile XML string to the EFI and Receive XML Errors back
-                //3.) if xml has errors
-                //4.) RunfileObject.EFIUpdate(string VerificationErrors) to update spg
-                //     Update Runfile Object
-                //     Update display automatically
-                //     Use older code to use the path to update necessary RunfileObjects
-                //X.) else
-                //6.) Allow desktop earlab to run.
-
-
-                ///////to do this
-                //a.) RunfileObject --
-                //i.) str. severity, (already here) message on each parameter item.
-                //ii.)
-
-                //Do some operations on the Runfile Object ....
-
-                //Clear the old errors
-
-                //Discard any old verification information
-
-
+                EFIVerification.GetRunfileEFIError(RunfileDocument, out RunfileVerificationErrors);
             }
             else
             {
@@ -86,11 +59,7 @@ namespace RunfileEditor
                 //MessageBox.Show(
                 //"This would send the Runfile to Earlab.",
                 //"Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
-
-
-
 
         }
 

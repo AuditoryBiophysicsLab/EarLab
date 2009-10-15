@@ -43,6 +43,36 @@ a.) A RunfileObject class changes to handle Errors
         a.) --Severity {display what's there, -- (Warning, Error, OK)}
         b.) --Error Message from errorRunfile.
 
+		   
+		   Handling Directories!
+		   //settings.save() <-- saves in the path the users was just in.
+		   //building paths use path.combine() -- static function in
+		   //settings to remember the last place the user saves
+		   //MyDocuments --what the default places to save.
+				//Earlab
+						//
+						
+						
+->		Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+->		Environment.GetFolderPath(Environment.SpecialFolder.Personal)
+Environment.SpecialFolder.MyDocuments
+Environment.SpecialFolder.Desktop
+Environment.SpecialFolder.ApplicationData
+Environment.SpecialFolder.History
+Environment.SpecialFolder.ProgramFiles
+
+
+//////////////////////////////////////////////////////////////////////////
+Errorlog
+
+GUI paradigm
+
+--Error log
+-------log of errors for the session
+-------option to email the errors
+
+
+--Main Window
             SPG 
                 severity   -> change the color
                 msg        -> display a message that the given data is not acceptable.
@@ -66,22 +96,42 @@ a.) A RunfileObject class changes to handle Errors
 				
 		   >Xml Layer
 		   
+
+--Launch Application
+		  programmatically make button appear
+				if runfile object has no errors
+					make button appear
+					
+				On click of button
+					--save runfile
+						--check runfile
+						--receive errors
+							--if error blank
+							----save runfile
+								--launch application
+								 
 		   
-		   Handling Directories!
-		   //settings.save() <-- saves in the path the users was just in.
-		   //building paths use path.combine() -- static function in
-		   //settings to remember the last place the user saves
-		   //MyDocuments --what the default places to save.
-				//Earlab
-						//
-						
-						
-->		Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-->		Environment.GetFolderPath(Environment.SpecialFolder.Personal)
-Environment.SpecialFolder.MyDocuments
-Environment.SpecialFolder.Desktop
-Environment.SpecialFolder.ApplicationData
-Environment.SpecialFolder.History
-Environment.SpecialFolder.ProgramFiles
+--		  
+		
+                //2.) Send the Runfile XML string to the EFI and Receive XML Errors back
+                //3.) if xml has errors
+                //4.) RunfileObject.EFIUpdate(string VerificationErrors) to update spg
+                //     Update Runfile Object
+                //     Update display automatically
+                //     Use older code to use the path to update necessary RunfileObjects
+                //X.) else
+                //6.) Allow desktop earlab to run.
 
 
+                ///////to do this
+                //a.) RunfileObject --
+                //i.) str. severity, (already here) message on each parameter item.
+                //ii.)
+
+                //Do some operations on the Runfile Object ....
+
+                //Clear the old errors
+
+                //Discard any old verification information
+
+     
