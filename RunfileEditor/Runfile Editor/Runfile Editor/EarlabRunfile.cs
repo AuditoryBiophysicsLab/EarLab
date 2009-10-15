@@ -67,6 +67,7 @@ namespace RunfileEditor
         /// Modules carry two data structures: (XML data as strings),(XML data as the appropriate value)
         /// </summary>
         public List<EarlabModule> EarlabModules = new List<EarlabModule>();
+        private List<VerificationError> ErrorCollection = new List<VerificationError>();
         #endregion
 
         #region Properties
@@ -706,7 +707,7 @@ namespace RunfileEditor
         /// <returns></returns>
         private List<VerificationError> ErrorListCreator(XmlDocument RunfileVerificationErrors)
         {
-            List<VerificationError> ErrorCollection;
+            
             XmlNodeList VList = RunfileVerificationErrors.GetElementsByTagName("VerificationEvent");
 
             foreach (XmlNode errorNode in VList)
