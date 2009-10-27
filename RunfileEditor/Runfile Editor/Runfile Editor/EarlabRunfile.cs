@@ -67,7 +67,7 @@ namespace RunfileEditor
         /// Modules carry two data structures: (XML data as strings),(XML data as the appropriate value)
         /// </summary>
         public List<EarlabModule> EarlabModules = new List<EarlabModule>();
-        private List<VerificationError> ErrorCollection = new List<VerificationError>();
+        private List<VerificationError> VErrorCollection = new List<VerificationError>();
         #endregion
 
         #region Properties
@@ -607,98 +607,113 @@ namespace RunfileEditor
         /// <returns></returns>
         private void OneObjectErrorUpdate(VerificationError VError)
         {
+            //Problem with the design ---
+            //Once it HasChanged been updated we need to exit the loop.
+            //Each error is only going to be there 1 time.
+            //Once we find it we need out!!
 
-                   //string searchString = VError.IOPName;
-                   //module
-                   if (VError.IOPName == null )
-                   {
-                       foreach (EarlabModule currentModule in EarlabModules)
-                       {
-                           if (currentModule.theEarlabModuleInformation.ExecutableName.ToLower() == VError.ModuleName)
-                           {
-                               //update module with verror info
-                               currentModule.Message = VError.Message;
-                               currentModule.Severity = VError.Severity;
-                               //return true;
-                           }
-                       }
-
-                   }
-
-
-                    //this is a input-output-parameter
-                    //VError.IOPType.ToLower()
-                   else
-                   {
-                       
-                       //go through each module
-                       foreach (EarlabModule currentModule in EarlabModules)
-                       {
-                           //We have the right module now
-                           if (VError.ModuleName == currentModule.theEarlabModuleInformation.ExecutableName.ToLower())
-                           {
-                               
-                               //Now we need the input output or parameter
-                               switch (VError.IOPType.ToLower())
-                               {
-
-                                   case "parameter":  
-                                           //code pattern for finding the IOP
-                                           foreach (EarlabParameter parameter in currentModule.EarlabParameters)
-                                           {
-                                               if (parameter.PName == VError.IOPName)
-                                               {
-                                                   //update parameter with verror info
-                                                   parameter.Message = VError.Message;
-                                                   parameter.Severity = VError.Severity;
-                                                   //return true;
-                                               }
-                                               
-                                                   //return false;
-                                           }
-                                           break;
-
-                                   case "input":
-                                       
-                                           //foreach (EarlabInput input in currentModule.EarlabInputs)
-                                           //{
-                                           //    if (input.PName == VError.IOPName)
-                                           //        TheVar = input;
-                                           //return true;
-                                               break;
-
-
-                                           //}
-                                       
-                                       
-
-                                   case "output":
-                                       
-                                           //foreach (EarlabOutput output in currentModule.EarlabOutputs)
-                                           //{
-                                           //    if (output.PName == VError.IOPName)
-                                           //        TheVar = output;
-                                           //return true;
-                                           //}
-                                       break;
-
-                                   default:
-                                        throw new System.NotSupportedException("The Error type " + VError.IOPType + " is not recognized.");
-
-                               }//end switch
-                           }//end if
-
-                           //module name is not recognized what would this mean?
-                           //else
-                           //throw new System.NotSupportedException("The Error type " + VError.ModuleName + " is not recognized.");
-
-                       }//end foreach
-                       //this is the same problem as above -- module name not recognized, no reason to have the code twice.
-                     throw new System.NotSupportedException("The Error type " + VError.ModuleName + " is not recognized.");
-                   }//end else
-
-             throw new System.NotSupportedException("The Full Verification Error type with path" + VError.FullErrorPath + "is not recognized.");
+            //string searchString = VError.IOPName;
+            //module
+            // if null then it is a module, else it is an IOP
+            if (VError.IOPName == null)
+            {
+                #region Module Level Error Method
+                foreach (EarlabModule currentModule in EarlabModules)
+                {
+                    //This is NOT working b/c it is not referencing the right Object!!!
+                    if (currentModule.theEarlabModuleInformation.ExecutableName.ToLower() == VError.ModuleName.ToLower())
+                    {
+                        //update module with verror info
+                        currentModule.Message = VError.Message;
+                        currentModule.Severity = VError.Severity;
+                        return;
+                    }
+                }
+                #endregion
             }
+
+             //this is a input-output-parameter
+            //VError.IOPType.ToLower()
+            else if (VError.IOPType.ToLower() == "parameter" || VError.IOPType.ToLower() == "input" || VError.IOPType.ToLower() == "output")
+            {
+                #region IOP Level Error Method
+                //go through each module
+                foreach (EarlabModule currentModule in EarlabModules)
+                {
+                    //We have the right module now
+                    if (VError.ModuleName.ToLower() == currentModule.theEarlabModuleInformation.ExecutableName.ToLower())
+                    {
+
+                        //Now we need the input output or parameter
+                        switch (VError.IOPType.ToLower())
+                        {
+
+                            case "parameter":
+                                //code pattern for finding the IOP
+                                foreach (EarlabParameter parameter in currentModule.EarlabParameters)
+                                {
+                                    if (parameter.PName.ToLower() == VError.IOPName.ToLower())
+                                    {
+                                        //update parameter with verror info
+                                        parameter.Message = VError.Message;
+                                        parameter.Severity = VError.Severity;
+                                        //return true;
+                                        return;
+                                    }
+
+                                }
+                                //This means that the error sent back from the EFI is a parameter, but not named properly.
+                                throw new System.NotSupportedException("The Parameter Name " + VError.IOPName + " is not recognized.");
+                                //break;
+
+                            case "input":
+
+                                //foreach (EarlabInput input in currentModule.EarlabInputs)
+                                //{
+                                //    if (input.PName == VError.IOPName)
+                                //        TheVar = input;
+                                //return;
+                                break;
+
+
+                            //}
+
+
+
+                            case "output":
+
+                                //foreach (EarlabOutput output in currentModule.EarlabOutputs)
+                                //{
+                                //    if (output.PName == VError.IOPName)
+                                //        TheVar = output;
+                                //return true;
+                                //}
+                                break;
+
+                            default:
+                                throw new System.NotSupportedException("The Error type " + VError.IOPType + " is not recognized.");
+                                
+
+                        }//end switch
+                    }//end if
+
+                    //module name is not recognized what would this mean?
+                    //else
+                    //throw new System.NotSupportedException("The Error type " + VError.ModuleName + " is not recognized.");
+
+                }//end foreach
+                #endregion
+                //this is the same problem as above -- module name not recognized, no reason to have the code twice.
+                //throw new System.NotSupportedException("The Error type " + VError.ModuleName + " is not recognized.");
+
+            }//end else if
+
+            //catch -- all we have soem error and it doesn't correspond to a module or module's IOP.
+            else
+            {
+                throw new System.NotSupportedException("The Full Verification Error type with path " + VError.FullErrorPath + " is not recognized.");
+            }
+        }
 
         /// <summary>
         /// 
@@ -713,10 +728,10 @@ namespace RunfileEditor
             foreach (XmlNode errorNode in VList)
             {
                 /// Converts XML Node Module into the collection of ModuleInfo and IOP 
-                ErrorCollection.Add( new VerificationError(errorNode) );
+                VErrorCollection.Add( new VerificationError(errorNode) );
             }
 
-            return ErrorCollection;
+            return VErrorCollection;
         }
 
     }
