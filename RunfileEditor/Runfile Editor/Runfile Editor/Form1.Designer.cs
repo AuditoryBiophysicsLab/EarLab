@@ -28,13 +28,15 @@ namespace RunfileEditor
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lblCurrentPath = new System.Windows.Forms.Label();
+            this.listViewErrors = new System.Windows.Forms.ListView();
+            this.ilLarge = new System.Windows.Forms.ImageList(this.components);
+            this.ilSmall = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.OpenXMLRunfile = new System.Windows.Forms.Button();
             this.OpenFile = new System.Windows.Forms.Button();
@@ -51,6 +53,7 @@ namespace RunfileEditor
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,11 +71,11 @@ namespace RunfileEditor
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.radioButton4);
-            this.tabPage1.Controls.Add(this.richTextBox1);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.lblCurrentPath);
+            this.tabPage1.Controls.Add(this.listViewErrors);
             this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.OpenXMLRunfile);
             this.tabPage1.Controls.Add(this.OpenFile);
@@ -86,28 +89,40 @@ namespace RunfileEditor
             this.tabPage1.Text = "GUI Home";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // lblCurrentPath
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(17, 37);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(79, 17);
-            this.radioButton4.TabIndex = 19;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "radioButton\r\n";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.lblCurrentPath.Location = new System.Drawing.Point(17, 262);
+            this.lblCurrentPath.Name = "lblCurrentPath";
+            this.lblCurrentPath.Size = new System.Drawing.Size(993, 16);
+            this.lblCurrentPath.TabIndex = 3;
             // 
-            // richTextBox1
+            // listViewErrors
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(16, 278);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(547, 187);
-            this.richTextBox1.TabIndex = 18;
-            this.richTextBox1.Text = "";
+            this.listViewErrors.LargeImageList = this.ilLarge;
+            this.listViewErrors.Location = new System.Drawing.Point(16, 281);
+            this.listViewErrors.MultiSelect = false;
+            this.listViewErrors.Name = "listViewErrors";
+            this.listViewErrors.Size = new System.Drawing.Size(994, 200);
+            this.listViewErrors.SmallImageList = this.ilSmall;
+            this.listViewErrors.TabIndex = 0;
+            this.listViewErrors.UseCompatibleStateImageBehavior = false;
+            this.listViewErrors.View = System.Windows.Forms.View.List;
+            // 
+            // ilLarge
+            // 
+            this.ilLarge.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.ilLarge.ImageSize = new System.Drawing.Size(32, 32);
+            this.ilLarge.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // ilSmall
+            // 
+            this.ilSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.ilSmall.ImageSize = new System.Drawing.Size(16, 16);
+            this.ilSmall.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(697, 278);
+            this.pictureBox1.Location = new System.Drawing.Point(698, 37);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(252, 187);
             this.pictureBox1.TabIndex = 17;
@@ -116,26 +131,16 @@ namespace RunfileEditor
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(765, 222);
+            this.label3.Location = new System.Drawing.Point(754, 4);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 13);
             this.label3.TabIndex = 15;
             this.label3.Text = "Small Picture of the Model";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 296);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Error information:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(215, 15);
+            this.label1.Location = new System.Drawing.Point(56, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(173, 13);
             this.label1.TabIndex = 11;
@@ -144,7 +149,7 @@ namespace RunfileEditor
             // OpenXMLRunfile
             // 
             this.OpenXMLRunfile.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.OpenXMLRunfile.Location = new System.Drawing.Point(16, 60);
+            this.OpenXMLRunfile.Location = new System.Drawing.Point(16, 70);
             this.OpenXMLRunfile.Name = "OpenXMLRunfile";
             this.OpenXMLRunfile.Size = new System.Drawing.Size(254, 53);
             this.OpenXMLRunfile.TabIndex = 7;
@@ -158,27 +163,27 @@ namespace RunfileEditor
             this.OpenFile.Name = "OpenFile";
             this.OpenFile.Size = new System.Drawing.Size(254, 50);
             this.OpenFile.TabIndex = 3;
-            this.OpenFile.Text = "Bye Bye";
+            this.OpenFile.Text = "Exit Runfile Editor";
             this.OpenFile.UseVisualStyleBackColor = true;
             this.OpenFile.Click += new System.EventHandler(this.Exit_Click);
             // 
             // SendFileXMLToEFI
             // 
-            this.SendFileXMLToEFI.Location = new System.Drawing.Point(483, 60);
+            this.SendFileXMLToEFI.Location = new System.Drawing.Point(288, 70);
             this.SendFileXMLToEFI.Name = "SendFileXMLToEFI";
             this.SendFileXMLToEFI.Size = new System.Drawing.Size(254, 53);
             this.SendFileXMLToEFI.TabIndex = 2;
-            this.SendFileXMLToEFI.Text = "Send XML Run File to Earlab";
+            this.SendFileXMLToEFI.Text = "Send Runfile to Earlab";
             this.SendFileXMLToEFI.UseVisualStyleBackColor = true;
             this.SendFileXMLToEFI.Click += new System.EventHandler(this.SendFileXMLToEFI_Click);
             // 
             // SaveXMLRunfile
             // 
-            this.SaveXMLRunfile.Location = new System.Drawing.Point(17, 119);
+            this.SaveXMLRunfile.Location = new System.Drawing.Point(16, 129);
             this.SaveXMLRunfile.Name = "SaveXMLRunfile";
             this.SaveXMLRunfile.Size = new System.Drawing.Size(254, 50);
             this.SaveXMLRunfile.TabIndex = 1;
-            this.SaveXMLRunfile.Text = "Save XML Run File";
+            this.SaveXMLRunfile.Text = "Save XML Runfile";
             this.SaveXMLRunfile.UseVisualStyleBackColor = true;
             this.SaveXMLRunfile.Click += new System.EventHandler(this.SaveXMLFile_Click);
             // 
@@ -266,6 +271,15 @@ namespace RunfileEditor
             this.toolStripMenuItem17.Size = new System.Drawing.Size(139, 22);
             this.toolStripMenuItem17.Text = "Earlab Help";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(393, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "label2";
+            // 
             // frmContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,7 +289,7 @@ namespace RunfileEditor
             this.Controls.Add(this.tabControl1);
             this.IsMdiContainer = true;
             this.Name = "frmContainer";
-            this.Text = "Earlab GUI version .2";
+            this.Text = "Earlab GUI version .5";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -289,12 +303,28 @@ namespace RunfileEditor
 
         #endregion
 
+
+        private void button_create_if_no_errors()
+        {
+            this.button1 = new System.Windows.Forms.Button();
+            // 
+            // button1
+            // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.button1.Location = new System.Drawing.Point(288, 185);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(254, 50);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Only Appear if No Errors";
+            this.button1.UseVisualStyleBackColor = true;
+        }
+
+
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button OpenFile;
         private System.Windows.Forms.Button SendFileXMLToEFI;
         private System.Windows.Forms.Button SaveXMLRunfile;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button OpenXMLRunfile;
         private System.Windows.Forms.Label label3;
@@ -311,8 +341,8 @@ namespace RunfileEditor
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
 
 
     }

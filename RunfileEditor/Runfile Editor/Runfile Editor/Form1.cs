@@ -24,6 +24,20 @@ namespace RunfileEditor
 
         #endregion
 
+        #region ErrorViewList Data members
+        private System.Collections.Specialized.StringCollection folderCol;
+
+        //Not quite sure about these two...
+        private System.Windows.Forms.ImageList ilLarge;
+        private System.Windows.Forms.ImageList ilSmall;
+
+        //This is the list view
+        private System.Windows.Forms.ListView listViewErrors;
+
+        //This is the label that goes on top of the errors
+        private System.Windows.Forms.Label lblCurrentPath;
+
+        #endregion
 
         public frmContainer()
         {
@@ -33,7 +47,11 @@ namespace RunfileEditor
             //RunfileEditor.frmChild child = new RunfileEditor.frmChild(this);
             //Show the form
             //child.Show(); --> pops it from start.
-            
+
+            //Error View List
+            InitializeErrorView();
+            InitializeErrorExtras();
+            button_create_if_no_errors();
         }
 
         private void SaveXMLFile_Click(object sender, EventArgs e)
@@ -41,12 +59,18 @@ namespace RunfileEditor
             SaveXmlFile();
         }
 
-
         private void SendFileXMLToEFI_Click(object sender, EventArgs e)
         {
             if (RunfileObject != null)
             {
+                //EFI works.
                 EFI_Run();
+
+                //Make dummy Errors Show up in List view --
+                PaintListView("C:\\");
+
+                //Make Errors from the EFI show up in list view.
+                //ProductionListView(RunfileObject);
 
             }
             else
@@ -75,6 +99,19 @@ namespace RunfileEditor
             //Process errors
             RunfileObject.AllEarlabObjectUpdate(RunfileVerificationErrors);
         
+            //Display Errors on "Summary" GUI
+            //if no errors, create the Desktop Earlab launch
+            button_create_if_no_errors();
+
+        }
+
+        private void GUIErrorDisplay()
+        {
+
+
+
+
+
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -267,8 +304,8 @@ namespace RunfileEditor
                 //}
 
                 //if button 4
-                if (radioButton4.Checked)
-                {
+                //if (radioButton4.Checked)
+                //{
                     string FileNameTemp;
                     //1.) Open File
                     //a.) Open file
@@ -280,8 +317,8 @@ namespace RunfileEditor
                     openFileDialog1.Title = "Please open a saved Run File";
 
                     //Set items
-                    openFileDialog1.InitialDirectory =
-                        System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                    //openFileDialog1.InitialDirectory =
+                    //    System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
 
                     //.xml ToDo: own "file format" .Earlab hehe
@@ -316,7 +353,7 @@ namespace RunfileEditor
                     }
 
 
-                }// end button 4
+                //}// end button 4
 
                 //3.) Create a RunfileObject
                 //This should have entire Runfile in testRunfile
@@ -508,6 +545,218 @@ namespace RunfileEditor
         }
 
 
+        //These are all ErrorView Items
+        public void InitializeErrorExtras()
+        {
+            // Init ListView and folder collection
+            folderCol = new System.Collections.Specialized.StringCollection();
+            CreateHeadersAndFillListView();
+            PaintListView(@"C:\");
+            //not sure what this does
+            folderCol.Add(@"C:\");
+
+            //Create this event handler to move to the tab that needs to be edited
+            this.listViewErrors.ItemActivate += new System.EventHandler(this.listViewErrors_ItemActivate);
+        }
+
+        private void InitializeErrorView()
+        {
+           
+
+        }
+
+        /// <summary>
+        /// Labels the columns
+        /// </summary>
+        private void CreateHeadersAndFillListView()
+        {
+            ColumnHeader colHead;
+
+            colHead = new ColumnHeader();
+            colHead.Text = "Error Path";
+            colHead.Width = 100;
+            this.listViewErrors.Columns.Add(colHead);
+
+            colHead = new ColumnHeader();
+            colHead.Text = "Warning Level";
+            colHead.Width = 100;
+            this.listViewErrors.Columns.Add(colHead);
+
+            colHead = new ColumnHeader();
+            colHead.Text = "Warning Message";
+            colHead.Width = 500;
+            this.listViewErrors.Columns.Add(colHead);
+        }
+
+
+        //Can reorganize system here:
+        private void PaintListView(string root)
+        {
+            try
+            {
+                ListViewItem lvi;
+                ListViewItem.ListViewSubItem lvsi;
+
+                //Adds the label above the error list
+                //this.lblCurrentPath.Text = root + "    (Double click to display the path name)";
+                
+                this.lblCurrentPath.Text = " Errors Present in the Runfile Document";
+
+                if (RunfileObject != null)
+                {
+                    //Gets information from the directory
+                    System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(root);
+                    DirectoryInfo[] dirs = dir.GetDirectories();
+                    FileInfo[] files = dir.GetFiles();
+
+
+                    this.listViewErrors.Items.Clear();
+                    this.listViewErrors.BeginUpdate();
+
+
+                    //this populatulates the list.
+                    foreach (System.IO.DirectoryInfo di in dirs)
+                    {
+                        lvi = new ListViewItem();
+                        lvi.Text = di.Name;
+                        //lvi.ImageIndex = 0;
+                        lvi.Tag = di.FullName;
+
+                        lvsi = new ListViewItem.ListViewSubItem();
+                        lvsi.Text = "sub item";
+                        lvi.SubItems.Add(lvsi);
+
+                        lvsi = new ListViewItem.ListViewSubItem();
+                        lvsi.Text = di.LastAccessTime.ToString();
+                        lvi.SubItems.Add(lvsi);
+
+                        this.listViewErrors.Items.Add(lvi);
+                    }
+
+
+                    ////This adds in the error to the list
+                    //foreach (VerificationError error1 in RunfileObject.RunfileVerificationErrors)
+                    //{
+                    //   lvi = new ListViewItem();
+                    //   lvi.Text = error1.FullErrorPath;
+                    //   //lvi.ImageIndex = 0;
+                    //   lvi.Tag = error1.Message;
+                    //   this.listViewErrors.Items.Add(lvi);
+                    //}
+                }
+
+                this.listViewErrors.EndUpdate();
+            }
+            catch (System.Exception err)
+            {
+                MessageBox.Show("Error: " + err.Message);
+            }
+
+            this.listViewErrors.View = View.Details;
+        }
+
+        private void listViewErrors_ItemActivate(object sender, System.EventArgs e)
+        {
+            System.Windows.Forms.ListView lw = (System.Windows.Forms.ListView)sender;
+            string filename = lw.SelectedItems[0].Tag.ToString();
+
+            PaintListView(filename);
+            folderCol.Add(filename);
+        }
+
+
+
+
+
+
+        //private void ProductionListView(EarlabRunfile RunfileObject)
+        //{
+        //    try
+        //    {
+        //        ListViewItem lvi;
+        //        ListViewItem.ListViewSubItem lvsi;
+
+        //        //Adds the label above the error list
+        //        //this.lblCurrentPath.Text = root + "    (Double click to display the path name)";
+
+        //        this.lblCurrentPath.Text = " Errors Present in the Runfile Document";
+
+        //        if (RunfileObject != null)
+        //        {
+
+        //            this.listViewErrors.Items.Clear();
+        //            this.listViewErrors.BeginUpdate();
+
+        //            //
+        //            //this populatulates the list.
+        //            //
+
+                    
+        //            foreach (EarlabModule Module in RunfileObject.EarlabModules)
+        //            {
+        //                //1.) If error --- loop to create error display for each error.
+        //                //if it is true and Module ---
+        //                if ( true )
+        //                {
+        //                    //2.) Display Error
+        //                    lvi = new ListViewItem();
+        //                    lvi.Text = di.Name;
+        //                    lvi.Tag = di.FullName;
+
+        //                    //This links to another item about things
+        //                    //lvsi = new ListViewItem.ListViewSubItem();
+        //                    //lvsi.Text = "sub item";
+        //                    //lvi.SubItems.Add(lvsi);
+
+        //                    lvsi = new ListViewItem.ListViewSubItem();
+        //                    lvsi.Text = di.LastAccessTime.ToString();
+        //                    lvi.SubItems.Add(lvsi);
+
+        //                    this.listViewErrors.Items.Add(lvi);
+        //                }
+                        
+        //                //// if true and IOP 
+        //                //else if (true)
+        //                //{
+        //                //    //2.) Display Error
+        //                //    lvi = new ListViewItem();
+        //                //    lvi.Text = di.Name;
+        //                //    //lvi.ImageIndex = 0;
+        //                //    lvi.Tag = di.FullName;
+
+        //                //    lvsi = new ListViewItem.ListViewSubItem();
+        //                //    lvsi.Text = "sub item";
+        //                //    lvi.SubItems.Add(lvsi);
+
+        //                //    lvsi = new ListViewItem.ListViewSubItem();
+        //                //    lvsi.Text = di.LastAccessTime.ToString();
+        //                //    lvi.SubItems.Add(lvsi);
+
+        //                //    this.listViewErrors.Items.Add(lvi);
+        //                //}
+        //            }
+
+        //            ////This adds in the error to the list
+        //            //foreach (VerificationError error1 in RunfileObject.RunfileVerificationErrors)
+        //            //{
+        //            //   lvi = new ListViewItem();
+        //            //   lvi.Text = error1.FullErrorPath;
+        //            //   //lvi.ImageIndex = 0;
+        //            //   lvi.Tag = error1.Message;
+        //            //   this.listViewErrors.Items.Add(lvi);
+        //            //}
+        //        }
+
+        //        this.listViewErrors.EndUpdate();
+        //    }
+        //    catch (System.Exception err)
+        //    {
+        //        MessageBox.Show("Error: " + err.Message);
+        //    }
+
+        //    this.listViewErrors.View = View.Details;
+
+        //}
 
 
     }
