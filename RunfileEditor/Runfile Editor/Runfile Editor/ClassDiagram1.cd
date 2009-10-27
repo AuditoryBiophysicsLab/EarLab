@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="RunfileEditor.ArrayCheck" Collapsed="true">
+    <Position X="25.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ArrayCheck.cs</FileName>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabInputFactory" Collapsed="true">
+    <Position X="27.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarlabInputFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.ModuleDirectory" Collapsed="true">
+    <Position X="25.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarlabModuleDirectory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAACCAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabOutputFactory" Collapsed="true">
+    <Position X="30.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarlabOutputFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameterFactory" Collapsed="true">
+    <Position X="32.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarlabParameterFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabRunfile" Collapsed="true">
+    <Position X="34.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarlabRunfile.cs</FileName>
+      <HashCode>AEAIAAAAAAjAAQMAKAgAAAAAAAAICQIAAgAAAAAAgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabSession" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAIAQACAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabModule" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAQAAAAAAAAAAAEAAAAAAAAAAAAACAAAAAAAAAAAAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabModuleInformation" Collapsed="true">
+    <Position X="29" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameter" Collapsed="true">
+    <Position X="13" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AACBQAAAgUAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameter&lt;T&gt;" Collapsed="true">
+    <Position X="13" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AACAAAAAAAAAAAAAAAAgAAgAIAAIAAAAAAAAIAAAgCA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameterInteger" Collapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameterDouble" Collapsed="true">
+    <Position X="18.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameterBoolean" Collapsed="true">
+    <Position X="20.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameterString" Collapsed="true">
+    <Position X="5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameterIntegerArray" Collapsed="true">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameterDoubleArray" Collapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameterBooleanArray" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabParameterStringArray" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabOutput" Collapsed="true">
+    <Position X="23" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabOutput&lt;T&gt;" Collapsed="true">
+    <Position X="23" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabOutputInt" Collapsed="true">
+    <Position X="23" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabInput" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabInput&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EarlabInputInt" Collapsed="true">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>EarLabSession.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.errorLog" Collapsed="true">
+    <Position X="27.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>errorLog.cs</FileName>
+      <HashCode>AAAAAAEAAAAAAAAIAAAACAgCAAAAAgEAAEAAJABAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.FileConvertors" Collapsed="true">
+    <Position X="29" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>FileConvertors.cs</FileName>
+      <HashCode>AAAEAAACgAAAABAAAAAAACCAAAAAAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.frmContainer" Collapsed="true">
+    <Position X="32.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Form1.cs</FileName>
+      <HashCode>8IxABAQAACIIAFAmACCgICCSXAhIQEEAAJA0QCFTBLA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.frmChild" Collapsed="true">
+    <Position X="30.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>frmChild.cs</FileName>
+      <HashCode>AAAAAAAAACAAAAACAACAAAACAAAYAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.ModuleGrid" Collapsed="true">
+    <Position X="27.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ModuleGrid.cs</FileName>
+      <HashCode>AAAQAAAAAAAAAQAAIAAAAAAAAAAAAAAAQAgAAAQAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.ModuleXML" Collapsed="true">
+    <Position X="29" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ModuleXML.cs</FileName>
+      <HashCode>AAAQAgAAAAAAAAAACABAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.ModuleXmlInformation" Collapsed="true">
+    <Position X="30.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ModuleXML.cs</FileName>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.ModuleXmlInput" Collapsed="true">
+    <Position X="32.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ModuleXML.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.ModuleXmlOutput" Collapsed="true">
+    <Position X="34.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ModuleXML.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.ModuleXmlParameter" Collapsed="true">
+    <Position X="25.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ModuleXML.cs</FileName>
+      <HashCode>ABAAAAABAABAAAAAAAAACAAAAAAAABAAAAAAABgEAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.Program" Collapsed="true">
+    <Position X="27.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Program.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.RunfileInformation" Collapsed="true">
+    <Position X="30.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>RunfileInformation.cs</FileName>
+      <HashCode>AAQAAAAAAAAAAgAAAAIAAAAwAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.RunfileInput" Collapsed="true">
+    <Position X="32.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>RunfileInput.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.RunfileModule" Collapsed="true">
+    <Position X="34.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>RunfileModule.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAIQAAAAAAAAAAAAAAAAAAAgEAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.RunfileModuleInformation" Collapsed="true">
+    <Position X="25.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>RunfileModuleInformation.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.RunfileOutput" Collapsed="true">
+    <Position X="27.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>RunfileOutput.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.RunfileParameter" Collapsed="true">
+    <Position X="29" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>RunfileParameter.cs</FileName>
+      <HashCode>AAAAAAAAAABAAAAAAAAgCAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.VerificationError" Collapsed="true">
+    <Position X="32.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>VerificationError.cs</FileName>
+      <HashCode>AAAAAAAAAAAIAAAABAAQAAAACAgAABACEAAAIBQAAAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.EFIVerification" Collapsed="true">
+    <Position X="25.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>VerificationError.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.XmlUtilities" Collapsed="true">
+    <Position X="34.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>XmlUtilities.cs</FileName>
+      <HashCode>AAAAABAAAAAIAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyTestApp.GuiFile" Collapsed="true">
+    <Position X="34.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>GuiHelpers.cs</FileName>
+      <HashCode>AAAQAIAgAAAACAAAAAAAQAAAAQAAAEAABAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.Properties.Resources" Collapsed="true">
+    <Position X="29" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RunfileEditor.Properties.Settings" Collapsed="true">
+    <Position X="30.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

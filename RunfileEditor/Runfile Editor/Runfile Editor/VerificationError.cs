@@ -31,7 +31,9 @@ namespace RunfileEditor
         //</VerificationEvent>
         #endregion
 
+        //Item = XmlUtilities.CleanInputXML(String_Item)'
         #region Properties
+        //Derivatives as listed:
 
             public string FullErrorPath
             {
@@ -40,7 +42,7 @@ namespace RunfileEditor
                 {
                     //ErrorNode.GetElementsByTagName("Severity");
                     //ErrorNode.SelectSingleNode("Severity").InnerText
-                    return ErrorNode["Path"].InnerText;
+                    return XmlUtilities.CleanInputXML(ErrorNode["Path"].InnerText);
                 }
 
             }
@@ -104,8 +106,7 @@ namespace RunfileEditor
             {
                 get
                 {
-
-                    return ErrorNode["Severity"].InnerText;
+                    return XmlUtilities.CleanInputXML(ErrorNode["Severity"].InnerText);
                 }
 
             }
@@ -115,7 +116,7 @@ namespace RunfileEditor
 
                 get
                 {
-                    return ErrorNode["Message"].InnerText;
+                    return XmlUtilities.CleanInputLeaveSpacesXML(ErrorNode["Message"].InnerText);
                 }
 
             }
@@ -235,8 +236,8 @@ namespace RunfileEditor
             if (EFITestWrapper.EFI.VerifyRunfile(XmlUtilities.Xml2Str(Runfile), out VErrors))
             {
                 //some errors
-
-                RunfileVerificationErrors.Load( new StringReader(VErrors) );
+                RunfileVerificationErrors = new XmlDocument();
+                RunfileVerificationErrors.LoadXml(VErrors);
                 return true;
             }
             else

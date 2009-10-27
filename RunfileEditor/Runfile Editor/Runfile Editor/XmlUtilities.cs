@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Resources;
 using System.Reflection;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.IO;
 
@@ -44,14 +45,26 @@ namespace RunfileEditor
             return sw.ToString();
         }
 
+        public static string CleanInputXML(string strIn)
+        {
+            strIn = CleanInputLeaveSpacesXML(strIn);
+            //remove spaces
+            strIn = Regex.Replace(strIn, " ",  "");
+            return strIn;
+        }
 
-        //public static XmlDocument Str2Xml(string XmlStr)
-        //{
-
-
-
-
-        //}
+        public static string CleanInputLeaveSpacesXML(string strIn)
+        {
+            // Replace invalid characters with empty strings.
+            //return Regex.Replace(strIn, @"[^\w\.@-]", "");
+            // "\r" 
+            // "\n"
+            // " "
+            // replace them all with ""
+            strIn = Regex.Replace(strIn, "\r", "");
+            strIn = Regex.Replace(strIn, "\n", "");
+            return strIn;
+        }
 
     }
 }

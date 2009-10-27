@@ -138,3 +138,85 @@ GUI paradigm
      
      
      System.IO.Path
+     
+fix the verification xml to work: 3 errors!
+     
+  <VerificationEvent>
+    <Severity>
+      Warning
+    </Severity>
+    <Path>
+      LeftPinna.Parameters.Parameter.SampleRate_Hz
+    </Path>
+    <Message>
+      Parameter out of range
+    </Message>
+  </VerificationEvent>
+  
+  <VerificationEvent>
+    <Severity>
+      Warning
+    </Severity>
+    <Path>
+      LeftMiddleEar
+    </Path>
+    <Message>
+      Module does not support ModuleXML Interface
+    </Message>
+  </VerificationEvent>
+  <VerificationEvent>
+    <Severity>
+      Error
+    </Severity>
+    <Path>
+      LeftCochlea
+    </Path>
+    <Message>
+      Module does not exist
+    </Message>
+  </VerificationEvent>
+  
+  I need a thread to keep refreshing the system.
+  
+
+  
+
+public class Example
+{
+
+}
+
+string XmlUtilities.CleanInputXML(string strIn)
+don't do this to the error message!
+
+Everytime you open a new document you need to remove all errors!
+
+Re format all the XML.
+
+
+==> how errors work at module level =>
+currentModule.path
+currentModule.Message = VError.Message;
+currentModule.Severity = VError.Severity;
+
+
+==>how errors work at parameter level =>
+parameter.path
+parameter.Message = VError.Message;
+parameter.Severity = VError.Severity;
+
+==> Error -> ListView
+session.path
+session.message
+session.severity
+
+
+a static method to place an earlabsession
+
+static void OutputErrorToListView(Earlabsession EarlabError,  )
+{
+
+
+
+}
+On-click movement to error location?
