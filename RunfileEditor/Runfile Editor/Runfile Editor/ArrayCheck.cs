@@ -151,7 +151,6 @@ namespace RunfileEditor
         }
 
         //public bool ArrayEquality
-
         public static bool ArrayEquality(double[] Array1, double[] Array2)
         {
             if (Array1.Length != Array2.Length)
@@ -165,6 +164,8 @@ namespace RunfileEditor
             return true;
 
         }
+
+
         //overload to handle ints
         public static bool ArrayEquality(int[] Array1, int[] Array2)
         {

@@ -129,10 +129,10 @@
     <Content Include="XML Docs\datasource.xml" />
     <Content Include="XML Docs\ModuleXMLFrag2.xml" />
     <Content Include="XML Docs\ModuleXMLFragment.xml" />
-    <Content Include="XML Docs\PinnaAndSink.xml" />
     <Content Include="XML Docs\RunfileFragment.xml" />
     <Content Include="XML Docs\RunfileFragment3.xml" />
     <Content Include="XML Docs\saveit.xml" />
+    <Content Include="XML Docs\simpleModel.xml" />
     <Content Include="XML Docs\tester.xml" />
     <Content Include="XML Test Files\ModuleXMLFragment.xml" />
     <Content Include="XML Test Files\RunfileFragment.xml" />

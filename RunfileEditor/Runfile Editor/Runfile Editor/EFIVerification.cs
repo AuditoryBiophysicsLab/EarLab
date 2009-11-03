@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
+
 
 namespace RunfileEditor
 {
@@ -17,10 +19,8 @@ namespace RunfileEditor
         /// <returns></returns>
         public static bool GetRunfileEFIError(XmlDocument Runfile, out XmlDocument RunfileVerificationErrors)
         {
-            //StringWriter sw = new StringWriter(); 
-            //XmlTextWriter xw = new XmlTextWriter(sw); 
-            //xmlDoc.WriteTo(xw); 
-            //return sw.ToString();
+
+
             string VErrors;
             RunfileVerificationErrors = null;
 
