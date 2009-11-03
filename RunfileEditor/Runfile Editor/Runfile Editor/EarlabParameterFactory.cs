@@ -113,7 +113,7 @@ namespace RunfileEditor
 
                     else
                         return new EarlabParameterInteger(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
-                            intDefault, intMin, intMax, intValue);
+                            intDefault, intMin, intMax, intValue, intValue);
 
 
 
@@ -130,7 +130,7 @@ namespace RunfileEditor
                         !double.TryParse(RFParameter.ParameterValue.InnerText, out dblValue)
                        ) return null;
                     return new EarlabParameterDouble(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
-                                                dblDefault, dblMin, dblMax, dblValue);
+                                                dblDefault, dblMin, dblMax, dblValue, dblValue);
 
                 case "boolean":
                 case "bool":
@@ -145,7 +145,7 @@ namespace RunfileEditor
                        ) return null;
 
                     return new EarlabParameterBoolean(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
-                                                boolDefault, boolMin, boolMax, boolValue);
+                                                boolDefault, boolMin, boolMax, boolValue, boolValue);
                 //I'll have to add some error checking here
                 // an array of bool vars, and a method that checks
                 // if any of the bools are false?
@@ -163,7 +163,7 @@ namespace RunfileEditor
                     // an array of bool vars, and a method that checks
                     // if any of the bools are false?
                     return new EarlabParameterString(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
-                                            stringDefault, stringMin, stringMax, stringValue);
+                                            stringDefault, stringMin, stringMax, stringValue, stringValue);
 
 
                 //Arrays -- wrote some nifty parsing and checking functions.
@@ -188,7 +188,7 @@ namespace RunfileEditor
                         ) { return null; }
 
                     return new EarlabParameterIntegerArray(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
-                                                intArrayDefault, intArrayMin, intArrayMax, intArrayValue);
+                                                intArrayDefault, intArrayMin, intArrayMax, intArrayValue, intArrayValue);
 
 
                 //Double Array and Float why preserve
@@ -218,7 +218,7 @@ namespace RunfileEditor
                     { return null; }
 
                     return new EarlabParameterDoubleArray(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
-                                                dblArrayDefault, dblArrayMin, dblArrayMax, dblArrayValue);
+                                                dblArrayDefault, dblArrayMin, dblArrayMax, dblArrayValue, dblArrayValue);
 
 
             }

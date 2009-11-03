@@ -49,12 +49,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayCheck.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="EarlabInputFactory.cs" />
     <Compile Include="EarlabModuleDirectory.cs" />
     <Compile Include="EarlabOutputFactory.cs" />
     <Compile Include="EarlabParameterFactory.cs" />
     <Compile Include="EarlabRunfile.cs" />
     <Compile Include="EarLabSession.cs" />
+    <Compile Include="EFIVerification.cs" />
     <Compile Include="VerificationError.cs" />
     <Compile Include="errorLog.cs" />
     <Compile Include="FileConvertors.cs" />
@@ -72,7 +74,7 @@
     </Compile>
     <Compile Include="GuiHelpers.cs" />
     <Compile Include="ModuleGrid.cs">
-      <SubType>Component</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuleXML.cs" />
     <Compile Include="Program.cs" />
@@ -127,8 +129,8 @@
     <Content Include="XML Docs\datasource.xml" />
     <Content Include="XML Docs\ModuleXMLFrag2.xml" />
     <Content Include="XML Docs\ModuleXMLFragment.xml" />
+    <Content Include="XML Docs\PinnaAndSink.xml" />
     <Content Include="XML Docs\RunfileFragment.xml" />
-    <Content Include="XML Docs\RunfileFragment2.xml" />
     <Content Include="XML Docs\RunfileFragment3.xml" />
     <Content Include="XML Docs\saveit.xml" />
     <Content Include="XML Docs\tester.xml" />

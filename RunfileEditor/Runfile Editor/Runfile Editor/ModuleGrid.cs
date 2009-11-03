@@ -50,6 +50,8 @@ public partial class frmContainer : Form
             tabControl1.TabPages.Add(tabPage);
         }
 
+        
+
         public void ModuleTab(EarlabModule theEarlabModule)
         {
             //This class creates tab on the form
@@ -64,8 +66,18 @@ public partial class frmContainer : Form
 
 
             //A.) Need to get a TITLE to push into it.
-            string ModuleTitle = theEarlabModule.theEarlabModuleInformation.InstanceName;
+            //B.) You want to update the item with a "*" to say it has changed since last saved?
+            // use "HasChanged" at the module level. HasChanged doesn't work :/
+            string ModuleTitle;
 
+            //if (theEarlabModule.HasChanged == true)
+            //{
+            //    ModuleTitle = theEarlabModule.theEarlabModuleInformation.InstanceName + "*";
+            //}
+            //else
+            //{
+                ModuleTitle = theEarlabModule.theEarlabModuleInformation.InstanceName;
+            //}
 
             //2.) Add Module Grid to Tab
             TabPage tabPage = new TabPage(ModuleTitle);
@@ -125,24 +137,26 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
 
         //test which works...
-        public void Initialize()
-        {
-            PropertyEnumerator catEnum;
-                catEnum = AppendRootCategory(1, "Paramter");
+    public void Initialize()
+    {
+        PropertyEnumerator catEnum;
+        catEnum = AppendRootCategory(1, "Paramter");
 
-                PropertyEnumerator propEnum;
-                
-                propEnum = AppendManagedProperty(catEnum, 3, "Double Value",
-                typeof(double), 9.09, "This is an input double");
+        PropertyEnumerator propEnum;
 
-            standardSettings();
-        }
+        propEnum = AppendManagedProperty(catEnum, 3, "Double Value",
+        typeof(double), 9.09, "This is an input double");
+
+        standardSettings();
+    }
 
 
     //initialize a module which works for
     //test Runfile modules
     public void Initialize(EarlabModule theEarlabModule)
         {
+        //[Display Event]
+            this.Clear();
             //Information directly from the Module
             //This just mirrors everything else.
             int propertyID = 0;
@@ -152,6 +166,8 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
             //There is a problem with the "PropertyEnumerator for the propEnum!"
 
+            //testing something -- earlab class knows what prop grid it is displayed on.
+            theEarlabModule.DisplayGrid = this; //[Display Event]
 
             //if module has params
             if (theEarlabModule.EarlabParameters.Count > 0)
@@ -222,6 +238,16 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
             this.Size = new System.Drawing.Size(695, 364);
         }
 
+    //[Property Changes] property changed This can call all the changes!
+    //Make a settings function that lists all the changes
+    //1.) EFI
+    //2.) If bad update
+    //3.) SPG
+    //4.) List View
+    //5.) Tab
+    //6.) Else 
+    //7.) Show button
+
     protected override void OnPropertyChanged(VisualHint.SmartPropertyGrid.PropertyChangedEventArgs e)
     {
         // on property change
@@ -233,13 +259,37 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
         //test
 
-        if (e.PropertyEnum.Property.Id == 1)
-            Application.UseWaitCursor = UseWaitCursor;
+        //if (RunfileObject != null)
+        //{
 
+        //    RunfileObject.EFI_Run();
+
+        //}
+
+        if (e.PropertyEnum.Property.Id > 0)
+        {
+            
+            OnEFIUpdate(e);
+            
+
+        }
 
         //All code goes above this SPG standard fragment.
         //Section 4.12 of the spg manual, p 37
         base.OnPropertyChanged(e);
+    }
+
+    protected void OnEFIUpdate(VisualHint.SmartPropertyGrid.PropertyChangedEventArgs e)
+    {
+
+        //Application.UseWaitCursor = UseWaitCursor;
+        PropertyEnumerator propEnum = e.PropertyEnum;
+
+        //
+        propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
+        propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
+        //RunfileEditor.frmContainer.  button_create_if_no_errors();
+
     }
 
     //Makes the parameters all at once
@@ -274,11 +324,18 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                         EarlabParam.PName,  //Name of the Parameter
                         EarlabParam,        //Object reference
                         "PValue",           //String name of the Parameter Value, given via reflection
-                        "it works"          //The comment, which will need to be updated.
+                        EarlabParam.Message //The comment, which will need to be updated.
                         );                  //end
 
                     //Standard Way of showing the thing.
+                   
                     propEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelEdit);
+                    //If there is a problem::::
+                    //propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
+                    //propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
+                    
+                    //weird -- propEnum.Property.Comment = "testing comment";
+
                     ExpandProperty(propEnum, true);
 
                     break;
@@ -294,7 +351,9 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                                     EarlabParam.PName,  //Name of the Parameter
                                     EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
-                                    "it works");        //The comment, which will need to be updated.
+                                    EarlabParam.Message//The comment, which will need to be updated.
+                                    
+                                    ); 
 
                     //Standard Way of showing the thing.
                     propEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelEdit);
@@ -388,21 +447,21 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
     }
 
     //Makes the inputs all at once
-    public void MakeInputs(List<EarlabInput> Inputs, PropertyEnumerator catEnum, ref int propertyID)
-    {
+    //public void MakeInputs(List<EarlabInput> Inputs, PropertyEnumerator catEnum, ref int propertyID)
+    //{
 
-        //create inputs
+    //    //create inputs
 
 
-    }
+    //}
     
-    //Makes the outputs all at once
-    public void MakeOutputs(List<EarlabOutput> Outputs, PropertyEnumerator catEnum, ref int propertyID)
-    {
+    ////Makes the outputs all at once
+    //public void MakeOutputs(List<EarlabOutput> Outputs, PropertyEnumerator catEnum, ref int propertyID)
+    //{
 
-        //make outputs
+    //    //make outputs
 
-    }
+    //}
 
 
 

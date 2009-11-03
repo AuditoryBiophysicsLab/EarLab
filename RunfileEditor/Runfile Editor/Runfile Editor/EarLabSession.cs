@@ -36,70 +36,187 @@ namespace RunfileEditor
         #region Data Members
 
             //This is a "dirty bit" that says if the item has been updated.
-            private bool mHasChanged = false;
+            protected bool mHasChanged = false;
+
+            //Carry the Node for "has changed" and Writing back.
+
+            protected XmlNode mOriginalNode;
 
             //Add on the Child items back into the top.    
-            private List<EarlabSession> mChildren = new List<EarlabSession>();
+            protected List<EarlabSession> mChildren = new List<EarlabSession>();
 
-            //4.) Verification Errors
-            public string Severity;
-            public string Message;
+
+            //Verification Errors -- will change these to private
+            protected string mSeverity =" ";
+            protected string mMessage  =" ";
 
         #endregion
 
         #region Data Properties
-            public bool HasChanged
+
+        public event EventHandler DataChanged;
+        protected virtual void OnDataChanged()
+        {
+            if (DataChanged != null)
+                DataChanged(this, new EventArgs());
+        }
+
+        public abstract bool HasChanged
+        {
+            get;
+            set;
+        }
+
+        public abstract List<EarlabSession> Children
+        {
+            get;
+            //set;
+        }
+
+        public abstract XmlNode OriginalNode
+        {
+            get;
+            set;
+        }
+
+        public string Severity
+        {
+
+            set { mSeverity = value; }
+
+            get { return mSeverity; }
+
+        }
+
+        public string Message
+        {
+            set { mMessage = value; OnDataChanged(); }
+
+            get { return mMessage; }
+
+        }
+
+        #endregion
+    }
+
+
+    public class EarlabModule : EarlabSession
+    {
+        #region Data Members
+
+            //1.) Module Information:
+            public EarlabModuleInformation theEarlabModuleInformation;
+
+            //Public Data -- this is actual data, not strings
+            //So we have public collections from factories.
+
+            //2.) Inputs
+            //List<EarlabInput> EarlabInputs = new List<EarlabInput>();
+            
+            //3.) Outputs
+            //List<EarlabOutput> EarlabOutputs = new List<EarlabOutput>();
+
+            //4.) Parameters
+            public List<EarlabParameter> EarlabParameters = new List<EarlabParameter>();
+            public List<EarlabInput> EarlabInputs = new List<EarlabInput>();
+            public List<EarlabOutput> EarlabOutputs = new List<EarlabOutput>();
+
+        #endregion
+        
+        
+        //[Display Event]
+        public ModuleGrid DisplayGrid; //testing something
+
+        private void SomethingChanged(object Sender, EventArgs e)
+        {
+            DisplayGrid.Initialize(this);//[Display Event]
+        }
+
+
+        #region Properties
+        //1.) implement the abstract property HasChanged
+        public override bool HasChanged
             {
                 //sets the HasChanged value
-                set {mHasChanged = value;}
+                set { mHasChanged = value; }
 
                 //get the mHasChanged
                 get
                 {
                     if (mHasChanged)
-                        return true;
+                    {
+                        mHasChanged = true;
+                        return mHasChanged;
 
+                    }
                     //goes through each of the children to see
                     //if they have changed
-                    for (int i = 0; i < mChildren.Count; i++)
-                        if (mChildren[i].HasChanged)
+                    for (int i = 0; i < Children.Count; i++)
+                        if (Children[i].HasChanged)
+                        {
                             return true;
+                        }
+                        
+                    mHasChanged = false;
+                    return mHasChanged;
 
-                    return false;
                 }//end get
-            }//end get set methods
+            }
+
+        //2.) store all valid IOP children to mChildren.
+        public override List<EarlabSession> Children
+        {
+            //This works b/c we know each module has I-O-Ps, we just don't know how many.
+            get
+            {
+                ////add inputs
+                //foreach (EarlabSession parameter in EarlabInputs)
+                //{
+                //    mChildren.Add(parameter);
+
+                //}
+
+                ////add outputs
+                //foreach (EarlabSession parameter in EarlabOutputs)
+                //{
+                //    mChildren.Add(parameter);
+
+                //}
+
+                //add parameters
+                foreach (EarlabSession parameter in EarlabParameters)
+                {
+                    mChildren.Add(parameter);
+                }
+
+                return mChildren;
+            }
+
+            //I don't think set actually ever gets used.
+            //but it has the same logic as get, save the return.
+            //set
+            //{
+            //    throw new Exception("The method or operation is not implemented.");
+            //}
+        }
+
+        //3.) store original node
+        public override XmlNode OriginalNode
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
 
         #endregion
-    }
-
-    public class EarlabModule : EarlabSession
-    {
-        #region Data Members
-            //Public Data -- this is actual data, not strings
-            //So we have public collections from factories.
-
-            //1.) Inputs
-            //List<EarlabInput> EarlabInputs = new List<EarlabInput>();
-            
-            //2.) Outputs
-            //List<EarlabOutput> EarlabOutputs = new List<EarlabOutput>();
-
-            //3.) Parameters
-            //List<EarlabOutput> EarlabOutputs = new List<EarlabOutput>();
-            public EarlabModuleInformation theEarlabModuleInformation;
-            public List<EarlabParameter> EarlabParameters = new List<EarlabParameter>();
-            public List<EarlabInput> EarlabInputs = new List<EarlabInput>();
-            public List<EarlabOutput> EarlabOutputs = new List<EarlabOutput>();
-
-            //4.) Verification Errors
-            //public string Severity;
-            //public string Message;
-
-        #endregion
-
 
         #region Constructors
-                public EarlabModule()
+            public EarlabModule()
                 {
                 }
                 
@@ -110,7 +227,7 @@ namespace RunfileEditor
                /// </summary>
                /// <param name="StringModule"></param>
                /// <param name="theModuleInfo"></param>
-                public EarlabModule(RunfileModule StringModule, ModuleXML theModuleInfo)
+            public EarlabModule(RunfileModule StringModule, ModuleXML theModuleInfo)
                 {
                         // I + O + P 
                         //call factory up, factory adds to base collection
@@ -118,6 +235,7 @@ namespace RunfileEditor
                         // Does it make more sense to do all these things in one while loop?
                         // This way can isolate errors...
 
+                        //[change] I need to store the node
 
                     theEarlabModuleInformation = new EarlabModuleInformation(StringModule.ModuleInformation);
 
@@ -138,8 +256,10 @@ namespace RunfileEditor
                    
                     foreach (RunfileParameter Param in StringModule.RunfileParameters)
                        {
+                           EarlabParameter newParam = EarlabParameterFactory.Make(Param, theModuleInfo[Param.ParameterName.ToLower(), Param.ParameterType.ToLower()]);
+                        newParam.DataChanged += new EventHandler(SomethingChanged);
                          //3.)(?) Parameters need to fix!
-                         EarlabParameters.Add( EarlabParameterFactory.Make(Param, theModuleInfo[Param.ParameterName.ToLower(), Param.ParameterType.ToLower()]) );
+                        EarlabParameters.Add(newParam);
 
                        }
 
@@ -147,9 +267,10 @@ namespace RunfileEditor
                    }
         #endregion
 
-
      }
 
+
+    //Re examine this guy
     public class EarlabModuleInformation
     {
         #region Data Members
@@ -174,10 +295,13 @@ namespace RunfileEditor
         #endregion
 
 
-    }
+        }
 
-    #region Earlab Parameter Notes
-            //
+
+
+    #region IOP Items
+        #region Earlab Parameter Notes
+        //
             /*
              * I+O+P
              * 
@@ -301,51 +425,110 @@ namespace RunfileEditor
                 protected T pMin;
                 protected T pMax;
                 protected T pValue;
+                protected T pOValue; //this is the temporary solution to handle "haschanged"
         #endregion
 
         #region Data Properties
-        public T PDefault
-        {
-            get { return pDefault; }
-            set { pDefault = value; }
-        }
+            public T PDefault
+            {
+                get { return pDefault; }
+                set { pDefault = value; }
+            }
 
+            public T PMin
+            {
+                get { return pMin; }
+                set { pMin = value; }
 
+            }
 
-        public T PMin
-        {
-            get { return pMin; }
-            set { pMin = value; }
+            public T PMax
+            {
+                get { return pMax; }
+                set { pMax = value; }
 
-        }
+            }
 
+            public T PValue
+            {
+                get { return pValue; }
+                set { pValue = value; }
 
-        public T PMax
-        {
-            get { return pMax; }
-            set { pMax = value; }
+            }
 
-        }
+            public T POValue
+            {
+                get { return pOValue; }
+                set { pOValue = value; }
 
+            }
 
-
-        public T PValue
-        {
-            get { return pValue; }
-            set { pValue = value; }
-
-        }
         #endregion
 
+        #region Override Properties
+        //1.) implement the abstract property HasChanged b/c of the template you have to do it at the last level.
+        public override bool HasChanged
+        {
+            //sets the HasChanged value
+            set
+            {
+                mHasChanged = value;
 
+            }
 
-        public EarlabParameter(string pName, string pType, string pUnits, string pDescription, T pDefault, T pMin, T pMax, T pValue)
+            //get the mHasChanged
+            get
+            {
+                //if (pValue == pOValue)
+                //{
+                //    mHasChanged = false;
+
+                //}
+                //else
+                //{
+                //    mHasChanged = true;
+
+                //}
+
+                throw new Exception("The method or operation is not implemented.");
+            }//end get
+        }
+
+            //2.) store all valid IOP children to mChildren.
+            public override List<EarlabSession> Children
+            {
+                //A parameter doesn't have children.
+                get
+                {
+                    return null;
+                }
+
+            }
+
+            //3.) store original node
+            public override XmlNode OriginalNode
+            {
+                get
+                {
+                    throw new Exception("The method or operation is not implemented.");
+                }
+                set
+                {
+                    throw new Exception("The method or operation is not implemented.");
+                }
+            }
+
+        #endregion
+
+        // Must ad pOValue to all these parameters
+        public EarlabParameter(string pName, string pType, string pUnits, string pDescription, T pDefault, T pMin, T pMax, T pValue, T pOValue)
             : base(pName, pType, pUnits, pDescription)
         {
             this.pDefault = pDefault;
             this.pMin = pMin;
             this.pMax = pMax;
             this.pValue = pValue;
+            this.pOValue = pOValue;
         }
 
 
@@ -354,30 +537,120 @@ namespace RunfileEditor
 
     public class EarlabParameterInteger : EarlabParameter<int>
     {
+        #region Override Properties
+            public override bool HasChanged
+            {
+                //sets the HasChanged value
+                set
+                {
+                    mHasChanged = value;
 
-        //Default constructor should never be used
+                }
+
+                //get the mHasChanged
+                get
+                {
+                    if (PValue == POValue)
+                    {
+                        mHasChanged = false;
+                        
+
+                    }
+                    else
+                    {
+                        mHasChanged = true;
+
+                    }
+                    
+                    return mHasChanged;
+
+                }//end get
+            }
+        #endregion
+
+            //Default constructor should never be used
         //Because it would mean that 
-        public EarlabParameterInteger(string pName, string pType, string pUnits, string pDescription, int newDefault, int newMin, int newMax, int newValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue) //( string newName, string newType, string newUnits, string newDescriptions)
+        public EarlabParameterInteger(string pName, string pType, string pUnits, string pDescription, int newDefault, int newMin, int newMax, int newValue, int oldValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue) //( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
 
     }
-    //end of the Integer Generic Parameter
 
     public class EarlabParameterDouble : EarlabParameter<double>
     {
-        public EarlabParameterDouble(string pName, string pType, string pUnits, string pDescription, double newDefault, double newMin, double newMax, double newValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
+        #region Override Properties
+        public override bool HasChanged
+        {
+            //sets the HasChanged value
+            set
+            {
+                mHasChanged = value;
+
+            }
+
+            //get the mHasChanged
+            get
+            {
+                if (PValue == POValue)
+                {
+                    mHasChanged = false;
+
+                }
+                else
+                {
+                    mHasChanged = true;
+
+                }
+
+                return mHasChanged;
+
+            }//end get
+        }
+        #endregion
+
+        public EarlabParameterDouble(string pName, string pType, string pUnits, string pDescription, double newDefault, double newMin, double newMax, double newValue, double oldValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
 
     }
 
     public class EarlabParameterBoolean : EarlabParameter<bool>
-    {    //(ParameterName, ParameterType, ParameterUnits, ParameterDescription, boolDefault, boolMin, boolMax, boolValue);
-        public EarlabParameterBoolean(string pName, string pType, string pUnits, string pDescription, bool newDefault, bool newMin, bool newMax, bool newValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
+    {
+        #region Override Properties
+        public override bool HasChanged
+        {
+            //sets the HasChanged value
+            set
+            {
+                mHasChanged = value;
+
+            }
+
+            //get the mHasChanged
+            get
+            {
+                if (PValue == POValue)
+                {
+                    mHasChanged = false;
+
+                }
+                else
+                {
+                    mHasChanged = true;
+
+                }
+
+                return mHasChanged;
+
+            }//end get
+        }
+        #endregion
+        
+        //(ParameterName, ParameterType, ParameterUnits, ParameterDescription, boolDefault, boolMin, boolMax, boolValue);
+        public EarlabParameterBoolean(string pName, string pType, string pUnits, string pDescription, bool newDefault, bool newMin, bool newMax, bool newValue, bool oldValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
 
@@ -385,59 +658,223 @@ namespace RunfileEditor
 
     public class EarlabParameterString : EarlabParameter<string>
     {
-        public EarlabParameterString(string pName, string pType, string pUnits, string pDescription, string newDefault, string newMin, string newMax, string newValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
+        #region Override Properties
+        public override bool HasChanged
+        {
+            //sets the HasChanged value
+            set
+            {
+                mHasChanged = value;
+
+            }
+
+            //get the mHasChanged
+            get
+            {
+                if (PValue == POValue)
+                {
+                    mHasChanged = false;
+
+                }
+                else
+                {
+                    mHasChanged = true;
+
+                }
+
+                return mHasChanged;
+
+            }//end get
+        }
+        #endregion
+
+        public EarlabParameterString(string pName, string pType, string pUnits, string pDescription, string newDefault, string newMin, string newMax, string newValue, string oldValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
 
     }
 
 //EarlabParameters Arrays
-
-
     public class EarlabParameterIntegerArray : EarlabParameter<int[]>
     {
-        public EarlabParameterIntegerArray(string pName, string pType, string pUnits, string pDescription, int[] newDefault, int[] newMin, int[] newMax, int[] newValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
+        #region Override Properties
+        public override bool HasChanged
+        {
+            //sets the HasChanged value
+            set
+            {
+                mHasChanged = value;
+
+            }
+
+            //get the mHasChanged
+            get
+            {
+                if( ArrayCheck.ArrayEquality(PValue, POValue) )
+                {
+                    mHasChanged = false;
+
+
+                }
+                else
+                {
+                    mHasChanged = true;
+
+                }
+
+                return mHasChanged;
+
+            }//end get
+        }
+        #endregion
+
+
+        public EarlabParameterIntegerArray(string pName, string pType, string pUnits, string pDescription, int[] newDefault, int[] newMin, int[] newMax, int[] newValue, int[] oldValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
 
     }
 
-    //double and float?
+    //HasChanged has to be different here because these guys are arrays.
     public class EarlabParameterDoubleArray : EarlabParameter<double[]>
     {
-        public EarlabParameterDoubleArray(string pName, string pType, string pUnits, string pDescription, double[] newDefault, double[] newMin, double[] newMax, double[] newValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
+        #region Override Properties
+        public override bool HasChanged
+        {
+            //sets the HasChanged value
+            set
+            {
+                mHasChanged = value;
+
+            }
+
+            //get the mHasChanged
+            get
+            {
+                if ( ArrayCheck.ArrayEquality( PValue, POValue) )
+                {
+                    mHasChanged = false;
+
+
+                }
+                else
+                {
+                    mHasChanged = true;
+
+                }
+
+                return mHasChanged;
+
+            }//end get
+        }
+        #endregion
+
+        public EarlabParameterDoubleArray(string pName, string pType, string pUnits, string pDescription, double[] newDefault, double[] newMin, double[] newMax, double[] newValue, double[] oldValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
     }
 
     public class EarlabParameterBooleanArray : EarlabParameter<bool[]>
     {
-        public EarlabParameterBooleanArray(string pName, string pType, string pUnits, string pDescription, bool[] newDefault, bool[] newMin, bool[] newMax, bool[] newValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
+
+        #region Override Properties
+        public override bool HasChanged
+        {
+            //sets the HasChanged value
+            set
+            {
+                mHasChanged = value;
+
+            }
+
+            //get the mHasChanged
+            get
+            {
+                if (PValue == POValue)
+                {
+                    mHasChanged = false;
+
+
+                }
+                else
+                {
+                    mHasChanged = true;
+
+                }
+
+                return mHasChanged;
+
+            }//end get
+        }
+        #endregion
+
+        public EarlabParameterBooleanArray(string pName, string pType, string pUnits, string pDescription, bool[] newDefault, bool[] newMin, bool[] newMax, bool[] newValue, bool[] oldValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
     }
     
-    public class EarlabParameterStringArray : EarlabParameter<string[]>
-    {
-        public EarlabParameterStringArray(string pName, string pType, string pUnits, string pDescription, string[] newDefault, string[] newMin, string[] newMax, string[] newValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
-        {
-        }
-    }
 
-/////////////Outputs
+
+    //Un comment
+
+    //public class EarlabParameterStringArray : EarlabParameter<string[]>
+    //{
+    //    public EarlabParameterStringArray(string pName, string pType, string pUnits, string pDescription, string[] newDefault, string[] newMin, string[] newMax, string[] newValue)
+    //        : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
+    //    {
+    //    }
+    //}
+
+///////////Outputs
 /* 
  * EarlabOutput
  *      EarlabOutput<T>
  *          EarlabOutput: (???)
  * 
  */
+
     public abstract class EarlabOutput : EarlabSession
     {
+        public override bool HasChanged
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+        public override List<EarlabSession> Children
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            //set
+            //{
+            //    throw new Exception("The method or operation is not implemented.");
+            //}
+
+        }
+
+        public override XmlNode OriginalNode
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
 
 
 
@@ -455,11 +892,13 @@ namespace RunfileEditor
 
     public class EarlabOutputInt : EarlabOutput<int>
     {
+        
+
     }
 
   
 
-/////////////Inputs
+///////////Inputs
 /*
  * EarlabInput
  *      EarlabInput<T>
@@ -482,9 +921,51 @@ namespace RunfileEditor
 
     }
 
+    //req classes
     public class EarlabInputInt : EarlabInput<int>
     {
+        public override bool HasChanged
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+        public override List<EarlabSession> Children
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            //set
+            //{
+            //    throw new Exception("The method or operation is not implemented.");
+            //}
+
+        }
+
+        public override XmlNode OriginalNode
+        {
+            get
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+
+
     }
+
+    #endregion
 
 
 

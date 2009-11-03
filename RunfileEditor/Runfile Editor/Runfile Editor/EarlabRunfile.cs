@@ -21,6 +21,11 @@ namespace RunfileEditor
     /// </summary>
     public class EarlabRunfile
     {
+        private bool RHasChanged = false;
+        private List<EarlabSession> mChildren = new List<EarlabSession>();
+
+        //errors in an accessable format
+        public List<VerificationError> VErrorCollection = new List<VerificationError>();
 
         #region Data Members
         //--------------------------------------------------------------------->
@@ -36,7 +41,7 @@ namespace RunfileEditor
         //
         //Still a bit unsure about this, but this is the Runfile xml Node
         //This is the Modules Node that contains all the individual child modules
-        public XmlNode RunfileModulesNode;
+        //public XmlNode RunfileModulesNode;
         //
         //
         //The title of the document file of the XML in string form
@@ -50,8 +55,6 @@ namespace RunfileEditor
         public ModuleDirectory ModuleDirectory;
         //
         //
-        private bool changed1 = false;
-
         //Runfile Data Structures
         //
         /// <summary>
@@ -67,26 +70,84 @@ namespace RunfileEditor
         /// Modules carry two data structures: (XML data as strings),(XML data as the appropriate value)
         /// </summary>
         public List<EarlabModule> EarlabModules = new List<EarlabModule>();
-        private List<VerificationError> VErrorCollection = new List<VerificationError>();
+
+        
         #endregion
 
         #region Properties
 
-        public int ModuleCount { get { return RunfileModules.Count; } }
+        public int ModuleCount 
+        { 
+            
+            get 
+            { 
+                return RunfileModules.Count; 
+            
+            } 
+        
+        
+        
+        }
+        //Module -- IOP -- Module IOP etc.. alternative is Module, Module, Module, IOP, IOP, IOP or some such.
+        public List<EarlabSession> Children
+        {
+
+
+            get
+            {
+                //mChildren = null;
+
+                foreach (EarlabModule EarlabM in EarlabModules)
+                {
+                    mChildren.Add(EarlabM);
+
+                    foreach (EarlabSession EarlabS in EarlabM.Children)
+                    {
+                        mChildren.Add(EarlabS);
+
+                    }
+                }
+
+                return mChildren;
+
+            }
+
+
+
+
+
+        }
 
         // need to write the set
         public bool HasChanged
         {
-            get { return changed1; }
-
-            set
+            get 
             {
-                //check all parts of Runfile 
-                //in a generic fashion
-
-
-
+                foreach (EarlabModule etModule in EarlabModules)
+                {
+                    if (etModule.HasChanged == true)
+                        RHasChanged = true;
+                    else
+                        RHasChanged = false;
+                }
+                
+                return RHasChanged; 
+            
             }
+
+            //set
+            //{
+            //    ////check all parts of Runfile 
+            //    ////in a generic fashion
+
+            //    //foreach (EarlabModule Module in EarlabModules)
+            //    //{
+            //    //    if (Module.HasChanged == true)
+            //    //        changed1 = true;
+            //    //}
+
+
+            //}
 
         }
 
@@ -302,7 +363,7 @@ namespace RunfileEditor
             //the indexing method returns a xmlnode list
             //perhaps a better way to do this.                            
             XmlNodeList XList = Runfile.GetElementsByTagName("RunfileInformation");
-            RunfileInformation = new RunfileInformation(XList[0]);
+            RunfileInformation = new RunfileInformation(XList[0], Runfile);
 
             //2.) Run File Modules that are used
             //RunfileDescriptors -> ModuleData
@@ -588,11 +649,12 @@ namespace RunfileEditor
 
         #endregion
 
+        //Verrors section
         public void AllEarlabObjectUpdate(XmlDocument Verrors) 
         {
-            List<VerificationError> VerrorList = ErrorListCreator(Verrors);
+            VErrorCollection = ErrorListCreator(Verrors);
 
-            foreach (VerificationError VerrorObject in VerrorList)
+            foreach (VerificationError VerrorObject in VErrorCollection)
             {
                 OneObjectErrorUpdate(VerrorObject);
                 //some error here then
@@ -722,17 +784,37 @@ namespace RunfileEditor
         /// <returns></returns>
         private List<VerificationError> ErrorListCreator(XmlDocument RunfileVerificationErrors)
         {
-            
+            //clear the old errors
+            List<VerificationError> mVErrorCollection = new List<VerificationError>();
             XmlNodeList VList = RunfileVerificationErrors.GetElementsByTagName("VerificationEvent");
 
             foreach (XmlNode errorNode in VList)
             {
                 /// Converts XML Node Module into the collection of ModuleInfo and IOP 
-                VErrorCollection.Add( new VerificationError(errorNode) );
+                mVErrorCollection.Add( new VerificationError(errorNode) );
             }
 
-            return VErrorCollection;
+            return mVErrorCollection;
         }
+
+        ////design is problematic for updates!
+        public void EFI_Run()
+        {
+            XmlDocument RunfileVerificationErrors;
+
+            //need to give doc a title?
+
+            EFIVerification.GetRunfileEFIError(this.RunfileXMLCreate(), out RunfileVerificationErrors);
+
+            // 
+            //Process errors
+            this.AllEarlabObjectUpdate(RunfileVerificationErrors);
+
+            //Display Errors on "Summary" GUI
+            //if no errors, create the Desktop Earlab launch
+            //button_create_if_no_errors();
+        }
+
 
     }
 

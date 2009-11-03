@@ -12,12 +12,12 @@ using System.IO;
 namespace RunfileEditor
 {
     /// <summary>
-    /// Summary description for Class1
+    /// A collection of static methods to opperate on XML and String files
     /// </summary>
     public static class XmlUtilities
     {
          ///<summary>
-         ///Xml to string conversion file
+         ///Xml to string conversion.
          ///</summary>
          ///<param name="strFile"></param>
          ///<returns></returns>
@@ -37,6 +37,11 @@ namespace RunfileEditor
             return Xml2Str(xmlDoc);
         }
 
+        /// <summary>
+        /// Xml Document to string conversion method.
+        /// </summary>
+        /// <param name="xmlDoc"></param>
+        /// <returns></returns>
         public static string Xml2Str(XmlDocument xmlDoc)
         {
             StringWriter sw = new StringWriter();
@@ -45,6 +50,12 @@ namespace RunfileEditor
             return sw.ToString();
         }
 
+        /// <summary>
+        /// A static method that cleans an xml string of any spaces
+        /// Use with caution, the spaces maybe needed as in the messages.
+        /// </summary>
+        /// <param name="strIn"></param>
+        /// <returns></returns>
         public static string CleanInputXML(string strIn)
         {
             strIn = CleanInputLeaveSpacesXML(strIn);
@@ -53,6 +64,11 @@ namespace RunfileEditor
             return strIn;
         }
 
+        /// <summary>
+        /// A static method that cleans \r and \n characters from an xml string
+        /// </summary>
+        /// <param name="strIn"></param>
+        /// <returns></returns>
         public static string CleanInputLeaveSpacesXML(string strIn)
         {
             // Replace invalid characters with empty strings.

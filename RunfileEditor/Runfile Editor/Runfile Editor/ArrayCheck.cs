@@ -149,6 +149,40 @@ namespace RunfileEditor
             //The array is ok, so return true
             return true;
         }
+
+        //public bool ArrayEquality
+
+        public static bool ArrayEquality(double[] Array1, double[] Array2)
+        {
+            if (Array1.Length != Array2.Length)
+                return false;
+
+            for (int i = 0; i < Array2.Length; i++)
+            {
+                if (Array1[i] != Array2[i])
+                    return false;
+            }
+            return true;
+
+        }
+        //overload to handle ints
+        public static bool ArrayEquality(int[] Array1, int[] Array2)
+        {
+            if (Array1.Length != Array2.Length)
+                return false;
+
+            for (int i = 0; i < Array2.Length; i++)
+            {
+                if (Array1[i] != Array2[i])
+                    return false;
+            }
+            return true;
+
+        }
+
+
+
+
     }
 
 

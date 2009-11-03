@@ -220,3 +220,5 @@ static void OutputErrorToListView(Earlabsession EarlabError,  )
 
 }
 On-click movement to error location?
+
+

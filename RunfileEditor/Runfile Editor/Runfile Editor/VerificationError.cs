@@ -6,18 +6,14 @@ using System.IO;
 
 namespace RunfileEditor
 {
-        //Error Object
-        //Error XML -> Collection of error objects
-
-        //
 
     /// <summary>
     /// Creates a Verification object from the verification event node
+    /// This should probably be redone as Serialized XML b/c the format is standard.
     /// </summary>
     public class VerificationError
     {
         #region Data Members  -- Just a copy of the XML Node
-        private XmlNode ErrorNode;
         //<VerificationEvent>
         //  <Severity>
         //    Warning
@@ -29,11 +25,13 @@ namespace RunfileEditor
         //    Module does not support ModuleXML Interface
         //  </Message>
         //</VerificationEvent>
+
+        private XmlNode ErrorNode;
+
         #endregion
 
         //Item = XmlUtilities.CleanInputXML(String_Item)'
         #region Properties
-        //Derivatives as listed:
 
             public string FullErrorPath
             {
@@ -121,8 +119,6 @@ namespace RunfileEditor
 
             }
 
-            //This way we can use a very easy Case statement to handle 
-            //Updating the RunfileObject
             public bool input
         {
 
@@ -207,53 +203,11 @@ namespace RunfileEditor
 
         }
 
-       
-
         #endregion 
     }
 
 
-    public static class EFIVerification
-    {
-
-        /// <summary>
-        /// Send the runfile in to the EFI
-        /// Receive the verfication email back from the EFI
-        /// </summary>
-        /// <param name="Runfile"></param>
-        /// <param name="RunfileVerificationErrors"></param>
-        /// <returns></returns>
-        public static bool GetRunfileEFIError(XmlDocument Runfile, out XmlDocument RunfileVerificationErrors)
-        {
-            //StringWriter sw = new StringWriter(); 
-            //XmlTextWriter xw = new XmlTextWriter(sw); 
-            //xmlDoc.WriteTo(xw); 
-            //return sw.ToString();
-            string VErrors;
-            RunfileVerificationErrors = null;
-
-
-            if (EFITestWrapper.EFI.VerifyRunfile(XmlUtilities.Xml2Str(Runfile), out VErrors))
-            {
-                //some errors
-                RunfileVerificationErrors = new XmlDocument();
-                RunfileVerificationErrors.LoadXml(VErrors);
-                return true;
-            }
-            else
-            {
-                //no errors
-                RunfileVerificationErrors = null;
-                return false;
-
-            }
-            //public static bool VerifyRunfile(string RunfileXML, out string VerificationXML)
-
-
-        }
-
-
-    }
+   
 
    
 }

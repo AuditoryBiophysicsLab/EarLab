@@ -9,6 +9,9 @@ using System.Xml;
 
 namespace RunfileEditor
 {
+    //Ends up being necessary b/c you can't store the EarlabObject
+    //with the node data, b/c of object factory pattern.
+
     public class RunfileParameter
     {
 

@@ -31,6 +31,7 @@ namespace RunfileEditor
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblCurrentPath = new System.Windows.Forms.Label();
             this.listViewErrors = new System.Windows.Forms.ListView();
             this.ilLarge = new System.Windows.Forms.ImageList(this.components);
@@ -53,7 +54,7 @@ namespace RunfileEditor
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,14 +64,15 @@ namespace RunfileEditor
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(12, 26);
+            this.tabControl1.Location = new System.Drawing.Point(12, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1024, 513);
+            this.tabControl1.Size = new System.Drawing.Size(1024, 512);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.lblCurrentPath);
             this.tabPage1.Controls.Add(this.listViewErrors);
@@ -84,10 +86,19 @@ namespace RunfileEditor
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1016, 487);
+            this.tabPage1.Size = new System.Drawing.Size(1016, 486);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "GUI Home";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(393, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "label2";
             // 
             // lblCurrentPath
             // 
@@ -127,6 +138,7 @@ namespace RunfileEditor
             this.pictureBox1.Size = new System.Drawing.Size(252, 187);
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label3
             // 
@@ -271,14 +283,14 @@ namespace RunfileEditor
             this.toolStripMenuItem17.Size = new System.Drawing.Size(139, 22);
             this.toolStripMenuItem17.Text = "Earlab Help";
             // 
-            // label2
+            // label4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(393, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "label2";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(56, 249);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "label4";
             // 
             // frmContainer
             // 
@@ -304,7 +316,7 @@ namespace RunfileEditor
         #endregion
 
 
-        private void button_create_if_no_errors()
+        public void button_create_if_no_errors()
         {
             this.button1 = new System.Windows.Forms.Button();
             // 
@@ -317,7 +329,76 @@ namespace RunfileEditor
             this.button1.TabIndex = 18;
             this.button1.Text = "Only Appear if No Errors";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+
         }
+
+
+        //private void create_abstract_tab()
+        //{
+        //    this.tabPage2 = new System.Windows.Forms.TabPage();
+        //    this.tabPage2.SuspendLayout();
+        //    ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+        //    // 
+        //    // tabPage2
+        //    // 
+        //    this.tabPage2.Controls.Add(this.label5);
+        //    this.tabPage2.Controls.Add(this.label4);
+        //    this.tabPage2.Controls.Add(this.textBox1);
+        //    this.tabPage2.Controls.Add(this.pictureBox2);
+        //    this.tabPage2.Location = new System.Drawing.Point(4, 22);
+        //    this.tabPage2.Name = "tabPage2";
+        //    this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+        //    this.tabPage2.Size = new System.Drawing.Size(1016, 486);
+        //    this.tabPage2.TabIndex = 1;
+        //    this.tabPage2.Text = "tabPage2";
+        //    this.tabPage2.UseVisualStyleBackColor = true;
+        //    this.label5 = new System.Windows.Forms.Label();
+        //    this.label4 = new System.Windows.Forms.Label();
+        //System.Windows.Forms.TabPage tabPage2;
+        //System.Windows.Forms.TextBox textBox1;
+        //System.Windows.Forms.PictureBox pictureBox2;
+        //System.Windows.Forms.Label label5;
+        //System.Windows.Forms.Label label4;
+        //// 
+        //// label5
+        //// 
+        //this.label5.AutoSize = true;
+        //this.label5.Location = new System.Drawing.Point(579, 42);
+        //this.label5.Name = "label5";
+        //this.label5.Size = new System.Drawing.Size(35, 13);
+        //this.label5.TabIndex = 8;
+        //this.label5.Text = "label5";
+        //// 
+        //// label4
+        //// 
+        //this.label4.AutoSize = true;
+        //this.label4.Location = new System.Drawing.Point(579, 16);
+        //this.label4.Name = "label4";
+        //this.label4.Size = new System.Drawing.Size(35, 13);
+        //this.label4.TabIndex = 7;
+        //this.label4.Text = "label4";
+        //// 
+        //// textBox1
+        //// 
+        //this.textBox1.Location = new System.Drawing.Point(579, 102);
+        //this.textBox1.Multiline = true;
+        //this.textBox1.Name = "textBox1";
+        //this.textBox1.Size = new System.Drawing.Size(359, 345);
+        //this.textBox1.TabIndex = 6;
+        //// 
+        //// pictureBox2
+        //// 
+        //this.pictureBox2.Location = new System.Drawing.Point(23, 16);
+        //this.pictureBox2.Name = "pictureBox2";
+        //this.pictureBox2.Size = new System.Drawing.Size(524, 437);
+        //this.pictureBox2.TabIndex = 4;
+        //this.pictureBox2.TabStop = false;
+        //this.tabPage2.ResumeLayout(false);
+        //this.tabPage2.PerformLayout();
+        //((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+
+        //}
 
 
         private System.Windows.Forms.TabControl tabControl1;
@@ -328,7 +409,7 @@ namespace RunfileEditor
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button OpenXMLRunfile;
         private System.Windows.Forms.Label label3;
-        //private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
@@ -340,9 +421,12 @@ namespace RunfileEditor
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+
+
+
 
 
     }
