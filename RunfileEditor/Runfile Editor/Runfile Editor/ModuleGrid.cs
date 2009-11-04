@@ -272,6 +272,7 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
             OnEFIUpdate(e);
             
 
+
         }
 
         //All code goes above this SPG standard fragment.
@@ -335,6 +336,13 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                     //propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
                     
                     //weird -- propEnum.Property.Comment = "testing comment";
+
+                    if (EarlabParam.Severity == " ")
+                    {
+                        propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
+                        propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
+                    }
+
 
                     ExpandProperty(propEnum, true);
 

@@ -45,12 +45,21 @@ namespace RunfileEditor
             //Main Form
             InitializeComponent();
 
-            //Error View List
+            //Error View List on Form
             InitializeErrorView();
+
+            //Instatiate the Runfile Object Value here and connect to an 'on change property"
+
+            //1.) So a runfile Object is always around. 
+            RunfileObject = new EarlabRunfile();
+
+
+
         }
 
-        //The list of all the buttons on the GUI ================================================================///
+        //The Buttons on the GUI ================================================================================///
         #region The list of all the buttons on the GUI
+        
         private void SaveXMLFile_Click(object sender, EventArgs e)
         {
             SaveXmlFile();
@@ -70,25 +79,6 @@ namespace RunfileEditor
             //Launch Desktop Earlab
          
         }
-
-        //move to runfile ---> EarlabRunfile class
-        //public void EFI_Run()
-        //{
-        //    XmlDocument RunfileVerificationErrors;
-        //    RunfileDocument = RunfileObject.RunfileXMLCreate();
-
-        //    //need to give doc a title?
-
-        //    EFIVerification.GetRunfileEFIError(RunfileDocument, out RunfileVerificationErrors);
-
-        //    // 
-        //    //Process errors
-        //    RunfileObject.AllEarlabObjectUpdate(RunfileVerificationErrors);
-        
-        //    //Display Errors on "Summary" GUI
-        //    //if no errors, create the Desktop Earlab launch
-        //   button_create_if_no_errors();
-        //}
 
         private void Exit_Click(object sender, EventArgs e)
         {
@@ -175,6 +165,13 @@ namespace RunfileEditor
             ////2.) Add Module Grid to Tab
             TabPage tabPageA = new TabPage("Model Abstract");
 
+            //3.) Tab location and size settings
+            tabPageA.Location = new System.Drawing.Point(4, 22);
+            tabPageA.Padding = new System.Windows.Forms.Padding(3);
+            tabPageA.Size = new System.Drawing.Size(831, 392);
+            tabPageA.TabIndex = 1;
+            tabPageA.UseVisualStyleBackColor = true;
+
             ////items
             //tabPageA.
             //this.textBox1 = new System.Windows.Forms.TextBox();
@@ -183,12 +180,7 @@ namespace RunfileEditor
             //tabPageA.label4 = new System.Windows.Forms.Label();
 
 
-            //3.) Tab location and size settings
-            tabPageA.Location = new System.Drawing.Point(4, 22);
-            tabPageA.Padding = new System.Windows.Forms.Padding(3);
-            tabPageA.Size = new System.Drawing.Size(831, 392);
-            tabPageA.TabIndex = 1;
-            tabPageA.UseVisualStyleBackColor = true;
+
 
             //// 
             //// label5
@@ -214,9 +206,10 @@ namespace RunfileEditor
             //// 
             //this.textBox1.Location = new System.Drawing.Point(579, 102);
             //this.textBox1.Multiline = true;
-            //tabPageA.textBox1.Name = "textBox1";
-            //tabPageA.textBox1.Size = new System.Drawing.Size(359, 345);
-            //tabPageA.textBox1.TabIndex = 6;
+            //this.textBox1.Name = "textBox1";
+            //this.textBox1.Size = new System.Drawing.Size(359, 345);
+            //this.textBox1.TabIndex = 1;
+
             //// 
             //// pictureBox2
             //// 
@@ -238,7 +231,7 @@ namespace RunfileEditor
             //tabPageA.Controls.Add(tabPageA.label5);
             //tabPageA.Controls.Add(this.label4);
             //tabPageA.Controls.Add(this.textBox1);
-            //tabPageA.Controls.Add(this.pictureBox2);
+            //.Controls.Add(this.pictureBox2);
             //tabPageA.Name = "Model Abstract";
             ////    this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             ////    this.tabPage2.Size = new System.Drawing.Size(1016, 486);
@@ -356,8 +349,6 @@ namespace RunfileEditor
             this.listViewErrors.View = View.Details;
 
         }
-
-
 
 
         #endregion
@@ -590,6 +581,11 @@ namespace RunfileEditor
 
                 //Some Feedback
                 MessageBox.Show("Runfile Document Opened Successfully!");
+
+                //test add event
+
+                //[Problem]
+               (EarlabParameterInteger)RunfileObject.EarlabModules[1].EarlabParameters[3]. += Intparameter_ValueChanged;
             }
 
 
@@ -680,10 +676,34 @@ namespace RunfileEditor
         }
 
         #endregion
+     
+        
+        public void Intparameter_ValueChanged()
+        {
+            //if (e.NewValue > e.LastValue)
+            //    Console.WriteLine("New Value Greater than old value, Run EFI and Repaint!");
+
+            //else
+            //    Console.WriteLine("New value less than or equal to old value, Nothing is going on");
+
+            //I could check these against defaults or something else handed back from the EFI
+
+            RunfileObject.EFI_Run();
+
+
+
+        }
+
+
+
 
     }
 
 
+
+   
+
+    
 
 
 

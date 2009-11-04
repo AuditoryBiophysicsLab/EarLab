@@ -112,8 +112,11 @@ namespace RunfileEditor
                         return null;
 
                     else
+                        
                         return new EarlabParameterInteger(ParameterName, ParameterType, ParameterUnits, ParameterDescription,
                             intDefault, intMin, intMax, intValue, intValue);
+
+                        
 
 
 

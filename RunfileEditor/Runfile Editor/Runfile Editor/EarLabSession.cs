@@ -25,12 +25,56 @@ namespace RunfileEditor
     ////          EarlabOutput: (???)
     #endregion
 
+
+    #region Event Framework 1 of 3
+    public class ValueChangedEventArgs<T> : EventArgs
+    {
+        public readonly T LastValue;
+        public readonly T NewValue;
+
+        public ValueChangedEventArgs(T lastValue, T newValue)
+        {
+            LastValue = lastValue;
+            NewValue = newValue;
+
+        }
+
+    }
+
+    public static class OnEventUpdatingStuff
+    {
+
+        public static void parameter_ValueChanged(object sender, ValueChangedEventArgs<int> e)
+        {
+            if (e.NewValue > e.LastValue)
+                Console.WriteLine("New Value Greater than old value, Run EFI and Repaint!");
+
+            else
+                Console.WriteLine("New value less than or equal to old value, Nothing is going on");
+
+        }
+
+        public static void parameter_ValueChanged2(object sender, ValueChangedEventArgs<int> e)
+        {
+            if ((e.NewValue - e.LastValue) > 10)
+                Console.WriteLine("Difference is greater than 10, Run EFI and Repaint!");
+
+
+
+        }
+
+    }
+    #endregion 
+
+
+
+
+
     /// <summary>
     /// This is an abstract class that serves as the base class for all data the classes 
     /// in the Earlab [RunfileProject] that store data from the XML Runfile
     /// </summary>
     /// 
-
     public abstract class EarlabSession
     {
         #region Data Members
@@ -47,19 +91,36 @@ namespace RunfileEditor
 
 
             //Verification Errors -- will change these to private
-            protected string mSeverity =" ";
-            protected string mMessage  =" ";
+            protected string mSeverity ="";
+            protected string mMessage  ="";
 
         #endregion
 
         #region Data Properties
 
-        public event EventHandler DataChanged;
-        protected virtual void OnDataChanged()
+            //[Problem]
+            //public event EventHandler< ValueChangedEventArgs<T> > ValueChanged;
+
+            public event EventHandler DataChanged;
+            
+            protected virtual void OnDataChanged()
+            {
+                if (DataChanged != null)
+                    DataChanged(this, new EventArgs());
+            }
+
+
+        public string Message
         {
-            if (DataChanged != null)
-                DataChanged(this, new EventArgs());
+            set { 
+                mMessage = value; 
+                OnDataChanged(); 
+            }
+
+            get { return mMessage; }
+
         }
+
 
         public abstract bool HasChanged
         {
@@ -88,13 +149,7 @@ namespace RunfileEditor
 
         }
 
-        public string Message
-        {
-            set { mMessage = value; OnDataChanged(); }
 
-            get { return mMessage; }
-
-        }
 
         #endregion
     }
@@ -122,7 +177,7 @@ namespace RunfileEditor
             public List<EarlabOutput> EarlabOutputs = new List<EarlabOutput>();
 
         #endregion
-        
+
         
         //[Display Event]
         public ModuleGrid DisplayGrid; //testing something
@@ -429,6 +484,42 @@ namespace RunfileEditor
         #endregion
 
         #region Data Properties
+
+
+                #region Event Framework 2 of 3
+        public event EventHandler<ValueChangedEventArgs<T>> ValueChanged;
+
+                protected abstract void OnValueChanged(ValueChangedEventArgs<T> e);
+                //{
+                //    if (PriceChanged != null) PriceChanged(this, e);
+                //}
+
+
+                public virtual T PValue
+                {
+                    get
+                    {
+                        return pValue;
+
+                    }
+                    set
+                    {
+                        pValue = value;
+                        //same old price 
+                        //if (price == value) return;
+
+                        //has changed --- price <- old, value <- new
+                        //OnPriceChanged(new PriceChangedEventArgs(price, value));
+                        //price = value;
+
+                    }
+
+
+                }
+                //end event framework
+                #endregion
+
+
             public T PDefault
             {
                 get { return pDefault; }
@@ -449,12 +540,12 @@ namespace RunfileEditor
 
             }
 
-            public T PValue
-            {
-                get { return pValue; }
-                set { pValue = value; }
+            //public T PValue
+            //{
+            //    get { return pValue; }
+            //    set { pValue = value; }
 
-            }
+            //}
 
             public T POValue
             {
@@ -550,23 +641,45 @@ namespace RunfileEditor
                 //get the mHasChanged
                 get
                 {
-                    if (PValue == POValue)
-                    {
-                        mHasChanged = false;
-                        
-
-                    }
-                    else
-                    {
-                        mHasChanged = true;
-
-                    }
+                  
                     
                     return mHasChanged;
 
                 }//end get
             }
         #endregion
+
+            #region [Event Framework Integer] -- 3 of 3
+            public event EventHandler<ValueChangedEventArgs<int>> ValueChanged;
+
+            protected override void OnValueChanged(ValueChangedEventArgs<int> e)
+            {
+                if (ValueChanged != null) ValueChanged(this, e);
+            }
+
+
+            public override int PValue
+            {
+                get
+                {
+                    return pValue;
+
+                }
+                set
+                {
+                    //pValue = value;
+                    //same old price 
+                    if (pValue == value) return;
+
+                    //has changed --- price <- old, value <- new
+                    OnValueChanged(new ValueChangedEventArgs<int>(pValue, value));
+                    pValue = value;
+
+                }
+
+
+            }
+            #endregion
 
             //Default constructor should never be used
         //Because it would mean that 
@@ -609,6 +722,11 @@ namespace RunfileEditor
         }
         #endregion
 
+        protected override void OnValueChanged(ValueChangedEventArgs<double> e)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
         public EarlabParameterDouble(string pName, string pType, string pUnits, string pDescription, double newDefault, double newMin, double newMax, double newValue, double oldValue)
             : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
@@ -647,6 +765,11 @@ namespace RunfileEditor
             }//end get
         }
         #endregion
+
+        protected override void OnValueChanged(ValueChangedEventArgs<bool> e)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
         
         //(ParameterName, ParameterType, ParameterUnits, ParameterDescription, boolDefault, boolMin, boolMax, boolValue);
         public EarlabParameterBoolean(string pName, string pType, string pUnits, string pDescription, bool newDefault, bool newMin, bool newMax, bool newValue, bool oldValue)
@@ -687,6 +810,11 @@ namespace RunfileEditor
             }//end get
         }
         #endregion
+
+        protected override void OnValueChanged(ValueChangedEventArgs<string> e)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
 
         public EarlabParameterString(string pName, string pType, string pUnits, string pDescription, string newDefault, string newMin, string newMax, string newValue, string oldValue)
             : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
@@ -729,7 +857,10 @@ namespace RunfileEditor
         }
         #endregion
 
-
+        protected override void OnValueChanged(ValueChangedEventArgs<int[]> e)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
         public EarlabParameterIntegerArray(string pName, string pType, string pUnits, string pDescription, int[] newDefault, int[] newMin, int[] newMax, int[] newValue, int[] oldValue)
             : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
@@ -771,6 +902,11 @@ namespace RunfileEditor
         }
         #endregion
 
+        protected override void OnValueChanged(ValueChangedEventArgs<double[]> e)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
         public EarlabParameterDoubleArray(string pName, string pType, string pUnits, string pDescription, double[] newDefault, double[] newMin, double[] newMax, double[] newValue, double[] oldValue)
             : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
@@ -811,6 +947,10 @@ namespace RunfileEditor
         }
         #endregion
 
+        protected override void OnValueChanged(ValueChangedEventArgs<bool[]> e)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
         public EarlabParameterBooleanArray(string pName, string pType, string pUnits, string pDescription, bool[] newDefault, bool[] newMin, bool[] newMax, bool[] newValue, bool[] oldValue)
             : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
