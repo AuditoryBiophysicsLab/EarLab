@@ -32,10 +32,10 @@ namespace RunfileEditor
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblCurrentPath = new System.Windows.Forms.Label();
+            //this.lblCurrentPath = new System.Windows.Forms.Label();
             this.listViewErrors = new System.Windows.Forms.ListView();
-            this.ilLarge = new System.Windows.Forms.ImageList(this.components);
-            this.ilSmall = new System.Windows.Forms.ImageList(this.components);
+            //this.ilLarge = new System.Windows.Forms.ImageList(this.components);
+            //this.ilSmall = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -74,7 +74,7 @@ namespace RunfileEditor
             // 
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.lblCurrentPath);
+            //this.tabPage1.Controls.Add(this.lblCurrentPath);
             this.tabPage1.Controls.Add(this.listViewErrors);
             this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.label3);
@@ -101,35 +101,35 @@ namespace RunfileEditor
             this.label2.Text = "label2";
             // 
             // lblCurrentPath
-            // 
-            this.lblCurrentPath.Location = new System.Drawing.Point(17, 262);
-            this.lblCurrentPath.Name = "lblCurrentPath";
-            this.lblCurrentPath.Size = new System.Drawing.Size(993, 16);
-            this.lblCurrentPath.TabIndex = 3;
+            //// 
+            //this.lblCurrentPath.Location = new System.Drawing.Point(17, 262);
+            //this.lblCurrentPath.Name = "lblCurrentPath";
+            //this.lblCurrentPath.Size = new System.Drawing.Size(993, 16);
+            //this.lblCurrentPath.TabIndex = 3;
             // 
             // listViewErrors
             // 
-            this.listViewErrors.LargeImageList = this.ilLarge;
+            //this.listViewErrors.LargeImageList = this.ilLarge;
             this.listViewErrors.Location = new System.Drawing.Point(16, 281);
             this.listViewErrors.MultiSelect = false;
             this.listViewErrors.Name = "listViewErrors";
             this.listViewErrors.Size = new System.Drawing.Size(994, 200);
-            this.listViewErrors.SmallImageList = this.ilSmall;
+            //this.listViewErrors.SmallImageList = this.ilSmall;
             this.listViewErrors.TabIndex = 0;
             this.listViewErrors.UseCompatibleStateImageBehavior = false;
             this.listViewErrors.View = System.Windows.Forms.View.List;
             // 
             // ilLarge
-            // 
-            this.ilLarge.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.ilLarge.ImageSize = new System.Drawing.Size(32, 32);
-            this.ilLarge.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // ilSmall
-            // 
-            this.ilSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.ilSmall.ImageSize = new System.Drawing.Size(16, 16);
-            this.ilSmall.TransparentColor = System.Drawing.Color.Transparent;
+            //// 
+            //this.ilLarge.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            //this.ilLarge.ImageSize = new System.Drawing.Size(32, 32);
+            //this.ilLarge.TransparentColor = System.Drawing.Color.Transparent;
+            //// 
+            //// ilSmall
+            //// 
+            //this.ilSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            //this.ilSmall.ImageSize = new System.Drawing.Size(16, 16);
+            //this.ilSmall.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // pictureBox1
             // 

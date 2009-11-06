@@ -22,7 +22,6 @@ namespace RunfileEditor
     public class EarlabRunfile
     {
 
-
         #region Data Members
         //--------------------------------------------------------------------->
 
@@ -68,10 +67,8 @@ namespace RunfileEditor
 
         #endregion
 
-        #region Properties
-
-        //Basically I can do the event on change of a Module
-        //Repaint the Tabs.
+        #region Event Handler Items
+        //Basically I can do the event on change of a Module Repaint the Tabs.
         public event EventHandler DataChanged;
 
         protected virtual void OnDataChanged()
@@ -79,8 +76,9 @@ namespace RunfileEditor
             if (DataChanged != null)
                 DataChanged(this, new EventArgs());
         }
+        #endregion
 
-
+        #region Properties
 
         public int ModuleCount 
         { 
@@ -94,6 +92,8 @@ namespace RunfileEditor
         
         
         }
+
+
         //Module -- IOP -- Module IOP etc.. alternative is Module, Module, Module, IOP, IOP, IOP or some such.
         public List<EarlabSession> Children
         {
@@ -129,31 +129,25 @@ namespace RunfileEditor
         {
             get 
             {
+
+                return RHasChanged; 
+            
+            }
+            set
+            {
                 foreach (EarlabModule etModule in EarlabModules)
                 {
                     if (etModule.HasChanged == true)
+                    {
                         RHasChanged = true;
+                        OnDataChanged();
+
+                    }
                     else
                         RHasChanged = false;
                 }
                 
-                return RHasChanged; 
-            
             }
-
-            //set
-            //{
-            //    ////check all parts of Runfile 
-            //    ////in a generic fashion
-
-            //    //foreach (EarlabModule Module in EarlabModules)
-            //    //{
-            //    //    if (Module.HasChanged == true)
-            //    //        changed1 = true;
-            //    //}
-
-
-            //}
 
         }
 
@@ -405,21 +399,6 @@ namespace RunfileEditor
             }
         }
 
-
-        //Verrors section
-        public void AllEarlabObjectUpdate(XmlDocument Verrors) 
-        {
-            VErrorCollection = ErrorListCreator(Verrors);
-
-            foreach (VerificationError VerrorObject in VErrorCollection)
-            {
-                OneObjectErrorUpdate(VerrorObject);
-                //some error here then
-            }
-
-        }
-
-
         /// <summary>
         /// Creates a Runfile from the RunfileObject
         /// </summary>
@@ -669,6 +648,20 @@ namespace RunfileEditor
         }
 
 
+        //Verrors section
+        public void AllEarlabObjectUpdate(XmlDocument Verrors) 
+        {
+            VErrorCollection = ErrorListCreator(Verrors);
+
+            foreach (VerificationError VerrorObject in VErrorCollection)
+            {
+                OneObjectErrorUpdate(VerrorObject);
+                //some error here then
+            }
+
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -688,30 +681,6 @@ namespace RunfileEditor
 
             return mVErrorCollection;
         }
-
-
-
-        ////design is problematic for updates!
-        public void EFI_Run()
-        {
-            XmlDocument RunfileVerificationErrors;
-
-            //need to give doc a title?
-
-            EFIVerification.GetRunfileEFIError(this.RunfileXMLCreate(), out RunfileVerificationErrors);
-
-            // 
-            //Process errors
-            this.AllEarlabObjectUpdate(RunfileVerificationErrors);
-
-            //Display Errors on "Summary" GUI
-            //if no errors, create the Desktop Earlab launch
-            //button_create_if_no_errors();
-        }
-
-        #endregion
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -830,7 +799,28 @@ namespace RunfileEditor
 
 
 
+        ////design is problematic for updates!
+        public void EFI_Run()
+        {
+            XmlDocument RunfileVerificationErrors;
 
+            //need to give doc a title?
+
+            EFIVerification.GetRunfileEFIError(this.RunfileXMLCreate(), out RunfileVerificationErrors);
+
+            // 
+            //Process errors
+            this.AllEarlabObjectUpdate(RunfileVerificationErrors);
+
+            //Display Errors on "Summary" GUI
+            //if no errors, create the Desktop Earlab launch
+            //button_create_if_no_errors();
+        }
+
+
+        #endregion
+  
+        
     }
 
 

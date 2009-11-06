@@ -167,7 +167,7 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
             //There is a problem with the "PropertyEnumerator for the propEnum!"
 
             //testing something -- earlab class knows what prop grid it is displayed on.
-            theEarlabModule.DisplayGrid = this; //[Display Event]
+            //theEarlabModule.DisplayGrid = this; //[Display Event]
 
             //if module has params
             if (theEarlabModule.EarlabParameters.Count > 0)
@@ -337,7 +337,7 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                     
                     //weird -- propEnum.Property.Comment = "testing comment";
 
-                    if (EarlabParam.Severity == " ")
+                    if (EarlabParam.Severity == "Warning")
                     {
                         propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
                         propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
