@@ -96,6 +96,8 @@ public partial class frmContainer : Form
             //TabControl tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.TabPages.Add(tabPage);
 
+
+
         }
 
         //Just a wrapper to use the tabControl
