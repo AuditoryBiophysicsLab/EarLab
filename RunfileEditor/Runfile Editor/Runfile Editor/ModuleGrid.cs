@@ -44,7 +44,7 @@ public partial class frmContainer : Form
             tabPage.TabIndex = 1;
             tabPage.UseVisualStyleBackColor = true;
 
-            //(?)
+            //4.)
             //Need to add this to the form for this to work right
             //TabControl tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.TabPages.Add(tabPage);
@@ -132,11 +132,9 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
         {
         }
 
-        // should this be in the constructor?
-        // (?) change the location of the shit around?
 
 
-        //test which works...
+    //test which works...
     public void Initialize()
     {
         PropertyEnumerator catEnum;
@@ -287,8 +285,8 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
         PropertyEnumerator propEnum = e.PropertyEnum;
 
         //
-        propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
-        propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
+        //propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
+        //propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
         //RunfileEditor.frmContainer.  button_create_if_no_errors();
 
     }
@@ -365,6 +363,15 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
                     //Standard Way of showing the thing.
                     propEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelEdit);
+
+                    if (EarlabParam.Severity == "Warning")
+                    {
+                        propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
+                        propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
+                    }
+
+
+
                     ExpandProperty(propEnum, true);
 
 
@@ -378,10 +385,17 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                                     EarlabParam.PName,  //Name of the Parameter
                                     EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
-                                    "it works");        //The comment, which will need to be updated.
+                                    EarlabParam.Message);        //The comment, which will need to be updated.
 
                     //Standard Way of showing the thing.
                     propEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelEdit);
+
+
+                    if (EarlabParam.Severity == "Warning")
+                    {
+                        propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
+                        propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
+                    }
                     ExpandProperty(propEnum, true);
 
                     break;
@@ -394,10 +408,18 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                                     EarlabParam.PName,  //Name of the Parameter
                                     EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
-                                    "it works");        //The comment, which will need to be updated.
+                                    EarlabParam.Message);        //The comment, which will need to be updated.
 
                     //Standard Way of showing the thing.
                     propEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelList);
+
+
+                    if (EarlabParam.Severity == "Warning")
+                    {
+                        propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
+                        propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
+                    }
+
                     ExpandProperty(propEnum, true);
                     break;
 
@@ -415,10 +437,18 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                                     EarlabParam.PName,  //Name of the Parameter
                                     EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
-                                    "it works");        //The comment, which will need to be updated.
+                                    EarlabParam.Message);        //The comment, which will need to be updated.
 
                     //Standard Way of showing the thing.
                     propEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelEdit);
+
+
+                    if (EarlabParam.Severity == "Warning")
+                    {
+                        propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
+                        propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
+                    }
+
                     ExpandProperty(propEnum, true);
 
 
@@ -435,10 +465,17 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                                     EarlabParam.PName,  //Name of the Parameter
                                     EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
-                                    "it works");        //The comment, which will need to be updated.
+                                    EarlabParam.Message);        //The comment, which will need to be updated.
 
                     //Standard Way of showing the thing.
                     propEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelEdit);
+
+                    if (EarlabParam.Severity == "Warning")
+                    {
+                        propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
+                        propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
+                    }
+
                     ExpandProperty(propEnum, true);
                     break;
 
@@ -454,29 +491,9 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
     }
 
-    //Makes the inputs all at once
-    //public void MakeInputs(List<EarlabInput> Inputs, PropertyEnumerator catEnum, ref int propertyID)
-    //{
 
-    //    //create inputs
-
-
-    //}
-    
-    ////Makes the outputs all at once
-    //public void MakeOutputs(List<EarlabOutput> Outputs, PropertyEnumerator catEnum, ref int propertyID)
-    //{
-
-    //    //make outputs
-
-    //}
-
-
-
-    }//module grid
-
-
-}//namespace
+}
+}
 
 
     

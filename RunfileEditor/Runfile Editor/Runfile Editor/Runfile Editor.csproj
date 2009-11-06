@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractTabPageClass.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ArrayCheck.cs" />
     <Compile Include="EarlabInputFactory.cs" />
@@ -79,6 +80,10 @@
     <Compile Include="ModuleXML.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AbstractTabPageClass.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AbstractTabPageClass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -121,7 +126,6 @@
     <Compile Include="XmlUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="To-Do-List.txt" />
     <Content Include="XML Docs\DataSink.xml" />
     <Content Include="XML Docs\datasource.xml" />
     <Content Include="XML Docs\ModuleXMLFrag2.xml" />
@@ -129,7 +133,7 @@
     <Content Include="XML Docs\RunfileFragment.xml" />
     <Content Include="XML Docs\RunfileFragment3.xml" />
     <Content Include="XML Docs\saveit.xml" />
-    <Content Include="XML Docs\simpleModel.xml" />
+    <Content Include="XML Docs\simpleModel.earlab.xml" />
     <Content Include="XML Docs\tester.xml" />
     <Content Include="XML Test Files\ModuleXMLFragment.xml" />
     <Content Include="XML Test Files\RunfileFragment.xml" />

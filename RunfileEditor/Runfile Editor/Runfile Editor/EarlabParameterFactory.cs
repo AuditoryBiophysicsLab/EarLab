@@ -11,16 +11,8 @@ namespace RunfileEditor
     /// This is an Object Factory that return an EarlabParameter
     /// Grabs XML node.
     /// </summary>
-    public class EarlabParameterFactory
+    public static class EarlabParameterFactory
     {
-
-        /// <summary>
-        /// The default constructor is not used.
-        /// </summary>
-        public EarlabParameterFactory()
-        {
-        }
-
 
         /// <summary>
         /// It needs information from:

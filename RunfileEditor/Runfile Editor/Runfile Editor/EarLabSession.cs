@@ -110,7 +110,7 @@ namespace RunfileEditor
             protected List<EarlabSession> mChildren = new List<EarlabSession>();
 
 
-
+            //[Unused]
             //Carry the Node for "has changed" and Writing back.
             private XmlNode mOriginalNode;
 
@@ -425,7 +425,10 @@ namespace RunfileEditor
                     foreach (RunfileParameter Param in StringModule.RunfileParameters)
                        {
                            EarlabParameter newParam = EarlabParameterFactory.Make(Param, theModuleInfo[Param.ParameterName.ToLower(), Param.ParameterType.ToLower()]);
-                        //[Event Handler] newParam.DataChanged += new EventHandler(SomethingChanged);
+                        //[Event Handler]
+                        //newParam.DataChanged += new EventHandler(SomethingChanged);
+
+                           
                          //3.)(?) Parameters need to fix!
                         EarlabParameters.Add(newParam);
 

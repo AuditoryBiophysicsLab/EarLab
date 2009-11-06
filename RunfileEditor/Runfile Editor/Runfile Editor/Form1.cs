@@ -171,7 +171,7 @@ namespace RunfileEditor
 
             ////items
             //tabPageA.
-            //this.textBox1 = new System.Windows.Forms.TextBox();
+            //textBox1 = new System.Windows.Forms.TextBox();
             //tabPageA.pictureBox2 = new System.Windows.Forms.PictureBox();
             //tabPageA.label5 = new System.Windows.Forms.Label();
             //tabPageA.label4 = new System.Windows.Forms.Label();
@@ -260,10 +260,7 @@ namespace RunfileEditor
         
         private void InitializeErrorView()
         {
-            // Init ListView and folder collection
-            //folderCol = new System.Collections.Specialized.StringCollection();
             CreateHeadersAndFillListView();
-
 
         }
 
@@ -371,8 +368,8 @@ namespace RunfileEditor
                 {
                     //some feedback
                     MessageBox.Show(
-                        "You don't have an active Runfile",
-                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        "Some Feedback.",
+                        "cancel button clicked", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 //[Change]
                 //else if (RunfileObject.HasChanged == false)
@@ -493,6 +490,17 @@ namespace RunfileEditor
                 //This should have entire Runfile in testRunfile
                 RunfileObject = new EarlabRunfile(RunfileDocument);
 
+                //attach efi call to any change
+                foreach (EarlabModule eM in RunfileObject.EarlabModules)
+                {
+                    foreach (EarlabParameter eP in eM.EarlabParameters)
+                    {
+
+                        eP.DataChanged += SomethingChanged;
+                    }
+
+                }
+
                 //3.5) Clear tabs -- probably want an error check here
                 //Do you really want to load a new Runfile?
                 ModuleClearTabs();
@@ -505,7 +513,10 @@ namespace RunfileEditor
                 //Using the tabcreation class
 
                 //[abstract info]
-                Abstract_ModuleTab();
+                //Abstract_ModuleTab();
+
+                //AbstractTabPageClass AModuleTab = new AbstractTabPageClass(RunfileObject, FileNameTemp);
+                //tabControl1.TabPages.Add(new AbstractTabPageClass(RunfileObject, FileNameTemp));
 
                 //Load the Picture //RunfileObject.RunfileInformation.RunfileInformationImageLocation;
                 string tempPath = Path.GetFullPath(FileNameTemp);
@@ -583,14 +594,37 @@ namespace RunfileEditor
         {
             if (RunfileObject != null)
             {
-                //ListClear();
+                //int TabLocation;
+                //Find Tab.
+                //TabLocation = tabControl1.SelectedIndex;
+
+
                 //EFI works.
                 RunfileObject.EFI_Run();
 
-                //Controller.EFI_Run(RunfileObject);
 
+                //0.) clear tabs
+                ModuleClearTabs();
+
+                //1.) Repaint Modules
+                //[abstract info]
+                //Abstract_ModuleTab();
+
+                ////Load the Picture //RunfileObject.RunfileInformation.RunfileInformationImageLocation;
+                //string tempPath = Path.GetFullPath(FileNameTemp);
+                //tempPath = Regex.Replace(tempPath, Path.GetFileName(FileNameTemp), "");
+                //this.pictureBox1.ImageLocation = Path.Combine(tempPath, RunfileObject.RunfileInformation.RunfileInformationImageLocation);
+
+                //this part works, module works, ModuleTab doesnt'
+                foreach (EarlabModule elModule in RunfileObject.EarlabModules)
+                {
+                    //create a new tab on the form
+                    ModuleTab(elModule);
+                }
+
+
+                //2.) Repaint List View
                 //Make dummy Errors Show up in List view --
-                //PaintListView("C:\\");
                 ProductionListView(RunfileObject);
                 //Make Errors from the EFI show up in list view.
                 //ProductionListView(RunfileObject);
@@ -602,37 +636,37 @@ namespace RunfileEditor
                     button_create_if_no_errors();
 
                 }
+
+
+                //Put you back on original tab location.
+               
+
+
+
+
             }
             else
             {
                 MessageBox.Show(
                 "This occurs b/c you don't have a runfile object yet",
                 "Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //MessageBox.Show(
-                //"This would send the Runfile to Earlab.",
-                //"Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         #endregion
-     
-        public void Intparameter_ValueChanged()
+
+        private void SomethingChanged(object Sender, EventArgs e)
         {
-            //if (e.NewValue > e.LastValue)
-            //    Console.WriteLine("New Value Greater than old value, Run EFI and Repaint!");
+            int TabLocation = tabControl1.SelectedIndex;
 
-            //else
-            //    Console.WriteLine("New value less than or equal to old value, Nothing is going on");
+            //take where the focus is, return focus.
+            XMLtoEFI();
 
-            //I could check these against defaults or something else handed back from the EFI
-
-            RunfileObject.EFI_Run();
-
-
+            tabControl1.SelectedIndex = TabLocation;
 
         }
 
+    
     }
 
 
