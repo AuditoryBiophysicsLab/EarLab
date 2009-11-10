@@ -485,6 +485,12 @@ namespace RunfileEditor
                     RunfileDocument.Load(theRunfile);
                 }
 
+                //2.9) Is this a valid runfile document?
+
+
+
+                ConsoleValidator.ValidateXml("your.xml", "your.xsd");
+
 
                 //3.) Create a RunfileObject
                 //This should have entire Runfile in testRunfile
@@ -666,6 +672,23 @@ namespace RunfileEditor
 
         }
 
+
+
+        private void SchemaCheck(XmlDocument Document)
+        {
+            
+            //The ValidationHandler event handler method is defined.
+            //The XSD schema is being parsed using XmlTextReader class.
+            //The parsed schema is added to the schema collection using XmlSchemaCollection class.
+            //The schema collection is associated with XmlValidatingReader class.
+            //The event handler method is associated with XmlValidatingReader class.
+            //XmlValidatingReader class validates the XML document using the namespace URI specified when the schema was added to the collection.
+
+                        
+
+
+
+        }
     
     }
 

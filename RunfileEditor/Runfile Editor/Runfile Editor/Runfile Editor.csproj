@@ -112,6 +112,10 @@
     <None Include="XML Docs\modules.xsx">
       <DependentUpon>modules.xsd</DependentUpon>
     </None>
+    <None Include="XML Docs\modules1.xsd" />
+    <None Include="XML Docs\modules1.xsx">
+      <DependentUpon>modules1.xsd</DependentUpon>
+    </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -124,6 +128,7 @@
     <Compile Include="RunfileOutput.cs" />
     <Compile Include="RunfileParameter.cs" />
     <Compile Include="XmlUtilities.cs" />
+    <Compile Include="xmlvalidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="XML Docs\DataSink.xml" />
