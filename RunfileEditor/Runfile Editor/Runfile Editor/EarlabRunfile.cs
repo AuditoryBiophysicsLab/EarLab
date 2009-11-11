@@ -21,18 +21,15 @@ namespace RunfileEditor
     /// </summary>
     public class EarlabRunfile
     {
-
-        #region Data Members
-        //--------------------------------------------------------------------->
+        //Private Data Members ==========================================================================================///
+        #region Private Data Members
 
         /// <summary>
         /// The module directory is ...
         /// These are the unique EarlabModule titles that are needed from the EFI
         /// </summary>
         private ModuleDirectory ModuleDirectory;
-        //
-        //
-        //
+
         /// <summary>
         /// Has the Runfile Object Changed
         /// </summary>
@@ -46,16 +43,19 @@ namespace RunfileEditor
         /// <summary>
         /// This is the list of Modules contained in the Runfile
         /// </summary>
-        private List<RunfileModule> RunfileModules = new List<RunfileModule>();        
-        
-        //
-        //Runfile Data Structures that are public
-        //
+        private List<RunfileModule> RunfileModules = new List<RunfileModule>();         
+
+        #endregion
+
+        //Public Data Members ============================================================================================///
+        #region Public Data Memebers
+
         /// <summary>
         /// Run File Information -- contains informaiton about the model
         /// This can be reconfigured to public-private
         /// </summary>
         public RunfileInformation RunfileInformation;
+
         /// <summary>
         /// Modules carry two data structures: (XML data as strings),(XML data as the appropriate value)
         /// </summary>
@@ -63,10 +63,11 @@ namespace RunfileEditor
 
         //errors in an accessable format
         public List<VerificationError> VErrorCollection = new List<VerificationError>();
-        
 
         #endregion
 
+
+        //Event Handler Items ============================================================================================///
         #region Event Handler Items
         //Basically I can do the event on change of a Module Repaint the Tabs.
         public event EventHandler DataChanged;
@@ -78,6 +79,7 @@ namespace RunfileEditor
         }
         #endregion
 
+        //Properties ====================================================================================================///
         #region Properties
 
         public int ModuleCount 
@@ -322,10 +324,10 @@ namespace RunfileEditor
         }
 
         #endregion
-        
+
+        //Constructors ===================================================================================================///       
         #region Constructors
-        //-------------------------------------------------------------------->
-        //Constructors
+
 
         /// <summary>
         /// Here is the default constructor, it is unused.
@@ -347,6 +349,8 @@ namespace RunfileEditor
         } 
         #endregion Constructors
 
+
+        //Controller Region ==============================================================================================/// 
         #region This is the Controller Section of the EarlabRunfileObject
 
         /// <summary>

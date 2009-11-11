@@ -24,23 +24,11 @@ namespace RunfileEditor
         private EarlabRunfile RunfileObject;
         #endregion
 
-        //The Error View Specific Data Members ==================================================================///
+        //The Error List View Specific Data Members =============================================================///
         #region ErrorViewList Data members
-
-        //[Remove]
-        //private System.Collections.Specialized.StringCollection folderCol;
-
-        //[Remove]
-        //Not quite sure about these two...
-        //private System.Windows.Forms.ImageList ilLarge;
-        //private System.Windows.Forms.ImageList ilSmall;
 
         //This is the list view
         private System.Windows.Forms.ListView listViewErrors;
-
-        //[Remove]
-        //This is the label that goes on top of the errors
-        //private System.Windows.Forms.Label lblCurrentPath;
 
         #endregion
 
@@ -59,7 +47,7 @@ namespace RunfileEditor
         }
 
         //The Buttons on the GUI ================================================================================///
-        #region The list of all the buttons on the GUI
+        #region The list of all the buttons on the GUI Form
         
         private void SaveXMLFile_Click(object sender, EventArgs e)
         {
@@ -168,78 +156,6 @@ namespace RunfileEditor
             tabPageA.Size = new System.Drawing.Size(831, 392);
             tabPageA.TabIndex = 1;
             tabPageA.UseVisualStyleBackColor = true;
-
-            ////items
-            //tabPageA.
-            //textBox1 = new System.Windows.Forms.TextBox();
-            //tabPageA.pictureBox2 = new System.Windows.Forms.PictureBox();
-            //tabPageA.label5 = new System.Windows.Forms.Label();
-            //tabPageA.label4 = new System.Windows.Forms.Label();
-
-
-
-
-            //// 
-            //// label5
-            ////
-
-            //tabPageA.label5.AutoSize = true;
-            //tabPageA.label5.Location = new System.Drawing.Point(579, 42);
-            //tabPageA.label5.Name = "label5";
-            //tabPageA.label5.Size = new System.Drawing.Size(35, 13);
-            //tabPageA.label5.TabIndex = 8;
-            //tabPageA.label5.Text = "label5";
-            //// 
-            //// label4
-            //// 
-            //tabPageA.label4.AutoSize = true;
-            //tabPageA.label4.Location = new System.Drawing.Point(579, 16);
-            //tabPageA.label4.Name = "label4";
-            //tabPageA.label4.Size = new System.Drawing.Size(35, 13);
-            //tabPageA.label4.TabIndex = 7;
-            //tabPageA.label4.Text = "label4";
-            //// 
-            //// textBox1
-            //// 
-            //this.textBox1.Location = new System.Drawing.Point(579, 102);
-            //this.textBox1.Multiline = true;
-            //this.textBox1.Name = "textBox1";
-            //this.textBox1.Size = new System.Drawing.Size(359, 345);
-            //this.textBox1.TabIndex = 1;
-
-            //// 
-            //// pictureBox2
-            //// 
-            //tabPageA.pictureBox2.Location = new System.Drawing.Point(23, 16);
-            //tabPageA.pictureBox2.Name = "pictureBox2";
-            //tabPageA.pictureBox2.Size = new System.Drawing.Size(524, 437);
-            //tabPageA.pictureBox2.TabIndex = 4;
-            //tabPageA.pictureBox2.TabStop = false;
-            //tabPageA.tabPage2.ResumeLayout(false);
-            //tabPageA.tabPage2.PerformLayout();
-            //((System.ComponentModel.ISupportInitialize)(tabPageA.pictureBox2)).EndInit();
-
-
-
-
-
-
-
-            //tabPageA.Controls.Add(tabPageA.label5);
-            //tabPageA.Controls.Add(this.label4);
-            //tabPageA.Controls.Add(this.textBox1);
-            //.Controls.Add(this.pictureBox2);
-            //tabPageA.Name = "Model Abstract";
-            ////    this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            ////    this.tabPage2.Size = new System.Drawing.Size(1016, 486);
-            ////    this.tabPage2.TabIndex = 1;
-            ////    this.tabPage2.Text = "tabPage2";
-            ////    this.tabPage2.UseVisualStyleBackColor = true;
-
-
-            ////(?)
-            ////Need to add this to the form for this to work right
-            ////TabControl tabControl1 = new System.Windows.Forms.TabControl();
             tabControl1.TabPages.Add(tabPageA);
         }
 
@@ -287,6 +203,7 @@ namespace RunfileEditor
             this.listViewErrors.Columns.Add(colHead);
         }
 
+        //clears the list view
         private void ListClear()
         {
             listViewErrors.Clear();
@@ -334,7 +251,7 @@ namespace RunfileEditor
                 }
 
                 this.listViewErrors.EndUpdate();
-            }
+            }//[ErrorLog]
             catch (System.Exception err)
             {
                 MessageBox.Show("Error: " + err.Message);
@@ -357,18 +274,15 @@ namespace RunfileEditor
             try
             {
 
-                //1.) Use RunfileObject Function
+                
                 XmlDocument NewXmlRunfile = new XmlDocument();
                 string ValidRunfileName;
-
-                //2.) Give user options on saving
-                //.Earlab file cannot be over-written
 
                 if (RunfileObject == null)
                 {
                     //some feedback
                     MessageBox.Show(
-                        "Some Feedback.",
+                        "You don't have an open file to save.",
                         "cancel button clicked", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 //[Change]
@@ -428,6 +342,7 @@ namespace RunfileEditor
 
                 }
             }
+                //[ErrorLog]
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -481,6 +396,12 @@ namespace RunfileEditor
                 {
                     theRunfile = FileNameTemp;
                     //2.) Initize and Load XML Document
+                    
+                    
+                    //ValidateXml(string xmlFilename, string schemaFilename)
+
+
+
                     //RunfileDocument = new XmlDocument();
                     RunfileDocument.Load(theRunfile);
                 }
@@ -489,7 +410,7 @@ namespace RunfileEditor
 
 
 
-                ConsoleValidator.ValidateXml("your.xml", "your.xsd");
+                
 
 
                 //3.) Create a RunfileObject
@@ -600,28 +521,22 @@ namespace RunfileEditor
         {
             if (RunfileObject != null)
             {
-                //int TabLocation;
-                //Find Tab.
-                //TabLocation = tabControl1.SelectedIndex;
-
 
                 //EFI works.
                 RunfileObject.EFI_Run();
 
-
-                //0.) clear tabs
+                //1.) clear tabs
                 ModuleClearTabs();
 
-                //1.) Repaint Modules
+                //2.) Repaint Modules
                 //[abstract info]
-                //Abstract_ModuleTab();
+                //Abstract_ModuleTab(); //[Change]
 
                 ////Load the Picture //RunfileObject.RunfileInformation.RunfileInformationImageLocation;
                 //string tempPath = Path.GetFullPath(FileNameTemp);
                 //tempPath = Regex.Replace(tempPath, Path.GetFileName(FileNameTemp), "");
                 //this.pictureBox1.ImageLocation = Path.Combine(tempPath, RunfileObject.RunfileInformation.RunfileInformationImageLocation);
 
-                //this part works, module works, ModuleTab doesnt'
                 foreach (EarlabModule elModule in RunfileObject.EarlabModules)
                 {
                     //create a new tab on the form
@@ -632,8 +547,6 @@ namespace RunfileEditor
                 //2.) Repaint List View
                 //Make dummy Errors Show up in List view --
                 ProductionListView(RunfileObject);
-                //Make Errors from the EFI show up in list view.
-                //ProductionListView(RunfileObject);
 
                 //Launch desktop earlab//
                 //Just counts the errors.
@@ -644,17 +557,11 @@ namespace RunfileEditor
                 }
 
 
-                //Put you back on original tab location.
-               
-
-
-
-
             }
             else
             {
                 MessageBox.Show(
-                "This occurs b/c you don't have a runfile object yet",
+                "You don't have a runfile open yet",
                 "Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -663,32 +570,17 @@ namespace RunfileEditor
 
         private void SomethingChanged(object Sender, EventArgs e)
         {
+            //record focus
             int TabLocation = tabControl1.SelectedIndex;
 
             //take where the focus is, return focus.
             XMLtoEFI();
 
+            //return focus
             tabControl1.SelectedIndex = TabLocation;
 
         }
 
-
-
-        private void SchemaCheck(XmlDocument Document)
-        {
-            
-            //The ValidationHandler event handler method is defined.
-            //The XSD schema is being parsed using XmlTextReader class.
-            //The parsed schema is added to the schema collection using XmlSchemaCollection class.
-            //The schema collection is associated with XmlValidatingReader class.
-            //The event handler method is associated with XmlValidatingReader class.
-            //XmlValidatingReader class validates the XML document using the namespace URI specified when the schema was added to the collection.
-
-                        
-
-
-
-        }
     
     }
 
