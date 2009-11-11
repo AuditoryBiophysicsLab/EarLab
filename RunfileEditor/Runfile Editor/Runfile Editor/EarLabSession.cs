@@ -202,8 +202,6 @@ namespace RunfileEditor
 
         #endregion
     }
-
-
     
     public class EarlabModuleInformation
     {

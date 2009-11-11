@@ -68,13 +68,16 @@ using System.IO;
 ///     2.) Pop error msg.
 ///     3.) At any time give option to send errors.
 /// 
+/// 
+/// Maybe Introduce an XML format?
+/// 
 /// </summary>
 /// 
 namespace RunfileEditor
 {
     class errorLog
     {
-        //=================== Instance members =====================//
+        //=== Private data members ============================================///
         private string fileName;
         private string pathName;
         private string errorMessage;
@@ -83,16 +86,16 @@ namespace RunfileEditor
         StreamWriter sw = null;
         StreamReader sr = null;
 
-        //Constructor ==============================================//
+        //=== Constructor =====================================================///
         public errorLog(string msg)
         {
             errorMessage = msg;
             errorFlag = 0;
             fileName = "ErrorLog.txt";
         }
-        //=================== Property Methods ====================//
 
 
+        //=== Property Methods ================================================///
         public string FileName
         {
             get
@@ -119,7 +122,10 @@ namespace RunfileEditor
         }
         public string PathName
         {
-            get { return pathName; }
+            get 
+            { 
+                return pathName; 
+            }
             set
             {
                 if (value.Length > 0)
@@ -128,23 +134,20 @@ namespace RunfileEditor
         }
 
 
-        //=================== General Methods =====================//
+        //=== General Methods ===============================================///
 
         /// <summary>
-        ///*****
-        ///* Purpose: This reads the error log file.
-        ///* 
-        ///* Parameter list:
-        ///*  n/a
-        ///*  
-        ///* Return value
-        ///*  string          the contents of the error log message file
-        ///*****/
+        ///This reads the error log file.
+        ///
+        ///Parameter list:  
+        ///Return value
+        ///string          the contents of the error log message file
+        ///
         ///</summary>
 
         public string ReadErrorLog()
         {
-            //a buffer 
+            //An internal buffer .. limit characters??? 
             string buff;
 
             try
@@ -195,7 +198,6 @@ namespace RunfileEditor
         ///*          int          0 = no errors, 1 otherwise
         ///*****/
         /// </summary>
-        /// 
         public int WriteErrorLog()
         {
 

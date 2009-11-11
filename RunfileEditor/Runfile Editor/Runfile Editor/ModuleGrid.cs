@@ -14,51 +14,20 @@ namespace RunfileEditor
 {
 
     /// <summary>
-    /// Need to do a LOT!!! with the Module Grid class!!
+    /// 
+    ///New class that inherits from tabpage -- constructor take in Earlab module
+    ///adds controls to itself - from spg and any buttons and gifs
+    /// 
     /// </summary>
-
-    //New class that inherits from tabpage -- constructor take in Earlab module
-    //adds controls to itself - from spg and any buttons and gifs
 public partial class frmContainer : Form
     {
 
-        //private vars
-        //Module title 
-        // other crap
-
-        //basically a test method to test stuff out.
-        public void ModuleTab()
-        {
-
-            //2.) Add Module Grid to Tab
-            TabPage tabPage = new TabPage("none");
-
-            ModuleGrid myModuleGrid = new ModuleGrid();
-            myModuleGrid.Initialize();
-            tabPage.Controls.Add(myModuleGrid);
-
-            //3.) Tab location and size settings
-            tabPage.Location = new System.Drawing.Point(4, 22);
-            tabPage.Padding = new System.Windows.Forms.Padding(3);
-            tabPage.Size = new System.Drawing.Size(831, 392);
-            tabPage.TabIndex = 1;
-            tabPage.UseVisualStyleBackColor = true;
-
-            //4.)
-            //Need to add this to the form for this to work right
-            //TabControl tabControl1 = new System.Windows.Forms.TabControl();
-            tabControl1.TabPages.Add(tabPage);
-        }
-
-        
-
+        //Handle the tabs ============================================================================================//
         public void ModuleTab(EarlabModule theEarlabModule)
         {
             //This class creates tab on the form
 
             //1.) Create the Module Grid
-
-            //Something like 
             ModuleGrid myModuleGrid = new ModuleGrid();
 
             //takes the module and creates the SPG
@@ -76,7 +45,7 @@ public partial class frmContainer : Form
             //}
             //else
             //{
-                ModuleTitle = theEarlabModule.theEarlabModuleInformation.InstanceName;
+            ModuleTitle = theEarlabModule.theEarlabModuleInformation.InstanceName;
             //}
 
             //2.) Add Module Grid to Tab
@@ -91,42 +60,34 @@ public partial class frmContainer : Form
             tabPage.TabIndex = 1;
             tabPage.UseVisualStyleBackColor = true;
 
-            //(?)
-            //Need to add this to the form for this to work right
-            //TabControl tabControl1 = new System.Windows.Forms.TabControl();
+            //4.) Add tab to control
             tabControl1.TabPages.Add(tabPage);
-
-
-
         }
 
         //Just a wrapper to use the tabControl
         public void ModuleClearTabs()
         {
-            //There is a bit of a problem -- you can't use an index, b/c you
-            //are opporating on the collection.
-            //TabPage TabHolder = tabPage1;
-            //The above is not necessary, FormDesigner has created the
-            //tabPage1 with the controls, and never clears that var.
-
             //clear all tabs
             tabControl1.TabPages.Clear();
 
             //Add back tabpage1
             tabControl1.TabPages.Add(tabPage1);
 
-            //remove selected tab
+            //remove selected tab, might be another option
             //tabControl1.TabPages.Remove(tabControl1.SelectedTab);
-            // Removes all the tabs:
-            //tabControl1.TabPages.Clear();
         }
 
 
+        public void AbstractModuleTab(EarlabRunfile RunfileObject)
+        {
 
 
-    }//  You'll need to take this and throw this into the form.
+        }
 
-//ModuleGrid takes the EarlabModule -> to 
+
+    }
+
+
 
 public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
     {
@@ -134,28 +95,12 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
         {
         }
 
-
-
-    //test which works...
-    public void Initialize()
-    {
-        PropertyEnumerator catEnum;
-        catEnum = AppendRootCategory(1, "Paramter");
-
-        PropertyEnumerator propEnum;
-
-        propEnum = AppendManagedProperty(catEnum, 3, "Double Value",
-        typeof(double), 9.09, "This is an input double");
-
-        standardSettings();
-    }
-
-
-    //initialize a module which works for
-    //test Runfile modules
+    //initialize a module 
     public void Initialize(EarlabModule theEarlabModule)
         {
-        //[Display Event]
+        
+        
+            //[Display Event]
             this.Clear();
             //Information directly from the Module
             //This just mirrors everything else.
@@ -238,6 +183,8 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
             this.Size = new System.Drawing.Size(695, 364);
         }
 
+
+
     //[Property Changes] property changed This can call all the changes!
     //Make a settings function that lists all the changes
     //1.) EFI
@@ -247,32 +194,19 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
     //5.) Tab
     //6.) Else 
     //7.) Show button
-
     protected override void OnPropertyChanged(VisualHint.SmartPropertyGrid.PropertyChangedEventArgs e)
     {
+
+        //[Change] == SPG can allow for the module XML to update the acceptable Dt
         // on property change
         // check against max, min and default for each property in the Module.
-
-
         // if out of range, give a new message
         // if out of range, turn it red
 
-        //test
-
-        //if (RunfileObject != null)
-        //{
-
-        //    RunfileObject.EFI_Run();
-
-        //}
-
         if (e.PropertyEnum.Property.Id > 0)
         {
+;
             
-            OnEFIUpdate(e);
-            
-
-
         }
 
         //All code goes above this SPG standard fragment.
@@ -280,18 +214,6 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
         base.OnPropertyChanged(e);
     }
 
-    protected void OnEFIUpdate(VisualHint.SmartPropertyGrid.PropertyChangedEventArgs e)
-    {
-
-        //Application.UseWaitCursor = UseWaitCursor;
-        PropertyEnumerator propEnum = e.PropertyEnum;
-
-        //
-        //propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
-        //propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
-        //RunfileEditor.frmContainer.  button_create_if_no_errors();
-
-    }
 
     //Makes the parameters all at once
     public void MakeParameters(List<EarlabParameter> Parameters, PropertyEnumerator catEnum, ref int propertyID)
@@ -302,7 +224,6 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
         foreach (EarlabParameter EarlabParam in Parameters)
 
         {
-            //???
             string paramType = EarlabParam.PType.ToLower();
             paramType = paramType.Replace(" ", "");
 
@@ -318,7 +239,6 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                 case "integer":
                 case "int":
 
-                    //Is there even a reason to have these separated??? 
                     propEnum = AppendProperty(
                         catEnum,
                         propertyID++,
@@ -329,16 +249,12 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                         );                  //end
 
                     //Standard Way of showing the thing.
-                   
                     propEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelEdit);
-                    //If there is a problem::::
-                    //propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
-                    //propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
-                    
-                    //weird -- propEnum.Property.Comment = "testing comment";
+         
 
                     if (EarlabParam.Severity == "Warning")
                     {
+                        //If there is a problem::::
                         propEnum.Property.BackColor = Color.Firebrick;   //<-- back ground color change
                         propEnum.Property.ForeColor = Color.FloralWhite; //<-- text color change
                     }
@@ -426,12 +342,13 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                     break;
 
 
-                //The Arrays will have to be done differently ---- 
-                //How do you display arrays in SPG!
-                // 
 
+
+
+                //The Arrays will have to be done differently =======================================================///
                 case "integer[]":
                 case "int[]":
+
                     //change, to the new system
                     propEnum = AppendProperty(
                                     catEnum,
@@ -439,7 +356,7 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
                                     EarlabParam.PName,  //Name of the Parameter
                                     EarlabParam,        //Object reference
                                     "PValue",           //String name of the Parameter Value, given via reflection
-                                    EarlabParam.Message);        //The comment, which will need to be updated.
+                                    EarlabParam.Message); //The comment, which will need to be updated.
 
                     //Standard Way of showing the thing.
                     propEnum.Property.Feel = GetRegisteredFeel(VisualHint.SmartPropertyGrid.PropertyGrid.FeelEdit);
