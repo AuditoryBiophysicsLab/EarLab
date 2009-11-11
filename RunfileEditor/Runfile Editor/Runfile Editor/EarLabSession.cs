@@ -180,7 +180,6 @@ namespace RunfileEditor
         }
 
 
-
         //====Abstract implementations ================================================///
 
         public abstract bool HasChanged
@@ -201,14 +200,11 @@ namespace RunfileEditor
             set;
         }
 
-
-
-
         #endregion
     }
 
 
-    //Re examine this guy
+    
     public class EarlabModuleInformation
     {
         #region Private Data Members

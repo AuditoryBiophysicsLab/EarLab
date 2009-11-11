@@ -801,9 +801,6 @@ namespace RunfileEditor
         }
 
 
-
-
-        ////design is problematic for updates!
         public void EFI_Run()
         {
             XmlDocument RunfileVerificationErrors;
