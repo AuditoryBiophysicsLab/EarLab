@@ -541,7 +541,7 @@ namespace RunfileEditor
                 
                 //EFI works.
                 //[4 comment this out for no errors !!]
-                //RunfileObject.EFI_Run();
+                RunfileObject.EFI_Run();
                
                 foreach (EarlabModule elModule in RunfileObject.EarlabModules)
                 {
