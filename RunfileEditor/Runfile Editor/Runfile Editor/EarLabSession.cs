@@ -112,7 +112,7 @@ namespace RunfileEditor
 
             //[Unused]
             //Carry the Node for "has changed" and Writing back.
-            private XmlNode mOriginalNode;
+            //private XmlNode mOriginalNode;
 
             //Verification Errors -- will change these to private
             private string mSeverity ="";
@@ -487,6 +487,11 @@ namespace RunfileEditor
             //
     #endregion
 
+
+
+    //Need to remove the "oldValue" data memeber from the class and factory switch.
+
+
     /// <summary>
     /// An abstract class that inherits form the the EarlabSession class.
     /// All parameters are derived from this class.
@@ -572,7 +577,6 @@ namespace RunfileEditor
                 protected T pMin;
                 protected T pMax;
                 protected T pValue;
-                protected T pOValue; //this is the temporary solution to handle "haschanged"
         #endregion
 
         #region Data Properties
@@ -618,15 +622,6 @@ namespace RunfileEditor
                 set { pMax = value; }
 
             }
-
-            //[Remove] -- constructor, factory
-            public T POValue
-            {
-                get { return pOValue; }
-                set { pOValue = value; }
-
-            }
-
 
         #endregion
 
@@ -678,14 +673,13 @@ namespace RunfileEditor
         #endregion
 
         // Must ad pOValue to all these parameters
-        public EarlabParameter(string pName, string pType, string pUnits, string pDescription, T pDefault, T pMin, T pMax, T pValue, T pOValue)
+        public EarlabParameter(string pName, string pType, string pUnits, string pDescription, T pDefault, T pMin, T pMax, T pValue)
             : base(pName, pType, pUnits, pDescription)
         {
             this.pDefault = pDefault;
             this.pMin = pMin;
             this.pMax = pMax;
             this.pValue = pValue;
-            this.pOValue = pOValue;
         }
 
 
@@ -741,8 +735,8 @@ namespace RunfileEditor
 
         //Default constructor should never be used
         //Because it would mean that 
-        public EarlabParameterInteger(string pName, string pType, string pUnits, string pDescription, int newDefault, int newMin, int newMax, int newValue, int oldValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue) //( string newName, string newType, string newUnits, string newDescriptions)
+        public EarlabParameterInteger(string pName, string pType, string pUnits, string pDescription, int newDefault, int newMin, int newMax, int newValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue) //( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
 
@@ -763,16 +757,16 @@ namespace RunfileEditor
             //get the mHasChanged
             get
             {
-                if (PValue == POValue)
-                {
-                    mHasChanged = false;
+                //if (PValue == POValue)
+                //{
+                //    mHasChanged = false;
 
-                }
-                else
-                {
-                    mHasChanged = true;
+                //}
+                //else
+                //{
+                //    mHasChanged = true;
 
-                }
+                //}
 
                 return mHasChanged;
 
@@ -804,8 +798,8 @@ namespace RunfileEditor
         #endregion
 
 
-        public EarlabParameterDouble(string pName, string pType, string pUnits, string pDescription, double newDefault, double newMin, double newMax, double newValue, double oldValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
+        public EarlabParameterDouble(string pName, string pType, string pUnits, string pDescription, double newDefault, double newMin, double newMax, double newValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
 
@@ -826,16 +820,16 @@ namespace RunfileEditor
             //get the mHasChanged
             get
             {
-                if (PValue == POValue)
-                {
-                    mHasChanged = false;
+                //if (PValue == POValue)
+                //{
+                //    mHasChanged = false;
 
-                }
-                else
-                {
-                    mHasChanged = true;
+                //}
+                //else
+                //{
+                //    mHasChanged = true;
 
-                }
+                //}
 
                 return mHasChanged;
 
@@ -868,8 +862,8 @@ namespace RunfileEditor
         #endregion
 
 
-        public EarlabParameterBoolean(string pName, string pType, string pUnits, string pDescription, bool newDefault, bool newMin, bool newMax, bool newValue, bool oldValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
+        public EarlabParameterBoolean(string pName, string pType, string pUnits, string pDescription, bool newDefault, bool newMin, bool newMax, bool newValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
 
@@ -890,16 +884,16 @@ namespace RunfileEditor
             //get the mHasChanged
             get
             {
-                if (PValue == POValue)
-                {
-                    mHasChanged = false;
+                //if (PValue == POValue)
+                //{
+                //    mHasChanged = false;
 
-                }
-                else
-                {
-                    mHasChanged = true;
+                //}
+                //else
+                //{
+                //    mHasChanged = true;
 
-                }
+                //}
 
                 return mHasChanged;
 
@@ -931,8 +925,8 @@ namespace RunfileEditor
 
         }
 
-        public EarlabParameterString(string pName, string pType, string pUnits, string pDescription, string newDefault, string newMin, string newMax, string newValue, string oldValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
+        public EarlabParameterString(string pName, string pType, string pUnits, string pDescription, string newDefault, string newMin, string newMax, string newValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
 
@@ -954,17 +948,17 @@ namespace RunfileEditor
             //get the mHasChanged
             get
             {
-                if( ArrayCheck.ArrayEquality(PValue, POValue) )
-                {
-                    mHasChanged = false;
+                //if( ArrayCheck.ArrayEquality(PValue, POValue) )
+                //{
+                //    mHasChanged = false;
 
 
-                }
-                else
-                {
-                    mHasChanged = true;
+                //}
+                //else
+                //{
+                //    mHasChanged = true;
 
-                }
+                //}
 
                 return mHasChanged;
 
@@ -1000,8 +994,8 @@ namespace RunfileEditor
         //{
         //    throw new Exception("The method or operation is not implemented.");
         //}
-        public EarlabParameterIntegerArray(string pName, string pType, string pUnits, string pDescription, int[] newDefault, int[] newMin, int[] newMax, int[] newValue, int[] oldValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
+        public EarlabParameterIntegerArray(string pName, string pType, string pUnits, string pDescription, int[] newDefault, int[] newMin, int[] newMax, int[] newValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
 
@@ -1023,17 +1017,17 @@ namespace RunfileEditor
             //get the mHasChanged
             get
             {
-                if ( ArrayCheck.ArrayEquality( PValue, POValue) )
-                {
-                    mHasChanged = false;
+                //if ( ArrayCheck.ArrayEquality( PValue, POValue) )
+                //{
+                //    mHasChanged = false;
 
 
-                }
-                else
-                {
-                    mHasChanged = true;
+                //}
+                //else
+                //{
+                //    mHasChanged = true;
 
-                }
+                //}
 
                 return mHasChanged;
 
@@ -1065,8 +1059,8 @@ namespace RunfileEditor
 
         }
 
-        public EarlabParameterDoubleArray(string pName, string pType, string pUnits, string pDescription, double[] newDefault, double[] newMin, double[] newMax, double[] newValue, double[] oldValue)
-            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue, oldValue)//( string newName, string newType, string newUnits, string newDescriptions)
+        public EarlabParameterDoubleArray(string pName, string pType, string pUnits, string pDescription, double[] newDefault, double[] newMin, double[] newMax, double[] newValue)
+            : base(pName, pType, pUnits, pDescription, newDefault, newMin, newMax, newValue)//( string newName, string newType, string newUnits, string newDescriptions)
         {
         }
     }

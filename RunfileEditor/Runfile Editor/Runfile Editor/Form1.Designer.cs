@@ -307,8 +307,14 @@ namespace RunfileEditor
             this.button1.TabIndex = 18;
             this.button1.Text = "Only Appear if No Errors";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.DesktopEarlabLaunch_Click);
 
+        }
+
+        public void remove_button()
+        {
+
+            this.tabPage1.Controls.Remove(this.button1);
         }
 
 

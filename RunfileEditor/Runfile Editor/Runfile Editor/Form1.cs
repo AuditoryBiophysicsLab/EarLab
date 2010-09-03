@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,7 +63,7 @@ namespace RunfileEditor
         }
 
         //This button launches the Desktop Earlab appears if the error count on Verification Errors == 0.
-        private void button1_Click(object sender, EventArgs e)
+        private void DesktopEarlabLaunch_Click(object sender, EventArgs e)
         {
 
             MessageBox.Show(
@@ -264,7 +265,6 @@ namespace RunfileEditor
 
         #endregion
 
-
         //Functionality of the GUI elements =====================================================================///
         #region Functionality of the GUI elements
         [STAThread]
@@ -357,26 +357,26 @@ namespace RunfileEditor
 
             try
             {
-                //XmlDocument doc = new XmlDocument();
+                string FileNameTemp;
                 RunfileDocument = new XmlDocument();
 
 
-                string FileNameTemp;
+
                 //1.) Open File
                 //a.) Open file
                 //b.) Check file against xsd schema
                 //c.) check to ensure it isn't null
 
-                //Create form inherited bit.
+                //1.) Open File -- Dialog Box
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
                 openFileDialog1.Title = "Please open a saved Run File";
 
                 //Set items
                 //openFileDialog1.InitialDirectory =
-                //    System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                //System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
 
-                //.xml ToDo: own "file format" .Earlab hehe
+                //.xml ToDo: own "file format" XX requires admin priviliges.
                 openFileDialog1.Filter = "XML|*.xml|Earlab|*.Earlab";
 
 
@@ -386,6 +386,7 @@ namespace RunfileEditor
                 {
                     MessageBox.Show("cancel button clicked");
                     FileNameTemp = null;
+
                 }
                 else
                 {
@@ -396,76 +397,76 @@ namespace RunfileEditor
                 {
                     theRunfile = FileNameTemp;
                     //2.) Initize and Load XML Document
-                    
-                    
+
+
                     //ValidateXml(string xmlFilename, string schemaFilename)
 
 
 
                     //RunfileDocument = new XmlDocument();
                     RunfileDocument.Load(theRunfile);
-                }
-
-                //2.9) Is this a valid runfile document?
 
 
+                    //2.9) [Schema Validation] Is this a valid runfile document?
 
-                
 
 
-                //3.) Create a RunfileObject
-                //This should have entire Runfile in testRunfile
-                RunfileObject = new EarlabRunfile(RunfileDocument);
 
-                //attach efi call to any change
-                foreach (EarlabModule eM in RunfileObject.EarlabModules)
-                {
-                    foreach (EarlabParameter eP in eM.EarlabParameters)
+
+                    //3.) Create a RunfileObject
+                    //This should have entire Runfile in testRunfile
+                    RunfileObject = new EarlabRunfile(RunfileDocument);
+
+                    //attach efi call to any change
+                    foreach (EarlabModule eM in RunfileObject.EarlabModules)
                     {
+                        foreach (EarlabParameter eP in eM.EarlabParameters)
+                        {
 
-                        eP.DataChanged += SomethingChanged;
+                            eP.DataChanged += SomethingChanged;
+                        }
+
                     }
 
+                    //3.5) Clear tabs -- probably want an error check here
+                    //Do you really want to load a new Runfile?
+                    ModuleClearTabs();
+                    remove_button();
+
+                    //3.75) Clear List View
+                    this.listViewErrors.Clear();
+
+                    //4.) Create the Grids on the Form
+                    //Now For Each Module in Runfile build a sample grid
+                    //Using the tabcreation class
+
+                    //[abstract info]
+                    //Abstract_ModuleTab();
+
+                    //AbstractTabPageClass AModuleTab = new AbstractTabPageClass(RunfileObject, FileNameTemp);
+                    //tabControl1.TabPages.Add(new AbstractTabPageClass(RunfileObject, FileNameTemp));
+
+                    //Load the Picture //RunfileObject.RunfileInformation.RunfileInformationImageLocation;
+                    string tempPath = Path.GetFullPath(FileNameTemp);
+                    tempPath = Regex.Replace(tempPath, Path.GetFileName(FileNameTemp), "");
+                    this.pictureBox1.ImageLocation = Path.Combine(tempPath, RunfileObject.RunfileInformation.RunfileInformationImageLocation);
+
+                    //this part works, module works, ModuleTab doesnt'
+                    foreach (EarlabModule elModule in RunfileObject.EarlabModules)
+                    {
+                        //create a new tab on the form
+                        ModuleTab(elModule);
+                    }
+
+
+                    //Some Feedback
+                    MessageBox.Show("Runfile Document Opened Successfully!");
+
+                    //[Problem]
+                    //(EarlabParameterInteger)RunfileObject.EarlabModules[1].EarlabParameters[3]. += Intparameter_ValueChanged;
+
                 }
-
-                //3.5) Clear tabs -- probably want an error check here
-                //Do you really want to load a new Runfile?
-                ModuleClearTabs();
-
-                //3.75) Clear List View
-                this.listViewErrors.Clear();
-
-                //4.) Create the Grids on the Form
-                //Now For Each Module in Runfile build a sample grid
-                //Using the tabcreation class
-
-                //[abstract info]
-                //Abstract_ModuleTab();
-
-                //AbstractTabPageClass AModuleTab = new AbstractTabPageClass(RunfileObject, FileNameTemp);
-                //tabControl1.TabPages.Add(new AbstractTabPageClass(RunfileObject, FileNameTemp));
-
-                //Load the Picture //RunfileObject.RunfileInformation.RunfileInformationImageLocation;
-                string tempPath = Path.GetFullPath(FileNameTemp);
-                tempPath = Regex.Replace(tempPath, Path.GetFileName(FileNameTemp), "");
-                this.pictureBox1.ImageLocation = Path.Combine(tempPath, RunfileObject.RunfileInformation.RunfileInformationImageLocation); 
-
-                //this part works, module works, ModuleTab doesnt'
-                foreach (EarlabModule elModule in RunfileObject.EarlabModules)
-                {
-                    //create a new tab on the form
-                    ModuleTab(elModule);
-                }
-
-
-                //Some Feedback
-                MessageBox.Show("Runfile Document Opened Successfully!");
-
-                //[Problem]
-               //(EarlabParameterInteger)RunfileObject.EarlabModules[1].EarlabParameters[3]. += Intparameter_ValueChanged;
-
             }
-
             //[Change]
             catch (Exception ex)
             {
@@ -474,7 +475,7 @@ namespace RunfileEditor
 
                 //lastly make the recording to the errorlog
                 //Going to have to make a "catch flag" to log errors
-                {   
+                {
                     //!!/write to error pop-up
                     errorLog currentLog = new errorLog(err);
                     currentLog.PathName = Application.StartupPath;
@@ -503,13 +504,13 @@ namespace RunfileEditor
 
         private void ExitRoutine()
         {
-
+            //confirms that the user wants to quit the app
             if (
                 MessageBox.Show("Do You Really Want to Quit?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK
                )
 
 
-            //confirms that the user wants to quit the app
+     
             {
 
                 Application.Exit();
@@ -522,11 +523,12 @@ namespace RunfileEditor
             if (RunfileObject != null)
             {
 
-                //EFI works.
-                RunfileObject.EFI_Run();
+
 
                 //1.) clear tabs
                 ModuleClearTabs();
+
+                remove_button();
 
                 //2.) Repaint Modules
                 //[abstract info]
@@ -536,13 +538,17 @@ namespace RunfileEditor
                 //string tempPath = Path.GetFullPath(FileNameTemp);
                 //tempPath = Regex.Replace(tempPath, Path.GetFileName(FileNameTemp), "");
                 //this.pictureBox1.ImageLocation = Path.Combine(tempPath, RunfileObject.RunfileInformation.RunfileInformationImageLocation);
-
+                
+                //EFI works.
+                //[4 comment this out for no errors !!]
+                //RunfileObject.EFI_Run();
+               
                 foreach (EarlabModule elModule in RunfileObject.EarlabModules)
                 {
                     //create a new tab on the form
                     ModuleTab(elModule);
                 }
-
+ 
 
                 //2.) Repaint List View
                 //Make dummy Errors Show up in List view --
@@ -565,7 +571,6 @@ namespace RunfileEditor
                 "Run File to Earlab", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         #endregion
 
         private void SomethingChanged(object Sender, EventArgs e)
@@ -578,6 +583,8 @@ namespace RunfileEditor
 
             //return focus
             tabControl1.SelectedIndex = TabLocation;
+
+            //Add * to module tab
 
         }
 

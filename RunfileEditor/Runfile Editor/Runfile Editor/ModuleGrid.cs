@@ -33,12 +33,13 @@ public partial class frmContainer : Form
             //takes the module and creates the SPG
             myModuleGrid.Initialize(theEarlabModule);
 
-
+            //
             //A.) Need to get a TITLE to push into it.
             //B.) You want to update the item with a "*" to say it has changed since last saved?
             // use "HasChanged" at the module level. HasChanged doesn't work :/
             string ModuleTitle;
 
+            //[change]
             //if (theEarlabModule.HasChanged == true)
             //{
             //    ModuleTitle = theEarlabModule.theEarlabModuleInformation.InstanceName + "*";
@@ -77,7 +78,6 @@ public partial class frmContainer : Form
             //tabControl1.TabPages.Remove(tabControl1.SelectedTab);
         }
 
-
         public void AbstractModuleTab(EarlabRunfile RunfileObject)
         {
 
@@ -101,7 +101,7 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
         
         
             //[Display Event]
-            this.Clear();
+            //this.Clear();
             //Information directly from the Module
             //This just mirrors everything else.
             int propertyID = 0;
@@ -205,8 +205,7 @@ public class ModuleGrid : VisualHint.SmartPropertyGrid.PropertyGrid
 
         if (e.PropertyEnum.Property.Id > 0)
         {
-;
-            
+            ;
         }
 
         //All code goes above this SPG standard fragment.

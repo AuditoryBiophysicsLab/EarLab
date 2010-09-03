@@ -247,7 +247,7 @@ namespace RunfileEditor
                    {
                        foreach (EarlabModule currentModule in EarlabModules)
                        {
-                           if (currentModule.theEarlabModuleInformation.ExecutableName.ToLower() == VError.ModuleName)
+                           if (currentModule.theEarlabModuleInformation.InstanceName.ToLower() == VError.ModuleInstanceName)
                                return currentModule;
                        }
 
@@ -263,7 +263,7 @@ namespace RunfileEditor
                        foreach (EarlabModule currentModule in EarlabModules)
                        {
                            //We have the right module now
-                           if (VError.ModuleName == currentModule.theEarlabModuleInformation.ExecutableName.ToLower())
+                           if (VError.ModuleInstanceName == currentModule.theEarlabModuleInformation.InstanceName.ToLower())
                            {
                                
                                //Now we need the input output or parameter
@@ -316,7 +316,7 @@ namespace RunfileEditor
 
                        }//end foreach
                        //this is the same problem as above -- module name not recognized, no reason to have the code twice.
-                     throw new System.NotSupportedException("The Error type " + VError.ModuleName + " is not recognized.");
+                     throw new System.NotSupportedException("The Error type " + VError.ModuleInstanceName + " is not recognized.");
                    }//end else
 
              throw new System.NotSupportedException("The Full Verification Error type with path" + VError.FullErrorPath + "is not recognized.");
@@ -706,7 +706,7 @@ namespace RunfileEditor
                 foreach (EarlabModule currentModule in EarlabModules)
                 {
                     //This is NOT working b/c it is not referencing the right Object!!!
-                    if (currentModule.theEarlabModuleInformation.ExecutableName.ToLower() == VError.ModuleName.ToLower())
+                    if (currentModule.theEarlabModuleInformation.InstanceName.ToLower() == VError.ModuleInstanceName.ToLower())
                     {
                         //update module with verror info
                         currentModule.Message = VError.Message;
@@ -726,7 +726,7 @@ namespace RunfileEditor
                 foreach (EarlabModule currentModule in EarlabModules)
                 {
                     //We have the right module now
-                    if (VError.ModuleName.ToLower() == currentModule.theEarlabModuleInformation.ExecutableName.ToLower())
+                    if (VError.ModuleInstanceName.ToLower() == currentModule.theEarlabModuleInformation.InstanceName.ToLower())
                     {
 
                         //Now we need the input output or parameter

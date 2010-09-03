@@ -11,6 +11,8 @@ namespace RunfileEditor
 public class XmlValidator
     {
 
+        public static int error1 = 0;
+
          /// <summary>
          /// Validates an Xml file against an xml schema
          /// true = good
@@ -22,55 +24,59 @@ public class XmlValidator
          /// <returns></returns>
         public static bool ValidateXml(string xmlFilename, string schemaFilename)
         {
-            int error1 = 0;
+            //string SchemaPath = Path.GetFullPath(schemaFilename);
 
-            //Forward stream reading access to data
-            XmlTextReader r = new XmlTextReader(xmlFilename);
+            // Create the XmlSchemaSet class.
+            XmlSchemaSet sc = new XmlSchemaSet();
 
-            //deprecated way of checking agaisnt a schema -- update.
-            //xmlreader class.
-            XmlValidatingReader validator = new XmlValidatingReader(r);
-            validator.ValidationType = ValidationType.Schema;
+            // Add the schema to the collection.
+            sc.Add(null, schemaFilename);
 
-            //XmlReader validator = new XmlReader.Create(
+            // Set the validation settings.
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.ValidationType = ValidationType.Schema;
+            settings.Schemas = sc;
+            settings.ValidationEventHandler += new ValidationEventHandler(ValidationEventHandler);
 
-            XmlSchemaCollection schemas = new XmlSchemaCollection();
-            schemas.Add(null, schemaFilename);
-            validator.Schemas.Add(schemas);
-
-            //on error write message
-            validator.ValidationEventHandler += new ValidationEventHandler(ValidationEventHandler);
+            // Create the XmlReader object.
+            XmlReader reader = XmlReader.Create(xmlFilename, settings);
 
             try
             {
-                while (validator.Read())
-                { }//while reqires 
+                while (reader.Read())
+                {
+
+                }//while reqires 
             }
             catch (XmlException err)
             {
                 //[ErrorLog]
-                Console.WriteLine(err.Message);
+                //Console.WriteLine(err.Message);
                 error1++;
             }
             finally
             {
-                validator.Close();        
+                reader.Close();
             }
 
 
             if (error1 == 0)
                 return true;
-            
+
             else
-            { 
-                return false; 
+            {
+                return false;
             }
         }
-
-        private static void ValidationEventHandler(object sender, ValidationEventArgs args)
+        private static void ValidationEventHandler(object sender, ValidationEventArgs e)
         {
-            //[ErrorLog]
-            Console.WriteLine("Validation error: " + args.Message);
+            //Console.WriteLine("Validation Error: {0}", e.Message);
+            //This could be used for error reporting.
+
+            if (e.Message != null)
+            {
+                error1++;
+            }
         }
 
 
@@ -78,17 +84,3 @@ public class XmlValidator
 
 
 }
-//Format I want to have:
-//try
-//{
-//XmlDocument doc = ValidatingXmlLoader.Load( xml, schema);
-//}
-//catch
-//{
-//Debug.WriteLine( "The validation failed.");
-//}
-//More Notes
-//private static void Main()
-//{
-//    ValidateXml("your.xml", "your.xsd");
-

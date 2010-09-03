@@ -77,7 +77,7 @@ namespace RunfileEditor
 
             }
 
-            public string ModuleName
+            public string ModuleInstanceName
             {
                 get
                 {
@@ -207,7 +207,7 @@ namespace RunfileEditor
     }
 
 
-   
+ 
 
    
 }
