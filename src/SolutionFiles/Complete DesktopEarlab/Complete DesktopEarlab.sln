@@ -1,127 +1,247 @@
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SupportClasses", "..\..\SupportClasses\SupportClasses.vcproj", "{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SupportClasses", "..\..\SupportClasses\SupportClasses.vcxproj", "{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ITDAzimuth", "..\..\Modules\ITDAzimuth\ITDAzimuth.vcproj", "{9FCC814A-17F5-4A8D-846C-0F3E56BF01A6}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleSignalGenerator", "..\..\Modules\SimpleSignalGenerator\SimpleSignalGenerator.vcproj", "{4F9CA7CF-37BA-49B1-A41C-8066DB9FD776}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AudioMixer", "..\..\Modules\AudioMixer\AudioMixer.vcproj", "{3CCC78A1-ED5F-43C5-86A8-2239724EEC01}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ITDAzimuth", "..\..\Modules\ITDAzimuth\ITDAzimuth.vcxproj", "{9FCC814A-17F5-4A8D-846C-0F3E56BF01A6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AuditoryNerveIFR", "..\..\Modules\AuditoryNerveIFR\AuditoryNerveIFR.vcproj", "{21CF38D3-5DA3-4680-8D65-923E14CFB346}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleSignalGenerator", "..\..\Modules\SimpleSignalGenerator\SimpleSignalGenerator.vcxproj", "{4F9CA7CF-37BA-49B1-A41C-8066DB9FD776}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasilarMembraneNonlinearGammatone", "..\..\Modules\BasilarMembraneNonlinearGammatone\BasilarMembraneNonlinearGammatone.vcproj", "{3F430A25-66E6-4949-BC86-31AF6650543E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AudioMixer", "..\..\Modules\AudioMixer\AudioMixer.vcxproj", "{3CCC78A1-ED5F-43C5-86A8-2239724EEC01}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BrugheraMSO", "..\..\Modules\BrugheraMSO\BrugheraMSO.vcproj", "{DCC75E4F-EE23-4753-A296-3B4E9FC31EAF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AuditoryNerveIFR", "..\..\Modules\AuditoryNerveIFR\AuditoryNerveIFR.vcxproj", "{21CF38D3-5DA3-4680-8D65-923E14CFB346}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BushyCell", "..\..\Modules\BushyCell\BushyCell.vcproj", "{2520D3C5-D517-4076-B38E-3D5D5972E9E1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasilarMembraneNonlinearGammatone", "..\..\Modules\BasilarMembraneNonlinearGammatone\BasilarMembraneNonlinearGammatone.vcxproj", "{3F430A25-66E6-4949-BC86-31AF6650543E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CompoundActionPotentialIFR", "..\..\Modules\CompoundActionPotentialIFR\CompoundActionPotentialIFR.vcproj", "{02EC1003-53F3-4746-A8F7-886DD3D75E4F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BrugheraMSO", "..\..\Modules\BrugheraMSO\BrugheraMSO.vcxproj", "{DCC75E4F-EE23-4753-A296-3B4E9FC31EAF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataSink", "..\..\Modules\DataSink\DataSink.vcproj", "{4DC07E31-9963-4CAD-B8A6-7F603EF15B58}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BushyCell", "..\..\Modules\BushyCell\BushyCell.vcxproj", "{2520D3C5-D517-4076-B38E-3D5D5972E9E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataSource", "..\..\Modules\DataSource\DataSource.vcproj", "{F3876FF9-409B-48F9-9F93-A6A9AF54EE3E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CompoundActionPotentialIFR", "..\..\Modules\CompoundActionPotentialIFR\CompoundActionPotentialIFR.vcxproj", "{02EC1003-53F3-4746-A8F7-886DD3D75E4F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fanout", "..\..\Modules\Fanout\Fanout.vcproj", "{257A544F-6F20-4827-9DA7-8C0BB98A1658}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataSink", "..\..\Modules\DataSink\DataSink.vcxproj", "{4DC07E31-9963-4CAD-B8A6-7F603EF15B58}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InnerHaircell", "..\..\Modules\InnerHaircell\InnerHaircell.vcproj", "{E097B67A-97D7-4159-ABA4-AF67DE1648FC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataSource", "..\..\Modules\DataSource\DataSource.vcxproj", "{F3876FF9-409B-48F9-9F93-A6A9AF54EE3E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntegrateAndFire", "..\..\Modules\IntegrateAndFire\IntegrateAndFire.vcproj", "{B8801111-96B8-490C-9B90-798FF312206D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fanout", "..\..\Modules\Fanout\Fanout.vcxproj", "{257A544F-6F20-4827-9DA7-8C0BB98A1658}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MiddleEarSimpleFilter", "..\..\Modules\MiddleEarSimpleFilter\MiddleEarSimpleFilter.vcproj", "{A8E7AE30-6C2F-4D6C-B539-232462D53B65}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InnerHaircell", "..\..\Modules\InnerHaircell\InnerHaircell.vcxproj", "{E097B67A-97D7-4159-ABA4-AF67DE1648FC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MSOCombiner", "..\..\Modules\MSOCombiner\MSOCombiner.vcproj", "{088A33F0-231E-4DA5-9261-F2EC363D9A08}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntegrateAndFire", "..\..\Modules\IntegrateAndFire\IntegrateAndFire.vcxproj", "{B8801111-96B8-490C-9B90-798FF312206D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MSOXcorr", "..\..\Modules\MSOXcorr\MSOXcorr.vcproj", "{C6651AFD-52F7-4A89-A9C6-A8596BE351BF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MiddleEarSimpleFilter", "..\..\Modules\MiddleEarSimpleFilter\MiddleEarSimpleFilter.vcxproj", "{A8E7AE30-6C2F-4D6C-B539-232462D53B65}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Periodicity", "..\..\Modules\Periodicity\Periodicity.vcproj", "{8DDAAA7C-F975-4E37-80A9-4838D140B4E6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MSOCombiner", "..\..\Modules\MSOCombiner\MSOCombiner.vcxproj", "{088A33F0-231E-4DA5-9261-F2EC363D9A08}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleSpikeGenerator", "..\..\Modules\SimpleSpikeGenerator\SimpleSpikeGenerator.vcproj", "{0042A880-D263-4F59-81BB-48B257A8D2A4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MSOXcorr", "..\..\Modules\MSOXcorr\MSOXcorr.vcxproj", "{C6651AFD-52F7-4A89-A9C6-A8596BE351BF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesktopEarlabDLL", "..\..\DesktopEarlabDLL\DesktopEarlabDLL.vcproj", "{1F44145E-4F2B-44EA-888B-DB92B330FEB3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Periodicity", "..\..\Modules\Periodicity\Periodicity.vcxproj", "{8DDAAA7C-F975-4E37-80A9-4838D140B4E6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesktopEarlab", "..\..\DesktopEarlab\DesktopEarlab.vcproj", "{F912E125-8CC7-4E6C-BB75-C92E1DB0A854}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleSpikeGenerator", "..\..\Modules\SimpleSpikeGenerator\SimpleSpikeGenerator.vcxproj", "{0042A880-D263-4F59-81BB-48B257A8D2A4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesktopEarlabDLL", "..\..\DesktopEarlabDLL\DesktopEarlabDLL.vcxproj", "{1F44145E-4F2B-44EA-888B-DB92B330FEB3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesktopEarlab", "..\..\DesktopEarlab\DesktopEarlab.vcxproj", "{F912E125-8CC7-4E6C-BB75-C92E1DB0A854}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StatisticalAnalysis", "..\..\Modules\StatisticalAnalysis\StatisticalAnalysis.vcxproj", "{E6745CBB-60B9-41A1-BDAF-B4161CB59B81}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Splitter", "..\..\Modules\Splitter\Splitter.vcxproj", "{F6C86954-96B8-4FD1-95C9-FCA012725E56}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Combiner", "..\..\Modules\Combiner\Combiner.vcxproj", "{A7242E15-553E-47E4-BA13-3E0608ED8893}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SupportClassesTester", "..\..\SupportClassesTester\SupportClassesTester.vcxproj", "{1C714DAC-9AC2-4C05-88D5-E047CD02AF1C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AuditoryNerveSpike", "..\..\Modules\AuditoryNerveSpike\AuditoryNerveSpike.vcxproj", "{5D0B2146-D024-44A5-9DAA-F93E08D5A880}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CarneyInnerHaircell", "..\..\Modules\CarneyInnerHaircell\CarneyInnerHaircell.vcxproj", "{9B8D1676-ACBA-4DC9-A85E-5428523B125F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LSO", "..\..\Modules\LSO\LSO.vcxproj", "{BA7CD210-8629-4580-841F-DEF2B46016EE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BandpassFilterBank", "..\..\Modules\BandpassFilterBank\BandpassFilterBank.vcxproj", "{96F90B76-DD62-40ED-B319-7849141FAD33}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CIS", "..\..\Modules\CIS\CIS.vcxproj", "{9A91359A-6236-460B-8EAF-A1F611CCB5FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dummy", "..\..\Modules\Dummy\Dummy.vcxproj", "{EB8ABA24-8724-4624-BFBC-5DF49CA0DE35}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EnvelopeExtractor", "..\..\Modules\EnvelopeExtractor\EnvelopeExtractor.vcxproj", "{401EDB1C-7085-4845-BBFA-A83E2F03C0D2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vocoder", "..\..\Modules\Vocoder\Vocoder.vcxproj", "{A129A912-AA75-4F92-8931-DE776A8941CD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasilarMembraneLinearGammatone", "..\..\Modules\BasilarMembraneLinearGammatone\BasilarMembraneLinearGammatone.vcxproj", "{61F328D6-90A8-4F79-AAA0-8DE59CBB3207}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Downsampler", "..\..\Modules\Downsampler\Downsampler.vcxproj", "{F3D7B784-B402-4883-8FA9-F839B1D0D19D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpikeToPulsetrain", "..\..\Modules\SpikeToPulsetrain\SpikeToPulsetrain.vcxproj", "{56C6EB62-5CC0-4442-9796-94A0DC0870D9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FIRfilterbank", "..\..\Modules\FIRfilterbank\FIRfilterbank.vcxproj", "{900A74BE-55C3-4277-8A74-385F72927FB6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator", "..\..\EarlabSimulator\Simulator.csproj", "{0D51C4F6-A524-4838-95EE-083A54F73E5A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZhouLSO", "..\..\Modules\ZhouLSO\ZhouLSO.vcxproj", "{67227D8B-FC57-4709-9DFB-FF7CB6A5339C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CaiIC2", "..\..\Modules\CaiIC2\CaiIC2.vcxproj", "{69210DD6-CDA3-4EC5-AF89-670E8120E9EB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleIFR", "..\..\Modules\SimpleIFR\SimpleIFR.vcxproj", "{55EF27B6-22B0-49CE-B0AA-2D1FC3E36974}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VoigtDCNCell", "..\..\Modules\VoigtDCNCell\VoigtDCNCell.vcxproj", "{86EAE199-BFB8-45BB-9DBA-072650F65366}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CaiIC", "..\..\Modules\CaiIC\CaiIC.vcxproj", "{7862D0C9-599A-48E0-9946-5F50074862CB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BrugheraMSO2", "..\..\Modules\BrugheraMSO2\BrugheraMSO2.vcxproj", "{1DD5D76D-88FE-402B-8BF0-B5519E0211DD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BushyCell2", "..\..\Modules\BushyCell2\BushyCell2.vcxproj", "{0FF2EA0E-9721-4FFA-8CE0-DAAE9A1B88E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cardio", "..\..\Modules\Cardio\Cardio.vcxproj", "{AA05C14B-18F2-42D7-8051-FDAA046EFA37}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CardioPressureFeedback", "..\..\Modules\CardioPressureFeedback\CardioPressureFeedback.vcxproj", "{3D11EA9D-47C8-425D-9FEC-96FBE8D66495}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExperimentManager", "..\..\EarLab ExperimentManager\ExperimentManager.csproj", "{7E98E1AD-98CE-437A-964B-1FA25553A201}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CardioVentricularDriver", "..\..\Modules\CardioVentricularDriver\CardioVentricularDriver.vcxproj", "{D9778EF5-B588-4D3B-9F58-0BB7EC4620C0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OldConfig2Xml", "..\..\Utilities\OldConfig2Xml\OldConfig2Xml.vcxproj", "{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1F44145E-4F2B-44EA-888B-DB92B330FEB3} = {1F44145E-4F2B-44EA-888B-DB92B330FEB3}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StatisticalAnalysis", "..\..\Modules\StatisticalAnalysis\StatisticalAnalysis.vcproj", "{E6745CBB-60B9-41A1-BDAF-B4161CB59B81}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Splitter", "..\..\Modules\Splitter\Splitter.vcproj", "{F6C86954-96B8-4FD1-95C9-FCA012725E56}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Combiner", "..\..\Modules\Combiner\Combiner.vcproj", "{A7242E15-553E-47E4-BA13-3E0608ED8893}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SupportClassesTester", "..\..\SupportClassesTester\SupportClassesTester.vcproj", "{1C714DAC-9AC2-4C05-88D5-E047CD02AF1C}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AuditoryNerveSpike", "..\..\Modules\AuditoryNerveSpike\AuditoryNerveSpike.vcproj", "{5D0B2146-D024-44A5-9DAA-F93E08D5A880}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CarneyInnerHaircell", "..\..\Modules\CarneyInnerHaircell\CarneyInnerHaircell.vcproj", "{9B8D1676-ACBA-4DC9-A85E-5428523B125F}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LSO", "..\..\Modules\LSO\LSO.vcproj", "{BA7CD210-8629-4580-841F-DEF2B46016EE}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BandpassFilterBank", "..\..\Modules\BandpassFilterBank\BandpassFilterBank.vcproj", "{96F90B76-DD62-40ED-B319-7849141FAD33}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlobularBushyCell2", "..\..\Modules\GlobularBushyCell2\GlobularBushyCell2.vcxproj", "{A2575F7F-9F14-4962-B055-B27FDFB74CC9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CIS", "..\..\Modules\CIS\CIS.vcproj", "{9A91359A-6236-460B-8EAF-A1F611CCB5FF}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dummy", "..\..\Modules\Dummy\Dummy.vcproj", "{EB8ABA24-8724-4624-BFBC-5DF49CA0DE35}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EnvelopeExtractor", "..\..\Modules\EnvelopeExtractor\EnvelopeExtractor.vcproj", "{401EDB1C-7085-4845-BBFA-A83E2F03C0D2}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vocoder", "..\..\Modules\Vocoder\Vocoder.vcproj", "{A129A912-AA75-4F92-8931-DE776A8941CD}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasilarMembraneLinearGammatone", "..\..\Modules\BasilarMembraneLinearGammatone\BasilarMembraneLinearGammatone.vcproj", "{61F328D6-90A8-4F79-AAA0-8DE59CBB3207}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToddIC", "..\..\Modules\ToddIC\ToddIC.vcxproj", "{42C826FD-F219-4973-A58E-F6107FFFB652}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Downsampler", "..\..\Modules\Downsampler\Downsampler.vcproj", "{F3D7B784-B402-4883-8FA9-F839B1D0D19D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ANCurrentDrivenSpikes", "..\..\Modules\ANCurrentDrivenSpikes\ANCurrentDrivenSpikes.vcxproj", "{14F43863-0CCE-4194-AD4C-23A3F85CAE25}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpikeToPulsetrain", "..\..\Modules\SpikeToPulsetrain\SpikeToPulsetrain.vcproj", "{56C6EB62-5CC0-4442-9796-94A0DC0870D9}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FIRfilterbank", "..\..\Modules\FIRfilterbank\FIRfilterbank.vcproj", "{900A74BE-55C3-4277-8A74-385F72927FB6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator", "..\..\EarlabSimulator\Simulator.csproj", "{0D51C4F6-A524-4838-95EE-083A54F73E5A}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZhouLSO", "..\..\Modules\ZhouLSO\ZhouLSO.vcproj", "{67227D8B-FC57-4709-9DFB-FF7CB6A5339C}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CaiIC2", "..\..\Modules\CaiIC2\CaiIC2.vcproj", "{69210DD6-CDA3-4EC5-AF89-670E8120E9EB}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleIFR", "..\..\Modules\SimpleIFR\SimpleIFR.vcproj", "{55EF27B6-22B0-49CE-B0AA-2D1FC3E36974}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VoigtDCNCell", "..\..\Modules\VoigtDCNCell\VoigtDCNCell.vcproj", "{86EAE199-BFB8-45BB-9DBA-072650F65366}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CaiIC", "..\..\Modules\CaiIC\CaiIC.vcproj", "{7862D0C9-599A-48E0-9946-5F50074862CB}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BrugheraMSO2", "..\..\Modules\BrugheraMSO2\BrugheraMSO2.vcproj", "{1DD5D76D-88FE-402B-8BF0-B5519E0211DD}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BushyCell2", "..\..\Modules\BushyCell2\BushyCell2.vcproj", "{0FF2EA0E-9721-4FFA-8CE0-DAAE9A1B88E5}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cardio", "..\..\Modules\Cardio\Cardio.vcproj", "{AA05C14B-18F2-42D7-8051-FDAA046EFA37}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CardioPressureFeedback", "..\..\Modules\CardioPressureFeedback\CardioPressureFeedback.vcproj", "{3D11EA9D-47C8-425D-9FEC-96FBE8D66495}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExperimentManager", "..\..\EarLab ExperimentManager\ExperimentManager.csproj", "{7E98E1AD-98CE-437A-964B-1FA25553A201}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CardioVentricularDriver", "..\..\Modules\CardioVentricularDriver\CardioVentricularDriver.vcproj", "{D9778EF5-B588-4D3B-9F58-0BB7EC4620C0}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OldConfig2Xml", "..\..\Utilities\OldConfig2Xml\OldConfig2Xml.vcproj", "{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlobularBushyCell2", "..\..\Modules\GlobularBushyCell2\GlobularBushyCell2.vcproj", "{A2575F7F-9F14-4962-B055-B27FDFB74CC9}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToddIC", "..\..\Modules\ToddIC\ToddIC.vcproj", "{42C826FD-F219-4973-A58E-F6107FFFB652}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ANCurrentDrivenSpikes", "..\..\Modules\ANCurrentDrivenSpikes\ANCurrentDrivenSpikes.vcproj", "{14F43863-0CCE-4194-AD4C-23A3F85CAE25}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CurrentSpread", "..\..\Modules\CurrentSpread\CurrentSpread.vcproj", "{EF6B32D0-BAC3-4ABF-BA9A-07AC0CBC15E2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CurrentSpread", "..\..\Modules\CurrentSpread\CurrentSpread.vcxproj", "{EF6B32D0-BAC3-4ABF-BA9A-07AC0CBC15E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -795,7 +915,6 @@ Global
 		{C6651AFD-52F7-4A89-A9C6-A8596BE351BF}.Release-x64|x64.Build.0 = Release-x64|x64
 		{8DDAAA7C-F975-4E37-80A9-4838D140B4E6}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{8DDAAA7C-F975-4E37-80A9-4838D140B4E6}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{8DDAAA7C-F975-4E37-80A9-4838D140B4E6}.Debug|Mixed Platforms.Build.0 = Debug|Win32
 		{8DDAAA7C-F975-4E37-80A9-4838D140B4E6}.Debug|Win32.ActiveCfg = Debug|Win32
 		{8DDAAA7C-F975-4E37-80A9-4838D140B4E6}.Debug|Win32.Build.0 = Debug|Win32
 		{8DDAAA7C-F975-4E37-80A9-4838D140B4E6}.Debug|x64.ActiveCfg = Debug|Win32
