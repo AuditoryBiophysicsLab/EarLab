@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-x32|Win32">
+      <Configuration>Release-x32</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-x32|x64">
+      <Configuration>Release-x32</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-x64|Win32">
+      <Configuration>Release-x64</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-x64|x64">
+      <Configuration>Release-x64</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}</ProjectGuid>
+    <RootNamespace>SupportClasses</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-x64|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-x32|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-x64|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-x32|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-x64|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-x32|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-x64|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-x32|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../lib/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release-x32|Win32'">../../lib/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release-x32|Win32'">../../obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release-x64|Win32'">../../lib/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release-x64|Win32'">../../obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../lib/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release-x32|x64'">../../lib/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release-x32|x64'">../../obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release-x64|x64'">../../lib/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release-x64|x64'">../../obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc70.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)SupportClasses.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-x32|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc70.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)SupportClasses.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-x64|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc70.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)SupportClasses.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc70.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)SupportClasses.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-x32|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc70.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)SupportClasses.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-x64|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc70.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)SupportClasses.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BinaryWriter.cpp" />
+    <ClCompile Include="CardioRungeKuttaSolver.cpp" />
+    <ClCompile Include="Downsampler.cpp" />
+    <ClCompile Include="EarlabDataStream.cpp" />
+    <ClCompile Include="EarlabEnvironment.cpp" />
+    <ClCompile Include="EarlabException.cpp" />
+    <ClCompile Include="EarlabIOStreamInfo.cpp" />
+    <ClCompile Include="EarlabModule.cpp" />
+    <ClCompile Include="FPException.c" />
+    <ClCompile Include="HashTable.cpp" />
+    <ClCompile Include="HHCompartmentFactory.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="ModuleServices.cpp" />
+    <ClCompile Include="Random.cpp" />
+    <ClCompile Include="SpikeStream.cpp" />
+    <ClCompile Include="SpikeStreamMapper.cpp" />
+    <ClCompile Include="TimerQueue.cpp" />
+    <ClCompile Include="WaveFile.cpp" />
+    <ClCompile Include="XMLInfo.cpp" />
+    <ClCompile Include="XmlMetadata.cpp" />
+    <ClCompile Include="AGCAdvBionics.cpp" />
+    <ClCompile Include="FiniteImpulseResponse.cpp" />
+    <ClCompile Include="FirstOrderHighpass.cpp" />
+    <ClCompile Include="FirstOrderLowpass.cpp" />
+    <ClCompile Include="GenericIIRFilter.cpp" />
+    <ClCompile Include="LopezPovedaMeddisDualResonanceNonlinear.cpp" />
+    <ClCompile Include="NthOrderHighpass.cpp" />
+    <ClCompile Include="NthOrderLowpass.cpp" />
+    <ClCompile Include="OxenhamPlackGammatone.cpp" />
+    <ClCompile Include="OxenhamPlackLinearGain.cpp" />
+    <ClCompile Include="OxenhamPlackNonlinearGain.cpp" />
+    <ClCompile Include="ResonantFilter.cpp" />
+    <ClCompile Include="SecondOrderButterworthLowpass.cpp" />
+    <ClCompile Include="Brughera96Channels.cpp" />
+    <ClCompile Include="Brughera96Compartment.cpp" />
+    <ClCompile Include="Cai98Channels.cpp" />
+    <ClCompile Include="Cai98Compartment.cpp" />
+    <ClCompile Include="HHChannelPopulation.cpp" />
+    <ClCompile Include="HHCompartment.cpp" />
+    <ClCompile Include="HHSynapse.cpp" />
+    <ClCompile Include="Rothman03AHPChannels.cpp" />
+    <ClCompile Include="Rothman03AHPCompartment.cpp" />
+    <ClCompile Include="Rothman03Channels.cpp" />
+    <ClCompile Include="Rothman03Compartment.cpp" />
+    <ClCompile Include="Rothman93AHPChannels.cpp" />
+    <ClCompile Include="Rothman93AHPCompartment.cpp" />
+    <ClCompile Include="Rothman93Channels.cpp" />
+    <ClCompile Include="Rothman93Compartment.cpp" />
+    <ClCompile Include="RungeKuttaSolver.cpp" />
+    <ClCompile Include="CarneySpikeGenerator.cpp" />
+    <ClCompile Include="MGCompartment.cpp" />
+    <ClCompile Include="MGCurrentBranch.cpp" />
+    <ClCompile Include="MGSynapse.cpp" />
+    <ClCompile Include="MGSynapseFirstOrder.cpp" />
+    <ClCompile Include="MGSynapseSecondOrder.cpp" />
+    <ClCompile Include="CParameter.cpp" />
+    <ClCompile Include="CParameterFile.cpp" />
+    <ClCompile Include="CParameterSet.cpp" />
+    <ClCompile Include="CParameterTree.cpp" />
+    <ClCompile Include="CParameterValue.cpp" />
+    <ClCompile Include="CSection.cpp" />
+    <ClCompile Include="ZhouLSOCompartment.cpp" />
+    <ClCompile Include="ZLCurrentBranch.cpp" />
+    <ClCompile Include="ZLSynapse1stOrderDiffc.cpp" />
+    <ClCompile Include="ZLSynapseSecondOrder.cpp" />
+    <ClCompile Include="ticpp.cpp" />
+    <ClCompile Include="tinystr.cpp" />
+    <ClCompile Include="tinyxml.cpp" />
+    <ClCompile Include="tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxmlparser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CardioRungeKuttaEquation.h" />
+    <ClInclude Include="CardioRungeKuttaSolver.h" />
+    <ClInclude Include="Random.h" />
+    <ClInclude Include="BinaryWriter.h" />
+    <ClInclude Include="Complex.h" />
+    <ClInclude Include="Downsampler.h" />
+    <ClInclude Include="Earlab.h" />
+    <ClInclude Include="EarlabDataStream.h" />
+    <ClInclude Include="EarlabEnvironment.h" />
+    <ClInclude Include="EarlabException.h" />
+    <ClInclude Include="EarlabIOStreamInfo.h" />
+    <ClInclude Include="EarlabModule.h" />
+    <ClInclude Include="EarlabModuleInfo.h" />
+    <ClInclude Include="EarlabParameterInfo.h" />
+    <ClInclude Include="FPException.h" />
+    <ClInclude Include="HashTable.h" />
+    <ClInclude Include="HHCompartmentFactory.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="MatrixN.h" />
+    <ClInclude Include="ModuleServices.h" />
+    <ClInclude Include="ModuleThreadSupport.h" />
+    <ClInclude Include="RungeKutta.h" />
+    <ClInclude Include="SpikeStream.h" />
+    <ClInclude Include="SpikeStreamMapper.h" />
+    <ClInclude Include="TimerQueue.h" />
+    <ClInclude Include="WaveFile.h" />
+    <ClInclude Include="XMLInfo.h" />
+    <ClInclude Include="XmlMetadata.h" />
+    <ClInclude Include="AGCAdvBionics.h" />
+    <ClInclude Include="FiniteImpulseResponse.h" />
+    <ClInclude Include="FirstOrderHighpass.h" />
+    <ClInclude Include="FirstOrderLowpass.h" />
+    <ClInclude Include="GenericIIRFilter.h" />
+    <ClInclude Include="LopezPovedaMeddisDualResonanceNonlinear.h" />
+    <ClInclude Include="NthOrderHighpass.h" />
+    <ClInclude Include="NthOrderLowpass.h" />
+    <ClInclude Include="OxenhamPlackGammatone.h" />
+    <ClInclude Include="OxenhamPlackLinearGain.h" />
+    <ClInclude Include="OxenhamPlackNonlinearGain.h" />
+    <ClInclude Include="ResonantFilter.h" />
+    <ClInclude Include="SecondOrderButterworthLowpass.h" />
+    <ClInclude Include="Brughera96Channels.h" />
+    <ClInclude Include="Brughera96Compartment.h" />
+    <ClInclude Include="Cai98Channels.h" />
+    <ClInclude Include="Cai98Compartment.h" />
+    <ClInclude Include="HHChannelPopulation.h" />
+    <ClInclude Include="HHCompartment.h" />
+    <ClInclude Include="HHSynapse.h" />
+    <ClInclude Include="Rothman03AHPChannels.h" />
+    <ClInclude Include="Rothman03AHPCompartment.h" />
+    <ClInclude Include="Rothman03Channels.h" />
+    <ClInclude Include="Rothman03Compartment.h" />
+    <ClInclude Include="Rothman93AHPChannels.h" />
+    <ClInclude Include="Rothman93AHPCompartment.h" />
+    <ClInclude Include="Rothman93Channels.h" />
+    <ClInclude Include="Rothman93Compartment.h" />
+    <ClInclude Include="RungeKuttaEquation.h" />
+    <ClInclude Include="RungeKuttaSolver.h" />
+    <ClInclude Include="CParameter.h" />
+    <ClInclude Include="CParameterFile.h" />
+    <ClInclude Include="CParameterSet.h" />
+    <ClInclude Include="CParameterSpace.h" />
+    <ClInclude Include="CParameterTree.h" />
+    <ClInclude Include="CParameterValue.h" />
+    <ClInclude Include="CSection.h" />
+    <ClInclude Include="ParameterStatus.h" />
+    <ClInclude Include="ParameterType.h" />
+    <ClInclude Include="CarneySpikeGenerator.h" />
+    <ClInclude Include="MGCompartment.h" />
+    <ClInclude Include="MGCurrentBranch.h" />
+    <ClInclude Include="MGSynapseFirstOrder.h" />
+    <ClInclude Include="MGSynapseSecondOrder.h" />
+    <ClInclude Include="ZhouLSOCompartment.h" />
+    <ClInclude Include="ZLCurrentBranch.h" />
+    <ClInclude Include="ZLSynapse1stOrderDiffc.h" />
+    <ClInclude Include="ZLSynapseSecondOrder.h" />
+    <ClInclude Include="ticpp.h" />
+    <ClInclude Include="ticpprc.h" />
+    <ClInclude Include="tinystr.h" />
+    <ClInclude Include="tinyxml.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

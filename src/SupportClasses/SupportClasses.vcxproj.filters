@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Digital Filter Source">
+      <UniqueIdentifier>{054c2fd5-a7a9-4286-85e0-2298c0b80c9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Digital Filter Headers">
+      <UniqueIdentifier>{aa0ebc46-f59f-4c15-ae00-884e6e89454f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hodgkin Huxley Headers">
+      <UniqueIdentifier>{69da1b40-0a4d-4689-a6be-0371ae5055d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hodgkin Huxley Source">
+      <UniqueIdentifier>{56fe6c5a-9647-4112-81ec-0568f7d2b4f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parameter Classes Headers">
+      <UniqueIdentifier>{a9888ce2-48ad-43df-abe2-42c65536d596}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Spike Generators">
+      <UniqueIdentifier>{7ed7157f-d255-454c-8d89-1c79d8b4a2c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Spike Generators\Source">
+      <UniqueIdentifier>{df9b45ec-9bbc-43ed-8a78-e00ea88622ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Spike Generators\Headers">
+      <UniqueIdentifier>{f691f21a-631a-4b1c-826d-41ce40a40670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MacGregor Headers">
+      <UniqueIdentifier>{7de0af9b-9350-4bec-9b3f-0e5fc034347e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MacGregor Source">
+      <UniqueIdentifier>{4fce9ea3-3e01-44f3-85b9-01f75125aef0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parameter Classes Source">
+      <UniqueIdentifier>{547b96da-f13c-464d-9db3-bd0c427a20b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ZhouLSO Support Headers">
+      <UniqueIdentifier>{e71563e3-fcfb-4d7d-8e6e-03e68cca71d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ZhouLSO Support Source">
+      <UniqueIdentifier>{3828cba1-3cce-4324-b082-15045afcc202}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TinyXml">
+      <UniqueIdentifier>{9377a20d-bd42-4dd7-ac37-4ef5b1a66520}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BinaryWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CardioRungeKuttaSolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Downsampler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EarlabDataStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EarlabEnvironment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EarlabException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EarlabIOStreamInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EarlabModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FPException.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HHCompartmentFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleServices.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpikeStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpikeStreamMapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerQueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WaveFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlMetadata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AGCAdvBionics.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FiniteImpulseResponse.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstOrderHighpass.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstOrderLowpass.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GenericIIRFilter.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LopezPovedaMeddisDualResonanceNonlinear.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="NthOrderHighpass.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="NthOrderLowpass.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="OxenhamPlackGammatone.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="OxenhamPlackLinearGain.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="OxenhamPlackNonlinearGain.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ResonantFilter.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondOrderButterworthLowpass.cpp">
+      <Filter>Digital Filter Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Brughera96Channels.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Brughera96Compartment.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Cai98Channels.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Cai98Compartment.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="HHChannelPopulation.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="HHCompartment.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="HHSynapse.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Rothman03AHPChannels.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Rothman03AHPCompartment.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Rothman03Channels.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Rothman03Compartment.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Rothman93AHPChannels.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Rothman93AHPCompartment.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Rothman93Channels.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Rothman93Compartment.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="RungeKuttaSolver.cpp">
+      <Filter>Hodgkin Huxley Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CarneySpikeGenerator.cpp">
+      <Filter>Spike Generators\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MGCompartment.cpp">
+      <Filter>MacGregor Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MGCurrentBranch.cpp">
+      <Filter>MacGregor Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MGSynapse.cpp">
+      <Filter>MacGregor Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MGSynapseFirstOrder.cpp">
+      <Filter>MacGregor Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MGSynapseSecondOrder.cpp">
+      <Filter>MacGregor Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CParameter.cpp">
+      <Filter>Parameter Classes Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CParameterFile.cpp">
+      <Filter>Parameter Classes Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CParameterSet.cpp">
+      <Filter>Parameter Classes Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CParameterTree.cpp">
+      <Filter>Parameter Classes Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CParameterValue.cpp">
+      <Filter>Parameter Classes Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CSection.cpp">
+      <Filter>Parameter Classes Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ZhouLSOCompartment.cpp">
+      <Filter>ZhouLSO Support Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ZLCurrentBranch.cpp">
+      <Filter>ZhouLSO Support Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ZLSynapse1stOrderDiffc.cpp">
+      <Filter>ZhouLSO Support Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ZLSynapseSecondOrder.cpp">
+      <Filter>ZhouLSO Support Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ticpp.cpp">
+      <Filter>TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>TinyXml</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CardioRungeKuttaEquation.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CardioRungeKuttaSolver.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Complex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Downsampler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Earlab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EarlabDataStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EarlabEnvironment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EarlabException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EarlabIOStreamInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EarlabModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EarlabModuleInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EarlabParameterInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FPException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HHCompartmentFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixN.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleServices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleThreadSupport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RungeKutta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpikeStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpikeStreamMapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlMetadata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AGCAdvBionics.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FiniteImpulseResponse.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstOrderHighpass.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstOrderLowpass.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericIIRFilter.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LopezPovedaMeddisDualResonanceNonlinear.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NthOrderHighpass.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NthOrderLowpass.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="OxenhamPlackGammatone.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="OxenhamPlackLinearGain.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="OxenhamPlackNonlinearGain.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ResonantFilter.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondOrderButterworthLowpass.h">
+      <Filter>Digital Filter Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Brughera96Channels.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Brughera96Compartment.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Cai98Channels.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Cai98Compartment.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HHChannelPopulation.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HHCompartment.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HHSynapse.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rothman03AHPChannels.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rothman03AHPCompartment.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rothman03Channels.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rothman03Compartment.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rothman93AHPChannels.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rothman93AHPCompartment.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rothman93Channels.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rothman93Compartment.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RungeKuttaEquation.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RungeKuttaSolver.h">
+      <Filter>Hodgkin Huxley Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CParameter.h">
+      <Filter>Parameter Classes Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CParameterFile.h">
+      <Filter>Parameter Classes Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CParameterSet.h">
+      <Filter>Parameter Classes Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CParameterSpace.h">
+      <Filter>Parameter Classes Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CParameterTree.h">
+      <Filter>Parameter Classes Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CParameterValue.h">
+      <Filter>Parameter Classes Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CSection.h">
+      <Filter>Parameter Classes Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParameterStatus.h">
+      <Filter>Parameter Classes Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParameterType.h">
+      <Filter>Parameter Classes Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CarneySpikeGenerator.h">
+      <Filter>Spike Generators\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MGCompartment.h">
+      <Filter>MacGregor Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MGCurrentBranch.h">
+      <Filter>MacGregor Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MGSynapseFirstOrder.h">
+      <Filter>MacGregor Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MGSynapseSecondOrder.h">
+      <Filter>MacGregor Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ZhouLSOCompartment.h">
+      <Filter>ZhouLSO Support Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ZLCurrentBranch.h">
+      <Filter>ZhouLSO Support Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ZLSynapse1stOrderDiffc.h">
+      <Filter>ZhouLSO Support Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ZLSynapseSecondOrder.h">
+      <Filter>ZhouLSO Support Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ticpp.h">
+      <Filter>TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="ticpprc.h">
+      <Filter>TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>TinyXml</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
