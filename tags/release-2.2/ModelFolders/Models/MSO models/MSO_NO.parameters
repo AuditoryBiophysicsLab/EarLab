@@ -1,0 +1,111 @@
+ 	// Module Parameter file
+
+[Left_Pinna]
+float	SampleRate_Hz			100000
+string	InputFileName			"N0.wav"
+bool	InputIsWaveFile			true
+int	WaveFileChannelNumber		0
+int	OutputDelay_Samples		0
+// scale signal so that noise is about 40 dB SPL rms
+float	WaveFileScaleFactor		145000
+
+[Left_Midear]
+float	SampleRate_Hz			100000
+float	HighpassCornerFreq_Hz		500
+int	HighpassFilterOrder		2
+float	Gain				30
+
+[Left_Cochlea]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+bool	DisableNonlinearPath		false
+float	A				165.0
+float	Alpha				2.1
+float	K				1.0
+float	CochleaLength_mm		35.0
+float	BMStartPercent			2.4
+float	BMEndPercent			100.0
+bool	ProduceOutputFile		true
+bool	BinaryOutput			false
+string	CFFileName			"Left_BM_CF_File.dat"
+
+[Left_IHCs]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+double	Gain				100
+
+[Left_AN]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+
+[Left_MSO]
+float	SampleRate_Hz			100000
+float	MaxITD_uS			745
+string	CFFileName			"Left_BM_CF_File.dat"
+string	LagFileName			"Left_MSO_Lag.dat"
+
+[Right_Pinna]
+float	SampleRate_Hz			100000
+string	InputFileName			"N0.wav"
+bool	InputIsWaveFile			true
+int	WaveFileChannelNumber		0
+int	OutputDelay_Samples		0
+// scale signal so that noise is about 40 dB SPL rms
+float	WaveFileScaleFactor		145000
+
+[Right_Midear]
+float	SampleRate_Hz			100000
+float	HighpassCornerFreq_Hz		500
+int	HighpassFilterOrder		2
+float	Gain				30
+
+[Right_Cochlea]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+bool	DisableNonlinearPath		false
+float	A				165.0
+float	Alpha				2.1
+float	K				1.0
+float	CochleaLength_mm		35.0
+float	BMStartPercent			2.4
+float	BMEndPercent			100.0
+bool	ProduceOutputFile		true
+bool	BinaryOutput			false
+string	CFFileName			"Right_BM_CF_File.dat"
+
+[Right_IHCs]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+double	Gain				100
+
+[Right_AN]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+
+[Right_MSO]
+float	SampleRate_Hz			100000
+float	MaxITD_uS			745
+string	CFFileName			"Right_BM_CF_File.dat"
+string	LagFileName			"Right_MSO_Lag.dat"
+
+[MSOAnalysis]
+float	SampleRate_Hz			100
+float	MaxITD_uS			745
+string	CFFileName			"Left_BM_CF_File.dat"
+
+[Sink]
+float	SampleRate_Hz 			100000
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+string	OutputFileName			"MSOAnalysis.0.binary"
+bool	UseDownsampler			false
+bool	AcceptSocketConnections		false
+int	ListenPortNumber		1003
+string	CFFileName			"cfarray.txt"
+

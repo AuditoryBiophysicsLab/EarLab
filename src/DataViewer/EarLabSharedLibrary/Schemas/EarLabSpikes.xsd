@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="EarLabSpikes" targetNamespace="http://earlab.bu.edu/software/specifications/schemas/EarLabSpikes.xsd"
+	elementFormDefault="qualified" xmlns="http://earlab.bu.edu/software/specifications/schemas/EarLabSpikes.xsd"
+	xmlns:mstns="http://earlab.bu.edu/software/specifications/schemas/EarLabSpikes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	version="1.0">
+	<xs:element name="EarLabSpikes">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="Parameters">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="TimeStep" type="xs:double" maxOccurs="1" minOccurs="1" />
+							<xs:element name="TimeUnits" type="xs:string" maxOccurs="1" minOccurs="1" />
+							<xs:element name="CellCount" type="xs:positiveInteger" maxOccurs="1" minOccurs="1" />
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Spikes" maxOccurs="1" minOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Spike" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all />
+									<xs:attribute name="Time" type="xs:double" />
+									<xs:attribute name="TotalCount" type="xs:nonNegativeInteger" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Source" maxOccurs="1" minOccurs="1">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="InstanceName" type="xs:string" maxOccurs="1" minOccurs="1" />
+							<xs:element name="VersionLSID" type="xs:string" maxOccurs="1" minOccurs="1" />
+							<xs:element name="SchemaVersion" type="xs:string" minOccurs="1" maxOccurs="1" />
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

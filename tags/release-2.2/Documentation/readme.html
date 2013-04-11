@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<Title>EarLab README and Quick Start Guide</Title>
+</HEAD>
+<BODY>
+<TABLE BORDER=0 WIDTH=200 ALIGN="LEFT")
+<TR><TD>
+<BIG><B>Introduction</B></BIG>
+<TR><TD>
+Thank you for installing the EarLab simulation and analysis suite.  
+This software is produced and maintained by the Boston University Hearing Research Center, 
+and is supported by grants from the National Institute of Deafness and 
+Communication Disorders (NIDCD).  
+This guide is intended to help you get started using EarLab as quickly as possible.
+<TR><TD>
+<BR><BIG><B>Getting Started</B></BIG>
+<TR><TD>
+After installing the software, if you've selected the "Launch EarLab Experiment Manager" 
+option at the end of the setup process, you will see the following window. 
+If you haven't selected that option, you may run EarLab from 
+<b>Start->All Programs->EarLab->Desktop EarLab->EarLab Experiment Manager</b> The EarLab 
+Experiment Manager window looks like this:
+<TR><TD>
+<img src="Images\ScreenShot1.png">
+<BR>
+<TR><TD>
+<BR><BIG><B>Running a simulation</B></BIG>
+<TR><TD>
+To run the first simulation, <b>right click</b> on the first item in the window, 
+here titled "Normal AN 500 Hz Level Series Experiment".  This will cause a menu to 
+pop up, and allow you to either run or open the simulation.  For now, choose the 
+option that is labeled <b>Run Simulation...</b>. When you do, a window similar to 
+the one below will appear. This new window tracks the progress of the simulation 
+that you have requested to be run.  The progress bar will reflect the progress of 
+the simulation, and when the simulation is complete, the EarLab Simulator window 
+will close automatically.
+<img src="Images\ScreenShot2.png">
+<BR>
+<TR><TD>
+<BR><BIG><B>Browsing to the experiment data</B></BIG>
+<TR><TD>
+After the simulation is complete and the EarLab Simulator window closes, you can 
+use the ExperimentManager window to view the results of the simulation.  Click on 
+the "+" sign next to the experiment, or double-click on the experiment name, and 
+the window will look like this:
+<TR><TD>
+<img src="Images\ScreenShot3.png">
+<BR><BR>
+<TR><TD>
+In this view, you can see some of the details that go into the experiment.  You 
+can re-run the simulation by double-clicking where indicated, or you see a brief 
+description of the experiment, you can view the Diagram and Parameter files which 
+make up the simulation. You can also browse the input files used by the simulation 
+and the output files produced by the simulation.  For now, open the <b>Output 
+Directory</b> item, either by clicking on the "+" sign or by double-clicking on 
+the item itself.  The window will now look like this:
+<TR><TD>
+<img src="Images\ScreenShot4.png">
+<TR><TD>
+<BR><BIG><B>Visualizing the computed data</B></BIG>
+<TR><TD>
+Here we see three output files that have been produced by the simulation: NLBM, 
+which is the output of the NonLinear Basilar Membrane module, IHC, which is 
+produced by the Inner Haircell module, and AN, which is produced by the Auditory 
+Nerve module.  For now, let's open up the <b>Auditory Nerve</b> output file, 
+which you can do by <b>double-clicking</b> on it.  This will cause the EarLab 
+DataViewer to be launched, with the Auditory Nerve output file opened.  For 
+more help with the DataViewer, see the help available inside that application, 
+available from the menu shown in the screen shot below:
+<TR><TD>
+<img src="Images\ScreenShot5.png">
+<TR><TD>
+<BR><BIG><B>Additional Information</B></BIG>
+<TR><TD>
+The primary visible components in this release of EarLab are as follows:
+<UL>
+<LI>Simulator<BR>
+This software is fully functional and considered to be ready for release to the public
+<LI>DataViewer<BR>
+This software is fully functional and considered to be ready for release to the public
+<LI>ExperimentManager<BR>
+This software is a prototype only.  It uses information provided in the file<BR> 
+"...\My Documents\EarLab\Runfile.xml".  This file has been hand-assembled for this
+edition of EarLab.  In the future, we will provide automatic tools for generation of
+this file or whatever happens to succeed it.
+<LI>Sample Matlab Spike Analysis script<BR>
+This software is for demonstration purposes only.  In the next major release, the 
+EarLab DataViewer will incorporate spike analysis features.
+</UL>
+<TABLE>
+</BODY>
+</HTML>

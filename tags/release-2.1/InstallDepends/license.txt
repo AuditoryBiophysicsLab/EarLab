@@ -1,0 +1,7 @@
+By installing this software, the user agrees to abide by the following terms:
+
+EarLab cannot be held liable for errors or inconsistencies in the data created through the use of its custom software. While every effort has been made to ensure the quality of all software tools, there can be no full guarantee of the accuracy or consistency of the data obtained.
+ 
+Software downloaded or otherwise obtained from EarLab is provided 'as is' and EarLab cannot expressly guarantee it will perform as expected. While extensive testing and quality assurance practices have taken place on released software products and services, EarLab will not be held liable for any hardware or software damage resulting from their use by end users.
+
+Any data or images created using EarLab tools, such as data from the EarLab Simulator or screen captures from the EarLab DataViewer, will not be used unless EarLab is fully cited in any publication, product, or commercial application.

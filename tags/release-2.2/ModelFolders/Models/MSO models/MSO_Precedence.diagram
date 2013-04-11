@@ -1,0 +1,91 @@
+[Model]
+string          ModuleList              "Left_Pinna, Left_Midear, Left_Cochlea, Left_IHCs, Left_AN, Left_MSO, Right_Pinna, Right_Midear, Right_Cochlea, Right_IHCs, Right_AN, Right_ANSink, Right_MSO, MSOAnalysis, Sink"
+
+[Left_Pinna]
+string          ModuleExecutable        "DataSource.dll"
+IntVector       Output.1                [ 200 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_Midear]
+string          ModuleExecutable        "MiddleEarSimpleFilter.dll"
+string          Input.1                 "Left_Pinna.1"
+IntVector       Output.1                [ 200 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_Cochlea]
+string          ModuleExecutable        "BasilarMembraneNonlinearGammatone.dll"
+string          Input.1                 "Left_Midear.1"
+IntVector       Output.1                [ 200 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_IHCs]
+string          ModuleExecutable        "InnerHaircell.dll"
+string          Input.1                 "Left_Cochlea.1"
+IntVector       Output.1                [ 200 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_AN]
+string          ModuleExecutable        "AuditoryNerveIFR.dll"
+string          Input.1                 "Left_IHCs.1"
+IntVector       Output.1                [ 200 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_MSO]
+string          ModuleExecutable        "MSOXcorr.dll"
+string          Input.1                 "Left_AN.1"
+string          Input.2                 "Right_AN.1"
+IntVector       Output.1                [ 76 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_Pinna]
+string          ModuleExecutable        "DataSource.dll"
+IntVector       Output.1                [ 200 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_Midear]
+string          ModuleExecutable        "MiddleEarSimpleFilter.dll"
+string          Input.1                 "Right_Pinna.1"
+IntVector       Output.1                [ 200 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_Cochlea]
+string          ModuleExecutable        "BasilarMembraneNonlinearGammatone.dll"
+string          Input.1                 "Right_Midear.1"
+IntVector       Output.1                [ 200 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_IHCs]
+string          ModuleExecutable        "InnerHaircell.dll"
+string          Input.1                 "Right_Cochlea.1"
+IntVector       Output.1                [ 200 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_AN]
+string          ModuleExecutable        "AuditoryNerveIFR.dll"
+string          Input.1                 "Right_IHCs.1"
+IntVector       Output.1                [ 200 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_ANSink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "Right_AN.1"
+
+[Right_MSO]
+string          ModuleExecutable        "MSOXcorr.dll"
+string          Input.1                 "Right_AN.1"
+string          Input.2                 "Left_AN.1"
+IntVector       Output.1                [ 76 64 ]
+string		Output.1.DataType	"Waveform"
+
+[MSOAnalysis]
+string          ModuleExecutable        "MSOCombiner.dll"
+string          Input.1                 "Left_MSO.1"
+string          Input.2                 "Right_MSO.1"
+IntVector       Output.1                [ 151 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Sink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "MSOAnalysis.1"
+
+

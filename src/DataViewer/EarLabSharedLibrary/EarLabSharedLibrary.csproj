@@ -1,0 +1,377 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D98D9527-F643-41E4-AC47-382A56FE00FB}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>EarLabSharedLibrary</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>EarLab</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <Name>ICSharpCode.SharpZipLib</Name>
+      <HintPath>ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Design">
+      <Name>System.Design</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Management">
+      <Name>System.Management</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analysis\Analysis.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Analysis\AnalysisTester.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Analysis\AnalysisTypes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Analysis\Complex.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Analysis\Fourier.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Analysis\FourierDirection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Analysis\SpikeAnalysis.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ColorBars\ColorBarStandard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\ExtendedScrollBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AnalysisDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AnalysisDialogNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AnalysisQuestionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Analysis\IntervalDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Analysis\PeriodDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Analysis\PostDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\DataGridLabelColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\DataGridLinkColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\LinkDataGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\NoKeyPressScrollBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterASCIIColorbar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterASCIIMetadata.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterBinary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterBinarySpikes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterFrequencyTime.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterLagFrequencyTime.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterSpikeASCII.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterSurfaceBinary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterWaveformASCII.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterXMLMetadata.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterXMLSpikes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReaderWriters\ReaderWriterXMLVersion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utilities\EnableVisualStyles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utilities\NativeMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utilities\Zip.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Viewers\Layouts\ILayout.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Viewers\Layouts\Layout2DColor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Viewers\Layouts\Layout2DColorFull.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Viewers\Layouts\LayoutBarWaveform.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Viewers\Layouts\LayoutScatter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Viewers\Layouts\LayoutScatterFull.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Viewers\Layouts\LayoutScatterFullScrollable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Viewers\Layouts\LayoutScrollableFull.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Viewers\Layouts\LayoutWaveform.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Viewers\Panels\Panel2DColor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Viewers\Panels\PanelAxisLimited.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Viewers\Panels\PanelAxisNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Viewers\Panels\PanelAxisScatterBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Viewers\Panels\PanelBarWaveform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Viewers\Panels\PanelColorbarNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Viewers\Panels\PanelScatter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Viewers\Panels\PanelWaveformNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="ColorBars\Default.txt" />
+    <EmbeddedResource Include="ColorBars\Gray.txt" />
+    <EmbeddedResource Include="ColorBars\GrayInverted.txt" />
+    <EmbeddedResource Include="ColorBars\HotMetal.txt" />
+    <EmbeddedResource Include="Controls\ExtendedScrollBar.resx">
+      <DependentUpon>ExtendedScrollBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\AnalysisDialog.resx">
+      <DependentUpon>AnalysisDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\AnalysisDialogNew.resx">
+      <DependentUpon>AnalysisDialogNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\AnalysisQuestionDialog.resx">
+      <DependentUpon>AnalysisQuestionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Analysis\IntervalDialog.resx">
+      <DependentUpon>IntervalDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Analysis\PeriodDialog.resx">
+      <DependentUpon>PeriodDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Analysis\PostDialog.resx">
+      <DependentUpon>PostDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\DataGridLabelColumn.resx">
+      <DependentUpon>DataGridLabelColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\DataGridLinkColumn.resx">
+      <DependentUpon>DataGridLinkColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\LinkDataGrid.resx">
+      <DependentUpon>LinkDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\NoKeyPressScrollBar.resx">
+      <DependentUpon>NoKeyPressScrollBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\EarLabMetadata.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\EarLabRun.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\EarLabSpikes.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\EarLabVersion.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Layouts\Layout2DColor.resx">
+      <DependentUpon>Layout2DColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Layouts\Layout2DColorFull.resx">
+      <DependentUpon>Layout2DColorFull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Layouts\LayoutBarWaveform.resx">
+      <DependentUpon>LayoutBarWaveform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Layouts\LayoutScatter.resx">
+      <DependentUpon>LayoutScatter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Layouts\LayoutScatterFull.resx">
+      <DependentUpon>LayoutScatterFull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Layouts\LayoutScatterFullScrollable.resx">
+      <DependentUpon>LayoutScatterFullScrollable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Layouts\LayoutScrollableFull.resx">
+      <DependentUpon>LayoutScrollableFull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Layouts\LayoutWaveform.resx">
+      <DependentUpon>LayoutWaveform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Panels\Panel2DColor.resx">
+      <DependentUpon>Panel2DColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Panels\PanelAxisLimited.resx">
+      <DependentUpon>PanelAxisLimited.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Panels\PanelAxisNew.resx">
+      <DependentUpon>PanelAxisNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Panels\PanelAxisScatterBar.resx">
+      <DependentUpon>PanelAxisScatterBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Panels\PanelBarWaveform.resx">
+      <DependentUpon>PanelBarWaveform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Panels\PanelColorbarNew.resx">
+      <DependentUpon>PanelColorbarNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Panels\PanelScatter.resx">
+      <DependentUpon>PanelScatter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\Panels\PanelWaveformNew.resx">
+      <DependentUpon>PanelWaveformNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Schemas\EarLabMetadata.xsx">
+      <DependentUpon>EarLabMetadata.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\EarLabRun.xsx">
+      <DependentUpon>EarLabRun.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\EarLabSpikes.xsx">
+      <DependentUpon>EarLabSpikes.xsd</DependentUpon>
+    </None>
+    <None Include="Schemas\EarLabVersion.xsx">
+      <DependentUpon>EarLabVersion.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

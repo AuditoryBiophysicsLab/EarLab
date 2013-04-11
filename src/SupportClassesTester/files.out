@@ -1,0 +1,26 @@
+load ImpulseSignal.txt; 
+load LopezPovedaMeddisDualResonanceNonlinear_1kHz.txt; 
+load OxenhamPlackLinearGain_1kHz.txt; 
+load OxenhamPlackLinearGammatone_1kHz.txt; 
+load OxenhamPlackNonlinearGain_1kHz.txt; 
+load OxenhamPlackNonlinearGammatone_1kHz.txt; 
+load SecondOrderButterworthLinear_1kHz.txt; 
+load SecondOrderButterworthNonlinear_1kHz.txt; 
+
+figure(1);
+plot(ImpulseSignal); 
+figure(2);
+plot(LopezPovedaMeddisDualResonanceNonlinear_1kHz); 
+figure(3);
+plot(OxenhamPlackLinearGain_1kHz); 
+figure(4);
+plot(OxenhamPlackLinearGammatone_1kHz); 
+figure(5);
+plot(OxenhamPlackNonlinearGain_1kHz); 
+figure(6);
+plot(OxenhamPlackNonlinearGammatone_1kHz); 
+figure(7);
+plot(SecondOrderButterworthLinear_1kHz); 
+figure(8);
+plot(SecondOrderButterworthNonlinear_1kHz); 
+

@@ -1,0 +1,97 @@
+# Makefile for GENERIC
+
+MODULE   = GENERIC
+GENARCH  = 
+LOCAL    = /usr/local
+#LOCAL   = /sproj/Arch/$(ARCH)/usr/local
+COMMON   = ../Shared
+TOPDIR   = ../..
+OPTIM    =
+CPP      = g++
+CC       = gcc
+#ARCHCC  = -DPARAMETER_SPACE -DWIN32 -DNOTWINDOWS
+ARCHCC   = -DPARAMETER_SPACE
+CFLAGS   = -I$(TOPDIR)/include $(ARCHCC) $(OPTIM) -fPIC
+CPPFLAGS = $(CFLAGS)
+OBJDIR   = $(TOPDIR)/obj
+
+HEADERS = ModuleSpecific.h $(MODULE).h
+
+CPPSRC  = $(MODULE).cpp
+CPPOBJ  = $(MODULE).o
+
+CSRC    =
+COBJ    =
+
+SRC  = $(CPPSRC) $(CSRC)
+OBJ  = $(CPPOBJ) $(COBJ)
+
+LIBDIR  = $(TOPDIR)/lib
+LIBNAME = earlab
+LCLLIBS = -L$(LOCAL)/lib -levent -lext
+LDLIB   = -L$(LIBDIR) -l$(LIBNAME) $(LCLLIBS)
+LIB     = $(LIBDIR)/lib$(LIBNAME).a
+
+MAKESHELL = /bin/sh
+SHELL     = /bin/sh
+
+all: Makefile module
+
+Makefile: Makefile.$(MODULE)
+
+Makefile.$(MODULE): $(COMMON)/Makefile.Generic
+	@echo "========================" Constructing `pwd | sed -e 's,.*/,,g'` Makefile
+	touch Makefile
+	mv Makefile Makefile.bak
+	@sed -e s/GENERIC/`pwd | sed -e 's,.*/,,g'`/ <$(COMMON)/Makefile.Generic >Makefile.Stage2
+	@sed -e s/"GENARCH  = "/"ARCH     = $(ARCH)"/ <Makefile.Stage2 >Makefile.`pwd | sed -e 's,.*/,,g'`
+	@rm Makefile.Stage2
+	@ln -s Makefile.`pwd | sed -e 's,.*/,,g'` Makefile
+
+archmsg:
+	@echo "========================" Creating  `pwd | sed -e 's,.*/,,g'` directory
+
+compmsg:
+	@echo "========================" Compiling `pwd | sed -e 's,.*/,,g'` module
+
+arch: archmsg Makefile.$(MODULE)
+	-ln -s ../Src/`pwd | sed -e 's,.*/,,g'` ./Src
+	for i in Src/*.[hcHCp]* ; do \
+	  ln -s $$i .              ; \
+	done
+
+module: obj Test$(MODULE)
+
+obj: compmsg $(OBJ) C$(MODULE).o
+	@echo archiving `echo $? | sed -e 's/compmsg//'` into $(LIB)
+	@ar cvr $(LIB)  `echo $? | sed -e 's/compmsg//'`
+	@ranlib $(LIB)
+	@cp $(OBJ) $(OBJDIR)
+
+wrapper.cpp:
+	ln -s $(COMMON)/$@ .
+
+modtest.c:
+	ln -s $(COMMON)/$@ .
+
+C$(MODULE).o: $(HEADERS) wrapper.cpp
+	$(CPP) $(CPPFLAGS) -c -o $@ -DMODULE=$(MODULE) wrapper.cpp
+
+Test$(MODULE).o: $(HEADERS) modtest.c
+	$(CC) $(CFLAGS) -c -o $@ -DMODULE=$(MODULE) modtest.c
+
+Test$(MODULE): Test$(MODULE).o obj
+	$(CPP) -o $@ -DMODULE=$(MODULE) Test$(MODULE).o $(LDLIB)
+
+print: printcpp printc
+
+printcpp: $(CPPSRC)
+	enscript --lang=html --highlight=cpp --color=1 $? -p $(MODULE).html
+
+printc: $(CSRC)
+	enscript --lang=html --highlight=c --color=1 $? -p c.html
+
+clean:
+	touch xxxxx.stackdump
+	rm -f core a.out core.* *.o *.a *.exe *.html *.stackdump
+

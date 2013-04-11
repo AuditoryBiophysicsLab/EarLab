@@ -1,0 +1,70 @@
+# Makefile for GENERIC
+
+MODULE   = GENERIC
+COMMON   = ../Shared
+CPP      = g++
+CC       = gcc
+CFLAGS   = -I../../../include -DNOTWINDOWS
+CPPFLAGS = $(CFLAGS)
+
+HEADERS = ModuleSpecific.h $(MODULE).h
+
+CPPSRC  = $(MODULE).cpp
+CPPOBJ  = $(MODULE).o
+
+CSRC    =
+COBJ    =
+
+SRC  = $(CPPSRC) $(CSRC)
+OBJ  = $(CPPOBJ) $(COBJ)
+
+LIBDIR  = ../../../lib
+LIBNAME = earlab
+LDLIB   = -L${LIBDIR} -l${LIBNAME}
+LIB     = ${LIBDIR}/lib${LIBNAME}.a
+
+MAKESHELL = /bin/csh
+SHELL     = /bin/csh
+
+Makefile: Makefile.$(MODULE)
+	make module
+
+Makefile.$(MODULE):
+	mv Makefile Makefile.bak
+	sed -e s/GENERIC/`pwd | sed -e 's,.*/,,g'`/ <$(COMMON)/Makefile >Makefile.$$cwd:t
+	ln -s Makefile.$$cwd:t Makefile
+
+module: obj Test$(MODULE)
+
+obj: $(OBJ) C$(MODULE).o
+	echo $?
+	ar cvr $(LIB) $?
+	ranlib $(LIB)
+
+wrapper.cpp:
+	ln -s $(COMMON)/$@ .
+
+modtest.c:
+	ln -s $(COMMON)/$@ .
+
+C$(MODULE).o: $(HEADERS) wrapper.cpp
+	$(CPP) $(CPPFLAGS) -c -o $@ -DMODULE=$(MODULE) wrapper.cpp
+
+Test$(MODULE).o: $(HEADERS) modtest.c
+	$(CC) $(CFLAGS) -c -o $@ -DMODULE=$(MODULE) modtest.c
+
+Test$(MODULE): Test$(MODULE).o obj
+	$(CPP) -o $@ -DMODULE=$(MODULE) Test$(MODULE).o $(LDLIB)
+
+print: printcpp printc
+
+printcpp: $(CPPSRC)
+	enscript --lang=html --highlight=cpp --color=1 $? -p $(MODULE).html
+
+printc: $(CSRC)
+	enscript --lang=html --highlight=c --color=1 $? -p c.html
+
+clean:
+	touch xxxxx.stackdump
+	rm -f core a.out core.* *.o *.a *.exe *.html *.stackdump
+

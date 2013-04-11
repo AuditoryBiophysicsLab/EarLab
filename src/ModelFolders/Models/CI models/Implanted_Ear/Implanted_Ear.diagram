@@ -1,0 +1,59 @@
+[Model]
+string          ModuleList              "DataSource, MiddleEar, CLinearGT, CEnvelope, EnvelopeSink, CIS, CISsink, CurrentSpread, CurrentSpreadSink, CIntegrateAndFire, CSpikeSink"
+
+[DataSource]
+string		ModuleExecutable	"DataSource.dll"
+IntVector	Output.1                [ 44 ]
+string		Output.1.DataType	"Waveform"
+
+[MiddleEar]
+string          ModuleExecutable	"MiddleEarSimpleFilter.dll"
+string          Input.1			"DataSource.1"
+IntVector       Output.1                [ 44 ]
+String		Output.1.DataType	"Waveform"
+
+[CLinearGT]
+string          ModuleExecutable        "BasilarMembraneLinearGammatone.dll"
+string          Input.1			"MiddleEar.1"
+IntVector       Output.1                [ 44 16 ]
+string		Output.1.DataType	"Waveform"
+
+[CEnvelope]
+string          ModuleExecutable        "EnvelopeExtractor.dll"
+string          Input.1                 "CLinearGT.1"
+IntVector       Output.1                [ 44 16 ]
+string		Output.1.DataType	"Waveform"
+
+[EnvelopeSink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "CEnvelope.1"
+
+[CIS]
+string          ModuleExecutable        "CIS.dll"
+string          Input.1                 "CEnvelope.1"
+IntVector       Output.1                [ 44 16 ]
+string		Output.1.DataType	"Waveform"
+
+[CISsink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "CIS.1"
+
+[CurrentSpread]
+string          ModuleExecutable        "CurrentSpread.dll"
+string          Input.1                 "CIS.1"
+IntVector       Output.1                [ 44 1280 ]
+string		Output.1.DataType	"Waveform"
+
+[CurrentSpreadSink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "CurrentSpread.1"
+
+[CIntegrateAndFire]
+string          ModuleExecutable        "IntegrateAndFire.dll"
+string          Input.1                 "CurrentSpread.1"
+IntVector       Output.1                [ 1280 ]
+string		Output.1.DataType	"Spike"
+
+[CSpikeSink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "CIntegrateAndFire.1"

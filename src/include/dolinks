@@ -1,0 +1,30 @@
+#!/bin/csh
+
+# Support Class and Libray headers
+
+foreach i (../Src/SupportClasses/*.[hH])
+  set file = $i:t
+  if ( ! -e $file ) then
+	echo linking $i
+	ln -s $i .
+  endif
+end
+
+# Miscellaneous shared Module headers
+foreach i (../Src/Modules/Shared/*.h)
+  set file = $i:t
+  if ( ! -e $file ) then
+	echo linking $i
+	ln -s $i .
+  endif
+end
+
+# Miscellaneous Transport headers
+foreach file (params.h)
+  if ( ! -e $file ) then
+	set i = ../Src/Transport/$file
+	echo linking $i
+	ln -s $i .
+  endif
+end
+

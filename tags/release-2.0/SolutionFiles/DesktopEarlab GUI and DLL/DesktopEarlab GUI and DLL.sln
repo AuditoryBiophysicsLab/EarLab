@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesktopEarlabDLL", "..\..\DesktopEarlabDLL\DesktopEarlabDLL.vcproj", "{1F44145E-4F2B-44EA-888B-DB92B330FEB3}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarlabGUI", "..\..\EarlabGUI\EarlabGUI.csproj", "{8340E538-721C-4FAC-8DFD-FEAD8FEDB3BE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{1F44145E-4F2B-44EA-888B-DB92B330FEB3}.Debug.ActiveCfg = Debug|Win32
+		{1F44145E-4F2B-44EA-888B-DB92B330FEB3}.Debug.Build.0 = Debug|Win32
+		{1F44145E-4F2B-44EA-888B-DB92B330FEB3}.Release.ActiveCfg = Release|Win32
+		{1F44145E-4F2B-44EA-888B-DB92B330FEB3}.Release.Build.0 = Release|Win32
+		{8340E538-721C-4FAC-8DFD-FEAD8FEDB3BE}.Debug.ActiveCfg = Debug|.NET
+		{8340E538-721C-4FAC-8DFD-FEAD8FEDB3BE}.Debug.Build.0 = Debug|.NET
+		{8340E538-721C-4FAC-8DFD-FEAD8FEDB3BE}.Release.ActiveCfg = Release|.NET
+		{8340E538-721C-4FAC-8DFD-FEAD8FEDB3BE}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

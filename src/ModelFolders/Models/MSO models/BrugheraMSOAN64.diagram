@@ -1,0 +1,105 @@
+[Model]
+// string          ModuleList              "Left_Pinna, Left_Midear, Left_Cochlea, Left_IHCs, Left_AN, Left_ANSpike, Left_BushyCell_A, Left_MSO_A, Right_Pinna, Right_Midear, Right_Cochlea, Right_IHCs, Right_AN, Right_ANSpike, Right_BushyCell_A, Right_MSO_A, Left_ANSpike_Sink, Right_ANSpike_Sink, Left_Bushy_A_Sink, Right_Bushy_A_Sink, Left_MSO_A_Sink, Right_MSO_A_Sink"
+string          ModuleList              "Left_Pinna64, Left_Midear64, Left_Cochlea64, Left_IHCs64, Left_AN64, Left_ANSpike64, Left_MSO_A64, Right_Pinna64, Right_Midear64, Right_Cochlea64, Right_IHCs64, Right_AN64, Right_ANSpike64, Right_MSO_A64, Left_ANSpike_Sink64, Right_ANSpike_Sink64, Left_MSO_A_Sink64, Right_MSO_A_Sink64"
+
+[Left_Pinna64]
+string          ModuleExecutable        "DataSource.dll"
+IntVector       Output.1                [ 1000 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_Midear64]
+string          ModuleExecutable        "MiddleEarSimpleFilter.dll"
+string          Input.1                 "Left_Pinna64.1"
+IntVector       Output.1                [ 1000 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_Cochlea64]
+string          ModuleExecutable        "BasilarMembraneNonlinearGammatone.dll"
+string          Input.1                 "Left_Midear64.1"
+IntVector       Output.1                [ 1000 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_IHCs64]
+string          ModuleExecutable        "InnerHaircell.dll"
+string          Input.1                 "Left_Cochlea64.1"
+IntVector       Output.1                [ 1000 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_AN64]
+string          ModuleExecutable        "AuditoryNerveIFR.dll"
+string          Input.1                 "Left_IHCs64.1"
+IntVector       Output.1                [ 1000 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_ANSpike64]
+string		ModuleExecutable	"SimpleSpikeGenerator.dll"
+string          Input.1                 "Left_AN64.1"
+IntVector       Output.1                [ 64 10 ]
+string		Output.1.DataType	"Spike"
+
+[Left_MSO_A64]
+string		ModuleExecutable	"BrugheraMSO.dll"
+string          Input.1                 "Left_ANSpike64.1"
+string          Input.2                 "Right_ANSpike64.1"
+IntVector       Output.1                [ 64 21 ]
+string		Output.1.DataType	"Spike"
+
+
+[Left_ANSpike_Sink64]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "Left_ANSpike64.1"
+
+[Left_MSO_A_Sink64]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "Left_MSO_A64.1"
+
+[Right_Pinna64]
+string          ModuleExecutable        "DataSource.dll"
+IntVector       Output.1                [ 1000 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_Midear64]
+string          ModuleExecutable        "MiddleEarSimpleFilter.dll"
+string          Input.1                 "Right_Pinna64.1"
+IntVector       Output.1                [ 1000 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_Cochlea64]
+string          ModuleExecutable        "BasilarMembraneNonlinearGammatone.dll"
+string          Input.1                 "Right_Midear64.1"
+IntVector       Output.1                [ 1000 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_IHCs64]
+string          ModuleExecutable        "InnerHaircell.dll"
+string          Input.1                 "Right_Cochlea64.1"
+IntVector       Output.1                [ 1000 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_AN64]
+string          ModuleExecutable        "AuditoryNerveIFR.dll"
+string          Input.1                 "Right_IHCs64.1"
+IntVector       Output.1                [ 1000 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Right_ANSpike64]
+string		ModuleExecutable	"SimpleSpikeGenerator.dll"
+string          Input.1                 "Right_AN64.1"
+IntVector       Output.1                [ 64 10 ]
+string		Output.1.DataType	"Spike"
+
+[Right_MSO_A64]
+string		ModuleExecutable	"BrugheraMSO.dll"
+string          Input.1                 "Right_ANSpike64.1"
+string          Input.2                 "Left_ANSpike64.1"
+IntVector       Output.1                [ 64 21 ]
+string		Output.1.DataType	"Spike"
+
+[Right_ANSpike_Sink64]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "Right_ANSpike64.1"
+
+[Right_MSO_A_Sink64]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "Right_MSO_A64.1"
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="EarlabRunDefinition" targetNamespace="http://tempuri.org/EarlabRunDefinition.xsd" elementFormDefault="qualified" xmlns="http://tempuri.org/EarlabRunDefinition.xsd" xmlns:mstns="http://tempuri.org/EarlabRunDefinition.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="RunFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Modules" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Outputs" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="unsignedIntArray">
+                      <xs:attribute name="name" type="xs:string" />
+                      <xs:attribute name="index" type="xs:unsignedInt" />
+                      <xs:attribute name="streamType" type="DataStreamType" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Inputs" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="unsignedIntArray">
+                      <xs:attribute name="name" type="xs:string" />
+                      <xs:attribute name="index" type="xs:unsignedInt" />
+                      <xs:attribute name="sourceInstanceName" type="xs:string" />
+                      <xs:attribute name="sourceOutputName" type="xs:string" />
+                      <xs:attribute name="sourceOutputIndex" type="xs:unsignedInt" />
+                      <xs:attribute name="streamType" type="DataStreamType" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Parameters" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="name" type="xs:string" />
+                      <xs:attribute name="dataType" type="ParameterDataType" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="instanceName" type="xs:string" />
+            <xs:attribute name="executable" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="InputDirectory" type="xs:string" />
+        <xs:element name="OutputDirector" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="ParameterDataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Boolean" />
+      <xs:enumeration value="Integer" />
+      <xs:enumeration value="Double" />
+      <xs:enumeration value="IntegerArray" />
+      <xs:enumeration value="DoubleArray" />
+      <xs:enumeration value="String" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DataStreamType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Waveform" />
+      <xs:enumeration value="SpikeTimes" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="unsignedIntArray">
+    <xs:list itemType="xs:unsignedInt" />
+  </xs:simpleType>
+</xs:schema>

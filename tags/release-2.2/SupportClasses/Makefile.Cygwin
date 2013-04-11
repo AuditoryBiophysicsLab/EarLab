@@ -1,0 +1,6 @@
+# Cygwin system dependent Makefile component
+
+ARCH     = Cygwin
+CPP      = g++
+CFLAGS   = -I../include -Dstricmp=strcasecmp -DWIN32 -DPARAMETER_SPACE -DNOTWINDOWS
+CPPFLAGS = $(CFLAGS)

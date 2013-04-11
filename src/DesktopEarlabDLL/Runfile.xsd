@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Runfile"
+    targetNamespace="http://tempuri.org/Runfile.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/Runfile.xsd"
+    xmlns:mstns="http://tempuri.org/Runfile.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="ParameterDataType">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies legal types for Earlab module parameters
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Integer"/>
+      <xs:enumeration value="Double"/>
+      <xs:enumeration value="String"/>
+      <xs:enumeration value="Boolean"/>
+      <xs:enumeration value="InputFile"/>
+      <xs:enumeration value="OutputFile"/>
+      <xs:enumeration value="IntegerArray"/>
+      <xs:enumeration value="DoubleArray"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Parameter">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies all the required and optional fields to specify an Earlab Module Parameter
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:normalizedString"/>
+      <xs:element name="Type" type="ParameterDataType"/>
+      <xs:element name="Value"/> <!--Look into using the xs:choice tag here to support multiple data types-->
+    </xs:sequence>
+  </xs:complexType>
+
+
+</xs:schema>

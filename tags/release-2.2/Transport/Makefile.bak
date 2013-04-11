@@ -1,0 +1,727 @@
+# Makefile for Earlab Transport Layer (and demo)
+
+# Local paths
+ARCH    = generic
+#LOCAL  = /usr/local
+LOCAL   = /sproj/Arch/$(ARCH)/usr/local
+DAFFIE  = /sproj/DAFFIE
+EARLAB  = ../
+
+# C compiler and flags
+LD      = g++
+CC      = gcc
+ABI     =
+ABIFLAG =
+#CFLAGS  = -g $(ABIFLAG)                    -I$(DAFFIE)/include -I$(EARLAB)/include -I/usr/$(XVERS)/include
+CFLAGS   = -g $(ABIFLAG) -I$(LOCAL)/include -I$(DAFFIE)/include -I$(EARLAB)/include -I/usr/$(XVERS)/include
+
+# Load libraries and paths
+XVERS   = X11R6
+EVLIB  = -levent
+#EVLIB  = -levent.dll
+GLLIB   =
+MODLIB  = $(EARLAB)/lib/libearlab.a
+XLIB    = -L/usr/$(XVERS)/lib -lX11
+GLIBS   = $(XLIB) -lcgl
+#LIBS   = -L$(EARLAB)/lib -L$(DAFFIE)/$(ARCH)/lib$(ABI) -L$(LOCAL)/lib$(ABI) $(EVLIB) -learlab -lext -lwinmm -lm
+#LIBS   = -L$(DAFFIE)/lib$(ABI) -L$(LOCAL)/lib$(ABI) $(EVLIB) -lext -lwinmm -lm
+LIBS    = -L. -L$(EARLAB)/lib -L$(DAFFIE)/$(ARCH)/lib$(ABI) -L$(LOCAL)/lib$(ABI) -learlab -levent -lext -lpthread -lm
+LDFLAGS =
+RES     =
+
+#-- Makefile.common -- do not delete this line
+#
+# The remainder of this file should be common across builds
+#
+
+SRC     = agentd.c agent.c launch.c locate.c logger.c console.c    \
+	  control.c readconfig.c module.c                          \
+	  stateserver.c guitest.c xplot.c wplot.c hsvrgb.c probe.c \
+	  loadexp.c showexp.c                                      \
+	  fake.c passthru.c reader.c writer.c
+
+DEFS    = agentddef.h efieventdef.h
+HEADERS = agentd.h agent.h efievent.h invoke.h cl.h tl.h model.h config.h \
+	  hsvrgb.h wplotmenu.h wplot.rc showexpmenu.h showexp.rc
+
+SCRIPTS =
+FILES   = $(HEADERS) $(SRC) $(DEFS) $(SCRIPTS)
+
+DIRS    = Modules Run
+PGMS    = agentd launch locate reader writer console logger  \
+	  stateserver guitest loadexp runmodel showexp \
+	  xplot wplot probe
+OBJ     = readconfig.o
+MODELS  = binaural
+WHALEMOD=
+TESTMOD = source pass sink
+BINUMOD = DataSource AuditoryNerveIFR BM_Gamma_Tone InnerHaircell MSOQuarterWave MSOXcorr
+MODULES = $(BINUMOD)
+
+# Shell for Make to use (varies by system)
+SHELL     = /bin/sh
+MAKESHELL = /bin/sh
+
+all: $(PGMS) $(MODELS)
+
+Makefile: Makefile.common
+	mv Makefile Makefile.bak
+	sed -e '/-- Makefile.common --/,$$d' <Makefile.bak >Makefile
+	cat Makefile.common >>Makefile
+
+arch:
+	make clean Makefile
+	rm -rf Transport-`date +%d%b%y`.tar
+	tar cvf Transport-`date +%d%b%y`.tar *
+	touch xxx.xxx
+	rm -rf xxx.xxx $(FILES) Src
+	ln -s ../../Src/Transport ./Src
+	ln -s Src/Makefile.common  .
+	ln -s Src/Makefile.$(ARCH) .
+	cp Src/Makefile.generic ./Makefile
+	for i in $(FILES);  do    \
+		ln -s Src/$$i . ; \
+	done
+
+#
+# Models
+#
+test: testmodel $(TESTMOD)
+	@echo Test model build at `date`
+
+binaural: $(BINUMOD)
+	@echo Binaural model build at `date`
+
+testmodel: testmodel.o control.o
+	$(CC) $(LDFLAGS) -g testmodel.o control.o ${OBJ} ${RES} ${LIBS} -o $@
+
+testmodel.o: efievent.h tl.h cl.h model.h testmodel.c
+	$(CC) -c $(CFLAGS) testmodel.c
+
+#
+# Control layer
+#
+loadexp: loadexp.o $(OBJ)
+	$(CC) $(LDFLAGS) -g loadexp.o ${OBJ} ${LIBS} -o $@
+
+loadexp.o: agentd.h loadexp.c
+	$(CC) -c $(CFLAGS) loadexp.c
+
+runmodel: config.h control.c ${OBJ}
+	$(CC) $(CFLAGS) -g -DRUNMODEL control.c $(LDFLAGS) ${OBJ} ${RES} ${LIBS} -o $@
+
+readconfig.o: config.h readconfig.c
+	$(CC) -c $(CFLAGS) readconfig.c
+
+readconfig: config.h readconfig.c
+	$(CC) $(CFLAGS) -DMAIN readconfig.c $(LDFLAGS) ${LIBS} -o $@
+
+control.o: efievent.h efieventdef.h control.c
+	$(CC) -c $(CFLAGS) control.c
+
+probe: probe.o $(OBJ)
+	$(CC) $(LDFLAGS) -g probe.o ${OBJ} ${LIBS} -o $@
+
+probe.o: efievent.h probe.c
+	$(CC) -c $(CFLAGS) probe.c
+
+#
+# Fake modules for Testing
+#
+source: source.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g source.o ${OBJ} ${RES} ${LIBS} -o $@
+
+source.o: efievent.h efieventdef.h module.c fake.c
+	$(CC) -c $(CFLAGS) -DMODULE=Source -DNIN=0 -DNOUT=1 fake.c -o $@
+
+pass: pass.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g pass.o ${OBJ} ${RES} ${LIBS} -o $@
+
+pass.o: efievent.h efieventdef.h module.c fake.c
+	$(CC) -c $(CFLAGS) -DMODULE=Pass -DNIN=1 -DNOUT=1 fake.c -o $@
+
+sink: sink.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g sink.o ${OBJ} ${RES} ${LIBS} -o $@
+
+sink.o: efievent.h efieventdef.h module.c fake.c
+	$(CC) -c $(CFLAGS) -DMODULE=Sink -DNIN=1 -DNOUT=0 fake.c -o $@
+
+#
+# Binaural model
+#
+proto: proto.o ${OBJ} ${RES}
+	$(LD) $(LDFLAGS) -g proto.o ${OBJ} ${RES} ${LIBS} -o $@
+
+proto.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=proto -DNIN=1 -DNOUT=1 module.c -o $@
+
+DataSource: DataSource.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g DataSource.o ${OBJ} ${RES} ${LIBS} -o $@
+
+DataSource.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=DataSource -DNIN=0 -DNOUT=1 module.c -o $@
+
+AuditoryNerveIFR: AuditoryNerveIFR.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g AuditoryNerveIFR.o ${OBJ} ${RES} ${LIBS} -o $@
+
+AuditoryNerveIFR.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=AuditoryNerveIFR -DNIN=1 -DNOUT=1 module.c -o $@
+
+BM_Gamma_Tone: BM_Gamma_Tone.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g BM_Gamma_Tone.o ${OBJ} ${RES} ${LIBS} -o $@
+
+BM_Gamma_Tone.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=BM_Gamma_Tone -DNIN=1 -DNOUT=1 module.c -o $@
+
+InnerHaircell: InnerHaircell.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g InnerHaircell.o ${OBJ} ${RES} ${LIBS} -o $@
+
+InnerHaircell.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=InnerHaircell -DNIN=1 -DNOUT=1 module.c -o $@
+
+MSOQuarterWave: MSOQuarterWave.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g MSOQuarterWave.o ${OBJ} ${RES} ${LIBS} -o $@
+
+MSOQuarterWave.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=MSOQuarterWave -DNIN=1 -DNOUT=1 module.c -o $@
+
+MSOXcorr: MSOXcorr.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g MSOXcorr.o ${OBJ} ${RES} ${LIBS} -o $@
+
+MSOXcorr.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=MSOXcorr -DNIN=1 -DNOUT=1 module.c -o $@
+
+#
+# More fake modules for testing
+#
+reader: reader.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g reader.o ${OBJ} ${RES} ${LIBS} -o $@
+
+reader.o: efievent.h efieventdef.h module.c reader.c
+	$(CC) -c $(CFLAGS) reader.c
+
+writer: writer.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g writer.o ${OBJ} ${RES} ${LIBS} -o $@
+
+writer.o: efievent.h efieventdef.h module.c writer.c
+	$(CC) -c $(CFLAGS) writer.c
+
+# Generic module - only for testing compliation
+module.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) module.c
+
+
+#
+# Presentation layer
+#
+xshowexp: xshowexp.o $(OBJ)
+	$(CC) $(LDFLAGS) -g xshowexp.o ${OBJ} ${LIBS} ${GLIBS} -o $@
+
+xshowexp.o: agentd.h efievent.h xshowexp.c
+	$(CC) -c $(CFLAGS) xshowexp.c
+
+stateserver: stateserver.o $(OBJ)
+	$(CC) $(LDFLAGS) -g stateserver.o ${OBJ} ${LIBS} -o $@
+
+stateserver.o: efievent.h efieventdef.h stateserver.c
+	$(CC) -c $(CFLAGS) stateserver.c
+
+guitest: guitest.o $(OBJ)
+	$(CC) $(LDFLAGS) -g guitest.o ${OBJ} ${LIBS} -o $@
+
+guitest.o: efievent.h efieventdef.h guitest.c
+	$(CC) -c $(CFLAGS) guitest.c
+
+xplot: xplot.o hsvrgb.o $(OBJ)
+	$(CC) $(LDFLAGS) -g xplot.o hsvrgb.o ${OBJ} ${LIBS} ${GLIBS} -o $@
+
+xplot.o: efievent.h efieventdef.h xplot.c
+	$(CC) -c $(CFLAGS) xplot.c
+
+hsvrgb.o: hsvrgb.h hsvrgb.c
+	$(CC) -c $(CFLAGS) hsvrgb.c
+
+# Application stuff
+WINLIBS  = -lwinapp -lwinmm -lcomctl32 -lcomdlg32 -lole32 -lgdi32
+WPLOTOBJ = wplot.o wplot.res hsvrgb.o
+SHOWOBJ  = showexp.o showexp.res readconfig.o
+
+wplot: ${WPLOTOBJ}
+	$(CC) ${LDFLAGS} ${WPLOTOBJ} ${LIBS} ${WINLIBS} -o $@
+
+wplot.o: wplot.c wplotmenu.h
+	$(CC) -c -DWINAPP ${CFLAGS} wplot.c
+
+wplot.res: wplotmenu.h wplot.rc
+	windres wplot.rc -O coff -o $@
+
+showexp: ${SHOWOBJ}
+	$(CC) $(LDFLAGS) ${SHOWOBJ} ${LIBS} ${WINLIBS} -o $@
+
+showexp.o: efievent.h showexp.c
+	$(CC) -c -DWINAPP $(CFLAGS) showexp.c
+
+showexp.res: showexpmenu.h showexp.rc
+	windres showexp.rc -O coff -o $@
+
+#
+# Agentd and friends
+#
+agentd: agentd.o $(OBJ)
+	$(CC) $(LDFLAGS) -g agentd.o ${OBJ} ${LIBS} -o $@
+
+agentd.o: agentd.h agentd.c agentd.c
+	$(CC) -c $(CFLAGS) agentd.c
+
+agent.o: agentd.h agent.h agent.c
+	$(CC) -c $(CFLAGS) agent.c
+
+launch: launch.o agent.o
+	$(CC) $(LDFLAGS) -g launch.o agent.o ${LIBS} -o $@
+
+launch.o: agentd.h agent.h launch.c
+	$(CC) -c $(CFLAGS) launch.c
+
+locate: locate.o agent.o
+	$(CC) $(LDFLAGS) -g locate.o agent.o ${LIBS} -o $@
+
+locate.o: agentd.h agent.h locate.c
+	$(CC) -c $(CFLAGS) locate.c
+
+logger: logger.o $(OBJ)
+	$(CC) $(LDFLAGS) -g logger.o ${OBJ} ${LIBS} -o $@
+
+logger.o: agentd.h agentddef.h logger.c
+	$(CC) -c $(CFLAGS) logger.c
+
+console: console.o $(OBJ)
+	$(CC) $(LDFLAGS) -g console.o ${OBJ} ${LIBS} -o $@
+
+console.o: agentd.h agentddef.h console.c
+	$(CC) -c $(CFLAGS) console.c
+
+# Ancillary stuff
+tar: $(FILES) $(DIRS)
+	tar cvf earlab-`date +%d%b%y`.tar Makefile.common $(FILES) $(DIRS)
+
+tarf: $(FILES)
+	tar cvf earlab-`date +%d%b%y`.tar Makefile.common $(FILES)
+
+clean:
+	rm -f $(PGMS) $(MODULES) *.o *.out core* *.stackdump *~ #*
+	@for i in $(PGMS) $(MODULES);  do \
+		rm -f $$i.exe ;\
+	done
+
+# Directly linking this on Linux
+matchclient.o:
+	ln -s /sproj/DAFFIE/Clients/Lib/Linux/matchclient.o .
+
+
+
+#-- Makefile.common -- do not delete this line
+#
+# The remainder of this file should be common across builds
+#
+
+SRC     = agentd.c agent.c launch.c locate.c logger.c console.c    \
+	  control.c readconfig.c module.c                          \
+	  stateserver.c guitest.c wplot.c hsvrgb.c probe.c         \
+	  spew.c spewtst.c                                         \
+	  loadexp.c showexp.c capture.c                            \
+	  fake.c passthru.c Reader.c Writer.c WriterBin.c Sink.c
+
+DEFS    = agentddef.h efieventdef.h
+HEADERS = agentd.h agent.h efievent.h invoke.h cl.h tl.h model.h config.h \
+	  hsvrgb.h wplotmenu.h wplot.rc showexpmenu.h showexp.rc
+
+SCRIPTS =
+FILES   = $(HEADERS) $(SRC) $(DEFS) $(SCRIPTS)
+SYMLNKS = xshowexp.c xplot.c
+
+DIRS    = Modules Run
+
+PGMS    = agentd launch locate console logger           \
+	  stateserver guitest loadexp runmodel probe    \
+	  xplot spew spewtst capture
+
+LinuxPGM  = xshowexp
+AIXPGM    = xshowexp
+CygwinPGM = showexp wplot agentlogger
+cygwinPGM = $(CygwinPGM)
+ALLOS     = $(LinuxPGM) $(AIXPGM) $(CygwinPGM)
+
+OBJ     = readconfig.o
+
+TESTMOD = source pass sink
+IOMOD   = Reader Writer WriterBin Sink
+BINUMOD = \
+	  AuditoryNerveIFR                  \
+	  BasilarMembraneLinearGammatone    \
+	  BasilarMembraneNonlinearGammatone \
+	  CompoundActionPotentialIFR        \
+	  DataSource                        \
+	  Fanout                            \
+	  InnerHaircell                     \
+	  ITDAzimuth                        \
+	  MiddleEarSimpleFilter             \
+	  MSOXcorr                          \
+	  MSOCombiner
+MODULES = $(BINUMOD) $(IOMOD)
+
+# Shell for Make to use (varies by system)
+SHELL     = /bin/sh
+MAKESHELL = /bin/sh
+
+all: $(PGMS) $(MODELS) $(MODULES) $(ARCH)
+
+Makefile: Makefile.common Makefile.$(ARCH)
+	mv Makefile Makefile.bak
+#       sed -e '/-- Makefile.common --/,$$d' <Makefile.bak >Makefile
+#       cat Makefile.common >>Makefile
+	cat Makefile.$(ARCH) Makefile.common >Makefile
+
+Makefile.common:
+	ln -s Src/Makefile.common .
+
+Makefile.$(ARCH):
+	ln -s Src/Makefile.$(ARCH) .
+
+arch:
+	if [ ! -e Src ]; then \
+		ln -s ../../Src/Transport ./Src ; \
+	fi
+	make clean
+	rm -rf Transport-`date +%d%b%y`.tar
+	tar cvf Transport-`date +%d%b%y`.tar *
+	touch xxx.xxx
+	rm -rf xxx.xxx $(FILES) $(SYMLNKS) Makefile.*
+	ln -s Src/Makefile.common  .
+	ln -s Src/Makefile.$(ARCH) .
+	cat Makefile.$(ARCH) Makefile.common >Makefile
+	for i in $(FILES) $(SYMLNKS);  do \
+		ln -s Src/$$i . ; \
+	done
+
+$(ARCH): $($(ARCH)PGM)
+
+install: instbin instmods
+
+instbin: $(PGMS)
+	for i in $?; do \
+		cp -uv $$i$(EXE) $(INSTDIR)/ ; \
+	done
+	make $(ARCH)inst
+
+instmods: $(MODULES)
+	for i in $?; do \
+		cp -uv $$i$(EXE) $(INSTMODS)/ ; \
+	done
+
+$(ARCH)inst: $($(ARCH)PGM)
+	for i in $?; do \
+		cp -uv $$i$(EXE) $(INSTDIR)/ ; \
+	done
+
+#
+# Models
+#
+test: testmodel $(TESTMOD)
+	@echo Test model build at `date`
+
+binaural: $(BINUMOD)
+	@echo Binaural model build at `date`
+
+testmodel: testmodel.o control.o
+	$(CC) $(LDFLAGS) -g testmodel.o control.o ${OBJ} ${RES} ${LIBS} -o $@
+
+testmodel.o: efievent.h tl.h cl.h model.h testmodel.c
+	$(CC) -c $(CFLAGS) testmodel.c
+
+#
+# Control layer
+#
+loadexp: loadexp.o $(OBJ)
+	$(CC) $(LDFLAGS) -g loadexp.o ${OBJ} ${LIBS} -o $@
+
+loadexp.o: agentd.h loadexp.c
+	$(CC) -c $(CFLAGS) loadexp.c
+
+runmodel: config.h control.c ${OBJ}
+	$(CC) $(CFLAGS) -g -DRUNMODEL control.c $(LDFLAGS) ${OBJ} ${RES} ${LIBS} -o $@
+
+readconfig.o: config.h readconfig.c
+	$(CC) -c $(CFLAGS) readconfig.c
+
+readconfig: config.h readconfig.c
+	$(CC) $(CFLAGS) -DMAIN readconfig.c $(LDFLAGS) ${LIBS} -o $@
+
+control.o: efievent.h efieventdef.h control.c
+	$(CC) -c $(CFLAGS) control.c
+
+probe: probe.o $(OBJ)
+	$(CC) $(LDFLAGS) -g probe.o ${OBJ} ${LIBS} -o $@
+
+probe.o: efievent.h probe.c
+	$(CC) -c $(CFLAGS) probe.c
+
+#
+# Fake modules for Testing
+#
+source: source.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g source.o ${OBJ} ${RES} ${LIBS} -o $@
+
+source.o: efievent.h efieventdef.h module.c fake.c
+	$(CC) -c $(CFLAGS) -DMODULE=Source -DNIN=0 -DNOUT=1 fake.c -o $@
+
+pass: pass.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g pass.o ${OBJ} ${RES} ${LIBS} -o $@
+
+pass.o: efievent.h efieventdef.h module.c fake.c
+	$(CC) -c $(CFLAGS) -DMODULE=Pass -DNIN=1 -DNOUT=1 fake.c -o $@
+
+sink: sink.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g sink.o ${OBJ} ${RES} ${LIBS} -o $@
+
+sink.o: efievent.h efieventdef.h module.c fake.c
+	$(CC) -c $(CFLAGS) -DMODULE=Sink -DNIN=1 -DNOUT=0 fake.c -o $@
+
+#
+# Binaural model
+#
+proto: proto.o ${OBJ} ${RES}
+	$(LD) $(LDFLAGS) -g proto.o ${OBJ} ${RES} ${LIBS} -o $@
+
+proto.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=proto -DNIN=1 -DNOUT=1 module.c -o $@
+
+AuditoryNerveIFR: AuditoryNerveIFR.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g AuditoryNerveIFR.o ${OBJ} ${RES} ${LIBS} -o $@
+
+AuditoryNerveIFR.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=AuditoryNerveIFR -DNIN=1 -DNOUT=1 module.c -o $@
+
+BasilarMembraneLinearGammatone: BasilarMembraneLinearGammatone.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g BasilarMembraneLinearGammatone.o ${OBJ} ${RES} ${LIBS} -o $@
+
+BasilarMembraneLinearGammatone.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=BasilarMembraneLinearGammatone -DNIN=1 -DNOUT=1 module.c -o $@
+
+BasilarMembraneNonlinearGammatone: BasilarMembraneNonlinearGammatone.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g BasilarMembraneNonlinearGammatone.o ${OBJ} ${RES} ${LIBS} -o $@
+
+BasilarMembraneNonlinearGammatone.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=BasilarMembraneNonlinearGammatone -DNIN=1 -DNOUT=1 module.c -o $@
+
+CompoundActionPotentialIFR: CompoundActionPotentialIFR.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g CompoundActionPotentialIFR.o ${OBJ} ${RES} ${LIBS} -o $@
+
+CompoundActionPotentialIFR.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=CompoundActionPotentialIFR -DNIN=1 -DNOUT=1 module.c -o $@
+
+ITDAzimuth: ITDAzimuth.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g ITDAzimuth.o ${OBJ} ${RES} ${LIBS} -o $@
+
+ITDAzimuth.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=ITDAzimuth -DNIN=1 -DNOUT=1 module.c -o $@
+
+SimpleSignalGenerator: SimpleSignalGenerator.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g SimpleSignalGenerator.o ${OBJ} ${RES} ${LIBS} -o $@
+
+SimpleSignalGenerator.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=SimpleSignalGenerator -DNIN=1 -DNOUT=1 module.c -o $@
+
+DataSource: DataSource.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g DataSource.o ${OBJ} ${RES} ${LIBS} -o $@
+
+DataSource.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=DataSource -DNIN=0 -DNOUT=1 module.c -o $@
+
+Fanout: Fanout.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g Fanout.o ${OBJ} ${RES} ${LIBS} -o $@
+
+Fanout.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=Fanout -DNIN=2 -DNOUT=1 module.c -o $@
+
+InnerHaircell: InnerHaircell.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g InnerHaircell.o ${OBJ} ${RES} ${LIBS} -o $@
+
+InnerHaircell.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=InnerHaircell -DNIN=1 -DNOUT=1 module.c -o $@
+
+MiddleEarSimpleFilter: MiddleEarSimpleFilter.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g MiddleEarSimpleFilter.o ${OBJ} ${RES} ${LIBS} -o $@
+
+MiddleEarSimpleFilter.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=MiddleEarSimpleFilter -DNIN=1 -DNOUT=1 module.c -o $@
+
+MSOXcorr: MSOXcorr.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g MSOXcorr.o ${OBJ} ${RES} ${LIBS} -o $@
+
+MSOXcorr.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=MSOXcorr -DNIN=2 -DNOUT=1 module.c -o $@
+
+MSOCombiner: MSOCombiner.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g MSOCombiner.o ${OBJ} ${RES} ${LIBS} -o $@
+
+MSOCombiner.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) -DMODULE=MSOCombiner -DNIN=2 -DNOUT=1 module.c -o $@
+
+
+#
+# More fake modules for testing
+#
+Reader: Reader.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g Reader.o ${OBJ} ${RES} ${LIBS} -o $@
+
+Reader.o: efievent.h efieventdef.h module.c Reader.c
+	$(CC) -c $(CFLAGS) Reader.c
+
+Writer: Writer.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g Writer.o ${OBJ} ${RES} ${LIBS} -o $@
+
+Writer.o: efievent.h efieventdef.h module.c Writer.c
+	$(CC) -c $(CFLAGS) Writer.c
+
+WriterBin: WriterBin.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g WriterBin.o ${OBJ} ${RES} ${LIBS} -o $@
+
+WriterBin.o: efievent.h efieventdef.h module.c WriterBin.c
+	$(CC) -c $(CFLAGS) WriterBin.c
+
+Sink: Sink.o ${OBJ} ${MODLIB} ${RES}
+	$(LD) $(LDFLAGS) -g Sink.o ${OBJ} ${RES} ${LIBS} -o $@
+
+Sink.o: efievent.h efieventdef.h module.c Sink.c
+	$(CC) -c $(CFLAGS) Sink.c
+
+
+# Generic module - only for testing compliation
+module.o: efievent.h efieventdef.h module.c
+	$(CC) -c $(CFLAGS) module.c
+
+
+#
+# Presentation layer
+#
+xshowexp: xshowexp.o $(OBJ)
+	$(CC) $(LDFLAGS) -g xshowexp.o ${OBJ} ${LIBS} ${GLIBS} -o $@
+
+xshowexp.o: agentd.h efievent.h xshowexp.c
+	$(CC) -c $(CFLAGS) xshowexp.c
+
+stateserver: stateserver.o $(OBJ)
+	$(CC) $(LDFLAGS) -g stateserver.o ${OBJ} ${LIBS} -o $@
+
+stateserver.o: efievent.h efieventdef.h stateserver.c
+	$(CC) -c $(CFLAGS) stateserver.c
+
+guitest: guitest.o $(OBJ)
+	$(CC) $(LDFLAGS) -g guitest.o ${OBJ} ${LIBS} -o $@
+
+guitest.o: efievent.h efieventdef.h guitest.c
+	$(CC) -c $(CFLAGS) guitest.c
+
+xplot: xplot.o hsvrgb.o $(OBJ)
+	$(CC) $(LDFLAGS) -g xplot.o hsvrgb.o ${OBJ} ${LIBS} ${GLIBS} -o $@
+
+xplot.o: efievent.h efieventdef.h xplot.c
+	$(CC) -c $(CFLAGS) xplot.c
+
+spew: spew.o $(OBJ)
+	$(CC) $(LDFLAGS) -g spew.o ${OBJ} ${LIBS} ${GLIBS} -o $@
+
+spew.o: efievent.h efieventdef.h spew.c
+	$(CC) -c $(CFLAGS) spew.c
+
+spewtst: spewtst.c $(OBJ)
+	$(CC) $(CFLAGS) spewtst.c $(LDFLAGS) ${OBJ} ${LIBS} ${GLIBS} -o $@
+
+capture: capture.o $(OBJ)
+	$(CC) $(LDFLAGS) -g capture.o ${OBJ} ${LIBS} ${GLIBS} -o $@
+
+capture.o: efievent.h efieventdef.h capture.c
+	$(CC) -c $(CFLAGS) capture.c
+
+hsvrgb.o: hsvrgb.h hsvrgb.c
+	$(CC) -c $(CFLAGS) hsvrgb.c
+
+# Application stuff
+WINLIBS  = -lwinapp -lwinmm -lcomctl32 -lcomdlg32 -lole32 -lgdi32
+WPLOTOBJ = wplot.o wplot.res hsvrgb.o
+SHOWOBJ  = showexp.o showexp.res readconfig.o
+
+wplot: ${WPLOTOBJ}
+	$(CC) ${LDFLAGS} ${WPLOTOBJ} ${LIBS} ${WINLIBS} -o $@
+
+wplot.o: wplot.c wplotmenu.h
+	$(CC) -c -DWINAPP ${CFLAGS} wplot.c
+
+wplot.res: wplotmenu.h wplot.rc
+	windres wplot.rc -O coff -o $@
+
+showexp: ${SHOWOBJ}
+	$(CC) $(LDFLAGS) ${SHOWOBJ} ${LIBS} ${WINLIBS} -o $@
+
+showexp.o: efievent.h showexp.c
+	$(CC) -c -DWINAPP $(CFLAGS) showexp.c
+
+showexp.res: showexpmenu.h showexp.rc
+	windres showexp.rc -O coff -o $@
+
+#
+# Agentd and friends
+#
+agentd: agentd.o $(OBJ)
+	$(CC) $(LDFLAGS) -g agentd.o ${OBJ} ${LIBS} -o $@
+
+agentd.o: agentd.h agentd.c agentd.c
+	$(CC) -c $(CFLAGS) agentd.c
+
+agentlogger: agentd
+	ln -s agentd$(EXE) $@$(EXE)
+
+agent.o: agentd.h agent.h agent.c
+	$(CC) -c $(CFLAGS) agent.c
+
+launch: launch.o agent.o
+	$(CC) $(LDFLAGS) -g launch.o agent.o ${LIBS} -o $@
+
+launch.o: agentd.h agent.h launch.c
+	$(CC) -c $(CFLAGS) launch.c
+
+locate: locate.o agent.o
+	$(CC) $(LDFLAGS) -g locate.o agent.o ${LIBS} -o $@
+
+locate.o: agentd.h agent.h locate.c
+	$(CC) -c $(CFLAGS) locate.c
+
+logger: logger.o $(OBJ)
+	$(CC) $(LDFLAGS) -g logger.o ${OBJ} ${LIBS} -o $@
+
+logger.o: agentd.h agentddef.h logger.c
+	$(CC) -c $(CFLAGS) logger.c
+
+console: console.o $(OBJ)
+	$(CC) $(LDFLAGS) -g console.o ${OBJ} ${LIBS} -o $@
+
+console.o: agentd.h agentddef.h console.c
+	$(CC) -c $(CFLAGS) console.c
+
+# Ancillary stuff
+tar: $(FILES) $(DIRS)
+	tar cvhf earlab-`date +%d%b%y`.tar Makefile.common Makefile.$(ARCH) $(FILES) $(DIRS)
+
+tarf: $(FILES)
+	tar cvhf earlab-`date +%d%b%y`.tar Makefile.common Makefile.$(ARCH) $(FILES)
+
+clean:
+	rm -f $(PGMS) $(MODULES) $(ALLOS) *.o *.out core* *.stackdump *~ \#*
+	@for i in $(PGMS) $(MODULES);  do \
+		rm -f $$i.exe ;\
+	done
+
+# Directly linking this on Linux
+matchclient.o:
+	ln -s /sproj/DAFFIE/Clients/Lib/Linux/matchclient.o .
+

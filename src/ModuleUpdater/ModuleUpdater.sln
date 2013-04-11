@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleUpdater", "ModuleUpdater.csproj", "{F5E917F2-CA98-4E77-9DE5-BE5356D837B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarLabSharedLibrary", "..\EarLabSharedLibrary\EarLabSharedLibrary.csproj", "{D98D9527-F643-41E4-AC47-382A56FE00FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5E917F2-CA98-4E77-9DE5-BE5356D837B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E917F2-CA98-4E77-9DE5-BE5356D837B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E917F2-CA98-4E77-9DE5-BE5356D837B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E917F2-CA98-4E77-9DE5-BE5356D837B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D98D9527-F643-41E4-AC47-382A56FE00FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D98D9527-F643-41E4-AC47-382A56FE00FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D98D9527-F643-41E4-AC47-382A56FE00FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D98D9527-F643-41E4-AC47-382A56FE00FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

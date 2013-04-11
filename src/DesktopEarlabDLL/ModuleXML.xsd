@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ModuleXML"
+    targetNamespace="http://tempuri.org/ModuleXML.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ModuleXML.xsd"
+    xmlns:mstns="http://tempuri.org/ModuleXML.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="ParameterDataType">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies legal types for Earlab module parameters
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Integer"/>
+      <xs:enumeration value="Double"/>
+      <xs:enumeration value="String"/>
+      <xs:enumeration value="Boolean"/>
+      <xs:enumeration value="InputFile"/>
+      <xs:enumeration value="OutputFile"/>
+      <xs:enumeration value="IntegerArray"/>
+      <xs:enumeration value="DoubleArray"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="EarlabStreamType">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies legal types for Earlab data streams (data passed between modules)
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Waveform"/>
+      <xs:enumeration value="Spike"/>
+      <xs:enumeration value="Any"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Parameter">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies all the required and optional fields to specify an Earlab Module Parameter
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:normalizedString"/>
+      <xs:element name="Type" type="ParameterDataType"/>
+      <xs:element name="Default" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Minimum" type="xs:double" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Maximum" type="xs:double" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Units" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Description" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ModuleInformation">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies all the required and optional fields in a ModuleInformation block
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExecutableName" type="xs:token"/>
+      <xs:element name="Abstract" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DimensionDescriptor">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies all the required and optional fields in a DimensionList block
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:normalizedString"/>
+      <xs:element name="Description" type="xs:normalizedString"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DimensionList">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies all the required and optional fields in a DimensionList block
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Minimum" type="xs:integer"/>
+      <xs:element name="Maximum" type="xs:integer"/>
+      <xs:element name="Dimension" type="DimensionDescriptor" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="InputOutput">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies all the required and optional fields to specify an Earlab Module Input or Output stream
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:normalizedString"/>
+      <xs:element name="Number" type="xs:integer"/>
+      <xs:element name="Type" type="EarlabStreamType"/>
+      <xs:element name="Required" type="xs:boolean"/>
+      <xs:element name="Description" type="xs:normalizedString"/>
+      <xs:element name="Units" type="xs:normalizedString"/>
+      <xs:element name="Dimensions" type="DimensionList"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Module">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ModuleInformation" type="ModuleInformation" />
+        <xs:element name="Inputs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Input" type="InputOutput" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Outputs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Output" type="InputOutput" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Parameters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Parameter" type="Parameter" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

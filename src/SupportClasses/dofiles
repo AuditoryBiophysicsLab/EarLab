@@ -1,0 +1,55 @@
+#!/bin/csh
+
+unalias ls
+
+echo '# makefile.files '                       >files
+echo  " "                                      >files
+echo '# Support Classes and Libraries files'   >>files
+
+echo 'HEADERS = \'                                                      >>files
+/bin/ls -1 Src/*.[hH]| sed -e 's,Src/,           ,' | sed -e 's,$, \\,' >>files
+echo " "                                                                >>files
+echo " "                                                                >>files
+
+echo 'CPPSRC = \'                                                       >>files
+/bin/ls -1 Src/*.cpp | sed -e 's,Src/,           ,' | sed -e 's,$, \\,' >>files
+echo " "                                                                >>files
+echo " "                                                                >>files
+
+echo 'CSRC = \'                                                         >>files
+/bin/ls -1 Src/*.c   | sed -e 's,Src/,           ,' | sed -e 's,$, \\,' >>files
+echo " "                                                                >>files
+echo " "                                                                >>files
+
+echo 'CPPOBJ = \'                                                       >>files
+/bin/ls -1 Src/*.cpp | sed -e 's,Src/,           ,' | sed -e 's,\.cpp,\.o,' | sed -e 's,$, \\,' >>files
+echo " "                                                                >>files
+echo " "                                                                >>files
+
+echo 'COBJ = \'                                                         >>files
+/bin/ls -1 Src/*.c   | sed -e 's,Src/,           ,' | sed -e 's,\.c,\.o,' | sed -e 's,$, \\,' >>files
+echo " "                                                                >>files
+echo " "                                                                >>files
+
+foreach i (Src/*.[chCH]*)
+  set file = $i:t
+  if ( ! -e $file ) then
+	echo linking $i
+	ln -s $i .
+  endif
+end
+
+# Make sure Makefile.files exists
+if ( ! -e Makefile.files ) then
+	touch Makefile.files
+endif
+
+set nd = `diff -wB '-I.o' '-I^#' files Makefile.files | wc -l`
+if ($nd > 0) then
+	echo Creating Makefile.files
+	mv files Makefile.files
+endif
+
+
+
+

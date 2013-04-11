@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SupportClasses", "..\..\SupportClasses\SupportClasses.vcproj", "{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SupportClassesTester", "..\..\SupportClassesTester\SupportClassesTester.vcproj", "{F912E125-8CC7-4E6C-BB75-C92E1DB0A854}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}.Debug.ActiveCfg = Debug|Win32
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}.Debug.Build.0 = Debug|Win32
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}.Release.ActiveCfg = Release|Win32
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}.Release.Build.0 = Release|Win32
+		{F912E125-8CC7-4E6C-BB75-C92E1DB0A854}.Debug.ActiveCfg = Debug|Win32
+		{F912E125-8CC7-4E6C-BB75-C92E1DB0A854}.Debug.Build.0 = Debug|Win32
+		{F912E125-8CC7-4E6C-BB75-C92E1DB0A854}.Release.ActiveCfg = Release|Win32
+		{F912E125-8CC7-4E6C-BB75-C92E1DB0A854}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,7 @@
+# Linx Makefile
+ARCH     = Linux
+
+CPP      = g++
+CFLAGS   = -I../include -Dstricmp=strcasecmp -DPARAMETER_SPACE -DNOTWINDOWS
+CPPFLAGS = $(CFLAGS)
+

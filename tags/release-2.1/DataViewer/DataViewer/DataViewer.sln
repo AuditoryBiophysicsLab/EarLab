@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataViewer", "DataViewer.csproj", "{1EB8A954-690E-4340-ADBE-D788C520369B}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarLabSharedLibrary", "..\EarLabSharedLibrary\EarLabSharedLibrary.csproj", "{D98D9527-F643-41E4-AC47-382A56FE00FB}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DataViewerInstaller", "..\DataViewerInstaller\DataViewerInstaller.vdproj", "{A9F4E0E4-4D06-44EE-AE54-9EA03C638EEF}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{1EB8A954-690E-4340-ADBE-D788C520369B}.Debug.ActiveCfg = Debug|.NET
+		{1EB8A954-690E-4340-ADBE-D788C520369B}.Debug.Build.0 = Debug|.NET
+		{1EB8A954-690E-4340-ADBE-D788C520369B}.Release.ActiveCfg = Release|.NET
+		{1EB8A954-690E-4340-ADBE-D788C520369B}.Release.Build.0 = Release|.NET
+		{D98D9527-F643-41E4-AC47-382A56FE00FB}.Debug.ActiveCfg = Debug|.NET
+		{D98D9527-F643-41E4-AC47-382A56FE00FB}.Debug.Build.0 = Debug|.NET
+		{D98D9527-F643-41E4-AC47-382A56FE00FB}.Release.ActiveCfg = Release|.NET
+		{D98D9527-F643-41E4-AC47-382A56FE00FB}.Release.Build.0 = Release|.NET
+		{A9F4E0E4-4D06-44EE-AE54-9EA03C638EEF}.Debug.ActiveCfg = Debug
+		{A9F4E0E4-4D06-44EE-AE54-9EA03C638EEF}.Release.ActiveCfg = Release
+		{A9F4E0E4-4D06-44EE-AE54-9EA03C638EEF}.Release.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

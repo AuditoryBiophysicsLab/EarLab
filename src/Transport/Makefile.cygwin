@@ -1,0 +1,40 @@
+# Makefile for Earlab Transport Layer (and demo)
+
+ARCH    = cygwin
+
+# Local paths
+ARCH    = cygwin
+LOCAL   = /usr/local
+#LOCAL  = /sproj/Arch/$(ARCH)/usr/local
+DAFFIE  = /sproj/DAFFIE
+EARLAB  = ../
+INSTDIR = ../bin
+INSTMODS= ../modbin
+XVERS   = X11R6
+EXE     = .exe
+
+# C compiler and flags
+LD      = g++
+CC      = gcc
+ABI     =
+ABIFLAG =
+CFLAGS  = -Dwin32 -g $(ABIFLAG) -I$(DAFFIE)/include -I$(EARLAB)/include -I/usr/$(XVERS)/include
+#CFLAGS = -g $(ABIFLAG) -I$(LOCAL)/include -I$(DAFFIE)/include -I$(EARLAB)/include -I/usr/$(XVERS)/ include
+
+# Load libraries and paths
+#LIBDIR  = $(EARLAB)/$(ARCH)
+LIBDIR  = $(EARLAB)
+MODLIB  = $(LIBDIR)/lib/libearlab.a
+#EVLIB  = -levent
+EVLIB   = -levent.dll
+GLLIB   = -lopengl32
+XLIB    = -L/usr/$(XVERS)/lib -lX11
+GLIBS   = -lcgl $(XLIB) -luser32 -lgdi32 -lwinmm
+GLLIBS  = -lwinapp -lcgl -luser32 -lcomctl32 -lwinmm -lgdi32 -lopengl32
+LIBS    = -L . -L$(LIBDIR)/lib -L$(DAFFIE)/$(ARCH)/lib$(ABI) -L$(LOCAL)/lib$(ABI) $(EVLIB) -learlab -lext -lwinmm -lm
+MODLIB  = $(EARLAB)/lib/libearlab.a
+#LIBS   = -L$(DAFFIE)/lib$(ABI) -L$(LOCAL)/lib$(ABI) $(EVLIB) -lext -lwinmm -lm
+#LIBS   = -L. -L$(DAFFIE)/lib$(ABI) -L$(LOCAL)/lib$(ABI) -levent -lext -lpthread -lm
+
+LDFLAGS =
+RES     =

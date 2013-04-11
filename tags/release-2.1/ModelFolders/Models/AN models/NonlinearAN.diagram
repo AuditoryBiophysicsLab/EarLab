@@ -1,0 +1,43 @@
+[Model]
+string          ModuleList              "DataSource, MiddleEar, NonlinearBM, InnerHaircell, AuditoryNerve, BMsink, IHCsink, ANsink"
+
+[DataSource]
+string		ModuleExecutable	"DataSource.dll"
+IntVector	Output.1                [ 100 ]
+string		Output.1.DataType	"Waveform"
+
+[MiddleEar]
+string          ModuleExecutable	"MiddleEarSimpleFilter.dll"
+string          Input.1			"DataSource.1"
+IntVector       Output.1                [ 100 ]
+String		Output.1.DataType	"Waveform"
+
+[NonlinearBM]
+string          ModuleExecutable        "BasilarMembraneNonlinearGammatone.dll"
+string          Input.1			"MiddleEar.1"
+IntVector       Output.1                [ 100 64 ]
+string		Output.1.DataType	"Waveform"
+
+[BMsink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "NonlinearBM.1"
+
+[InnerHaircell]
+string          ModuleExecutable        "InnerHaircell.dll"
+string          Input.1                 "NonlinearBM.1"
+IntVector       Output.1                [ 100 64 ]
+string		Output.1.DataType	"Waveform"
+
+[IHCsink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "InnerHaircell.1"
+
+[AuditoryNerve]
+string          ModuleExecutable        "AuditoryNerveIFR.dll"
+string          Input.1                 "InnerHaircell.1"
+IntVector       Output.1                [ 100 64 ]
+string		Output.1.DataType	"Waveform"
+
+[ANsink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "AuditoryNerve.1"

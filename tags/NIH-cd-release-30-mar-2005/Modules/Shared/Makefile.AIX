@@ -1,0 +1,83 @@
+# Makefile for GENERIC
+
+MODULE   = GENERIC
+COMMON   = ../Shared
+TOPDIR   = ../../..
+ARCH     =
+OPTIM    = -O3
+CPP      = xlC
+CC       = xlc
+#ARCHCC  = -DWIN32 -DNOTWINDOWS
+ARCHCC   = -DNOTWINDOWS
+CFLAGS   = -I$(TOPDIR)/include $(ARCHCC) $(OPTIM)
+CPPFLAGS = $(CFLAGS)
+
+HEADERS = ModuleSpecific.h $(MODULE).h
+
+CPPSRC  = $(MODULE).cpp
+CPPOBJ  = $(MODULE).o
+
+CSRC    =
+COBJ    =
+
+SRC  = $(CPPSRC) $(CSRC)
+OBJ  = $(CPPOBJ) $(COBJ)
+
+LIBDIR  = $(TOPDIR)/$(ARCH)/lib
+LIBNAME = earlab
+LDLIB   = -L$(LIBDIR) -l$(LIBNAME)
+LIB     = $(LIBDIR)/lib$(LIBNAME).a
+
+MAKESHELL = /bin/sh
+SHELL     = /bin/sh
+
+all: Makefile module
+
+Makefile: Makefile.$(MODULE)
+
+Makefile.$(MODULE): $(COMMON)/Makefile.Generic
+	touch Makefile
+	mv Makefile Makefile.bak
+	sed -e s/GENERIC/`pwd | sed -e 's,.*/,,g'`/ <$(COMMON)/Makefile.Generic >Makefile.`pwd | sed -e 's,.*/,,g'`
+	ln -s Makefile.`pwd | sed -e 's,.*/,,g'` Makefile
+
+arch: Makefile.$(MODULE)
+	-ln -s ../Src/`pwd | sed -e 's,.*/,,g'` ./Src
+	for i in Src/*.[hcHCp]* ; do \
+	  ln -s $$i .              ; \
+	done
+
+module: obj Test$(MODULE)
+
+obj: $(OBJ) C$(MODULE).o
+	echo $?
+	ar cvr $(LIB) $?
+	ranlib $(LIB)
+
+wrapper.cpp:
+	ln -s $(COMMON)/$@ .
+
+modtest.c:
+	ln -s $(COMMON)/$@ .
+
+C$(MODULE).o: $(HEADERS) wrapper.cpp
+	$(CPP) $(CPPFLAGS) -c -o $@ -DMODULE=$(MODULE) wrapper.cpp
+
+Test$(MODULE).o: $(HEADERS) modtest.c
+	$(CC) $(CFLAGS) -c -o $@ -DMODULE=$(MODULE) modtest.c
+
+Test$(MODULE): Test$(MODULE).o obj
+	$(CPP) -o $@ -DMODULE=$(MODULE) Test$(MODULE).o $(LDLIB)
+
+print: printcpp printc
+
+printcpp: $(CPPSRC)
+	enscript --lang=html --highlight=cpp --color=1 $? -p $(MODULE).html
+
+printc: $(CSRC)
+	enscript --lang=html --highlight=c --color=1 $? -p c.html
+
+clean:
+	touch xxxxx.stackdump
+	rm -f core a.out core.* *.o *.a *.exe *.html *.stackdump
+

@@ -1,0 +1,48 @@
+# Makefile.common
+
+# Makefile.arch inserted here
+# Makefile.files inserted here
+
+SRC  = $(CPPSRC) $(CSRC)
+OBJ  = $(CPPOBJ) $(COBJ)
+
+LIB = ../lib/libearlab.a
+
+MAKESHELL = /bin/sh
+
+install: Makefile instlib.a
+
+instlib.a: $(OBJ)
+	ar cvr $(LIB) $?
+	ranlib $(LIB)
+
+Makefile: Src Makefile.$(ARCH) Makefile.files Makefile.common
+	mv Makefile Makefile.bak
+	cat Makefile.$(ARCH) Makefile.files Makefile.common >Makefile
+
+Src:
+	if [ ! -e Src ]; then \
+		ln -s ../Src/SupportClasses ./Src ; \
+	fi
+
+Makefile.$(ARCH): Src
+	if [ ! -e Makefile.$(ARCH) ]; then \
+		ln -s Src/Makefile.$(ARCH) . ; \
+	fi
+
+Makefile.files: Src
+	if [ ! -e dofiles ]; then \
+		ln -s Src/dofiles . ; \
+	fi
+	dofiles
+
+Makefile.common: Src
+	if [ ! -e Makefile.common ]; then \
+		ln -s Src/Makefile.common . ; \
+	fi
+
+arch: Makefile
+
+
+clean:
+	rm -f *.o *.a *.exe

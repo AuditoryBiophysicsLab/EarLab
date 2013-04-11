@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExperimentManager", "..\..\EarLab ExperimentManager\ExperimentManager.csproj", "{7E98E1AD-98CE-437A-964B-1FA25553A201}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+		Release-Athlon = Release-Athlon
+		Release-P4 = Release-P4
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7E98E1AD-98CE-437A-964B-1FA25553A201}.Debug.ActiveCfg = Debug|.NET
+		{7E98E1AD-98CE-437A-964B-1FA25553A201}.Debug.Build.0 = Debug|.NET
+		{7E98E1AD-98CE-437A-964B-1FA25553A201}.Release.ActiveCfg = Release-Athlon|.NET
+		{7E98E1AD-98CE-437A-964B-1FA25553A201}.Release.Build.0 = Release-Athlon|.NET
+		{7E98E1AD-98CE-437A-964B-1FA25553A201}.Release-Athlon.ActiveCfg = Release-Athlon|.NET
+		{7E98E1AD-98CE-437A-964B-1FA25553A201}.Release-Athlon.Build.0 = Release-Athlon|.NET
+		{7E98E1AD-98CE-437A-964B-1FA25553A201}.Release-P4.ActiveCfg = Release-P4|.NET
+		{7E98E1AD-98CE-437A-964B-1FA25553A201}.Release-P4.Build.0 = Release-P4|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

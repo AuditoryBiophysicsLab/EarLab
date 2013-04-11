@@ -1,0 +1,216 @@
+ 	// Module Parameter file
+
+
+// Definitions:
+// interaural time delay (ITD): the time delay between stimuli at the two ears
+// characteristic delay (CD): internal physiological delays between bilateral inputs
+//
+// Conventions relating to interaural ITD and CD:
+//  
+// 1) Positive ITD: delay of the ipsilateral stimulus 
+//    (contralateral stimulus leads as with sound source on contra side)
+// 2) Positive ITD: source on right, right lead, left delay
+//
+// Conventions 1 and 2 suggest that left is ipslateral. 
+// (The results from left MSO and left IC follow conventions 1 and 2).
+//  
+// 3) Positive CD is an internal contra delay.
+//    A contralateral source will produce a stimulus with positive ITD,
+//    and an excitatory-excitatory cell with an equal positive CD is 
+//    most sensitive to stimuli with this ITD. 
+//
+// In Desktop Earlab simulations, ITD is introduced with the 
+// Pinna's parameter OutputDelay_Samples.
+//
+// The maximum CD is specified in BrugheraMSO module parameter MaxLag_Seconds. 
+// The number of CDs (each represented in a different MSO cell) is specified 
+// in the diagram file using the Output vector related to the ModuleExecutable
+// BrugheraMSO.dll.
+
+[Left_Pinna64]
+float	SampleRate_Hz			100000
+string	InputFileName			"528_72HzSine_en10dBSPL.txt"
+bool	InputIsWaveFile			false
+// With SampleRate_Hz 100000, 1 sample period is 10 microseconds
+int	OutputDelay_Samples		0
+float	InputGain			2000
+
+[Left_Midear64]
+float	SampleRate_Hz			100000
+float	HighpassCornerFreq_Hz		500
+int	HighpassFilterOrder		2
+float	Gain				30
+
+[Left_Cochlea64]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+bool	DisableNonlinearPath		false
+float	A				165.0
+float	Alpha				2.1
+float	K				1.0
+float	CochleaLength_mm		35.0
+// float	BMStartPercent			2.4
+// float	BMEndPercent			57.0
+// float	BMStartPercent			29.7
+// float	BMEndPercent			34.7
+float	BMStartPercent			2.4
+float	BMEndPercent			100
+bool	ProduceOutputFile		true
+bool	BinaryOutput			false
+string	CFFileName			"Left_BM_CF_File64.dat"
+
+[Left_IHCs64]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+double	Gain				25
+
+[Left_AN64]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+
+[Left_ANSpike64]
+float	SampleRate_Hz 			100000
+float	c0				0.55
+float	c1				0.45
+float	s0				0.8
+float	s1				25
+float	Ra				0.75
+float	Scale				1.0
+float	Offset				0.0
+
+[Left_MSO_A64]
+float	SampleRate_Hz 			100000
+float	FrameLength_Seconds		0.01
+float	ExSynapticStrength		6.5
+float	ExSynapticTau_Seconds		.0001
+float	InhSynapticStrength		0
+float	InhSynapticTau_Seconds		.004
+float	CellTemperature_DegreesC	38
+// float	MaxLag_Seconds			.000800
+// .00094568 second is half the period of the stimulus frequency 528.72 Hz
+// .0018914 second is the period of the stimulus frequency 528.72 Hz
+float	MaxLag_Seconds			.0018914
+
+
+[Right_Pinna64]
+float	SampleRate_Hz			100000
+string	InputFileName			"528_72HzSine_en10dBSPL.txt"
+bool	InputIsWaveFile			false
+// With SampleRate_Hz 100000, 1 sample period is 10 microseconds
+int	OutputDelay_Samples		0
+float	InputGain			2000
+
+[Right_Midear64]
+float	SampleRate_Hz			100000
+float	HighpassCornerFreq_Hz		500
+int	HighpassFilterOrder		2
+float	Gain				30
+
+[Right_Cochlea64]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+bool	DisableNonlinearPath		false
+float	A				165.0
+float	Alpha				2.1
+float	K				1.0
+float	CochleaLength_mm		35.0
+// float	BMStartPercent			2.4
+// float	BMEndPercent			57.0
+// float	BMStartPercent			29.7
+// float	BMEndPercent			34.7
+float	BMStartPercent			2.4
+float	BMEndPercent			100
+bool	ProduceOutputFile		true
+bool	BinaryOutput			false
+string	CFFileName			"Right_BM_CF_File64.dat"
+
+[Right_IHCs64]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+double	Gain				25
+
+[Right_AN64]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+
+[Right_ANSpike64]
+float	SampleRate_Hz 			100000
+float	c0				0.55
+float	c1				0.45
+float	s0				0.8
+float	s1				25
+float	Ra				0.75
+float	Scale				1.0
+float	Offset				0.0
+
+[Right_MSO_A64]
+float	SampleRate_Hz 			100000
+float	FrameLength_Seconds		0.01
+float	ExSynapticStrength		6.5
+float	ExSynapticTau_Seconds		.0001
+float	InhSynapticStrength		0
+float	InhSynapticTau_Seconds		.004
+float	CellTemperature_DegreesC	38
+// float	MaxLag_Seconds			.000800
+// .00094568 second is half the period of the stimulus frequency 528.72 Hz
+// .0018914 second is the period of the stimulus frequency 528.72 Hz
+float	MaxLag_Seconds			.0018914
+
+[Left_ANSpike_Sink64]
+float	SampleRate_Hz 			100000
+float	FrameLength_Seconds		0.01
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+string	OutputFileName			"Left_ANSpike64.binary"
+bool	UseDownsampler			false
+bool	AcceptSocketConnections		false
+int	ListenPortNumber		1003
+string	CFFileName			"Left_BM_CF_File64.dat"
+string	MetadataFileName		"Left_ANSpike64.index"
+bool	UseDownsampler			false
+
+[Right_ANSpike_Sink64]
+float	SampleRate_Hz 			100000
+float	FrameLength_Seconds		0.01
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+string	OutputFileName			"Right_ANSpike64.binary"
+bool	UseDownsampler			false
+bool	AcceptSocketConnections		false
+int	ListenPortNumber		1003
+string	CFFileName			"Right_BM_CF_File64.dat"
+string	MetadataFileName		"Right_ANSpike64.index"
+bool	UseDownsampler			false
+
+[Left_MSO_A_Sink64]
+float	SampleRate_Hz 			100000
+float	FrameLength_Seconds		0.01
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+string	OutputFileName			"Left_MSO_MSOAN64.binary"
+bool	UseDownsampler			false
+bool	AcceptSocketConnections		false
+int	ListenPortNumber		1003
+string	CFFileName			"Left_BM_CF_File64.dat"
+string	MetadataFileName		"Left_MSO_MSOAN64.index"
+bool	UseDownsampler			false
+
+[Right_MSO_A_Sink64]
+float	SampleRate_Hz 			100000
+float	FrameLength_Seconds		0.01
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+string	OutputFileName			"Right_MSO_MSOAN64.binary"
+bool	UseDownsampler			false
+bool	AcceptSocketConnections		false
+int	ListenPortNumber		1003
+string	CFFileName			"Right_BM_CF_File64.dat"
+string	MetadataFileName		"Right_MSO_MSOAN64.index"
+bool	UseDownsampler			false
+

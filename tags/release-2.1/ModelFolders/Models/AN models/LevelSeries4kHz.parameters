@@ -1,0 +1,71 @@
+	// Module Parameter file
+
+[DataSource]
+float	SampleRate_Hz			100000
+string	InputFileName			"4000Hz_level.wav"
+bool	InputIsWaveFile			true
+int	WaveFileChannelNumber		0
+float	WaveFileScaleFactor		20000
+int	OutputDelay_Samples		0
+	
+[MiddleEar]
+// These are approximate human parameters
+float	SampleRate_Hz 			100000
+float	HighpassCornerFreq_Hz		500
+int	HighpassFilterOrder		2
+float	Gain				30
+
+[NonlinearBM]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+bool	DisableNonlinearPath		false
+float	A				165.0
+float	Alpha				2.1
+float	K				1.0
+float	CochleaLength_mm		35.0
+float	BMStartPercent			2.4
+float	BMEndPercent			100.0
+bool	ProduceOutputFile		true
+bool	BinaryOutput			false
+string	CFFileName			"cfarray.txt"
+
+[BMsink]
+float	SampleRate_Hz 			100000
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+bool	UseDownsampler			true
+string	OutputFileName			"NLBM"
+string	CFFileName			"cfarray.txt"
+
+[InnerHaircell]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+double	Gain				25
+
+[IHCsink]
+float	SampleRate_Hz 			100000
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+bool	UseDownsampler			true
+string	OutputFileName			"IHC"
+string	CFFileName			"cfarray.txt"
+
+[AuditoryNerve]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+
+[ANsink]
+float	SampleRate_Hz 			100000
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+bool	UseDownsampler			true
+string	OutputFileName			"AN"
+string	CFFileName			"cfarray.txt"
+
+[ANSpike]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000

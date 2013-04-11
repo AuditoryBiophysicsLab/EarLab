@@ -1,0 +1,107 @@
+	// Module Parameter file
+	// 24-Jan-2007
+
+[DataSource]
+float	SampleRate_Hz			44100
+string	InputFileName			"input.wav"
+bool	InputIsWaveFile			true
+int	WaveFileChannelNumber		0
+float	WaveFileScaleFactor		20000
+int	OutputDelay_Samples		0
+	
+[CLinearGT]
+float	SampleRate_Hz 			44100
+float	A				165.0
+float	Alpha				2.1
+float	K				1.0
+float	CochleaLength_mm		35.0
+float	BMStartPercent			8.4
+float	BMEndPercent			85.0
+float	FilterQ				4.0
+bool	ProduceOutputFile		true
+bool	BinaryOutput			false
+string	CFFileName			"Ccfarray1.txt"
+
+[MiddleEar]
+// This is designed to replicate the preemphasis used in implant processing
+float	SampleRate_Hz 			44100
+float	HighpassCornerFreq_Hz		1000
+int	HighpassFilterOrder		1
+float	Gain				1
+
+[CEnvelope]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+// log compression computed as: Output(k) = B*log(1 + A*input(k))
+//
+float	SampleRate_Hz 			44100
+float	EnvelopeFilterCornerFrequency_Hz	400
+int	EnvelopeFilterOrder		2
+bool    UseCompression                  true
+float   CompressorA                     1
+float   CompressorB                     0.2
+
+string	CFFileName			"Ccfarray1.txt"
+
+[EnvelopeSink]
+float	SampleRate_Hz 			44100
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+bool	UseDownsampler			true
+string	OutputFileName			"Envelope"
+string	CFFileName			"Ccfarray1.txt
+
+[CIS]
+float	SampleRate_Hz 			44100
+float	StimulationRate_Hz		5000.0
+float	OutputGain			1
+
+[CISsink]
+float	SampleRate_Hz 			44100
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+bool	UseDownsampler			true
+string	OutputFileName			"CIS"
+string	CFFileName			"Ccfarray1.txt
+
+[CurrentSpread]
+float	SampleRate_Hz 			44100
+string	CurrentSpreadMatrixFilename	"ElectrodeWeightMatrix16c"
+string	CFFileName			"Ccfarray1.txt"
+
+[CurrentSpreadSink]
+float	SampleRate_Hz 			44100
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+bool	UseDownsampler			true
+string	OutputFileName			"CurrentSpread"
+string	CFFileName			"FakeCFarray3.txt"
+
+[CIntegrateAndFire]
+float	SampleRate_Hz 			44100
+float	FilterTimeConstant_Seconds	.00032
+float	RestingPotential_V		0.00
+float	ThresholdVoltage_V		0.2
+float	MaxThresholdVoltage_V		0.08
+float	AbsoluteRefractoryPeriod_Seconds	0.0005
+float	RelativeRefractoryPeriod_Seconds	0.001
+double	InputGain			100
+float   NoiseGain                       0.1
+
+[CSpikeSink]
+float	SampleRate_Hz 			44100
+float	FrameLength_Seconds		0.001
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+string	OutputFileName			"CSpike.binary"
+string  MetadataFileName		"CSpike.index"
+bool	UseDownsampler			false
+string	CFFileName			"Ccfarray1.txt"
+
+[CurrentSpreadSink]
+float	SampleRate_Hz 			44100
+bool	ProduceOutputFile		true
+bool	BinaryOutput			true
+bool	UseDownsampler			true
+string	OutputFileName			"CurrentSpread"
+string	CFFileName			"Ccfarray1.txt"

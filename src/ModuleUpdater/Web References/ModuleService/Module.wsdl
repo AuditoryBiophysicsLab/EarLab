@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://eardev.bu.edu/webservices/EarLabService/Module" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://eardev.bu.edu/webservices/EarLabService/Module" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://eardev.bu.edu/webservices/EarLabService/Module">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetModuleList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetModuleListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetModuleListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersionList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="moduleID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersionListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="versionID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetContactListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContactListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddModuleVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="moduleName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="moduleDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="versionNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="releaseDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="contactID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddModuleVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddModuleVersionResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthHeader" type="tns:AuthHeader" />
+      <s:complexType name="AuthHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="passWord" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="versionDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateVersionResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="versionDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPreviousVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="moduleID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPreviousVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPreviousVersionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="moduleID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="versionNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="releaseDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="contactID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddVersionResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetModuleListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetModuleList" />
+  </wsdl:message>
+  <wsdl:message name="GetModuleListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetModuleListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersionList" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContactListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContactList" />
+  </wsdl:message>
+  <wsdl:message name="GetContactListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContactListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddModuleVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:AddModuleVersion" />
+  </wsdl:message>
+  <wsdl:message name="AddModuleVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:AddModuleVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddModuleVersionAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateVersion" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVersionAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPreviousVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPreviousVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetPreviousVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPreviousVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:AddVersion" />
+  </wsdl:message>
+  <wsdl:message name="AddVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:AddVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddVersionAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:portType name="EarDev_x0020_Module_x0020_ServiceSoap">
+    <wsdl:operation name="GetModuleList">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of all Modules in the Module database</documentation>
+      <wsdl:input message="tns:GetModuleListSoapIn" />
+      <wsdl:output message="tns:GetModuleListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionList">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of all versions for a particular Module</documentation>
+      <wsdl:input message="tns:GetVersionListSoapIn" />
+      <wsdl:output message="tns:GetVersionListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Retrieves a Module version</documentation>
+      <wsdl:input message="tns:GetVersionSoapIn" />
+      <wsdl:output message="tns:GetVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactList">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Retrieves list of contacts</documentation>
+      <wsdl:input message="tns:GetContactListSoapIn" />
+      <wsdl:output message="tns:GetContactListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddModuleVersion">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Adds a new Module and Version</documentation>
+      <wsdl:input message="tns:AddModuleVersionSoapIn" />
+      <wsdl:output message="tns:AddModuleVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVersion">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Updates a Module Version</documentation>
+      <wsdl:input message="tns:UpdateVersionSoapIn" />
+      <wsdl:output message="tns:UpdateVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviousVersion">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Get Previous Version Info</documentation>
+      <wsdl:input message="tns:GetPreviousVersionSoapIn" />
+      <wsdl:output message="tns:GetPreviousVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddVersion">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Adds a Module Version</documentation>
+      <wsdl:input message="tns:AddVersionSoapIn" />
+      <wsdl:output message="tns:AddVersionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EarDev_x0020_Module_x0020_ServiceSoap" type="tns:EarDev_x0020_Module_x0020_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="GetModuleList">
+      <soap:operation soapAction="http://eardev.bu.edu/webservices/EarLabService/Module/GetModuleList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionList">
+      <soap:operation soapAction="http://eardev.bu.edu/webservices/EarLabService/Module/GetVersionList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://eardev.bu.edu/webservices/EarLabService/Module/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactList">
+      <soap:operation soapAction="http://eardev.bu.edu/webservices/EarLabService/Module/GetContactList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddModuleVersion">
+      <soap:operation soapAction="http://eardev.bu.edu/webservices/EarLabService/Module/AddModuleVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddModuleVersionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVersion">
+      <soap:operation soapAction="http://eardev.bu.edu/webservices/EarLabService/Module/UpdateVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateVersionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviousVersion">
+      <soap:operation soapAction="http://eardev.bu.edu/webservices/EarLabService/Module/GetPreviousVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddVersion">
+      <soap:operation soapAction="http://eardev.bu.edu/webservices/EarLabService/Module/AddVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddVersionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EarDev_x0020_Module_x0020_Service">
+    <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">EarLab Module Service</documentation>
+    <wsdl:port name="EarDev_x0020_Module_x0020_ServiceSoap" binding="tns:EarDev_x0020_Module_x0020_ServiceSoap">
+      <soap:address location="http://eardev.bu.edu/webservices/EarLabService/Module.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

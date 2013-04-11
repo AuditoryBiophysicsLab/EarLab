@@ -1,0 +1,54 @@
+[Model]
+string          ModuleList              "DataSource, MiddleEar, NonlinearBM, InnerHaircell, AuditoryNerve, BMsink, IHCsink, ANsink, AN_Spike, AN_SpikeSink"
+
+
+[DataSource]
+string		ModuleExecutable	"DataSource.dll"
+IntVector	Output.1                [ 44 ]
+string		Output.1.DataType	"Waveform"
+
+[MiddleEar]
+string          ModuleExecutable	"MiddleEarSimpleFilter.dll"
+string          Input.1			"DataSource.1"
+IntVector       Output.1                [ 44 ]
+String		Output.1.DataType	"Waveform"
+
+[NonlinearBM]
+string          ModuleExecutable        "BasilarMembraneNonlinearGammatone.dll"
+string          Input.1			"MiddleEar.1"
+IntVector       Output.1                [ 44 128 ]
+string		Output.1.DataType	"Waveform"
+
+[BMsink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "NonlinearBM.1"
+
+[InnerHaircell]
+string          ModuleExecutable        "InnerHaircell.dll"
+string          Input.1                 "NonlinearBM.1"
+IntVector       Output.1                [ 44 128 ]
+string		Output.1.DataType	"Waveform"
+
+[IHCsink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "InnerHaircell.1"
+
+[AuditoryNerve]
+string          ModuleExecutable        "AuditoryNerveIFR.dll"
+string          Input.1                 "InnerHaircell.1"
+IntVector       Output.1                [ 44 128 ]
+string		Output.1.DataType	"Waveform"
+
+[ANsink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "AuditoryNerve.1"
+
+[AN_Spike]
+string		ModuleExecutable	"SimpleSpikeGenerator.dll"
+string          Input.1                 "AuditoryNerve.1"
+IntVector       Output.1                [ 128 10 ]
+string		Output.1.DataType	"Spike"
+
+[AN_SpikeSink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "AN_Spike.1"

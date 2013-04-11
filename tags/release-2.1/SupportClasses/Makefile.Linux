@@ -1,0 +1,7 @@
+# Linx Makefile
+ARCH     = Linux
+
+CPP      = g++
+CFLAGS   = -Dstricmp=strcasecmp
+CPPFLAGS = $(CFLAGS)
+

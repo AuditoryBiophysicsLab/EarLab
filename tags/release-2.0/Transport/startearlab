@@ -1,0 +1,46 @@
+#!/bin/csh
+
+set VSN      = V1.0
+set ARCH     = Linux
+set ShareDir = /project/earlab/Dist
+set NodeDir  = /cproj/glenn/Earlab
+
+set BaseFiles = (agentd)
+set BaseDir   = $VSN/$ARCH
+set BinDir    = $BaseDir/bin
+set ModDir    = $BaseDir/bin
+set RunDir    = $VSN/Run
+
+echo Starting earlab resource on `hostname`
+
+# Copy base files
+pushd $ShareDir/$BinDir
+echo Copying $BaseFiles from $ShareDir/$BinDir to $NodeDir/$BinDir/
+
+cp -uv $BaseFiles $NodeDir/$BinDir/
+
+popd
+
+# Copy binaries
+pushd $ShareDir/$ModDir
+touch coreXXX
+rm -f core*
+echo Copying Modules from $ShareDir/$ModDir to $NodeDir/$ModDir/\: `ls`
+
+cp -uv * $NodeDir/$ModDir/
+
+popd
+
+# Copy parameter and data files
+pushd $ShareDir/$RunDir
+touch coreXXX
+rm -f core*
+echo Copying Data files \: `ls *.par *.dat`
+
+cp -uv *.par $NodeDir/$RunDir/
+cp -uv *.dat $NodeDir/$RunDir/
+
+popd
+
+echo Starting agentd batch job
+qsub earlab.pbs

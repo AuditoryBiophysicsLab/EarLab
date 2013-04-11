@@ -1,0 +1,32 @@
+MODULE   = GENERIC
+OUTDIR   = ../../../modules
+LIBDIR   = ../../../lib
+LIBRARY  = libearlab.a
+MAJ_VER  = 1
+MIN_VER  = 0
+TARGET   = $(OUTDIR)/lib$(MODULE).so.$(MAJ_VER).$(MIN_VER)
+SOURCES  = $(MODULE).cpp EarlabModuleDLL.cpp
+HEADERS  = $(MODULE).h ModuleSpecific.h
+OBJECTS  = $(MODULE).o EarlabModuleDLL.o
+FILES    = $(MODULE).cpp $(MODULE).h ModuleSpecific.h
+INCLUDE  = ../../SupportClasses
+CPP      = g++
+CPPFLAGS = -I. -I$(INCLUDE) -I../DLLSupport -Dstricmp=strcasecmp -DNOTWINDOWS -fPIC -shared -nostartfiles
+
+all:	$(TARGET) $(SOURCES) $(HEADERS)
+
+makefile:
+	@ln -s -f ../DLLSupport/EarlabModuleDLL.cpp .
+	@sed -e s/GENERIC/`pwd | sed -e 's,.*/,,g'`/ <../Makefile.ModuleGeneric >Makefile
+
+longtoint:
+	for j in $(FILES); do				\
+		sed -e s/long/int/ <$$j >temp.temp;	\
+		mv temp.temp $$j;			\
+	done
+	
+clean:
+	rm -f *.o $(TARGET)
+
+$(TARGET): $(OBJECTS) $(LIBDIR)/$(LIBRARY)
+	ld $(LDFLAGS) -shared -soname lib$(MODULE).so.$(MAJ_VER) -o $(TARGET) -lc $(OBJECTS) -L$(LIBDIR) -learlab $(LIBS)

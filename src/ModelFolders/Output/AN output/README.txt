@@ -1,0 +1,1 @@
+This folder will contain the output of the sample EarLab simulations, if any have been run since EarLab was installed

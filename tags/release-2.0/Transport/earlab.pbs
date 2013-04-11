@@ -1,0 +1,29 @@
+#!/bin/csh
+#PBS -l nodes=4
+#PBS -l walltime=1:00:00
+#PBS -m e
+
+set ROOT   = "/project/earlab/Dist"
+set VSN    = "V1.0"
+set ARCH   = "Linux"
+set BinDir = "$ROOT/$VSN/$ARCH/bin"
+set CWD    = "$ROOT/$VSN/$ARCH/Run"
+set ModDir = "$BinDir"
+set Cmd    = "agentd -bin $ModDir -wd $CWD samadams.bu.edu:9010"
+
+echo running on `hostname`
+echo Node file is  $PBS_NODEFILE
+echo nodes are:
+cat $PBS_NODEFILE
+cd $BinDir
+
+echo --------------------------------------
+set echo
+foreach i (`cat $PBS_NODEFILE`)
+	echo PBS Host $i
+	cd $BinDir
+	rsh $i \(cd $BinDir\; $Cmd\) &
+end
+
+sleep 4h
+

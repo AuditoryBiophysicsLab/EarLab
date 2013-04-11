@@ -1,0 +1,52 @@
+[Model]
+string          ModuleList              "Left_Pinna, Left_Midear, Left_Cochlea, Left_IHCs, Left_AN, AN_Spike, Left_CN, AN_SpikeSink, CN_SpikeSink"
+
+[Left_Pinna]
+string          ModuleExecutable        "DataSource.dll"
+IntVector       Output.1                [ 1000 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_Midear]
+string          ModuleExecutable        "MiddleEarSimpleFilter.dll"
+string          Input.1                 "Left_Pinna.1"
+IntVector       Output.1                [ 1000 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_Cochlea]
+string          ModuleExecutable        "BasilarMembraneNonlinearGammatone.dll"
+string          Input.1                 "Left_Midear.1"
+IntVector       Output.1                [ 1000 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_IHCs]
+string          ModuleExecutable        "InnerHaircell.dll"
+string          Input.1                 "Left_Cochlea.1"
+IntVector       Output.1                [ 1000 64 ]
+string		Output.1.DataType	"Waveform"
+
+[Left_AN]
+string          ModuleExecutable        "AuditoryNerveIFR.dll"
+string          Input.1                 "Left_IHCs.1"
+IntVector       Output.1                [ 1000 64 ]
+string		Output.1.DataType	"Waveform"
+
+[AN_Spike]
+string		ModuleExecutable	"SimpleSpikeGenerator.dll"
+string          Input.1                 "Left_AN.1"
+IntVector       Output.1                [ 64 10 ]
+string		Output.1.DataType	"Spike"
+
+[Left_CN]
+string		ModuleExecutable	"BushyCell.dll"
+string          Input.1                 "AN_Spike.1"
+IntVector       Output.1                [ 64 1 ]
+string		Output.1.DataType	"Spike"
+
+[AN_SpikeSink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "AN_Spike.1"
+
+[CN_SpikeSink]
+string          ModuleExecutable        "DataSink.dll"
+string          Input.1                 "Left_CN.1"
+

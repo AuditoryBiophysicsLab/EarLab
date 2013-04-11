@@ -1,0 +1,562 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{D98D9527-F643-41E4-AC47-382A56FE00FB}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "EarLabSharedLibrary"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                PreBuildEvent = ""
+                PostBuildEvent = ""
+                RootNamespace = "EarLab"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "true"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\Debug\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "true"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "bin\Release\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+                <Reference
+                    Name = "System.Management"
+                    AssemblyName = "System.Management"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Management.dll"
+                />
+                <Reference
+                    Name = "System.Design"
+                    AssemblyName = "System.Design"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Design.dll"
+                />
+                <Reference
+                    Name = "ICSharpCode.SharpZipLib"
+                    AssemblyName = "ICSharpCode.SharpZipLib"
+                    HintPath = "ICSharpCode.SharpZipLib.dll"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Analysis\Analysis.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Analysis\AnalysisTester.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Analysis\AnalysisTypes.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Analysis\Complex.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Analysis\Fourier.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Analysis\FourierDirection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Analysis\SpikeAnalysis.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ColorBars\ColorBarStandard.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ColorBars\Default.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ColorBars\Gray.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ColorBars\GrayInverted.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ColorBars\HotMetal.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Controls\ExtendedScrollBar.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Controls\ExtendedScrollBar.resx"
+                    DependentUpon = "ExtendedScrollBar.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Dialogs\AnalysisDialog.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Dialogs\AnalysisDialog.resx"
+                    DependentUpon = "AnalysisDialog.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Dialogs\AnalysisDialogNew.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Dialogs\AnalysisDialogNew.resx"
+                    DependentUpon = "AnalysisDialogNew.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Dialogs\AnalysisQuestionDialog.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Dialogs\AnalysisQuestionDialog.resx"
+                    DependentUpon = "AnalysisQuestionDialog.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Dialogs\Analysis\IntervalDialog.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Dialogs\Analysis\IntervalDialog.resx"
+                    DependentUpon = "IntervalDialog.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Dialogs\Analysis\PeriodDialog.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Dialogs\Analysis\PeriodDialog.resx"
+                    DependentUpon = "PeriodDialog.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Dialogs\Analysis\PostDialog.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Dialogs\Analysis\PostDialog.resx"
+                    DependentUpon = "PostDialog.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "InheritedControls\DataGridLabelColumn.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "InheritedControls\DataGridLabelColumn.resx"
+                    DependentUpon = "DataGridLabelColumn.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "InheritedControls\DataGridLinkColumn.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "InheritedControls\DataGridLinkColumn.resx"
+                    DependentUpon = "DataGridLinkColumn.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "InheritedControls\LinkDataGrid.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "InheritedControls\LinkDataGrid.resx"
+                    DependentUpon = "LinkDataGrid.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "InheritedControls\NoKeyPressScrollBar.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "InheritedControls\NoKeyPressScrollBar.resx"
+                    DependentUpon = "NoKeyPressScrollBar.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterASCIIColorbar.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterASCIIMetadata.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterBinary.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterBinarySpikes.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterFrequencyTime.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterLagFrequencyTime.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterSpikeASCII.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterSurfaceBinary.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterWaveformASCII.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterXMLMetadata.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterXMLSpikes.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ReaderWriters\ReaderWriterXMLVersion.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Schemas\EarLabMetadata.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Schemas\EarLabMetadata.xsx"
+                    DependentUpon = "EarLabMetadata.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Schemas\EarLabRun.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Schemas\EarLabRun.xsx"
+                    DependentUpon = "EarLabRun.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Schemas\EarLabSpikes.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Schemas\EarLabSpikes.xsx"
+                    DependentUpon = "EarLabSpikes.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Schemas\EarLabVersion.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Schemas\EarLabVersion.xsx"
+                    DependentUpon = "EarLabVersion.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Utilities\EnableVisualStyles.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Utilities\NativeMethods.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Utilities\Zip.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\ILayout.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\Layout2DColor.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\Layout2DColor.resx"
+                    DependentUpon = "Layout2DColor.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\Layout2DColorFull.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\Layout2DColorFull.resx"
+                    DependentUpon = "Layout2DColorFull.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutBarWaveform.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutBarWaveform.resx"
+                    DependentUpon = "LayoutBarWaveform.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutScatter.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutScatter.resx"
+                    DependentUpon = "LayoutScatter.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutScatterFull.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutScatterFull.resx"
+                    DependentUpon = "LayoutScatterFull.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutScatterFullScrollable.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutScatterFullScrollable.resx"
+                    DependentUpon = "LayoutScatterFullScrollable.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutScrollableFull.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutScrollableFull.resx"
+                    DependentUpon = "LayoutScrollableFull.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutWaveform.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Layouts\LayoutWaveform.resx"
+                    DependentUpon = "LayoutWaveform.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Panels\Panel2DColor.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Panels\Panel2DColor.resx"
+                    DependentUpon = "Panel2DColor.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelAxisLimited.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelAxisLimited.resx"
+                    DependentUpon = "PanelAxisLimited.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelAxisNew.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelAxisNew.resx"
+                    DependentUpon = "PanelAxisNew.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelAxisScatterBar.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelAxisScatterBar.resx"
+                    DependentUpon = "PanelAxisScatterBar.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelBarWaveform.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelBarWaveform.resx"
+                    DependentUpon = "PanelBarWaveform.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelColorbarNew.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelColorbarNew.resx"
+                    DependentUpon = "PanelColorbarNew.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelScatter.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelScatter.resx"
+                    DependentUpon = "PanelScatter.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelWaveformNew.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Viewers\Panels\PanelWaveformNew.resx"
+                    DependentUpon = "PanelWaveformNew.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

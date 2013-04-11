@@ -1,0 +1,114 @@
+# Makefile.common
+
+HEADERS = \
+	  BinaryWriter.h        Logger.h                                      \
+	  CMatrixN.h            LopezPovedaMeddisDualResonanceNonlinear.h     \
+	  CarneySpikeGenerator.h                                              \
+	  CParameter.h          MatrixN.h                                     \
+	  CParameterFile.h      NthOrderHighpass.h                            \
+	  CParameterSet.h       NthOrderLowpass.h                             \
+	  CParameterTree.h      OxenhamPlackGammatone.h                       \
+	  CParameterValue.h     OxenhamPlackLinearGain.h                      \
+	  CSection.h            OxenhamPlackNonlinearGain.h                   \
+	  Complex.h             ParameterParser.h                             \
+	  Downsampler.h         ParameterStatus.h                             \
+	  DynamicVector.h       ParameterType.h                               \
+	  Earlab.h              Parameters.h                                  \
+	  EarlabDataStream.h    ResonantFilter.h                              \
+	  EarlabException.h     RungeKutta.h                                  \
+	  FPException.h         RungeKuttaEquation.h                          \
+	  FirstOrderHighpass.h  RungeKuttaSolver.h                            \
+	  FirstOrderLowpass.h   SecondOrderButterworthLowpass.h               \
+	  HHChannels.h          SpikeStream.h                                 \
+	  HHCompartment.h       WaveFile.h                                    \
+	  HHSynapse.h           earlibc.h
+
+CPPSRC  = \                                                                   \
+	  BinaryWriter.cpp        HashTable.cpp                               \
+	  CarneySpikeGenerator.cpp                                            \
+	  CParameter.cpp          Logger.cpp                                  \
+	  CParameterFile.cpp      LopezPovedaMeddisDualResonanceNonlinear.cpp \
+	  CParameterSet.cpp       MatrixN.cpp                                 \
+	  CParameterTree.cpp      NthOrderLowpass.cpp                         \
+	  CParameterValue.cpp     OxenhamPlackGammatone.cpp                   \
+	  CSection.cpp            OxenhamPlackLinearGain.cpp                  \
+	  Complex.cpp             OxenhamPlackNonlinearGain.cpp               \
+	  Downsampler.cpp                                                     \
+	  DynamicVector.cpp       Parameters.cpp                              \
+	  EarlabDataStream.cpp    ResonantFilter.cpp                          \
+	  EarlabException.cpp     RungeKuttaSolver.cpp                        \
+	  FirstOrderHighpass.cpp  SecondOrderButterworthLowpass.cpp           \
+	  FirstOrderLowpass.cpp   SpikeStream.cpp                             \
+	  HHChannels.cpp          WaveFile.cpp                                \
+	  HHCompartment.cpp       earlibc.cpp                                 \
+	  HHSynapse.cpp
+
+CSRC    = \
+	  earlibaux.c
+
+CPPOBJ  = \
+	  BinaryWriter.o          HashTable.o                                 \
+	  CarneySpikeGenerator.o                                              \
+	  CParameter.o            Logger.o                                    \
+	  CParameterFile.o        LopezPovedaMeddisDualResonanceNonlinear.o   \
+	  CParameterSet.o         MatrixN.o                                   \
+	  CParameterTree.o        NthOrderLowpass.o                           \
+	  CParameterValue.o       OxenhamPlackGammatone.o                     \
+	  CSection.o              OxenhamPlackLinearGain.o                    \
+	  Complex.o               OxenhamPlackNonlinearGain.o                 \
+	  Downsampler.o                                                       \
+	  DynamicVector.o         Parameters.o                                \
+	  EarlabDataStream.o      ResonantFilter.o                            \
+	  EarlabException.o       RungeKuttaSolver.o                          \
+	  FirstOrderHighpass.o    SecondOrderButterworthLowpass.o             \
+	  FirstOrderLowpass.o     SpikeStream.o                               \
+	  HHChannels.o            WaveFile.o                                  \
+	  HHCompartment.o         earlibc.o                                   \
+	  HHSynapse.o
+
+COBJ    = \
+	  earlibaux.o
+
+SRC  = $(CPPSRC) $(CSRC)
+OBJ  = $(CPPOBJ) $(COBJ)
+
+LIB = ../lib/libearlab.a
+
+MAKESHELL = /bin/sh
+
+install: Makefile instlib.a
+
+instlib.a: $(OBJ)
+	ar cvr $(LIB) $?
+	ranlib $(LIB)
+
+Makefile: Makefile.$(ARCH) Makefile.common
+	mv Makefile Makefile.bak
+	cat Makefile.$(ARCH) Makefile.common >Makefile
+
+Makefile.common:
+	if [ ! -e Makefile.common ]; then \
+		ln -s Src/Makefile.common . ; \
+	fi
+
+Makefile.$(ARCH):
+	if [ ! -e Makefile.$(ARCH) ]; then \
+		ln -s Src/Makefile.$(ARCH) . ; \
+	fi
+
+arch:
+	if [ ! -e Src ]; then \
+		ln -s ../Src/SupportClasses ./Src ; \
+	fi
+	if [ ! -e Makefile.common ]; then \
+		ln -s Src/Makefile.common . ; \
+	fi
+	if [ ! -e Makefile.$(ARCH) ]; then \
+		ln -s Src/Makefile.$(ARCH) . ; \
+	fi
+	for i in Src/*.[hcHC]* ; do \
+		ln -s $$i .      ; \
+	done
+
+clean:
+	rm -f *.o *.a *.exe

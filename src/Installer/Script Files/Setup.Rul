@@ -1,0 +1,294 @@
+//===========================================================================
+//
+//  File Name:    Setup.rul
+//
+//  Description:  Blank setup main script file
+//
+//  Comments:     Blank setup is an empty setup project. If you want to
+//				  create a new project via. step-by step instructions use the
+//				  Project Assistant.
+//
+//===========================================================================
+
+// Included header files ----------------------------------------------------
+#include "ifx.h"
+
+// User-defined constants
+#define CSIDL_COMMON_DOCUMENTS 0x002e // for All Users\Documents
+#define CSIDL_PERSONAL 0x0005 // for My Documents
+
+prototype NUMBER SHFolder.SHGetFolderPathA(HWND, NUMBER, NUMBER, NUMBER, BYREF STRING);
+prototype NUMBER Shell32.FindExecutableA(BYVAL STRING, BYVAL STRING, BYVAL STRING);
+prototype NUMBER Shell32.ShellExecuteA(HWND, BYVAL STRING, BYVAL STRING, BYVAL STRING, BYVAL STRING, INT);
+
+//---------------------------------------------------------------------------                                                                        
+// OnFirstUIBefore
+//
+// First Install UI Sequence - Before Move Data
+//
+// The OnFirstUIBefore event is called by OnShowUI when the setup is
+// running in first install mode. By default this event displays UI allowing
+// the end user to specify installation parameters.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnFirstUIBefore()
+    number  nResult, nLevel, nSize, nSetupType;
+    string  szTitle, szMsg, szOpt1, szOpt2, szLicenseFile;
+    string  szName, szCompany, szTargetPath, szDir, szFeatures;
+    BOOL    bLicenseAccepted;	
+begin	
+
+    nSetupType = COMPLETE;	
+    szDir = TARGETDIR;
+    szName = "";
+    szCompany = "";
+    bLicenseAccepted = FALSE;
+
+// Beginning of UI Sequence
+Dlg_Start:
+    nResult = 0;
+
+Dlg_SdWelcome:
+    szTitle = "";
+    szMsg = "";
+    //{{IS_SCRIPT_TAG(Dlg_SdWelcome)
+    nResult = SdWelcome( szTitle, szMsg );
+    //}}IS_SCRIPT_TAG(Dlg_SdWelcome)
+    if (nResult = BACK) goto Dlg_Start;
+
+Dlg_SdLicense2:
+    szTitle = "";
+    szOpt1 = "";
+    szOpt2 = "";
+    //{{IS_SCRIPT_TAG(License_File_Path)
+    szLicenseFile = SUPPORTDIR ^ "license.txt";
+    //}}IS_SCRIPT_TAG(License_File_Path)
+    //{{IS_SCRIPT_TAG(Dlg_SdLicense2)
+    nResult = SdLicense2Rtf( szTitle, szOpt1, szOpt2, szLicenseFile, bLicenseAccepted );
+    //}}IS_SCRIPT_TAG(Dlg_SdLicense2)
+    if (nResult = BACK) then
+        goto Dlg_SdWelcome;
+    else
+        bLicenseAccepted = TRUE;
+    endif;
+
+Dlg_SdRegisterUser:
+    szMsg = "";
+    szTitle = "";
+    //{{IS_SCRIPT_TAG(Dlg_SdRegisterUser)	
+    nResult = SdRegisterUser( szTitle, szMsg, szName, szCompany );
+    //}}IS_SCRIPT_TAG(Dlg_SdRegisterUser)
+    if (nResult = BACK) goto Dlg_SdLicense2;
+
+Dlg_SetupType2:   
+    szTitle = "";
+    szMsg = "";
+    nResult = CUSTOM;
+    //{{IS_SCRIPT_TAG(Dlg_SetupType2)	
+    nResult = SetupType2( szTitle, szMsg, "", nSetupType, 0 );
+    //}}IS_SCRIPT_TAG(Dlg_SetupType2)
+    if (nResult = BACK) then
+        goto Dlg_SdRegisterUser;
+    else
+        nSetupType = nResult;
+        if (nSetupType != CUSTOM) then
+            szTargetPath = TARGETDIR;
+            nSize = 0;
+            FeatureCompareSizeRequired( MEDIA, szTargetPath, nSize );
+            if (nSize != 0) then      
+                MessageBox( szSdStr_NotEnoughSpace, WARNING );
+                goto Dlg_SetupType2;
+            endif;
+        endif;   
+    endif;
+
+Dlg_SdAskDestPath2:
+    if ((nResult = BACK) && (nSetupType != CUSTOM)) goto Dlg_SetupType2;
+	szTitle = "";
+    szMsg = "";
+    if (nSetupType = CUSTOM) then
+                //{{IS_SCRIPT_TAG(Dlg_SdAskDestPath2)	
+//		nResult = SdAskDestPath2( szTitle, szMsg, szDir );
+                //}}IS_SCRIPT_TAG(Dlg_SdAskDestPath2)
+        TARGETDIR = szDir;
+    endif;
+    if (nResult = BACK) goto Dlg_SetupType2;
+
+Dlg_SdFeatureTree: 
+    if ((nResult = BACK) && (nSetupType != CUSTOM)) goto Dlg_SdAskDestPath2;
+    szTitle = "";
+    szMsg = "";
+    szFeatures = "";
+    nLevel = 2;
+    if (nSetupType = CUSTOM) then
+        //{{IS_SCRIPT_TAG(Dlg_SdFeatureTree)	
+        nResult = SdFeatureTree( szTitle, szMsg, TARGETDIR, szFeatures, nLevel );
+        //}}IS_SCRIPT_TAG(Dlg_SdFeatureTree)
+        if (nResult = BACK) goto Dlg_SdAskDestPath2;  
+    endif;
+
+Dlg_SQLServer:
+    nResult = OnSQLServerInitialize( nResult );
+    if( nResult = BACK ) goto Dlg_SdFeatureTree;
+
+Dlg_ObjDialogs:
+    nResult = ShowObjWizardPages( nResult );
+    if (nResult = BACK) goto Dlg_SQLServer;
+    
+Dlg_SdStartCopy2:
+    szTitle = "";
+    szMsg = "";
+    //{{IS_SCRIPT_TAG(Dlg_SdStartCopy2)	
+    nResult = SdStartCopy2( szTitle, szMsg );	
+    //}}IS_SCRIPT_TAG(Dlg_SdStartCopy2)
+    if (nResult = BACK) goto Dlg_ObjDialogs;
+
+    // Added in 11.0 - Set appropriate StatusEx static text.
+    SetStatusExStaticText( SdLoadString( IDS_IFX_STATUSEX_STATICTEXT_FIRSTUI ) );
+ 
+    return 0;
+end;
+
+//---------------------------------------------------------------------------
+// OnMaintUIAfter
+//
+// The OnMaintUIAfter event called by OnShowUI after the file transfer
+// of the setup when the setup is running in maintenance mode. By default
+// this event displays UI that informs the end user that the maintenance setup
+// has been completed successfully.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnMaintUIAfter()
+    STRING szTitle, szMsg1, szMsg2, szOpt1, szOpt2;
+    NUMBER bvOpt1, bvOpt2;
+	STRING szMyDocumentsFolder;
+	NUMBER nReturn;
+begin
+
+    ShowObjWizardPages(NEXT);
+    
+    // Added - Version 9.5 - Use appropriate strings for complete
+    // uninstall.
+    if( REMOVEALLMODE ) then
+        szTitle = SdLoadString(IFX_SDFINISH_REMOVE_TITLE);
+        szMsg1 = SdLoadString(IFX_SDFINISH_REMOVE_MSG1);
+		szMyDocumentsFolder = "";
+		nReturn = SHFolder.SHGetFolderPathA(NULL, CSIDL_PERSONAL, NULL, 0, szMyDocumentsFolder );
+		DeleteDir (szMyDocumentsFolder ^ "EarLab", ALLCONTENTS);
+    else
+        szTitle = SdLoadString(IFX_SDFINISH_MAINT_TITLE);    
+        szMsg1  = SdLoadString(IFX_SDFINISH_MAINT_MSG1);
+    endif;
+
+	szMsg2 = "";    
+    szOpt1 = "";
+    szOpt2 = "";
+	bvOpt1   = FALSE;
+    bvOpt2   = FALSE;    
+
+    if ( BATCH_INSTALL ) then
+    	SdFinishReboot ( szTitle , szMsg1 , SYS_BOOTMACHINE , szMsg2 , 0 );
+    else    
+       	SdFinish ( szTitle , szMsg1 , szMsg2 , szOpt1 , szOpt2 , bvOpt1 , bvOpt2 );
+    endif;
+end;
+//---------------------------------------------------------------------------
+// OnFirstUIAfter
+//
+// First Install UI Sequence - After Move Data
+//
+// The OnFirstUIAfter event called by OnShowUI after the file transfer
+// of the setup when the setup is running in first install mode. By default
+// this event displays UI that informs the end user that the setup has been
+// completed successfully.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnFirstUIAfter()
+    STRING szTitle, szMsg1, szMsg2, szOpt1, szOpt2;
+    NUMBER bvOpt1, bvOpt2, nResult;
+	NUMBER bShowUpdateServiceDlg;
+	STRING Found;
+	STRING ReadMe;
+	STRING szMyDocumentsFolder;
+	NUMBER nReturn;
+begin
+
+	szMyDocumentsFolder = "";
+	//nReturn = SHFolder.SHGetFolderPathA(NULL, CSIDL_PERSONAL, NULL, 0, szMyDocumentsFolder );
+	//if (XCopyFile (TARGETDIR ^ "Models\\*.*" , szMyDocumentsFolder ^ "EarLab", INCLUDE_SUBDIR) < 0) then
+    //    MessageBox ("Error copying model files to the My Documents directory", SEVERE);
+    //    return -1;
+    //endif;
+
+    ShowObjWizardPages(NEXT);
+    
+    szTitle = "";
+    szMsg1 = ""; 
+    szMsg2 = "";
+    szOpt1 = "View Readme file";
+	bvOpt1   = TRUE;
+    szOpt2 = "Launch Experiment Manager";
+    bvOpt2   = TRUE;
+
+	// Set this to true if you have the update service enabled, and if you want to check for updates.
+	// Note: the ISUS Starter Edition does not support checking for updates programatically.  So, 
+	// only set this to true if you have at least the ISUS Professional Edition.
+	bShowUpdateServiceDlg = FALSE;
+    
+    //{{IS_SCRIPT_TAG(Dlg_SdDinishEx)	
+    
+    if ( BATCH_INSTALL ) then
+    	SdFinishReboot ( szTitle , szMsg1 , SYS_BOOTMACHINE , szMsg2 , 0 );
+    else
+		
+		// If the update service is enabled, show finish dialog that includes
+		// update check option.
+		if( bShowUpdateServiceDlg && ( ENABLED_ISERVICES & SERVICE_ISUPDATE ) ) then
+
+			if( SdFinishUpdateEx( szTitle, szMsg1, szMsg2, szOpt1, szOpt2, TRUE ) ) then
+
+				// Don't check for updates in silent mode.
+				if( MODE != SILENTMODE ) then
+					UpdateServiceCheckForUpdates( "", FALSE );
+				endif;
+
+			endif;
+
+		else
+			SdFinish ( szTitle , szMsg1 , szMsg2 , szOpt1 , szOpt2 , bvOpt1 , bvOpt2 );
+		endif;
+    
+	    if (bvOpt1) then    
+	    	ReadMe = TARGETDIR ^ "Desktop EarLab\\readme.html";
+	    	
+		    if (UseDLL(WINSYSDIR ^ "shell32.dll") < 0) then
+		        MessageBox ("Couldn't load Shell interface dll (shell32.dll)", SEVERE);
+		        return -1;
+		    endif;
+		
+		    // Find the application associated with the desired html file
+		    nResult = FindExecutableA(ReadMe, "", Found);
+		
+		    // If an application is found, launch it!
+		    if (nResult > 32) then
+		        ShellExecuteA(HWND_INSTALL, "open", ReadMe, "", TARGETDIR ^ "Desktop EarLab", SW_SHOWNORMAL);
+		    else
+		        MessageBox( "Can't launch browser", WARNING);
+		    endif;
+		
+		    UnUseDLL("shell32.dll");
+		endif;
+	
+	    if (bvOpt2) then
+	    	LaunchApp (TARGETDIR ^ "Desktop EarLab\\ExperimentManager.exe","");
+	    endif;
+	
+    endif;
+    //}}IS_SCRIPT_TAG(Dlg_SdDinishEx)	
+end;

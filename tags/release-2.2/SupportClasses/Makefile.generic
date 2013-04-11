@@ -1,0 +1,6 @@
+# Prototypical system dependent Makefile component
+ARCH     = generic
+
+CPP      = g++
+CFLAGS   = -I../include -Dstricmp=strcasecmp -DWIN32 -DPARAMETER_SPACE
+CPPFLAGS = $(CFLAGS)

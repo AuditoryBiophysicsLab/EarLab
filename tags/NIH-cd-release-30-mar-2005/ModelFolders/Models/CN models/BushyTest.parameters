@@ -1,0 +1,80 @@
+ 	// Module Parameter file
+
+[Left_Pinna]
+float	SampleRate_Hz			100000
+string	InputFileName			"500_Hz.txt"
+bool	InputIsWaveFile			false
+int	OutputDelay_Samples		0
+
+[Left_Midear]
+float	SampleRate_Hz			100000
+float	HighpassCornerFreq_Hz		500
+int	HighpassFilterOrder		2
+float	Gain				30
+
+[Left_Cochlea]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+bool	DisableNonlinearPath		false
+float	A				165.0
+float	Alpha				2.1
+float	K				1.0
+float	CochleaLength_mm		35.0
+float	BMStartPercent			2.4
+float	BMEndPercent			100.0
+bool	ProduceOutputFile		true
+bool	BinaryOutput			false
+string	CFFileName			"cfarray.txt"
+
+[Left_IHCs]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+double	Gain				100
+
+[Left_AN]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+float	SampleRate_Hz 			100000
+
+[AN_Spike]
+float	SampleRate_Hz 			100000
+float	c0				0.55
+float	c1				0.45
+float	s0				0.8
+float	s1				25
+float	Ra				0.75
+float	Scale				1.0
+float	Offset				0.0
+
+[Left_CN]
+float	SampleRate_Hz 			100000
+float	FrameLength_Seconds		0.01
+float	SynapticStrength		10
+float	SynapticTau_Seconds		.0001
+float	CellTemperature_DegreesC	38
+int	MaxSynapseCount			10
+
+[AN_SpikeSink]
+float	SampleRate_Hz 			100000
+float	FrameLength_Seconds		0.01
+bool	ProduceOutputFile		true
+bool	BinaryOutput			false
+string	OutputFileName			"ANSpike.out"
+bool	UseDownsampler			false
+bool	AcceptSocketConnections		false
+int	ListenPortNumber		1002
+string	CFFileName			"cfarray.txt"
+
+[CN_SpikeSink]
+float	SampleRate_Hz 			100000
+float	FrameLength_Seconds		0.01
+bool	ProduceOutputFile		true
+bool	BinaryOutput			false
+string	OutputFileName			"CNSpike.out"
+bool	UseDownsampler			false
+bool	AcceptSocketConnections		false
+int	ListenPortNumber		1003
+string	CFFileName			"cfarray.txt"
+

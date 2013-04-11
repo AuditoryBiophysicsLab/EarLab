@@ -1,0 +1,280 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F5E917F2-CA98-4E77-9DE5-BE5356D837B8}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>ModuleUpdater</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ModuleUpdater</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>ModuleUpdater.MainForm</StartupObject>
+    <WebReference_EnableProperties>true</WebReference_EnableProperties>
+    <WebReference_EnableSQLTypes>false</WebReference_EnableSQLTypes>
+    <WebReference_EnableLegacyEventingModel>true</WebReference_EnableLegacyEventingModel>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services">
+      <Name>System.Web.Services</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ModuleService\Module.disco" />
+    <None Include="Web References\ModuleService\Module.wsdl" />
+    <None Include="Web References\ModuleService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="App.ico" />
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\ModulesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\VersionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\VersionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WebServiceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ClassificationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DataTypeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ParameterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\VersionAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\WebServiceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnableVisualStyles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\AlphaNumericTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\BlueDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\ColorDataGridLabelColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\ColorDataGridLinkColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\ColorFixedDataGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\ColorUpdateViewDeleteDataGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\DataGridSelectColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\LetterTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\NameTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\NumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\RealNumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InheritedControls\WholeNumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ModuleService\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+      <SubType>code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <EmbeddedResource Include="Controls\ModulesControl.resx">
+      <DependentUpon>ModulesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\VersionControl.resx">
+      <DependentUpon>VersionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\VersionsControl.resx">
+      <DependentUpon>VersionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WebServiceControl.resx">
+      <DependentUpon>WebServiceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ClassificationDialog.resx">
+      <DependentUpon>ClassificationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DataTypeDialog.resx">
+      <DependentUpon>DataTypeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ParameterDialog.resx">
+      <DependentUpon>ParameterDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\VersionAddDialog.resx">
+      <DependentUpon>VersionAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\WebServiceDialog.resx">
+      <DependentUpon>WebServiceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\AlphaNumericTextBox.resx">
+      <DependentUpon>AlphaNumericTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\BlueDateTimePicker.resx">
+      <DependentUpon>BlueDateTimePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\ColorDataGridLabelColumn.resx">
+      <DependentUpon>ColorDataGridLabelColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\ColorDataGridLinkColumn.resx">
+      <DependentUpon>ColorDataGridLinkColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\ColorFixedDataGrid.resx">
+      <DependentUpon>ColorFixedDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\ColorUpdateViewDeleteDataGrid.resx">
+      <DependentUpon>ColorUpdateViewDeleteDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\DataGridSelectColumn.resx">
+      <DependentUpon>DataGridSelectColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\LetterTextBox.resx">
+      <DependentUpon>LetterTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\NameTextBox.resx">
+      <DependentUpon>NameTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\NumberTextBox.resx">
+      <DependentUpon>NumberTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\RealNumberTextBox.resx">
+      <DependentUpon>RealNumberTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InheritedControls\WholeNumberTextBox.resx">
+      <DependentUpon>WholeNumberTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <WebReferenceUrl Include="http://eardev.bu.edu/webservices/EarLabService/Module.asmx">
+      <RelPath>Web References\ModuleService\</RelPath>
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <UpdateFromURL>http://eardev.bu.edu/webservices/EarLabService/Module.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ModuleUpdater_ModuleService_EarDev_x0020_Module_x0020_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

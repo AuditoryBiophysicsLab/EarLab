@@ -1,0 +1,6 @@
+# Prototypical system dependent Makefile component
+
+ARCH     = Cygwin
+CPP      = g++
+CFLAGS   = -Dstricmp=strcasecmp -DWIN32
+CPPFLAGS = $(CFLAGS)

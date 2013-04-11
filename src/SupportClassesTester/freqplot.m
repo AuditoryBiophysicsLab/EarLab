@@ -1,0 +1,12 @@
+function freqplot(Signal, Fs);
+SamplesPer_mS = Fs / 1000;
+mS_PerSample = 1 / SamplesPer_mS;
+freqplot_t = [mS_PerSample:mS_PerSample:(size(Signal, 1) / SamplesPer_mS)];
+Freq = ([0:size(Signal, 1) - 1]/size(Signal, 1)) * Fs;
+FFTLen = floor(size(Signal, 1) / 2);
+FreqResp = 2 * (abs(fft(Signal)) / size(Freq, 2));
+loglog(Freq(1:FFTLen),FreqResp(1:FFTLen));
+title('Frequency Plot');
+ylabel('Energy');
+xlabel('Frequency (Hz)');
+grid;

@@ -1,0 +1,10 @@
+CC=g++
+INCLUDE=../../SupportClasses
+
+all: $(MODULE).o
+
+clean:
+	rm *.o
+
+$(MODULE).o: $(MODULE).cpp $(MODULE).h ModuleSpecific.h
+	$(CC) -I$(INCLUDE) -o $(MODULE).o -c $(MODULE).cpp

@@ -1,0 +1,4 @@
+[AuditoryNerveIFR]
+// Implicit parameters for this module include the frame length and the number of channels
+// which are passed in the dimensions of the output stream descriptor
+int	SampleRate_Hz	100000

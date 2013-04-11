@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="EarLabVersion" targetNamespace="http://eardev.bu.edu/software/specifications/schemas/EarLabVersion.xsd"
+	elementFormDefault="qualified" xmlns="http://eardev.bu.edu/software/specifications/schemas/EarLabVersion.xsd"
+	xmlns:mstns="http://eardev.bu.edu/software/specifications/schemas/EarLabVersion.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.0">
+	<xs:element name="EarLabVersion" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Module" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ModuleLSID" type="xs:string" maxOccurs="1" minOccurs="1" />
+							<xs:element name="Name" type="xs:string" maxOccurs="1" minOccurs="1" />
+							<xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Version" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VersionLSID" type="xs:string" maxOccurs="1" minOccurs="1" msdata:AutoIncrement="false"
+								msdata:ReadOnly="true" />
+							<xs:element name="VersionNumber" type="xs:string" maxOccurs="1" minOccurs="1" />
+							<xs:element name="ReleaseDate" type="xs:dateTime" maxOccurs="1" minOccurs="1" />
+							<xs:element name="NeuralEntity" type="xs:string" maxOccurs="1" minOccurs="0" nillable="true" />
+							<xs:element name="Abstract" type="xs:string" maxOccurs="1" minOccurs="0" nillable="true" />
+							<xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="0" nillable="true" />
+							<xs:element name="Design" type="xs:string" maxOccurs="1" minOccurs="0" nillable="true" />
+							<xs:element name="Implementation" type="xs:string" maxOccurs="1" minOccurs="0" nillable="true" />
+							<xs:element name="Interface" type="xs:string" maxOccurs="1" minOccurs="0" nillable="true" />
+							<xs:element name="Evaluation" type="xs:string" maxOccurs="1" minOccurs="0" nillable="true" />
+							<xs:element name="Prerequisite" type="xs:string" maxOccurs="1" minOccurs="0" nillable="true" />
+							<xs:element name="Note" type="xs:string" maxOccurs="1" minOccurs="0" nillable="true" />
+							<xs:element name="Languages" maxOccurs="1" minOccurs="0" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Language" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="OSes" maxOccurs="1" minOccurs="0" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="OS" minOccurs="1" type="xs:string" maxOccurs="unbounded"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Compliances" minOccurs="0" maxOccurs="1" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Compliance" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Histories" minOccurs="0" maxOccurs="1" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="History" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="References" maxOccurs="1" minOccurs="0" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Reference" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Bugs" maxOccurs="1" minOccurs="0" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Bug" type="xs:string" minOccurs="1" maxOccurs="unbounded" nillable="true" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Restrictions" minOccurs="0" maxOccurs="1" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Restriction" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Classifications" maxOccurs="1" minOccurs="0" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Classification" minOccurs="1" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Structure" type="xs:string" minOccurs="1" maxOccurs="1" />
+													<xs:element name="Substructure" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true" />
+													<xs:element name="CellType" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DataTypes" minOccurs="0" maxOccurs="1" nillable="true">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DataType" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1" />
+										<xs:element name="Index" type="xs:positiveInteger" maxOccurs="1" minOccurs="1" />
+										<xs:element name="Type" maxOccurs="1" minOccurs="1" type="xs:string"></xs:element>
+										<xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1" />
+										<xs:element name="Direction" maxOccurs="1" minOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Input" />
+													<xs:enumeration value="Output" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Parameters" minOccurs="0" maxOccurs="1" nillable="true">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Parameter" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Name" type="xs:string" maxOccurs="1" minOccurs="1" />
+										<xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1" />
+										<xs:element name="Type" maxOccurs="1" minOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="int" />
+													<xs:enumeration value="long" />
+													<xs:enumeration value="float" />
+													<xs:enumeration value="double" />
+													<xs:enumeration value="bool" />
+													<xs:enumeration value="string" />
+													<xs:enumeration value="IntVector" />
+													<xs:enumeration value="FloatVector" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Minimum" type="xs:string" maxOccurs="1" minOccurs="0" />
+										<xs:element name="Maximum" type="xs:string" maxOccurs="1" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ParameterSets" maxOccurs="1" minOccurs="0" nillable="true">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ParameterSet">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Name" type="xs:string" />
+										<xs:element name="Date" type="xs:date" />
+										<xs:element name="Species" type="xs:string" />
+										<xs:element name="ParameterPair">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Name" type="xs:string" />
+													<xs:element name="Value" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

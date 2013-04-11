@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EarLabRunfile>
+
+  <Run name="Normal AN 500 Hz Level Series Experiment" description="Simulation of the auditory nerve response to 500 Hz tones with level increasing in 10 dB steps">
+    <DiagramFileName>Models\AN models\NonlinearAN.diagram</DiagramFileName>
+    <ParameterFileName>Models\AN models\LevelSeries500Hz.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\LevelSeries</InputDirectoryPath>
+    <OutputDirectoryPath>Output\AN output\Level Series 500Hz</OutputDirectoryPath>
+    <FrameCount>510</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>500Hz_level.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>NLBM.6.metadata</OutputFileName>
+      <OutputFileName>IHC.6.metadata</OutputFileName>
+      <OutputFileName>AN.6.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="Normal AN 4 kHz Level Series Experiment" description="Simulation of the auditory nerve response to 4 kHz tones with level increasing in 10 dB steps">
+    <DiagramFileName>Models\AN models\NonlinearAN.diagram</DiagramFileName>
+    <ParameterFileName>Models\AN models\LevelSeries4kHz.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\LevelSeries</InputDirectoryPath>
+    <OutputDirectoryPath>Output\AN output\Level Series 4 kHz</OutputDirectoryPath>
+    <FrameCount>510</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>4000Hz_level.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>NLBM.6.metadata</OutputFileName>
+      <OutputFileName>IHC.6.metadata</OutputFileName>
+      <OutputFileName>AN.6.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="Normal AN Response to Speech" description="Simulation of the normal auditory nerve, using a nonlinear Basilar Membrane filterbank.  The stimulus is the CVC syllable Bot.">
+    <DiagramFileName>Models\AN models\NonlinearAN.diagram</DiagramFileName>
+    <ParameterFileName>Models\AN models\MonauralNonlinear.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\SpeechWaveforms\CVC syllables</InputDirectoryPath>
+    <OutputDirectoryPath>Output\AN output\AN Nonlinear output</OutputDirectoryPath>
+    <FrameCount>400</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>BotSyllable.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>NLBM.6.metadata</OutputFileName>
+      <OutputFileName>IHC.6.metadata</OutputFileName>
+      <OutputFileName>AN.6.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="Impaired AN Response to Speech" description="Simulation of the impaired auditory nerve, using a linear Basilar Membrane filterbank to simulate outer hair cell loss.  The stimulus is the CVC syllable Bot.">
+    <DiagramFileName>Models\AN models\LinearAN.diagram</DiagramFileName>
+    <ParameterFileName>Models\AN models\MonauralLinear.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\SpeechWaveforms\CVC syllables</InputDirectoryPath>
+    <OutputDirectoryPath>Output\AN output\AN Linear output</OutputDirectoryPath>
+    <FrameCount>400</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>BotSyllable.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>LBM.6.metadata</OutputFileName>
+      <OutputFileName>IHC.6.metadata</OutputFileName>
+      <OutputFileName>AN.6.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="AN Forward Masking Experiment 1" description="Auditory nerve response to a 500 Hz tone pip preceeded by a longer tone with changing frequency">
+    <DiagramFileName>Models\AN models\NonlinearAN.diagram</DiagramFileName>
+    <ParameterFileName>Models\AN models\ForwardMasker1.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\Masking</InputDirectoryPath>
+    <OutputDirectoryPath>Output\AN output\Forward Masker 1</OutputDirectoryPath>
+    <FrameCount>410</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>ForwardMasker1.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>NLBM.6.metadata</OutputFileName>
+      <OutputFileName>IHC.6.metadata</OutputFileName>
+      <OutputFileName>AN.6.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="AN Forward Masking Experiment 2" description="Auditory nerve response to a 500 Hz tone pip preceeded by a longer 500 Hz tone with increasing delay between tones">
+    <DiagramFileName>Models\AN models\NonlinearAN.diagram</DiagramFileName>
+    <ParameterFileName>Models\AN models\ForwardMasker2.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\Masking</InputDirectoryPath>
+    <OutputDirectoryPath>Output\AN output\Forward Masker 2</OutputDirectoryPath>
+    <FrameCount>410</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>ForwardMasker2.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>NLBM.6.metadata</OutputFileName>
+      <OutputFileName>IHC.6.metadata</OutputFileName>
+      <OutputFileName>AN.6.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="AN Simultaneous Masking Experiment" description="Auditory nerve response to a 500 Hz tone burst alone and then with a simultaneous tone with increasing frequency">
+    <DiagramFileName>Models\AN models\NonlinearAN.diagram</DiagramFileName>
+    <ParameterFileName>Models\AN models\SimultaneousMasker.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\Masking</InputDirectoryPath>
+    <OutputDirectoryPath>Output\AN output\Simultaneous Masker</OutputDirectoryPath>
+    <FrameCount>410</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>SimultaneousMasker.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>NLBM.6.metadata</OutputFileName>
+      <OutputFileName>IHC.6.metadata</OutputFileName>
+      <OutputFileName>AN.6.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="MSO Binaural Beat Experiment" description="Simulation of medial superior olive bipolar cells to a binaural beat stimulus">
+    <DiagramFileName>Models\MSO models\MSO.diagram</DiagramFileName>
+    <ParameterFileName>Models\MSO models\MSO_Beat.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\Tones</InputDirectoryPath>
+    <OutputDirectoryPath>Output\MSO output\MSO Binaural Beat</OutputDirectoryPath>
+    <FrameCount>55</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>1000_Hz.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+      <InputFile>
+        <SourceFileName>1010_Hz.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>MSOAnalysis.0.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="MSO Level Series Experiment" description="MSO Level Series demonstration">
+    <DiagramFileName>Models\MSO models\MSO_Level.diagram</DiagramFileName>
+    <ParameterFileName>Models\MSO models\MSO_Level.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\LevelSeries</InputDirectoryPath>
+    <OutputDirectoryPath>Output\MSO output\MSO Level Series</OutputDirectoryPath>
+    <FrameCount>100</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>1000Hz_big_level_series.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+      <InputFile>
+        <SourceFileName>1000Hz_big_level_series.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>MSOAnalysis.0.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="MSO Noise Response (N0)" description="Medial Superior Olive response to in phase white noise (N0)">
+    <DiagramFileName>Models\MSO models\MSO.diagram</DiagramFileName>
+    <ParameterFileName>Models\MSO models\MSO_NO.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\Masking</InputDirectoryPath>
+    <OutputDirectoryPath>Output\MSO output\MSO NO Masking</OutputDirectoryPath>
+    <FrameCount>20</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>N0.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+      <InputFile>
+        <SourceFileName>N0.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>MSOAnalysis.0.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="MSO Response to Tone in Noise (N0S0)" description="Medial Superior Olive masking demonstration with zero phase difference between ears for both tone and noise ">
+    <DiagramFileName>Models\MSO models\MSO.diagram</DiagramFileName>
+    <ParameterFileName>Models\MSO models\MSO_NOSO.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\Masking</InputDirectoryPath>
+    <OutputDirectoryPath>Output\MSO output\MSO NOSO Masking</OutputDirectoryPath>
+    <FrameCount>20</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>S0_1000Hz_-20dB.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+      <InputFile>
+        <SourceFileName>S0_1000Hz_-20dB.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>MSOAnalysis.0.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="MSO Response to Tone in Noise (N0Spi)" description="Medial Superior Olive masking demonstration with zero phase difference between ears for the noise and pi radians difference for the tone.">
+    <DiagramFileName>Models\MSO models\MSO.diagram</DiagramFileName>
+    <ParameterFileName>Models\MSO models\MSO_NOSPi.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\Masking</InputDirectoryPath>
+    <OutputDirectoryPath>Output\MSO output\MSO NOSPi Masking</OutputDirectoryPath>
+    <FrameCount>20</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>S0_1000Hz_-20dB.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+      <InputFile>
+        <SourceFileName>SPi_1000Hz_-20dB.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>MSOAnalysis.0.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="MSO Precedence Effect Experiment" description="Medial Superior Olive response to two stimuli closely spaced in time but at different spatial locations.">
+    <DiagramFileName>Models\MSO models\MSO_Precedence.diagram</DiagramFileName>
+    <ParameterFileName>Models\MSO models\MSO_Precedence.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\Precedence</InputDirectoryPath>
+    <OutputDirectoryPath>Output\MSO output\MSO Precedence</OutputDirectoryPath>
+    <FrameCount>60</FrameCount>
+    <InputFiles>
+      <InputFile>
+        <SourceFileName>PrecedenceLeft.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+      <InputFile>
+        <SourceFileName>PrecedenceRight.wav</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>MSOAnalysis.0.metadata</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+  <Run name="CN Bushy Cell Tone Response" description="Simulation of spike times from anteroventral cochlear nucleus Bushy Cells in response to a tone">
+    <DiagramFileName>Models\CN models\BushyTest.diagram</DiagramFileName>
+    <ParameterFileName>Models\CN models\BushyTest.parameters</ParameterFileName>
+    <InputDirectoryPath>Signals\Tones</InputDirectoryPath>
+    <OutputDirectoryPath>Output\CN output</OutputDirectoryPath>
+    <FrameCount>100</FrameCount>
+    <InputFiles>
+      <InputFile>	
+        <SourceFileName>500_Hz.txt</SourceFileName>
+        <DestinationFileName>Not Used</DestinationFileName>
+      </InputFile>
+    </InputFiles>
+    <OutputFiles>
+      <OutputFileName>ANSpike.out</OutputFileName>
+    </OutputFiles>
+    <LastRunDateTime>3/5/2005 1:15:13 PM</LastRunDateTime>
+  </Run>
+
+</EarLabRunfile>
