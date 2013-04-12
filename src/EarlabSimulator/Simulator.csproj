@@ -125,6 +125,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) "..\..\..\..\out\Desktop EarLab\$(ConfigurationName)"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "..\..\..\..\out\Desktop EarLab\$(ConfigurationName)\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
