@@ -90,21 +90,7 @@
             <!-- 32-bit components go here -->
             <Merge Id="vc100" Language="1033" SourceFile="$(var.MergeModulesPath)\Microsoft_VC100_CRT_x86.msm" DiskId="1" />
             <?endif ?>
-            <Component Id="DesktopEarlab_Shortcuts" Guid="{A37EF89F-F37D-4C63-9816-8A0AFC97ACA2}" Win64="$(var.Win64)">
-              <RegistryKey Root="HKCU" Key="Software\[Manufacturer]\[LongProductName]">
-                <RegistryValue Value="Uninstall" Type="string" KeyPath="yes" />
-              </RegistryKey>
-              <Shortcut Id="Earlab_Program_Group_Shortcut"
-                        Directory="ProgramMenuDir"
-                        Name="Experiment Manager"
-                        Icon="[COREFILES]"
-                        WorkingDirectory="APPLICATIONFOLDER"
-                        Target="[COREFILES]ExperimentManager.exe"
-                        Advertise="no" />
-              <RemoveFolder Id="DeleteShortcutFolder"
-                            Directory="ProgramMenuDir"
-                            On="uninstall" />
-            </Component>
+
           </Directory>
           <Directory Id="ModulesFolder" Name="Modules" />
           <Directory Id="ModelsFolder" Name="Models" />
@@ -113,9 +99,99 @@
       </Directory>
       <Directory Id="DesktopFolder" Name="Desktop" />
       <Directory Id="ProgramMenuFolder" Name="Programs">
-        <Directory Id="ProgramMenuDir" Name="$(var.ShortProductName)"/>
+        <Directory Id="EarlabShortcutFolder" Name="$(var.LongProductName)">
+          <Directory Id="DocumentationShortcutFolder" Name="Documentation"/>
+          <Directory Id="HelpShortcutFolder" Name="Help"/>
+        </Directory>
       </Directory>
     </Directory>
+    
+    <!-- shortcuts to applications in the start menu -->
+    <DirectoryRef Id="EarlabShortcutFolder">
+      <Component Id="DesktopEarlab_Shortcuts" Guid="{A37EF89F-F37D-4C63-9816-8A0AFC97ACA2}" Win64="$(var.Win64)">
+        <RegistryKey Root="HKCU" Key="Software\[Manufacturer]\[LongProductName]">
+          <RegistryValue Value="Uninstall" Type="string" KeyPath="yes" />
+        </RegistryKey>
+        <CreateFolder Directory="DocumentationShortcutFolder" />
+        <CreateFolder Directory="HelpShortcutFolder" />
+        <!-- remove folder -->
+        <RemoveFolder Id="RemoveDocumentationShortcutFolder"
+           Directory="DocumentationShortcutFolder"
+           On="uninstall" />
+        <RemoveFolder Id="RemoveHelpShortcutFolder"
+           Directory="HelpShortcutFolder"
+           On="uninstall" />
+        <RemoveFolder Id="RemoveEarlabShortcutFolder"
+           Directory="EarlabShortcutFolder"
+           On="uninstall" />
+        <Shortcut Id="ExperimentManagerShortcut"
+                  Directory="EarlabShortcutFolder"
+                  Name="Experiment Manager"
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[COREFILES]ExperimentManager.exe"
+                  Advertise="no" />
+        <Shortcut Id="SimulatorShortcut"
+                  Directory="EarlabShortcutFolder"
+                  Name="Simulator"
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[COREFILES]Simulator.exe"
+                  Advertise="no" />
+        <Shortcut Id="DataViewerShortcut"
+                  Directory="EarlabShortcutFolder"
+                  Name="Data Viewer"
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[DataViewerFolder]DataViewer.exe"
+                  Advertise="no" />
+        <Shortcut Id="SpikeAnalysisDemoShortcut"
+                  Directory="EarlabShortcutFolder"
+                  Name="Spike analysis demo (requires MATLAB) "
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[COREFILES]LaunchSpikeAnalysis.bat"
+                  Advertise="no" />
+        <Shortcut Id="EarlabHelpShortcut"
+                  Directory="HelpShortcutFolder"
+                  Name="EarLab Help"
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[COREFILES]DesktopEarLab.chm"
+                  Advertise="no" />
+        <Shortcut Id="DataViewerHelpShortcut"
+                  Directory="HelpShortcutFolder"
+                  Name="Data Viewer Help"
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[DataViewerFolder]DataViewer.chm"
+                  Advertise="no" />
+        <Shortcut Id="ExperimentDescriptionsShortcut"
+                  Directory="DocumentationShortcutFolder"
+                  Name="Experiment Descriptions (requires Acrobat Reader)"
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[COREFILES]Experiments.pdf"
+                  Advertise="no" />
+        <Shortcut Id="FileGuideShortcut"
+                  Directory="DocumentationShortcutFolder"
+                  Name="File Guide"
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[COREFILES]FileGuide.htm"
+                  Advertise="no" />
+        <Shortcut Id="InstallationGuideGuideShortcut"
+                  Directory="DocumentationShortcutFolder"
+                  Name="Installation Guide"
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[COREFILES]InstallGuide.htm"
+                  Advertise="no" />
+        <Shortcut Id="OverviewShortcut"
+                  Directory="DocumentationShortcutFolder"
+                  Name="Overview"
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[COREFILES]Overview.htm"
+                  Advertise="no" />
+        <Shortcut Id="ReadmeShortcut"
+                  Directory="DocumentationShortcutFolder"
+                  Name="Read Me"
+                  WorkingDirectory="APPLICATIONFOLDER"
+                  Target="[COREFILES]readme.html"
+                  Advertise="no" />
+      </Component>
+    </DirectoryRef>
 
     <Feature Id="ProductFeature" Title="$(var.LongProductName)" Level="1">
       <ComponentRef Id="Core" />
