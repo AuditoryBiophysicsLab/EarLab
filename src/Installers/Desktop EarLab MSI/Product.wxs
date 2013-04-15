@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <?define ProductName = "Earlab" ?>
+  <?define LongProductName = "Desktop EarLab" ?>
+  <?define ShortProductName = "EarLab" ?>
   <?define ProductAuthor = "Hearing Research Center" ?>
   <?define ProductFullVersion = "2.5.1.0" ?>
   <?define Manufacturer="Boston University"?>
@@ -11,13 +12,13 @@
 
   <?if $(var.Platform) = x64 ?>
   <?define CoreToolsFolder = "$(var.CoreToolsRoot)\x64" ?>
-  <?define ProductDisplayName = "$(var.ProductName) (64-bit)" ?>
+  <?define ProductDisplayName = "$(var.LongProductName) (64-bit)" ?>
   <?define ProductUpgradeCode = "2971C963-773C-452D-808A-6FBD58170C4F" ?>
   <?define Win64 = "yes" ?>
   <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
   <?else ?>
   <?define CoreToolsFolder = "$(var.CoreToolsRoot)\Win32" ?>
-  <?define ProductDisplayName = "$(var.ProductName)" ?>
+  <?define ProductDisplayName = "$(var.LongProductName)" ?>
   <?define ProductUpgradeCode = "1C0EAC43-8C02-4841-8C50-3B1AE5FC13F5" ?>
   <?define Win64 = "no" ?>
   <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
@@ -36,6 +37,16 @@
 
     <Media Id="1" Cabinet="Modules.cab" EmbedCab="yes" />
 
+    <WixVariable Id="WixUIBannerBmp" Value="Bitmaps\bannrbmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="Bitmaps\dlgbmp.bmp" />
+
+
+    <MajorUpgrade AllowDowngrades="no"
+                  AllowSameVersionUpgrades="yes"
+                  Schedule="afterInstallInitialize"
+                  MigrateFeatures="yes"
+                  DowngradeErrorMessage="A later version of [LongProductName] is already installed. Setup will now exit." />
+
     <!-- Property gets value from registry to set up installation folder for upgrades -->
     <Property Id="APPLICATIONFOLDER" Secure="yes">
       <RegistrySearch Id='AppFolderRegistrySearch'
@@ -45,9 +56,16 @@
                       Name='INSTALLLOCATION'
                       Win64='$(var.Win64)' />
     </Property>
+
+    <!-- Define destination folder (name of app folder only) -->
+    <Property Id="ApplicationFolderName" Value="$(var.ShortProductName)" />
+
+    <!-- Default to per-machine installation -->
+    <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="$(var.PlatformProgramFilesFolder)">
-        <Directory Id="APPLICATIONFOLDER" Name="$(var.ProductName)">
+        <Directory Id="APPLICATIONFOLDER" Name="EarLab">
           <Directory Id="COREFILES" Name="Desktop EarLab">
             <Component Id="Core" Guid="FE21A056-2236-4EF2-912E-154E180FAC06">
               <File Id="DesktopEarlab.exe"
@@ -80,7 +98,7 @@
       </Directory>
     </Directory>
 
-    <Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
+    <Feature Id="ProductFeature" Title="$(var.LongProductName)" Level="1">
       <ComponentRef Id="Core" />
       <ComponentGroupRef Id="Documentation" />
       <ComponentGroupRef Id="Modules" />
@@ -88,5 +106,29 @@
       <ComponentGroupRef Id="DataViewer" />
       <MergeRef Id="vc100"/>
     </Feature>
+
+    <!-- 
+		Set default destination folder (full path) unless it comes from registry 
+		SetDirectory schedules the action prior to WixSetDefaultPerMachineFolder;
+		code updated for manually scheduled elements to schedule between 
+		WixSetDefaultPerMachineFolder and WixSetPerMachineFolder.
+	-->
+    <SetDirectory
+      Id="APPLICATIONFOLDER"
+      Value="[$(var.PlatformProgramFilesFolder)][ApplicationFolderName]">APPLICATIONFOLDER=""</SetDirectory>
+
+    <CustomAction
+        Id="OverwriteWixSetDefaultPerMachineFolder"
+        Property="WixPerMachineFolder"
+        Value="[APPLICATIONFOLDER]"
+        Execute="immediate"
+	/>
+
+    <!-- Save destination folder in Add/Remove programs (ARP) registry key -->
+    <SetProperty
+      Id="ARPINSTALLLOCATION"
+      Value="[APPLICATIONFOLDER]"
+      After="CostFinalize"
+	/>
   </Product>
 </Wix>
