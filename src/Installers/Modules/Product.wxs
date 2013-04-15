@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define ProductName = "Earlab" ?>
+  <?define ProductAuthor = "Hearing Research Center" ?>
+  <?define ProductFullVersion = "2.5.1.0" ?>
+  <?define Manufacturer="Boston University"?>
+  <?define EarlabRoot="C:\Projects\earlab"?>
+  <?define CoreToolsRoot="$(var.EarlabRoot)\out\Desktop EarLab\Release"?>
+  <?define ModuleRoot="$(var.EarlabRoot)\out\Modules\Release"?>
+  <?define MergeModulesPath="C:\Program Files (x86)\Common Files\Merge Modules"?>
+
+  <?if $(var.Platform) = x64 ?>
+  <?define CoreToolsFolder = "$(var.CoreToolsRoot)\x64" ?>
+  <?define ProductDisplayName = "$(var.ProductName) (64-bit)" ?>
+  <?define ProductUpgradeCode = "2971C963-773C-452D-808A-6FBD58170C4F" ?>
+  <?define Win64 = "yes" ?>
+  <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+  <?else ?>
+  <?define CoreToolsFolder = "$(var.CoreToolsRoot)\Win32" ?>
+  <?define ProductDisplayName = "$(var.ProductName)" ?>
+  <?define ProductUpgradeCode = "1C0EAC43-8C02-4841-8C50-3B1AE5FC13F5" ?>
+  <?define Win64 = "no" ?>
+  <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+  <?endif ?>
+
+  <Product Id="*"
+           Name="$(var.ProductDisplayName)"
+           Language="1033"
+           Version="$(var.ProductFullVersion)"
+           Manufacturer="$(var.Manufacturer)"
+           UpgradeCode="$(var.ProductUpgradeCode)">
+    <Package InstallerVersion="300"
+             Compressed="yes"
+             InstallScope="perMachine"
+             Manufacturer="$(var.ProductAuthor)"/>
+
+    <Media Id="1" Cabinet="Modules.cab" EmbedCab="yes" />
+
+    <!-- Property gets value from registry to set up installation folder for upgrades -->
+    <Property Id="APPLICATIONFOLDER" Secure="yes">
+      <RegistrySearch Id='AppFolderRegistrySearch'
+                      Type='raw'
+                      Root='HKLM'
+                      Key='Software\Microsoft\Windows\CurrentVersion\Uninstall\[WIX_UPGRADE_DETECTED]'
+                      Name='INSTALLLOCATION'
+                      Win64='$(var.Win64)' />
+    </Property>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="$(var.PlatformProgramFilesFolder)">
+        <Directory Id="APPLICATIONFOLDER" Name="$(var.ProductName)">
+          <Directory Id="COREFILES" Name="Desktop EarLab">
+            <Component Id="Core" Guid="FE21A056-2236-4EF2-912E-154E180FAC06">
+              <File Id="DesktopEarlab.exe"
+                    Name="DesktopEarlab.exe"
+                    Source="$(var.CoreToolsFolder)\DesktopEarlab.exe"
+                    KeyPath="yes" />
+              <File Id="DesktopEarlabDLL.dll"
+                    Name="DesktopEarlabDLL.dll"
+                    Source="$(var.CoreToolsFolder)\DesktopEarlabDLL.dll" />
+              <!-- GUI tools -->
+              <File Id="Simulator.exe"
+                    Name="Simulator.exe"
+                    Source="$(var.CoreToolsRoot)\Simulator.exe" />
+              <File Id="ExperimentManager.exe"
+                    Name="ExperimentManager.exe"
+                    Source="$(var.CoreToolsRoot)\ExperimentManager.exe" />
+            </Component>
+            <?if $(var.Platform) = x64 ?>
+            <!-- 64-bit components go here -->
+            <Merge Id="vc100" Language="1033" SourceFile="$(var.MergeModulesPath)\Microsoft_VC100_CRT_x64.msm" DiskId="1" />
+            <?else ?>
+            <!-- 32-bit components go here -->
+            <Merge Id="vc100" Language="1033" SourceFile="$(var.MergeModulesPath)\Microsoft_VC100_CRT_x86.msm" DiskId="1" />
+            <?endif ?>
+          </Directory>
+          <Directory Id="ModulesFolder" Name="Modules" />
+          <Directory Id="ModelsFolder" Name="Models" />
+          <Directory Id="DataViewerFolder" Name="DataViewer" />
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
+      <ComponentRef Id="Core" />
+      <ComponentGroupRef Id="Documentation" />
+      <ComponentGroupRef Id="Modules" />
+      <ComponentGroupRef Id="Models" />
+      <ComponentGroupRef Id="DataViewer" />
+      <MergeRef Id="vc100"/>
+    </Feature>
+  </Product>
+</Wix>
