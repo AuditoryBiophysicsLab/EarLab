@@ -1,6 +1,9 @@
-mkdir ..\bin
-mkdir ..\obj
-mkdir ..\out
+mkdir "..\bin"
+mkdir "..\obj"
+mkdir "..\out"
+mkdir "..\setup"
+mkdir "..\setup\Debug"
+mkdir "..\setup\Release"
 mkdir "..\out\Desktop EarLab"
 mkdir "..\out\Modules"
 mkdir "..\out\Desktop EarLab\Debug"
@@ -15,3 +18,5 @@ mkdir "..\out\Modules\Debug\Win32"
 mkdir "..\out\Modules\Debug\x64"
 mkdir "..\out\Modules\Release\Win32"
 mkdir "..\out\Modules\Release\x64"
+mkdir "..\out\DataViewer\Debug"
+mkdir "..\out\DataViewer\Release"
