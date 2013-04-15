@@ -173,6 +173,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EarlabSimulator\Simulator.csproj">
+      <Project>{0D51C4F6-A524-4838-95EE-083A54F73E5A}</Project>
+      <Name>Simulator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

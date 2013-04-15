@@ -186,8 +186,12 @@ namespace EarLab
 			resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EarLab.PlayIcon.bmp");
 			myImageList.Images.Add(Image.FromStream(resourceStream));
 			treeView1.ImageList = myImageList;
-
-			for (int CurRun = 0; CurRun < theRunFile.Run.Length; CurRun++)
+#if DEBUG
+            var executablePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+#else
+            var executablePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+#endif
+            for (int CurRun = 0; CurRun < theRunFile.Run.Length; CurRun++)
 			{
 				treeView1.Nodes.Insert(CurRun, new TreeNode(theRunFile.Run[CurRun].Name));
 				treeView1.Nodes[CurRun].ImageIndex = CochleaIcon;
@@ -198,7 +202,7 @@ namespace EarLab
 				theInfo.ContextMenu = runContextMenu;
 				theInfo.ToolTip = "Right click for options";
 				theInfo.RunRecord = theRunFile.Run[CurRun];
-				theInfo.ProgramName = "Simulator.exe";
+				theInfo.ProgramName = Path.Combine(executablePath, "Simulator.exe");
 				treeView1.Nodes[CurRun].Tag = theInfo;
 
 				treeView1.Nodes[CurRun].Nodes.Insert(RunCommand, new TreeNode("Double click to run this simulation"));
@@ -210,8 +214,8 @@ namespace EarLab
 				theInfo.NodeInfoType = NodeInfoType.RunSimulation;
 				theInfo.ToolTip = "Double click to run the simulation";
 				theInfo.RunRecord = theRunFile.Run[CurRun];
-				theInfo.ProgramName = "Simulator.exe";
-				treeView1.Nodes[CurRun].Nodes[RunCommand].Tag = theInfo;
+                theInfo.ProgramName = Path.Combine(executablePath, "Simulator.exe");
+                treeView1.Nodes[CurRun].Nodes[RunCommand].Tag = theInfo;
 
 				treeView1.Nodes[CurRun].Nodes.Insert(Description, new TreeNode("Description: " + theRunFile.Run[CurRun].Description));
 				treeView1.Nodes[CurRun].Nodes[Description].ForeColor = Color.MediumSlateBlue;

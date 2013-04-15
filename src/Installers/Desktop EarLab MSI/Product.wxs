@@ -40,7 +40,9 @@
     <WixVariable Id="WixUIBannerBmp" Value="Bitmaps\bannrbmp.bmp" />
     <WixVariable Id="WixUIDialogBmp" Value="Bitmaps\dlgbmp.bmp" />
 
-
+    <Icon Id="earlab.ico" SourceFile="earlab.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="earlab.ico" />
+    
     <MajorUpgrade AllowDowngrades="no"
                   AllowSameVersionUpgrades="yes"
                   Schedule="afterInstallInitialize"

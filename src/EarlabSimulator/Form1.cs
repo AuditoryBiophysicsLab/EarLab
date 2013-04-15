@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Data;
 using Microsoft.Win32;
@@ -42,7 +43,12 @@ namespace EarLab
                 mModuleKey = Registry.CurrentUser.CreateSubKey(@"Software\EarLab");
                 mApplicationKey = Registry.CurrentUser.CreateSubKey(@"Software\EarLab\EarLab GUI");
                 mLogCallback = new LogCallback(LogCallback);
-                mModuleDirectory = new RegistryString(mModuleKey, "ModulesPath", @"C:\Program Files\EarLab\Modules");
+                mModuleDirectory = new RegistryString(mModuleKey, "ModulesPath", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), @"EarLab\Modules"));
+                if (!Directory.Exists(mModuleDirectory.Value))
+                {
+                    mModuleDirectory.Value = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), @"EarLab\Modules");
+                    if (!Directory.Exists(mModuleDirectory.Value)) MessageBox.Show(@"Module directory not found", @"Simulator error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 mInputDirectory = new RegistryString(mApplicationKey, "InputDirectory", System.Environment.ExpandEnvironmentVariables("%USERPROFILE%") + @"\My Documents\EarLab\Signals");
                 mOutputDirectory = new RegistryString(mApplicationKey, "OutputDirectory", System.Environment.ExpandEnvironmentVariables("%USERPROFILE%") + @"\My Documents\EarLab\Output");
                 mDiagramFile = new RegistryString(mApplicationKey, "RunParameterFile", null);
