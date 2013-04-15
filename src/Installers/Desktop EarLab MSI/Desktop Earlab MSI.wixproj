@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.7</ProductVersion>
+    <ProjectGuid>{5aeb283e-d81a-4a0d-81d9-abbd99b1ccba}</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>Modules</OutputName>
+    <OutputType>Package</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <Name>Desktop EarLab MSI</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <ArchitectureDirectory>Win32</ArchitectureDirectory>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug;DocumentationFolder=..\..\Documentation;ModulesFolder=..\..\..\out\Modules\$(Configuration)\$(ArchitectureDirectory);ModelFolder=..\..\ModelFolders;DataViewerFolder=..\..\..\out\DataViewer\$(Configuration)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <ArchitectureDirectory>Win32</ArchitectureDirectory>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>DocumentationFolder=..\..\Documentation;ModulesFolder=..\..\..\out\Modules\$(Configuration)\$(ArchitectureDirectory);ModelFolder=..\..\ModelFolders;DataViewerFolder=..\..\..\out\DataViewer\$(Configuration)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <ArchitectureDirectory>x64</ArchitectureDirectory>
+    <DefineConstants>Debug;DocumentationFolder=..\..\Documentation;ModulesFolder=..\..\..\out\Modules\$(Configuration)\$(ArchitectureDirectory);ModelFolder=..\..\ModelFolders;DataViewerFolder=..\..\..\out\DataViewer\$(Configuration)</DefineConstants>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <ArchitectureDirectory>x64</ArchitectureDirectory>
+    <DefineConstants>DocumentationFolder=..\..\Documentation;ModulesFolder=..\..\..\out\Modules\$(Configuration)\$(ArchitectureDirectory);ModelFolder=..\..\ModelFolders;DataViewerFolder=..\..\..\out\DataViewer\$(Configuration)</DefineConstants>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DataViewer.wxs" />
+    <Compile Include="Documentation.wxs" />
+    <Compile Include="Models.wxs" />
+    <Compile Include="Modules.wxs" />
+    <Compile Include="Product.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataViewer\DataViewer\DataViewer.csproj">
+      <Name>DataViewer</Name>
+      <Project>{1eb8a954-690e-4340-adbe-d788c520369b}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DesktopEarlabDLL\DesktopEarlabDLL.vcxproj">
+      <Name>DesktopEarlabDLL</Name>
+      <Project>{1f44145e-4f2b-44ea-888b-db92b330feb3}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DesktopEarlab\DesktopEarlab.vcxproj">
+      <Name>DesktopEarlab</Name>
+      <Project>{f912e125-8cc7-4e6c-bb75-c92e1db0a854}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EarLab ExperimentManager\ExperimentManager.csproj">
+      <Name>ExperimentManager</Name>
+      <Project>{7e98e1ad-98ce-437a-964b-1fa25553a201}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EarlabSimulator\Simulator.csproj">
+      <Name>Simulator</Name>
+      <Project>{0d51c4f6-a524-4838-95ee-083a54f73e5a}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <PostBuildEvent />
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>"c:\Program Files (x86)\WiX Toolset v3.7\bin\heat.exe" dir "C:\Projects\earlab\out\Modules\$(ConfigurationName)\$(ArchitectureDirectory)" -srd -cg Modules -dr ModulesFolder -gg -sfrag -out "$(ProjectDir)Modules.wxs" -sw -var var.ModulesFolder
+if errorlevel 1  goto ModuleBuildEventFailed
+"c:\Program Files (x86)\WiX Toolset v3.7\bin\heat.exe" dir "C:\Projects\earlab\src\Documentation" -srd -cg Documentation -dr COREFILES -gg -sfrag -out "$(ProjectDir)Documentation.wxs" -sw -var var.DocumentationFolder
+if errorlevel 1 goto DocumentationBuildEventFailed
+"c:\Program Files (x86)\WiX Toolset v3.7\bin\heat.exe" dir "C:\Projects\earlab\src\ModelFolders" -srd -cg Models -dr ModelsFolder -gg -sfrag -out "$(ProjectDir)Models.wxs" -sw -var var.ModelFolder
+if errorlevel 1 goto ModelBuildEventFailed
+"c:\Program Files (x86)\WiX Toolset v3.7\bin\heat.exe" dir "C:\Projects\earlab\out\DataViewer\$(ConfigurationName)" -scom -sreg -srd -cg DataViewer -dr DataViewerFolder -gg -sfrag -out "$(ProjectDir)DataViewer.wxs" -sw -var var.DataViewerFolder
+if errorlevel 1 goto DataViewerBuildEventFailed
+goto BuildEventOK
+:ModuleBuildEventFailed
+echo Module PREBUILD for $(ProjectName) FAILED
+exit 1
+:DocumentationBuildEventFailed
+echo Documentation PREBUILD for $(ProjectName) FAILED
+exit 1
+:ModelBuildEventFailed
+echo Model PREBUILD for $(ProjectName) FAILED
+:DataViewerlBuildEventFailed
+echo DataViewer PREBUILD for $(ProjectName) FAILED
+exit 1
+:BuildEventOK
+echo PREBUILD for $(ProjectName) COMPLETED SUCCESSFULLY</PreBuildEvent>
+  </PropertyGroup>
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it.
+	Other similar extension points exist, see Wix.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>

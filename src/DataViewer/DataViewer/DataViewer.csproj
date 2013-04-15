@@ -145,8 +145,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy "$(TargetDir)*.*" "..\..\..\..\..\out\DataViewer\$(ConfigurationName)"</PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>copy "$(TargetDir)*.*" "..\..\..\..\..\out\DataViewer\$(ConfigurationName)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
