@@ -6,7 +6,7 @@
     <ProductVersion>3.7</ProductVersion>
     <ProjectGuid>{5aeb283e-d81a-4a0d-81d9-abbd99b1ccba}</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>Modules</OutputName>
+    <OutputName>DesktopEarlab</OutputName>
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
@@ -14,13 +14,13 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <ArchitectureDirectory>Win32</ArchitectureDirectory>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Debug;DocumentationFolder=..\..\Documentation;ModulesFolder=..\..\..\out\Modules\$(Configuration)\$(ArchitectureDirectory);ModelFolder=..\..\ModelFolders;DataViewerFolder=..\..\..\out\DataViewer\$(Configuration)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <ArchitectureDirectory>Win32</ArchitectureDirectory>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>DocumentationFolder=..\..\Documentation;ModulesFolder=..\..\..\out\Modules\$(Configuration)\$(ArchitectureDirectory);ModelFolder=..\..\ModelFolders;DataViewerFolder=..\..\..\out\DataViewer\$(Configuration)</DefineConstants>
   </PropertyGroup>
@@ -90,9 +90,6 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PostBuildEvent />
-  </PropertyGroup>
-  <PropertyGroup>
     <PreBuildEvent>"c:\Program Files (x86)\WiX Toolset v3.7\bin\heat.exe" dir "C:\Projects\earlab\out\Modules\$(ConfigurationName)\$(ArchitectureDirectory)" -srd -cg Modules -dr ModulesFolder -gg -sfrag -out "$(ProjectDir)Modules.wxs" -sw -var var.ModulesFolder
 if errorlevel 1  goto ModuleBuildEventFailed
 "c:\Program Files (x86)\WiX Toolset v3.7\bin\heat.exe" dir "C:\Projects\earlab\src\Documentation" -srd -cg Documentation -dr COREFILES -gg -sfrag -out "$(ProjectDir)Documentation.wxs" -sw -var var.DocumentationFolder
@@ -115,6 +112,9 @@ echo DataViewer PREBUILD for $(ProjectName) FAILED
 exit 1
 :BuildEventOK
 echo PREBUILD for $(ProjectName) COMPLETED SUCCESSFULLY</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "!(TargetPath)" "..\..\..\..\..\..\setup\$(ConfigurationName)\$(TargetName)-$(PlatformName)$(TargetExt)"</PostBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

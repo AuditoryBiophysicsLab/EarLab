@@ -99,7 +99,7 @@
       </Directory>
       <Directory Id="DesktopFolder" Name="Desktop" />
       <Directory Id="ProgramMenuFolder" Name="Programs">
-        <Directory Id="EarlabShortcutFolder" Name="$(var.LongProductName)">
+        <Directory Id="EarlabShortcutFolder" Name="$(var.ProductDisplayName)">
           <Directory Id="DocumentationShortcutFolder" Name="Documentation"/>
           <Directory Id="HelpShortcutFolder" Name="Help"/>
         </Directory>
@@ -108,8 +108,8 @@
     
     <!-- shortcuts to applications in the start menu -->
     <DirectoryRef Id="EarlabShortcutFolder">
-      <Component Id="DesktopEarlab_Shortcuts" Guid="{A37EF89F-F37D-4C63-9816-8A0AFC97ACA2}" Win64="$(var.Win64)">
-        <RegistryKey Root="HKCU" Key="Software\[Manufacturer]\[LongProductName]">
+      <Component Id="DesktopEarlab_Shortcuts" Guid="*" Win64="$(var.Win64)">
+        <RegistryKey Root="HKCU" Key="Software\[Manufacturer]\[ProductDisplayName]">
           <RegistryValue Value="Uninstall" Type="string" KeyPath="yes" />
         </RegistryKey>
         <CreateFolder Directory="DocumentationShortcutFolder" />
