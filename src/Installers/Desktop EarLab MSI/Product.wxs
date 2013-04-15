@@ -90,11 +90,30 @@
             <!-- 32-bit components go here -->
             <Merge Id="vc100" Language="1033" SourceFile="$(var.MergeModulesPath)\Microsoft_VC100_CRT_x86.msm" DiskId="1" />
             <?endif ?>
+            <Component Id="DesktopEarlab_Shortcuts" Guid="{A37EF89F-F37D-4C63-9816-8A0AFC97ACA2}" Win64="$(var.Win64)">
+              <RegistryKey Root="HKCU" Key="Software\[Manufacturer]\[LongProductName]">
+                <RegistryValue Value="Uninstall" Type="string" KeyPath="yes" />
+              </RegistryKey>
+              <Shortcut Id="Earlab_Program_Group_Shortcut"
+                        Directory="ProgramMenuDir"
+                        Name="Experiment Manager"
+                        Icon="[COREFILES]"
+                        WorkingDirectory="APPLICATIONFOLDER"
+                        Target="[COREFILES]ExperimentManager.exe"
+                        Advertise="no" />
+              <RemoveFolder Id="DeleteShortcutFolder"
+                            Directory="ProgramMenuDir"
+                            On="uninstall" />
+            </Component>
           </Directory>
           <Directory Id="ModulesFolder" Name="Modules" />
           <Directory Id="ModelsFolder" Name="Models" />
           <Directory Id="DataViewerFolder" Name="DataViewer" />
         </Directory>
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="$(var.ShortProductName)"/>
       </Directory>
     </Directory>
 
@@ -104,6 +123,7 @@
       <ComponentGroupRef Id="Modules" />
       <ComponentGroupRef Id="Models" />
       <ComponentGroupRef Id="DataViewer" />
+      <ComponentRef Id="DesktopEarlab_Shortcuts"/>
       <MergeRef Id="vc100"/>
     </Feature>
 
