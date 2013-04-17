@@ -24,6 +24,7 @@
                   DetectCondition="Netfx4FullVersion AND (NOT VersionNT64 OR Netfx4x64FullVersion)" />
     </PackageGroup>
 
+    <!-- 
     <PackageGroup Id="Netfx20_x86">
       <ExePackage Id="Netfx20_x86" 
                   Cache="no" 
@@ -43,9 +44,10 @@
                   PerMachine="yes" 
                   Permanent="yes" 
                   Vital="yes" 
-                  SourceFile="..\NetFx\NetFx20SP2_x86.exe"
-                  DownloadUrl="http://download.microsoft.com/download/c/6/e/c6e88215-0178-4c6c-b5f3-158ff77b1f38/NetFx20SP2_x86.exe"
+                  SourceFile="..\NetFx\NetFx20SP2_x64.exe"
+                  DownloadUrl="http://download.microsoft.com/download/c/6/e/c6e88215-0178-4c6c-b5f3-158ff77b1f38/NetFx20SP2_x64.exe"
                   DetectCondition="Netfx20x64 AND VersionNT64" />
     </PackageGroup>
+    -->
   </Fragment>
 </Wix>
