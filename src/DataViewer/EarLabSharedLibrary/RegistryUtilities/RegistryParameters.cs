@@ -1,10 +1,9 @@
 using System;
-using System.Windows;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace EarLab
+namespace EarLab.RegistryUtilities
 {
 	/// <summary>
 	/// Summary description for RegistryParameters.

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
+using EarLab.RegistryUtilities;
 using Microsoft.Win32;
 using System.Drawing;
 using System.IO;
@@ -469,7 +470,7 @@ namespace EarLab
             // menuHelpAbout
             // 
             this.menuHelpAbout.Index = 1;
-            this.menuHelpAbout.Text = "About EarLab ExperimentManager...";
+            this.menuHelpAbout.Text = "AboutExperimentManager EarLab ExperimentManager...";
             this.menuHelpAbout.Click += new System.EventHandler(this.menuHelpAbout_Click);
             // 
             // toolTip1
@@ -778,9 +779,9 @@ namespace EarLab
 
 		private void menuHelpAbout_Click(object sender, System.EventArgs e)
 		{
-			About AboutForm = new About();
+			AboutExperimentManager aboutExperimentManagerForm = new AboutExperimentManager();
 
-			AboutForm.ShowDialog(this);
+			aboutExperimentManagerForm.ShowDialog(this);
 		}
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)

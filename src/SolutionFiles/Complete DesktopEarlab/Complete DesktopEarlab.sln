@@ -13,6 +13,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleSignalGenerator", "..
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AudioMixer", "..\..\Modules\AudioMixer\AudioMixer.vcxproj", "{3CCC78A1-ED5F-43C5-86A8-2239724EEC01}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74} = {F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AuditoryNerveIFR", "..\..\Modules\AuditoryNerveIFR\AuditoryNerveIFR.vcxproj", "{21CF38D3-5DA3-4680-8D65-923E14CFB346}"
 EndProject
@@ -258,6 +261,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers", "Installers", "{92CD8D46-7E9C-414C-89CF-4ABE381EAC75}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Desktop Earlab MSI", "..\..\Installers\Desktop EarLab MSI\Desktop Earlab MSI.wixproj", "{5AEB283E-D81A-4A0D-81D9-ABBD99B1CCBA}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Desktop Earlab Bootstrapper", "..\..\Installers\Desktop Earlab Bootstrapper\Desktop Earlab Bootstrapper.wixproj", "{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -1066,6 +1071,18 @@ Global
 		{5AEB283E-D81A-4A0D-81D9-ABBD99B1CCBA}.Release|x64.Build.0 = Release|x64
 		{5AEB283E-D81A-4A0D-81D9-ABBD99B1CCBA}.Release|x86.ActiveCfg = Release|x86
 		{5AEB283E-D81A-4A0D-81D9-ABBD99B1CCBA}.Release|x86.Build.0 = Release|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Debug|Win32.ActiveCfg = Debug|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Debug|x64.ActiveCfg = Debug|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Debug|x86.ActiveCfg = Debug|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Debug|x86.Build.0 = Debug|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Release|Mixed Platforms.Build.0 = Release|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Release|Win32.ActiveCfg = Release|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Release|x64.ActiveCfg = Release|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Release|x86.ActiveCfg = Release|x86
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1128,5 +1145,6 @@ Global
 		{0D51C4F6-A524-4838-95EE-083A54F73E5A} = {E2390FB0-67E2-463F-BD9D-2899D0805E69}
 		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90} = {16828E19-0CFF-49BA-BC80-87D1B2260B55}
 		{5AEB283E-D81A-4A0D-81D9-ABBD99B1CCBA} = {92CD8D46-7E9C-414C-89CF-4ABE381EAC75}
+		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8} = {92CD8D46-7E9C-414C-89CF-4ABE381EAC75}
 	EndGlobalSection
 EndGlobal

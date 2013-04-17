@@ -4,7 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Reflection;
 using System.Windows.Forms;
-using System.Data;
+using EarLab.RegistryUtilities;
 using Microsoft.Win32;
 using System.Threading;
 using System.IO;
@@ -662,7 +662,7 @@ namespace EarLab
 
         private void menuHelpAbout_Click(object sender, EventArgs e)
         {
-            Form About = new About();
+            Form About = new AboutSimulator();
 
             About.ShowDialog(this);
         }

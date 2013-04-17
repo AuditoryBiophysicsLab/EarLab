@@ -8,9 +8,9 @@ using System.Windows.Forms;
 namespace EarLab
 {
 	/// <summary>
-	/// Summary description for About.
+	/// Summary description for AboutSimulator.
 	/// </summary>
-	public class About : System.Windows.Forms.Form
+	public class AboutSimulator : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.RichTextBox richTextBox1;
 		private System.Windows.Forms.Button button1;
@@ -19,7 +19,7 @@ namespace EarLab
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public About()
+		public AboutSimulator()
 		{
 			//
 			// Required for Windows Form Designer support
@@ -88,7 +88,7 @@ Email the project team at earlab@bu.edu";
 			this.button1.Text = "OK";
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
-			// About
+			// AboutSimulator
 			// 
 			this.AcceptButton = this.button1;
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
@@ -97,8 +97,8 @@ Email the project team at earlab@bu.edu";
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.richTextBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.Name = "About";
-			this.Text = "About Desktop EarLab";
+			this.Name = "AboutSimulator";
+			this.Text = "AboutSimulator Desktop EarLab";
 			this.Load += new System.EventHandler(this.About_Load);
 			this.ResumeLayout(false);
 

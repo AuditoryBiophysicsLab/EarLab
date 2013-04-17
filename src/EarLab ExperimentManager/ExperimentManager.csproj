@@ -41,7 +41,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -93,9 +94,6 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
-    <Reference Include="System.Data">
-      <Name>System.Data</Name>
-    </Reference>
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
     </Reference>
@@ -107,7 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.cs">
+    <Compile Include="AboutExperimentManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AssemblyInfo.cs">
@@ -122,9 +120,6 @@
     <Compile Include="NodeInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="RegistryParameters.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="RunFile.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -134,8 +129,8 @@
     <Compile Include="xDirectory.cs" />
     <Compile Include="xDirectoryEventHandlers.cs" />
     <Compile Include="xDirectoryStatus.cs" />
-    <EmbeddedResource Include="About.resx">
-      <DependentUpon>About.cs</DependentUpon>
+    <EmbeddedResource Include="AboutExperimentManager.resx">
+      <DependentUpon>AboutExperimentManager.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Cochlea.bmp" />
@@ -174,10 +169,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataViewer\EarLabSharedLibrary\EarLabSharedLibrary.csproj">
+      <Project>{D98D9527-F643-41E4-AC47-382A56FE00FB}</Project>
+      <Name>EarLabSharedLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EarlabSimulator\Simulator.csproj">
       <Project>{0D51C4F6-A524-4838-95EE-083A54F73E5A}</Project>
       <Name>Simulator</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

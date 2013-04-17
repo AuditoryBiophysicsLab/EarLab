@@ -345,7 +345,7 @@ namespace EarLab
             // 
             this.menuHelpAbout.Name = "menuHelpAbout";
             this.menuHelpAbout.Size = new System.Drawing.Size(204, 22);
-            this.menuHelpAbout.Text = "About Desktop EarLab...";
+            this.menuHelpAbout.Text = "AboutSimulator Desktop EarLab...";
             this.menuHelpAbout.Click += new System.EventHandler(this.menuHelpAbout_Click);
             // 
             // timerCommandlineRun

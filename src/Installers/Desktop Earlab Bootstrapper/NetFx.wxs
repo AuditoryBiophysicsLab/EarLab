@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Fragment>
+    <WixVariable Id="WixMbaPrereqPackageId" Value="Netfx4Full" />
+    <WixVariable Id="WixMbaPrereqLicenseUrl" Value="NetfxLicense.rtf" />
+
+    <util:RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v2.0.50727" Value="Version" Variable="Netfx20" />
+    <util:RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v2.0.50727" Value="Version" Variable="Netfx20x64" Win64="yes"/>
+    <util:RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5" Value="Version" Variable="Netfx35" />
+    <util:RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5" Value="Version" Variable="Netfx35x64" Win64 ="yes" />
+    <util:RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full" Value="Version" Variable="Netfx4FullVersion" />
+    <util:RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full" Value="Version" Variable="Netfx4x64FullVersion" Win64="yes" />
+
+    <PackageGroup Id="Netfx4Full">
+      <ExePackage Id="Netfx4Full" Cache="no" Compressed="no" PerMachine="yes" Permanent="yes" Vital="yes" SourceFile="..\dotNetFx40\dotNetFx40_Full_x86_x64.exe"
+                  DownloadUrl="http://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe"
+                  DetectCondition="Netfx4FullVersion AND (NOT VersionNT64 OR Netfx4x64FullVersion)" />
+    </PackageGroup>
+
+    <PackageGroup Id="Netfx20_x86">
+      <ExePackage Id="Netfx20_x86" Cache="no" Compressed="no" PerMachine="yes" Permanent="yes" Vital="yes" SourceFile="..\NetFx20Sp2\NetFx20SP2_x86.exe"
+                  DownloadUrl="http://download.microsoft.com/download/c/6/e/c6e88215-0178-4c6c-b5f3-158ff77b1f38/NetFx20SP2_x86.exe"
+                  DetectCondition="Netfx20 AND (NOT VersionNT64)" />
+    </PackageGroup>
+
+    <PackageGroup Id="Netfx20_x64">
+      <ExePackage Id="Netfx20_x64" Cache="no" Compressed="no" PerMachine="yes" Permanent="yes" Vital="yes" SourceFile="..\NetFx20Sp2\NetFx20SP2_x86.exe"
+                  DownloadUrl="http://download.microsoft.com/download/c/6/e/c6e88215-0178-4c6c-b5f3-158ff77b1f38/NetFx20SP2_x86.exe"
+                  DetectCondition="Netfx20x64 AND VersionNT64" />
+    </PackageGroup>
+  </Fragment>
+</Wix>
