@@ -15,13 +15,13 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <ArchitectureDirectory>Win32</ArchitectureDirectory>
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Debug;DocumentationFolder=..\..\Documentation;ModulesFolder=..\..\..\out\Modules\$(Configuration)\$(ArchitectureDirectory);ModelFolder=..\..\ModelFolders;DataViewerFolder=..\..\..\out\DataViewer\$(Configuration)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <ArchitectureDirectory>Win32</ArchitectureDirectory>
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>DocumentationFolder=..\..\Documentation;ModulesFolder=..\..\..\out\Modules\$(Configuration)\$(ArchitectureDirectory);ModelFolder=..\..\ModelFolders;DataViewerFolder=..\..\..\out\DataViewer\$(Configuration)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">

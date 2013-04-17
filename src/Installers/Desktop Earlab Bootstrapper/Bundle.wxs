@@ -6,21 +6,25 @@
   <?define Bitness="(32-bit)"?>
   <?endif ?>
   <?define ProductName = "Desktop EarLab $(var.Bitness)" ?>
-  <Bundle Name="Desktop_Earlab_Bootstrapper" Version="1.0.0.0" Manufacturer="" UpgradeCode="4fd82ab5-c818-4316-8217-d155efecd853">
+  <Bundle 
+    Name="$(var.ProductName)" 
+    Version="2.5.1.0" 
+    Manufacturer="Boston University Hearing Research Center" 
+    IconSourceFile="earlab.ico"
+    UpgradeCode="{6D200E97-75AC-445A-884D-3D7CF71667BE}">
 		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
 			<bal:WixStandardBootstrapperApplication
 						LicenseFile="license.rtf"/>
 		</BootstrapperApplicationRef>
 
 		<Chain>
-      <PackageGroupRef Id="Netfx20_x86" />
-      <PackageGroupRef Id="Netfx20_x64" />
-      <MsiPackage DownloadUrl="$(var.DownloadURLRoot)/ESME%20Application-$(var.Platform).msi"
-                  SourceFile="$(var.ApplicationRoot)\msi\ESME Application-$(var.Platform).msi"
+      <PackageGroupRef Id="Netfx4Full" />
+      <MsiPackage DownloadUrl="http://earlab.bu.edu/software/desktop/versions/DesktopEarLab$(var.Platform).msi"
+                  SourceFile="C:\Projects\earlab\src\Installers\Desktop EarLab MSI\bin\$(var.Platform)\$(var.Configuration)\DesktopEarlab.msi"
                   Permanent="no"
                   Compressed="no"
-                  Visible="yes"
-                  Vital="no" />
+                  Visible="no"
+                  Vital="yes" />
 		</Chain>
 	</Bundle>
 </Wix>
