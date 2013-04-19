@@ -129,6 +129,9 @@
     <Compile Include="xDirectory.cs" />
     <Compile Include="xDirectoryEventHandlers.cs" />
     <Compile Include="xDirectoryStatus.cs" />
+    <SplashScreen Include="SplashScreen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </SplashScreen>
     <EmbeddedResource Include="AboutExperimentManager.resx">
       <DependentUpon>AboutExperimentManager.cs</DependentUpon>
       <SubType>Designer</SubType>
