@@ -37,7 +37,6 @@
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DataViewer.wxs" />
     <Compile Include="Documentation.wxs" />
     <Compile Include="Models.wxs" />
     <Compile Include="Modules.wxs" />
@@ -90,14 +89,15 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
+    <PostBuildEvent>copy "!(TargetPath)" "..\..\..\..\..\..\setup\$(ConfigurationName)\$(TargetName)-$(PlatformName)$(TargetExt)"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
     <PreBuildEvent>"c:\Program Files (x86)\WiX Toolset v3.7\bin\heat.exe" dir "C:\Projects\earlab\out\Modules\$(ConfigurationName)\$(ArchitectureDirectory)" -srd -cg Modules -dr ModulesFolder -gg -sfrag -out "$(ProjectDir)Modules.wxs" -sw -var var.ModulesFolder
 if errorlevel 1  goto ModuleBuildEventFailed
 "c:\Program Files (x86)\WiX Toolset v3.7\bin\heat.exe" dir "C:\Projects\earlab\src\Documentation" -srd -cg Documentation -dr COREFILES -gg -sfrag -out "$(ProjectDir)Documentation.wxs" -sw -var var.DocumentationFolder
 if errorlevel 1 goto DocumentationBuildEventFailed
 "c:\Program Files (x86)\WiX Toolset v3.7\bin\heat.exe" dir "C:\Projects\earlab\src\ModelFolders" -srd -cg Models -dr ModelsFolder -gg -sfrag -out "$(ProjectDir)Models.wxs" -sw -var var.ModelFolder
 if errorlevel 1 goto ModelBuildEventFailed
-"c:\Program Files (x86)\WiX Toolset v3.7\bin\heat.exe" dir "C:\Projects\earlab\out\DataViewer\$(ConfigurationName)" -scom -sreg -srd -cg DataViewer -dr DataViewerFolder -gg -sfrag -out "$(ProjectDir)DataViewer.wxs" -sw -var var.DataViewerFolder
-if errorlevel 1 goto DataViewerBuildEventFailed
 goto BuildEventOK
 :ModuleBuildEventFailed
 echo Module PREBUILD for $(ProjectName) FAILED
@@ -107,14 +107,9 @@ echo Documentation PREBUILD for $(ProjectName) FAILED
 exit 1
 :ModelBuildEventFailed
 echo Model PREBUILD for $(ProjectName) FAILED
-:DataViewerlBuildEventFailed
-echo DataViewer PREBUILD for $(ProjectName) FAILED
 exit 1
 :BuildEventOK
 echo PREBUILD for $(ProjectName) COMPLETED SUCCESSFULLY</PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>copy "!(TargetPath)" "..\..\..\..\..\..\setup\$(ConfigurationName)\$(TargetName)-$(PlatformName)$(TargetExt)"</PostBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

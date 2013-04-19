@@ -9,7 +9,8 @@
   <?define CoreToolsRoot="$(var.EarlabRoot)\out\Desktop EarLab\Release"?>
   <?define ModuleRoot="$(var.EarlabRoot)\out\Modules\Release"?>
   <?define MergeModulesPath="C:\Program Files (x86)\Common Files\Merge Modules"?>
-
+  <?define EarlabSrcPath="..\.." ?> <!-- Relative path to c:\projects\earlab\src -->
+  <?define DataViewerPath="$(var.EarlabSrcPath)\DataViewer\DataViewer\bin\$(var.Configuration)"?>
   <?if $(var.Platform) = x64 ?>
   <?define CoreToolsFolder = "$(var.CoreToolsRoot)\x64" ?>
   <?define ProductDisplayName = "$(var.LongProductName) (64-bit)" ?>
@@ -68,7 +69,7 @@
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="$(var.PlatformProgramFilesFolder)">
         <Directory Id="APPLICATIONFOLDER" Name="EarLab">
-          <Directory Id="COREFILES" Name="Desktop EarLab">
+          <Directory Id="COREFILES" Name="bin">
             <Component Id="Core" Guid="FE21A056-2236-4EF2-912E-154E180FAC06">
               <File Id="DesktopEarlab.exe"
                     Name="DesktopEarlab.exe"
@@ -85,7 +86,33 @@
                     Name="ExperimentManager.exe"
                     Source="$(var.CoreToolsRoot)\ExperimentManager.exe" />
             </Component>
-            <?if $(var.Platform) = x64 ?>
+            <Component Id="DataViewer" Guid="{B1B4C330-7848-44B0-96A4-1435D8FD1E62}">
+              <File Id="DataViewer.bmp"
+                    Name="DataViewer.bmp"
+                    Source="$(var.DataViewerPath)\DataViewer.bmp" />
+              <File Id="DataViewer.chm"
+                    Name="DataViewer.chm"
+                    Source="$(var.DataViewerPath)\DataViewer.chm" />
+              <File Id="DataViewer.exe"
+                    Name="DataViewer.exe"
+                    Source="$(var.DataViewerPath)\DataViewer.exe" />
+              <File Id="DataViewer.exe.config"
+                    Name="DataViewer.exe.config"
+                    Source="$(var.DataViewerPath)\DataViewer.exe.config" />
+              <File Id="DataViewer.ico"
+                    Name="DataViewer.ico"
+                    Source="$(var.DataViewerPath)\DataViewer.ico" />
+              <File Id="DataViewerSplash.bmp"
+                    Name="DataViewerSplash.bmp"
+                    Source="$(var.DataViewerPath)\DataViewerSplash.bmp" />
+              <File Id="EarLabSharedLibrary.dll"
+                    Name="EarLabSharedLibrary.dll"
+                    Source="$(var.DataViewerPath)\EarLabSharedLibrary.dll" />
+              <File Id="ICSharpCode.SharpZipLib.dll"
+                    Name="ICSharpCode.SharpZipLib.dll"
+                    Source="$(var.DataViewerPath)\ICSharpCode.SharpZipLib.dll" />
+            </Component>
+              <?if $(var.Platform) = x64 ?>
             <!-- 64-bit components go here -->
             <Merge Id="vc100" Language="1033" SourceFile="$(var.MergeModulesPath)\Microsoft_VC100_CRT_x64.msm" DiskId="1" />
             <?else ?>
@@ -142,7 +169,7 @@
                   Directory="EarlabShortcutFolder"
                   Name="Data Viewer"
                   WorkingDirectory="APPLICATIONFOLDER"
-                  Target="[DataViewerFolder]DataViewer.exe"
+                  Target="[COREFILES]DataViewer.exe"
                   Advertise="no" />
         <Shortcut Id="SpikeAnalysisDemoShortcut"
                   Directory="EarlabShortcutFolder"
@@ -160,7 +187,7 @@
                   Directory="HelpShortcutFolder"
                   Name="Data Viewer Help"
                   WorkingDirectory="APPLICATIONFOLDER"
-                  Target="[DataViewerFolder]DataViewer.chm"
+                  Target="[COREFILES]DataViewer.chm"
                   Advertise="no" />
         <Shortcut Id="ExperimentDescriptionsShortcut"
                   Directory="DocumentationShortcutFolder"
@@ -197,10 +224,10 @@
 
     <Feature Id="ProductFeature" Title="$(var.LongProductName)" Level="1">
       <ComponentRef Id="Core" />
+      <ComponentRef Id="DataViewer" />
       <ComponentGroupRef Id="Documentation" />
       <ComponentGroupRef Id="Modules" />
       <ComponentGroupRef Id="Models" />
-      <ComponentGroupRef Id="DataViewer" />
       <ComponentRef Id="DesktopEarlab_Shortcuts"/>
       <MergeRef Id="vc100"/>
     </Feature>
