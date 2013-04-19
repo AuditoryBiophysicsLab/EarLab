@@ -21,8 +21,8 @@
 
 		<Chain>
       <PackageGroupRef Id="Netfx4Full" />
-      <MsiPackage DownloadUrl="http://earlab.bu.edu/software/desktop/versions/DesktopEarLab$(var.Platform).msi"
-                  SourceFile="C:\Projects\earlab\src\Installers\Desktop EarLab MSI\bin\$(var.Platform)\$(var.Configuration)\DesktopEarlab.msi"
+      <MsiPackage DownloadUrl="http://earlab.bu.edu/software/desktop/versions/DesktopEarLab-$(var.Platform).msi"
+                  SourceFile="C:\Projects\earlab\setup\$(var.Configuration)\DesktopEarlab-$(var.Platform).msi"
                   Permanent="no"
                   Compressed="no"
                   Visible="no"
