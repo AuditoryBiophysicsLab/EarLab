@@ -14,7 +14,9 @@
     UpgradeCode="{6D200E97-75AC-445A-884D-3D7CF71667BE}">
 		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
 			<bal:WixStandardBootstrapperApplication
-						LicenseFile="license.rtf"/>
+						LicenseFile="license.rtf"
+            LogoFile="earlab_64x64.png"
+            ThemeFile="RtfTheme.xml"/>
 		</BootstrapperApplicationRef>
 
 		<Chain>
