@@ -1,5 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SupportClasses", "..\..\SupportClasses\SupportClasses.vcxproj", "{F6D6B3CB-ED3C-43A4-BC66-F55015A9FF74}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ITDAzimuth", "..\..\Modules\ITDAzimuth\ITDAzimuth.vcxproj", "{9FCC814A-17F5-4A8D-846C-0F3E56BF01A6}"
@@ -265,10 +267,6 @@ EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Desktop Earlab Bootstrapper", "..\..\Installers\Desktop Earlab Bootstrapper\Desktop Earlab Bootstrapper.wixproj", "{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8}"
 EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|Win32 = Debug|Win32
@@ -968,13 +966,14 @@ Global
 		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Debug|Win32.Build.0 = Debug|Win32
 		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Debug|x64.ActiveCfg = Debug|x64
 		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Debug|x86.ActiveCfg = Debug|x64
-		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|Mixed Platforms.ActiveCfg = Release|x64
-		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|Mixed Platforms.Build.0 = Release|x64
-		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|Win32.ActiveCfg = Release|Win32
-		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|Win32.Build.0 = Release|Win32
-		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|x64.ActiveCfg = Release|x64
-		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|x64.Build.0 = Release|x64
-		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|x86.ActiveCfg = Release|x64
+		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|Mixed Platforms.ActiveCfg = Release (x86)|Win32
+		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|Mixed Platforms.Build.0 = Release (x86)|Win32
+		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|Win32.ActiveCfg = Release (x86)|Win32
+		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|Win32.Build.0 = Release (x86)|Win32
+		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|x64.ActiveCfg = Release (x86)|x64
+		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|x64.Build.0 = Release (x86)|x64
+		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|x86.ActiveCfg = Release (x86)|Win32
+		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90}.Release|x86.Build.0 = Release (x86)|Win32
 		{A2575F7F-9F14-4962-B055-B27FDFB74CC9}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
 		{A2575F7F-9F14-4962-B055-B27FDFB74CC9}.Debug|Mixed Platforms.Build.0 = Debug|x64
 		{A2575F7F-9F14-4962-B055-B27FDFB74CC9}.Debug|Win32.ActiveCfg = Debug|Win32
@@ -1003,8 +1002,8 @@ Global
 		{42C826FD-F219-4973-A58E-F6107FFFB652}.Release|x64.ActiveCfg = Release|x64
 		{42C826FD-F219-4973-A58E-F6107FFFB652}.Release|x64.Build.0 = Release|x64
 		{42C826FD-F219-4973-A58E-F6107FFFB652}.Release|x86.ActiveCfg = Release|x64
-		{14F43863-0CCE-4194-AD4C-23A3F85CAE25}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{14F43863-0CCE-4194-AD4C-23A3F85CAE25}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{14F43863-0CCE-4194-AD4C-23A3F85CAE25}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{14F43863-0CCE-4194-AD4C-23A3F85CAE25}.Debug|Mixed Platforms.Build.0 = Debug|x64
 		{14F43863-0CCE-4194-AD4C-23A3F85CAE25}.Debug|Win32.ActiveCfg = Debug|Win32
 		{14F43863-0CCE-4194-AD4C-23A3F85CAE25}.Debug|Win32.Build.0 = Debug|Win32
 		{14F43863-0CCE-4194-AD4C-23A3F85CAE25}.Debug|x64.ActiveCfg = Debug|x64
@@ -1146,5 +1145,9 @@ Global
 		{87AD5780-CE4E-40AA-9CD8-2255EA67AA90} = {16828E19-0CFF-49BA-BC80-87D1B2260B55}
 		{5AEB283E-D81A-4A0D-81D9-ABBD99B1CCBA} = {92CD8D46-7E9C-414C-89CF-4ABE381EAC75}
 		{27E9B8D1-6DCE-4EA9-A549-5FC075C31DF8} = {92CD8D46-7E9C-414C-89CF-4ABE381EAC75}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
