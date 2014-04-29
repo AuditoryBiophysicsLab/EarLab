@@ -1,5 +1,5 @@
 # Ignore everything in this directory
-*
-**
+**/bin/**
+**/obj/**
 # Except this file
 !.gitignore
