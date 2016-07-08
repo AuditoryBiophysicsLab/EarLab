@@ -1,0 +1,642 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+	
+		<title>EarLab: EarLab Functional Interface Modules Database</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="CODE_LANGUAGE" content="C#">
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" 
+content="http://schemas.microsoft.com/intellisense/ie5">
+		<link media="screen" 
+href="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/DefaultStyle.css"
+ type="text/css" rel="stylesheet">
+	</head><body>
+		<script language="javascript">
+		<!--
+		function PopupWindow(pageURL, height, width)
+		{
+			window.open(pageURL,"PopupWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=" + width + ",height=" + height);
+		}
+		-->
+		</script>
+		<form name="ctl00" method="post" action="Default.aspx" id="ctl00">
+<div>
+<input name="__VIEWSTATE" id="__VIEWSTATE" 
+value="/wEPDwUKLTM1OTg4MDA2Mw9kFgICAg9kFgICAw8WAh4LXyFJdGVtQ291bnQCGhY0AgEPZBYCZg8VBApBdWRpb01peGVyAjIwCkF1ZGlvTWl4ZXLaAVRoaXMgbW9kdWxlIGlzIGludGVuZGVkIHRvIHRha2UgaW5wdXRzIGZyb20gbXVsdGlwbGUgRGF0YSBTb3VyY2UgbW9kdWxlcyBhbmQgY29tYmluZSB0aGVtIGludG8gYSBzaW5nbGUgY2hhbm5lbCBwcmVzc3VyZSB3YXZlZm9ybSwgc3VpdGFibGUgZm9yIGlucHV0IHRvIGFueSBtb2R1bGUgdGhhdCB0YWtlcyBhIHNpbmdsZS1jaGFubmVsIHByZXNzdXJlIHdhdmVmb3JtIGFzIGlucHV0ZAICD2QWAmYPFQQqQXVkaXRvcnkgTmVydmUgKEluc3RhbnRhbmVvdXMgRmlyaW5nIFJhdGUpATMqQXVkaXRvcnkgTmVydmUgKEluc3RhbnRhbmVvdXMgRmlyaW5nIFJhdGUpKkF1ZGl0b3J5IE5lcnZlIChJbnN0YW50YW5lb3VzIEZpcmluZyBSYXRlKWQCAw9kFgJmDxUEF0F1ZGl0b3J5IE5lcnZlIChTcGlrZXMpAjIxF0F1ZGl0b3J5IE5lcnZlIChTcGlrZXMpUkEgdmVyc2lvbiBvZiB0aGUgQXVkaXRvcnkgTmVydmUgbW9kdWxlIHdoaWNoIHByb2R1Y2VzIGEgc3Bpa2UgdHJhaW4gYXMgaXRzIG91dHB1dC5kAgQPZBYCZg8VBCFCYXNpbGFyIE1lbWJyYW5lIExpbmVhciBHYW1tYXRvbmUBMSFCYXNpbGFyIE1lbWJyYW5lIExpbmVhciBHYW1tYXRvbmUhQmFzaWxhciBNZW1icmFuZSBMaW5lYXIgR2FtbWF0b25lZAIFD2QWAmYPFQQkQmFzaWxhciBNZW1icmFuZSBOb25saW5lYXIgR2FtbWF0b25lATIkQmFzaWxhciBNZW1icmFuZSBOb25saW5lYXIgR2FtbWF0b25lIEJhc2VkIG9uIE1lZGRpcyBhbmQgTG9wZXotUG92ZWRhZAIGD2QWAmYPFQQMQnJ1Z2hlcmFNU08yAjMxDEJydWdoZXJhTVNPMt0EVGhlIEJydWdoZXJhTVNPMiBtb2R1bGUgc2ltdWxhdGVzIGluZGl2aWR1YWwgcHJpbmNpcGFsIGNlbGxzIG9mIHRoZSBtZWRpYWwgc3VwZXJpb3Igb2xpdmUgKE1TTyksIHdoaWNoIHJlY2VpdmUgYmlsYXRlcmFsIGV4Y2l0YXRvcnkgYW5kIGluaGliaXRvcnkgc3luYXB0aWMgaW5wdXRzLCBhbmQgaGF2ZSByZXNwb25zZXMgc2Vuc2l0aXZlIHRvIHRoZSBpbnRlcmF1cmFsIHRpbWUgZGVsYXkgKElURCkgb2YgbG93LWZyZXF1ZW5jeSBhdWRpdG9yeSBzdGltdWxpLiAgRWFjaCBpbnN0YW5jZSBvZiB0aGUgbW9kdWxlIGVtcGxveXMgYSBzaW5nbGUtY29tcGFydG1lbnQgSG9kZ2tpbi1IdXhsZXkgbmV1cm9uIG1vZGVsIGRlcml2ZWQgZm9yIFR5cGUgSUkgdmVudHJhbCBjb2NobGVhciBudWNsZXVzIG5ldXJvbnMsIGluY2x1ZGluZyBleHByZXNzaW9ucyBmb3IgSUtMVCwgSUtIVCwgSU5hLCBJTEVBSywgYW5kIEloIChSb3RobWFuIGFuZCBNYW5pcyAyMDAzYykgd2l0aCBjaGFyYWN0ZXJpc3RpY3MgdGhhdCBhcmUgbGlrZWx5IHNpbWlsYXIgdG8gdGhvc2UgaW4gcHJpbmNpcGFsIE1TTyBjZWxscyAoU3ZpcnNraXMgZXQgYWwuIDIwMDQ7IFNjb3R0IGV0IGFsLiAyMDA1KS5kAgcPZBYCZg8VBBZCdXNoeSBDZWxsIChSb3RobWFuOTMpAjIyFkJ1c2h5IENlbGwgKFJvdGhtYW45MymmClRoaXMgbW9kdWxlIChSb3RobWFuIGV0IGFsLiwgMTk5MykgaXMgYSBzaW5nbGUtY29tcGFydG1lbnQgSG9kZ2tpbi1IdXhsZXkgbmV1cm9uIG1vZGVsIHRoYXQgc2ltdWxhdGVzIHRoZSBtZW1icmFuZSBhY3Rpdml0eSBhbmQgZGlzY2hhcmdlIHBhdHRlcm5zIG9mIGEgYnVzaHkgY2VsbCBpbiB0aGUgdmVudHJhbCBjb2NobGVhciBudWNsZXVzIChWQ04pLiAgVGhlIG5ldXJhbCBjb21wYXJ0bWVudCBpcyBkZWZpbmVkIGJ5IGFuIGVsZWN0cmljIGNpcmN1aXQgZXF1YXRpb24gaW5jb3Jwb3JhdGluZyB0aGUgbWVtYnJhbmUgY3VycmVudHMgYXNzb2NpYXRlZCB3aXRoIGNhcGFjaXRhbmNlLCBsZWFrYWdlLCBpb24gY2hhbm5lbHMsIGFuZCBzeW5hcHRpYyBpbnB1dHMuICBUaGUgY2hhcmFjdGVyaXN0aWNzIG9mIHRoZSB0aHJlZSB2b2x0YWdlLXNlbnNpdGl2ZSBpb24tY2hhbm5lbHMgKGZhc3Qgc29kaXVtLCBkZWxheWVkLXJlY3RpZmllciBoaWdoLXRocmVzaG9sZCBwb3Rhc3NpdW0sIGFuZCBsb3ctdGhyZXNob2xkIHBvdGFzc2l1bSkgd2VyZSBkZXJpdmVkIGZyb20gdm9sdGFnZS1jbGFtcCBkYXRhIHRha2VuIGZyb20gdGhlIFZDTiAoTWFuaXMgYW5kIE1hcngsIDE5OTEpLiAgSW4gYWRkaXRpb24gdG8gc2ltdWxhdGlvbiBvZiBidXNoeSBjZWxscywgdGhlIFJvdGhtYW4gZXQgYWwuIDE5OTMgbW9kZWwgaXMgdGhlIGJhc2lzIGZvciBtb2RlbHMgb2YgbmV1cm9ucyBpbiB0aGUgbWVkaWFsIHN1cGVyaW9yIG9saXZlIChNU08pIChCcnVnaGVyYSwgMTk5NikgYW5kIGluZmVyaW9yIGNvbGxpY3VsdXMgKENhaSwgMTk5OCkuICBTdGVhZHktc3RhdGUgaW5oaWJpdGlvbiwgdXNlZCBpbiB0aGUgb3JpZ2luYWwgUm90aG1hbiAxOTkzIG1vZGVsIGFzIGEgbWVjaGFuaXNtIHRvIHByb2R1Y2UgdmFyaWF0aW9uIGluIHRoZSBpbnRlci1zcGlrZSBpbnRlcnZhbHMgaW4gYnVzaHkgY2VsbHMgb2YgaGlnaCBDRiwgaGFzIGJlZW4gb21pdHRlZCBpbiB0aGlzIG1vZHVsZS4gIFJvdGhtYW4gYW5kIE1hbmlzICgyMDAzKSBoYXZlIGludHJvZHVjZWQgYW4gdXBkYXRlZCBtb2RlbCB3aXRoIGFkZGl0aW9uYWwgdm9sdGFnZS1zZW5zaXRpdmUgcG90YXNzaXVtIGNoYW5uZWxzIGFuZCByZXZpc2VkIGlvbi1jaGFubmVsIGR5bmFtaWNzLiAgVGhlIDIwMDMgbW9kZWwgaW5jb3Jwb3JhdGVzIHJlc3BvbnNlcyBvZiBjaG9wcGVyIGNlbGxzIGFuZCBidXNoeSBjZWxscywgYW5kIHdpdGhvdXQgaW5oaWJpdGlvbiBpdCBwcm9kdWNlcyB0aGUgcGh5c2lvbG9naWNhbGx5IG9ic2VydmVkIHZhcmlhYmlsaXR5IGluIGludGVyLXNwaWtlIGludGVydmFscy5kAggPZBYCZg8VBB1CdXNoeUNlbGwyIChSb3RobWFuTWFuaXMyMDAzKQIzMB1CdXNoeUNlbGwyIChSb3RobWFuTWFuaXMyMDAzKZcEVGhlIEJ1c2h5Q2VsbDIgbW9kdWxlIHNpbXVsYXRlcyB0aGUgZWxlY3RyaWNhbCBhY3Rpdml0eSBvZiBpbmRpdmlkdWFsIG5ldXJvbnMgb2YgdGhlIHZlbnRyYWwgY29jaGxlYXIgbnVjbGV1cyAoVkNOKSAoUm90aG1hbiBhbmQgTWFuaXMgMjAwM2MsIDIwMDNiLCBhbmQgMjAwM2EpLiAgRWFjaCBCdXNoeUNlbGwyIGluc3RhbmNlIGluY29ycG9yYXRlcyBhIHNpbmdsZS1jb21wYXJ0bWVudCBIb2Rna2luLUh1eGxleSBuZXVyb24gbW9kZWwgd2l0aCBleHByZXNzaW9ucyBmb3IgSUtBLCBJS0xULCBJS0hULCBJTmEsIElMRUFLLCBhbmQgSWguICBUaGUgQnVzaHlDZWxsMiBtb2R1bGUgY2FuIHNpbXVsYXRlIGVpdGhlciBidXNoeSBjZWxscyB3aGljaCBwcm9qZWN0IHRvIHRoZSBzdXBlcmlvciBvbGl2YXJ5IGNvbXBsZXggb3IgbWVkaWFsIG51Y2xldXMgb2YgdGhlIHRyYXBlem9pZCBib2R5LCBvciBzdGVsbGF0ZSBjZWxscyB3aGljaCBwcm9qZWN0IHRvIHRoZSBpbmZlcmlvciBjb2xsaWN1bHVzIG9yIGRvcnNhbCBjb2NobGVhciBudWNsZXVzLmQCCQ9kFgJmDxUEHUJ1c2h5Q2VsbDIgKFJvdGhtYW5NYW5pczIwMDMpAjI5HUJ1c2h5Q2VsbDIgKFJvdGhtYW5NYW5pczIwMDMpswVUaGUgQnVzaHlDZWxsMiBtb2R1bGUgc2ltdWxhdGVzIHRoZSBlbGVjdHJpY2FsIGFjdGl2aXR5IG9mIGluZGl2aWR1YWwgbmV1cm9ucyBvZiB0aGUgdmVudHJhbCBjb2NobGVhciBudWNsZXVzIChWQ04pIChSb3RobWFuIGFuZCBNYW5pcyAyMDAzYywgMjAwM2IsIGFuZCAyMDAzYSkuICBFYWNoIEJ1c2h5Q2VsbDIgaW5zdGFuY2UgaW5jb3Jwb3JhdGVzIGEgc2luZ2xlLWNvbXBhcnRtZW50IEhvZGdraW4tSHV4bGV5IG5ldXJvbiBtb2RlbCB0aGF0IGluY29ycG9yYXRlcyBleHByZXNzaW9ucyBmb3IgY3VycmVudHMgSUtBLCBJS0xULCBJS0hULCBJTmEsIElMRUFLLCBhbmQgSWguICBJbiB0aGUgSFJDIHdlIG9mdGVuIGVtcGxveSB0aGlzIG1vZHVsZSB0byBzaW11bGF0ZSBidXNoeSBjZWxscywgd2hpY2ggcHJvamVjdCBmcm9tIHRoZSBWQ04gdG8gdGhlIG1lZGlhbCBzdXBlcmlvciBvbGl2ZSBvciBtZWRpYWwgbnVjbGV1cyBvZiB0aGUgdHJhcGV6b2lkIGJvZHkuICBJbiBhZGRpdGlvbiB0aGlzIG1vZHVsZSBjYXB0dXJlcyB0aGUgZXF1YWwgZmFjaWxpdHkgcHJvdmlkZWQgYnkgdGhlIFJvdGhtYW4gYW5kIE1hbmlzIG1vZGVsICgyMDAzYykgZm9yIHNpbXVsYXRpbmcgc3RlbGxhdGUgY2VsbHMsIHdoaWNoIHByb2plY3QgdG8gdGhlIGluZmVyaW9yIGNvbGxpY3VsdXMgb3IgZG9yc2FsIGNvY2hsZWFyIG51Y2xldXMuZAIKD2QWAmYPFQQFQ2FpSUMCMzIFQ2FpSUPZA1RoZSBDYWlJQyBtb2R1bGUgaW1wbGVtZW50cyB0aGUgQ2FpIGV0IGFsLiAoMTk5OCkgbW9kZWwgZm9yIG5ldXJvbnMgb2YgdGhlIGNlbnRyYWwgbnVjbGV1cyBvZiB0aGUgaW5mZXJpb3IgY29sbGljdWx1cyAoSUNDKS4gIFdoaWxlIHRoZXJlIGlzIHdpZGUgdmFyaWF0aW9uIGluIG1lbWJyYW5lIGNoYXJhY3RlcmlzdGljcyBiZXR3ZWVuIHRoZSBuZXVyb25zIG9mIHRoaXMgbnVjbGV1cywgYW5kIGFjcm9zcyB0aGVpciBwb3B1bGF0aW9uIHRoZXkgcmVjZWl2ZSBpbnB1dHMgZnJvbSBhIG51bWJlciBvZiBzb3VyY2VzLCB0aGUgQ2FpIGV0IGFsLiBJQyBtb2RlbCBmb2N1c2VzIHByaW1hcmlseSBvbiB0aGUgc3VicG9wdWxhdGlvbiBvZiBJQ0MgbmV1cm9ucyB0aGF0IGFyZSBzZW5zaXRpdmUgdG8gaW50ZXJhdXJhbCB0aW1lIGRlbGF5IChJVEQpIGFuZCByZXNwb25kIGJlc3QgdG8gbG93LWZyZXF1ZW5jeSBhdWRpdG9yeSBpbnB1dHMuZAILD2QWAmYPFQQGQ2FpSUMyAjMzBkNhaUlDMqQFVGhlIENhaUlDMiBtb2R1bGUgc2ltdWxhdGVzIGluZGl2aWR1YWwgbmV1cm9ucyBvZiB0aGUgY2VudHJhbCBudWNsZXVzIG9mIHRoZSBpbmZlcmlvciBjb2xsaWN1bHVzIChJQ0MpIHRoYXQgYXJlIHNlbnNpdGl2ZSB0byBpbnRlcmF1cmFsIHRpbWUgZGVsYXkgKElURCkgYW5kIHJlc3BvbmQgYmVzdCB0byBsb3ctZnJlcXVlbmN5IGF1ZGl0b3J5IGlucHV0cy4gIFdoaWxlIHRoZSBpbnB1dCBzdHJ1Y3R1cmUgaXMgdGhlIHNhbWUgYXMgdGhlIENhaUlDIG1vZHVsZSwgYW5kIHRoZSBoeXBlcnBvbGFyaXphdGlvbiBjb25kdWN0YW5jZSBmb3IgYWRhcHRhdGlvbiBvZiBDYWkgZXQgYWwuICgxOTk4KSBpcyBpbmNsdWRlZCwgdGhlIHNpbmdsZS1jb21wYXJ0bWVudCBIb2Rna2luLUh1eGxleSBtb2RlbCBpcyBvdGhlcndpc2UgdGhhdCBvZiBSb3RobWFuIGFuZCBNYW5pcyAoMjAwM2MpLCB3aXRoIGtpbmV0aWNzIGJhc2VkIG9uIHRoZWlyIG1lYXN1cmVtZW50cyBvZiB0aHJlZSB0eXBlcyBvZiBLKyBjaGFubmVscyBpbiB0aGUgdmVudHJhbCBjb2NobGVhciBudWNsZXVzIChSb3RobWFuIGFuZCBNYW5pcyAyMDAzYSkgYW5kIGFkZGl0aW9uYWwgc3R1ZGllcyBkZXNjcmliaW5nIHRoZSBraW5ldGljcyBvZiBJTmEgYW5kIEloIGVsc2V3aGVyZSBpbiB0aGUgbWFtbWFsaWFuIG5lcnZvdXMgc3lzdGVtLmQCDA9kFgJmDxUENUNvbXBvdW5kIEFjdGlvbiBQb3RlbnRpYWwgKEluc3RhbnRhbmVvdXMgRmlyaW5nIFJhdGUpATQ1Q29tcG91bmQgQWN0aW9uIFBvdGVudGlhbCAoSW5zdGFudGFuZW91cyBGaXJpbmcgUmF0ZSk1Q29tcG91bmQgQWN0aW9uIFBvdGVudGlhbCAoSW5zdGFudGFuZW91cyBGaXJpbmcgUmF0ZSlkAg0PZBYCZg8VBA1DdXJyZW50U3ByZWFkAjI4DUN1cnJlbnRTcHJlYWTHAlNpbXBsZSBtb2RlbCBvZiBjdXJyZW50IHNwcmVhZCB0aHJvdWdoIHRpc3N1ZS4gIE9yaWdpbmFsbHkgaW50ZW5kZWQgZm9yIGNvY2hsZWFyIGltcGxhbnQgcmVzZWFyY2gsIHRoaXMgbW9kdWxlIHRha2VzIGEgbXVsdGktY2hhbm5lbCBwdWxzZXRyYWluIG9mIGN1cnJlbnRzIGZyb20gdGhlIENJUyBtb2R1bGUsIG11bHRpcGxpZXMgdGhvc2UgY3VycmVudHMgYnkgYSBzdXBwbGllZCB3ZWlnaHRpbmcgbWF0cml4LCBhbmQgcHJvZHVjZXMgYSBtZW1icmFuZSBwb3RlbnRpYWwgZmllbGQgaW50ZW5kZWQgdG8gYmUgdXNlZCBieSB0aGUgYXVkaXRvcnkgbmVydmUgSUZSIG1vZHVsZWQCDg9kFgJmDxUECURhdGEgU2luawE5CURhdGEgU2lua1ZEYXRhIFNpbmsgbG9ncyBhbiBpbmRpdmlkdWFsIEVhckxhYiBzdHJlYW0gdG8gYSBmaWxlIG9yIGEgbGl2ZSBkYXRhIHZpc3VhbGl6ZXIgb3IgYm90aGQCDw9kFgJmDxUEC0RhdGEgU291cmNlATgLRGF0YSBTb3VyY2VMRGF0YSBTb3VyY2UgcmVhZHMgc2lnbmFsIGZpbGVzIGFuZCBwcmVzZW50cyB0aGVpciBjb250ZW50cyB0byB0aGUgc2ltdWxhdGlvbmQCEA9kFgJmDxUEEUVudmVsb3BlRXh0cmFjdG9yAjI3EUVudmVsb3BlRXh0cmFjdG9yMUV4dHJhY3QgZW52ZWxvcGUgaW5mb3JtYXRpb24gZnJvbSBhbiBpbnB1dCBzdHJlYW1kAhEPZBYCZg8VBA1GSVJmaWx0ZXJiYW5rAjI1DUZJUmZpbHRlcmJhbms9SW1wbGVtZW50cyBhIGZpbml0ZSBpbXB1bHNlIHJlc3BvbnNlIChGSVIpIGZpbGVyaW5nIGFsZ29yaXRobWQCEg9kFgJmDxUEEUlDIE5ldXJvbiAoQ2FpOTgpAjI0EUlDIE5ldXJvbiAoQ2FpOTgpjAJJQ05ldXJvbkNhaTk4IHNpbXVsYXRlcyBpbmRpdmlkdWFsIG5ldXJvbnMgaW4gdGhlIGNlbnRyYWwgbnVjbGV1cyBvZiB0aGUgSW5mZXJpb3IgQ29sbGljdWx1cyAoQ2FpIGV0IGFsLiwgMTk5OCkuICBFYWNoIG5ldXJvbiBpbiBJQ05ldXJvbkNhaTk4IGlzIGEgc2luZ2xlLWNvbXBhcnRtZW50IEhvZGdraW4tSHV4bGV5IG1vZGVsIHNpbWlsYXIgdG8gdGhlIE1TT0NlbGxCcnVnaGVyYTk2IG1vZHVsZSwgYnV0IHdpdGggYW4gYWRkZWQgYWRhcHRhdGlvbiBtZWNoYW5pc20uZAITD2QWAmYPFQQPSW5uZXIgSGFpciBDZWxsATUPSW5uZXIgSGFpciBDZWxsD0lubmVyIEhhaXIgQ2VsbGQCFA9kFgJmDxUEKU1lZGlhbCBTdXBlcmlvciBPbGl2ZSAoQ3Jvc3MgQ29ycmVsYXRpb24pAjEwKU1lZGlhbCBTdXBlcmlvciBPbGl2ZSAoQ3Jvc3MgQ29ycmVsYXRpb24pSFNpbXVsYXRlIHRoZSBmdW5jdGlvbmluZyBvZiB0aGUgTVNPIGluIGRldGVybWluaW5nIEludGVyYXVyYWwgVGltZSBEZWxheWQCFQ9kFgJmDxUEGk1pZGRsZSBFYXIgKFNpbXBsZSBGaWx0ZXIpATYaTWlkZGxlIEVhciAoU2ltcGxlIEZpbHRlcik+U2ltcGxlIGZpbHRlciBpbXBsZW1lbnRhdGlvbiBvZiBhIE1pZGRsZSBFYXIgVHJhbnNmZXIgRnVuY3Rpb25kAhYPZBYCZg8VBBVNU08gQ2VsbCAoQnJ1Z2hlcmE5NikCMjMVTVNPIENlbGwgKEJydWdoZXJhOTYplwNUaGUgTVNPQ2VsbEJydWdoZXJhOTYgbW9kdWxlIChCcnVnaGVyYSBldCBhbC4sIDE5OTYpIHNpbXVsYXRlcyBuZXVyYWwgZGlzY2hhcmdlIHBhdHRlcm5zIG9mIGEgcHJpbmNpcGFsIGNlbGwgaW4gdGhlIG1lZGlhbCBzdXBlcmlvciBvbGl2ZSAoTVNPKS4gIFRoZSBtb2R1bGUgaXMgYSBzaW5nbGUtY29tcGFydG1lbnQgSG9kZ2tpbi1IdXhsZXkgbmV1cmFsIG1lbWJyYW5lIG1vZGVsIHZlcnkgc2ltaWxhciB0byB0aGUgQnVzaHlDZWxsUm90aG1hbjkzIG1vZHVsZSAoUm90aG1hbiBldCBhbC4sIDE5OTMpLiAgVGhlIHR3byBkaWZmZXIgaW4gdGhhdCB0aGUgTVNPIHJlY2VpdmVzIGJpbmF1cmFsIGlucHV0cywgYW5kIGluIHR3byBvZiB0aGVpciBlaWdodCBpb24tY2hhbm5lbCBhY3RpdmF0aW9uIGVxdWF0aW9ucy4gIGQCFw9kFgJmDxUEF1NpbXBsZSBTaWduYWwgR2VuZXJhdG9yATcXU2ltcGxlIFNpZ25hbCBHZW5lcmF0b3IXU2ltcGxlIFNpZ25hbCBHZW5lcmF0b3JkAhgPZBYCZg8VBAdWb2NvZGVyAjI2B1ZvY29kZXK3AWFuIE4tYmFuZCB2b2NvZGVyIG1vZHVsZSwgd2hpY2ggdGFrZXMgZW52ZWxvcGUgaW5mb3JtYXRpb24gZnJvbSB0aGUgRW52ZWxvcGVFeHRyYWN0b3IgbW9kdWxlIGFuZCBtdWx0aXBsaWVzIHRoYXQgZW52ZWxvcGUgd2l0aCBOIGJhbmRzIG9mIHNpbnVzb2lkcyBhdCB0aGUgcmVxdWVzdGVkIGNlbnRlciBmcmVxdWVuY2llc2QCGQ9kFgJmDxUEDFZvaWd0RENOQ2VsbAIzNQxWb2lndERDTkNlbGybAVRoZSBWb2lndERDTkNlbGwgbW9kdWxlIGltcGxlbWVudHMgc2V0cyBvZiBtb2RlbCBkb3JzYWwgY29jaGxlYXIgbnVjbGV1cyAoRENOKSBuZXVyb25zIGFzIGluIHRoZSBaaGVuZyBhbmQgVm9pZ3QgKDIwMDYpIG1vZGVsIGZvciByZXNwb25zZSBtYXBzIG9mIHRoZSBEQ04uZAIaD2QWAmYPFQQHWmhvdUxTTwIzNAdaaG91TFNPhANUaGUgWmhvdUxTTyBtb2R1bGUgc2ltdWxhdGVzIG5ldXJvbnMgaW4gdGhlIGxhdGVyYWwgc3VwZXJpb3Igb2xpdmUgKExTTykgdGhhdCBhcmUgc2Vuc2l0aXZlIHRvIGludGVyYXVyYWwgbGV2ZWwgZGlmZmVyZW5jZS4gIEVhY2ggbW9kZWwgTFNPIG5ldXJvbiBpcyBhIGxlYWt5IOKAnGludGVncmF0ZSBhbmQgZmlyZeKAnSBtb2RlbCB3aXRoIGFkYXB0YXRpb24uICBEaXNjaGFyZ2UgcHJvcGVydGllcyBvZiB0aGUgbW9kZWwgY2VsbCBzdWdnZXN0IHRoYXQgdGhlIHN0cmVuZ3RoIGFuZCB0aW1lIGNvbnN0YW50IG9mIGFkYXB0YXRpb24gZGV0ZXJtaW5lIGZvdXIgYmFzaWMgcmVzcG9uc2UgdHlwZXMgb2JzZXJ2ZWQgaW4gTFNPIG5ldXJvbnMgKFpob3UgYW5kIENvbGJ1cm4gMjAwOCkuZGThNQCLiI/IqkzQp021YsIiOkGr3g=="
+ type="hidden">
+</div>
+
+			
+<script language="JavaScript1.2" src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/menu_bu.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/menu_earlab.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/switch_bu.js" type="text/javascript"></script>
+<script language="JavaScript1.2">PreloadImages('/images/site/software_blue.gif','/images/site/databases_blue.gif','/images/site/modeling_blue.gif','/images/site/support_blue.gif','/images/site/tutorials_blue.gif');</script>
+<script language="JavaScript1.2">mmLoadMenus();</script><span 
+id="menuContainer"><div id="menuLayer0" style="position: absolute; 
+z-index: 10; left: -300px; top: -300px; visibility: hidden; color: 
+rgb(153, 153, 153); background-color: rgb(153, 153, 153); width: 194px; 
+height: 40px;">
+  <div id="menuLite0" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 38px; width: 192px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg0" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 37px; width: 191px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem0" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 190px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText0" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Desktop
+ Modeling Environment&nbsp;</div>
+<div id="menuItemHilite0" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Desktop 
+Modeling Environment&nbsp;</div></div><div id="menuItem1" 
+style="position: absolute; z-index: 10; left: 0px; top: 20px; 
+font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width:
+ 190px; height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText1" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">DataViewer 
+Application&nbsp;</div>
+<div id="menuItemHilite1" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">DataViewer
+ Application&nbsp;</div></div><div id="focusItem0" style="position: 
+absolute; z-index: 10; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer1" style="position: absolute; z-index: 10; left: 
+-200px; top: -200px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 159px; height: 80px;">
+  <div id="menuLite1" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 78px; width: 157px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg1" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 77px; width: 156px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem2" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 155px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText2" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Revcor
+ Database&nbsp;</div>
+<div id="menuItemHilite2" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Revcor 
+Database&nbsp;</div></div><div id="menuItem3" style="position: absolute;
+ z-index: 10; left: 0px; top: 20px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 155px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText3" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">CIPIC HRTF 
+Database&nbsp;</div>
+<div id="menuItemHilite3" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">CIPIC 
+HRTF Database&nbsp;</div></div><div id="menuItem4" style="position: 
+absolute; z-index: 10; left: 0px; top: 40px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 155px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText4" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Published Data 
+Database&nbsp;</div>
+<div id="menuItemHilite4" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Published
+ Data Database&nbsp;</div></div><div id="menuItem5" style="position: 
+absolute; z-index: 10; left: 0px; top: 60px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 155px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText5" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">EFI Modules 
+Database&nbsp;</div>
+<div id="menuItemHilite5" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">EFI 
+Modules Database&nbsp;</div></div><div id="focusItem1" style="position: 
+absolute; z-index: 11; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer2" style="position: absolute; z-index: 10; left: 
+-300px; top: -300px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 149px; height: 40px;">
+  <div id="menuLite2" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 38px; width: 147px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg2" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 37px; width: 146px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem6" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 145px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText6" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Tutorial
+ &amp; Instructions&nbsp;</div>
+<div id="menuItemHilite6" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Tutorial 
+&amp; Instructions&nbsp;</div></div><div id="menuItem7" style="position:
+ absolute; z-index: 10; left: 0px; top: 20px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 145px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText7" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">My Modeling 
+Home&nbsp;</div>
+<div id="menuItemHilite7" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">My 
+Modeling Home&nbsp;</div></div><div id="focusItem2" style="position: 
+absolute; z-index: 10; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer3" style="position: absolute; z-index: 10; left: 
+-300px; top: -300px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 149px; height: 40px;">
+  <div id="menuLite3" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 38px; width: 147px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg3" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 37px; width: 146px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem8" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 145px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText8" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">File 
+Specs &amp; Schemas&nbsp;</div>
+<div id="menuItemHilite8" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">File 
+Specs &amp; Schemas&nbsp;</div></div><div id="menuItem9" 
+style="position: absolute; z-index: 10; left: 0px; top: 20px; 
+font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width:
+ 145px; height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText9" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Contact EarLab 
+Team&nbsp;</div>
+<div id="menuItemHilite9" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Contact 
+EarLab Team&nbsp;</div></div><div id="focusItem3" style="position: 
+absolute; z-index: 10; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer4" style="position: absolute; z-index: 10; left: 
+-300px; top: -300px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 94px; height: 60px;">
+  <div id="menuLite4" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 58px; width: 92px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg4" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 57px; width: 91px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem10" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 90px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText10" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Introduction&nbsp;</div>
+<div id="menuItemHilite10" style="z-index: 10; position: absolute; left:
+ 7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Introduction&nbsp;</div></div><div
+ id="menuItem11" style="position: absolute; z-index: 10; left: 0px; top:
+ 20px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px;
+ width: 90px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText11" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Anatomy&nbsp;</div>
+<div id="menuItemHilite11" style="z-index: 10; position: absolute; left:
+ 7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Anatomy&nbsp;</div></div><div
+ id="menuItem12" style="position: absolute; z-index: 10; left: 0px; top:
+ 40px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px;
+ width: 90px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText12" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Physiology&nbsp;</div>
+<div id="menuItemHilite12" style="z-index: 10; position: absolute; left:
+ 7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Physiology&nbsp;</div></div><div
+ id="focusItem4" style="position: absolute; z-index: 10; left: 0px; top:
+ -30px;" onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+</span>
+
+<script language="javascript">function DatabaseGo(){ document.location.href = '/databases/' + document.getElementById('databaseList').options[document.getElementById('databaseList').selectedIndex].value + '/'; }</script>
+<script language="javascript">function SoftwareGo(){ document.location.href = '/software/' + document.getElementById('softwareList').options[document.getElementById('softwareList').selectedIndex].value; }</script>
+<div id="wrapper">
+	<div id="header"><h1>EarLab: A Virtual Laboratory for Auditory Research</h1><a
+ title="Go to EarLab home" href="http://eardev.bu.edu/"><img alt="Go to 
+EarLab home" id="earlab" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/earlab.gif"></a><a
+ onmouseover="SwapImage('logo_bu','','/images/site/logo_bu_red.gif',1)" 
+onmouseout="SwapImageRestore()" href="http://www.bu.edu/" 
+target="_blank" title="Boston University Homepage"><img id="logo_bu" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/logo_bu_gray.gif"
+ alt="Boston University Homepage"></a><a 
+onmouseover="SwapImage('logo_nih','','/images/site/logo_nih_blue.gif',1)"
+ onmouseout="SwapImageRestore()" href="http://www.nih.gov/" 
+target="_blank" title="National Institutes of Health"><img id="logo_nih"
+ 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/logo_nih_gray.gif"
+ alt="National Institutes of Health"></a><a 
+onmouseover="SwapImage('logo_nidcd','','/images/site/logo_nidcd_color.gif',1)"
+ onmouseout="SwapImageRestore()" href="http://www.nidcd.nih.gov/" 
+target="_blank" title="National Institute on Deafness and Other 
+Communication Disorders"><img id="logo_nidcd" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/logo_nidcd_gray.gif"
+ alt="National Institute on Deafness and Other Communication Disorders"></a><a
+ 
+onmouseover="SwapImage('logo_nimh','','/images/site/logo_nimh_color.gif',1)"
+ onmouseout="SwapImageRestore()" href="http://www.nimh.nih.gov/" 
+target="_blank" title="National Institute of Mental Health"><img 
+id="logo_nimh" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/logo_nimh_gray.gif"
+ alt="National Institute of Mental Health"></a><a 
+onmouseover="SwapImage('logo_hbp','','/images/site/logo_hbp_color.gif',1)"
+ onmouseout="SwapImageRestore()" 
+href="http://www.nimh.nih.gov/neuroinformatics/index.cfm" 
+target="_blank" title="The Human Brain Project"><img id="logo_hbp" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/logo_hbp_gray.gif"
+ alt="The Human Brain Project"></a><img id="cochlea" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/cochlea_gray.gif"
+ alt="Learn About the Cochlea" 
+onmouseover="SwapImage('cochlea','','/images/site/cochlea_blue.gif',1)" 
+onmouseout="SwapImageRestore()">
+	</div>
+	<div id="menu"><img name="software" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/software_gray.gif"
+ alt="Software and Tools" 
+onmouseover="MM_showMenu(window.softwaremenu,-1,20,null,'software');SwapImage('software','','/images/site/software_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img 
+name="databases" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/databases_gray.gif"
+ alt="Databases and Tables" 
+onmouseover="MM_showMenu(window.databasesmenu,-1,20,null,'databases');SwapImage('databases','','/images/site/databases_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img name="modeling"
+ 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/modeling_gray.gif"
+ alt="Online Modeling" 
+onmouseover="MM_showMenu(window.modelingmenu,-1,20,null,'modeling');SwapImage('modeling','','/images/site/modeling_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img name="support" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/support_gray.gif"
+ alt="Support" 
+onmouseover="MM_showMenu(window.supportmenu,-1,20,null,'support');SwapImage('support','','/images/site/support_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img 
+name="tutorials" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/tutorials_gray.gif"
+ alt="Auditory Tutorials" 
+onmouseover="MM_showMenu(window.tutorialsmenu,-1,20,null,'tutorials');SwapImage('tutorials','','/images/site/tutorials_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"></div>
+	<div id="content">
+		<div id="right">
+			<div id="authenticationlinks"><a 
+href="http://eardev.bu.edu/authentication/">Login</a> | <a 
+href="http://eardev.bu.edu/authentication/Register.aspx">Register</a></div>
+			<div class="leftitem"><div class="titleimage"><img alt="Overview" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/right_overview.gif"></div>The
+ EarLab Functional Interface Modules Database contains documentation and
+ code for modules compatible with the <a 
+href="http://eardev.bu.edu/software/desktop/" title="Desktop Modeling 
+Environment">Desktop Modeling Environment</a>.</div>
+			<div class="leftitem"><div class="titleimage"><img alt="Recent News" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/right_news.gif"></div>
+			
+			</div>
+			<div class="rightitem"><div class="titleimage"><img alt="Downloads" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/right_downloads.gif"></div>
+				<select id="softwareList" name="softwareList" class="dropdownlist"><option
+ selected="selected" value="">Modeling Tools Suite</option><option 
+value="desktop">Desktop Modeling Environment</option><option 
+value="dataviewer">DataViewer Application</option></select>
+				<input title="Go to selected download" name="softwareButton" 
+value="Go Now" onclick="SoftwareGo();" class="smallbutton" type="button"></div>
+			<div class="rightitem"><div class="titleimage"><img alt="Databases" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/right_databases.gif"></div>
+				<select id="databaseList" name="databaseList" class="dropdownlist"><option
+ selected="selected" value="revcor">Revcor Database</option><option 
+value="cipic">Cipic HRTF Database</option><option value="published">Published
+ Data Database</option><option value="modules">EFI Module Database</option></select><input
+ title="Go to selected database" name="databaseButton" value="Go Now" 
+onclick="DatabaseGo();" class="smallbutton" type="button"></div>
+			<div class="leftitem"><div class="titleimage"><img alt="Contact Info"
+ 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/right_contact.gif"></div>
+				EarLab Project<br>
+				Boston University<br>
+				Biomed. Eng. 403<br>
+				44 Cummington Street<br>
+				Boston, MA 02215<br>
+				<a href="mailto:earlab@bu.edu">earlab@bu.edu</a></div>
+		</div>
+		<div id="main">
+
+			<img class="titleimage" 
+src="EarLab%20%20EarLab%20Functional%20Interface%20Modules%20Database_files/modules_database.gif"
+ alt="EarLab Functional Interface Modules Database">
+			<div class="paragraph">
+					<table class="tablerow" border="1" bordercolor="#777777" 
+cellpadding="4" cellspacing="0" width="100%" rules="rows">
+						<tbody><tr class="tableheader">
+							<td align="left" nowrap="nowrap">Module Name</td>
+							<td align="left" nowrap="nowrap">Description</td>
+						</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'AudioMixer'" 
+href="http://eardev.bu.edu/databases/modules/modules/20.aspx">AudioMixer</a></td>
+						<td align="left" valign="top">This module is intended to take 
+inputs from multiple Data Source modules and combine them into a single 
+channel pressure waveform, suitable for input to any module that takes a
+ single-channel pressure waveform as input</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'Auditory Nerve (Instantaneous Firing Rate)'" 
+href="http://eardev.bu.edu/databases/modules/modules/3.aspx">Auditory 
+Nerve (Instantaneous Firing Rate)</a></td>
+						<td align="left" valign="top">Auditory Nerve (Instantaneous Firing
+ Rate)</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'Auditory Nerve (Spikes)'" 
+href="http://eardev.bu.edu/databases/modules/modules/21.aspx">Auditory 
+Nerve (Spikes)</a></td>
+						<td align="left" valign="top">A version of the Auditory Nerve 
+module which produces a spike train as its output.</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'Basilar Membrane Linear Gammatone'" 
+href="http://eardev.bu.edu/databases/modules/modules/1.aspx">Basilar 
+Membrane Linear Gammatone</a></td>
+						<td align="left" valign="top">Basilar Membrane Linear Gammatone</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'Basilar Membrane Nonlinear Gammatone'" 
+href="http://eardev.bu.edu/databases/modules/modules/2.aspx">Basilar 
+Membrane Nonlinear Gammatone</a></td>
+						<td align="left" valign="top">Based on Meddis and Lopez-Poveda</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'BrugheraMSO2'" 
+href="http://eardev.bu.edu/databases/modules/modules/31.aspx">BrugheraMSO2</a></td>
+						<td align="left" valign="top">The BrugheraMSO2 module simulates 
+individual principal cells of the medial superior olive (MSO), which 
+receive bilateral excitatory and inhibitory synaptic inputs, and have 
+responses sensitive to the interaural time delay (ITD) of low-frequency 
+auditory stimuli.  Each instance of the module employs a 
+single-compartment Hodgkin-Huxley neuron model derived for Type II 
+ventral cochlear nucleus neurons, including expressions for IKLT, IKHT, 
+INa, ILEAK, and Ih (Rothman and Manis 2003c) with characteristics that 
+are likely similar to those in principal MSO cells (Svirskis et al. 
+2004; Scott et al. 2005).</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 'Bushy 
+Cell (Rothman93)'" 
+href="http://eardev.bu.edu/databases/modules/modules/22.aspx">Bushy Cell
+ (Rothman93)</a></td>
+						<td align="left" valign="top">This module (Rothman et al., 1993) 
+is a single-compartment Hodgkin-Huxley neuron model that simulates the 
+membrane activity and discharge patterns of a bushy cell in the ventral 
+cochlear nucleus (VCN).  The neural compartment is defined by an 
+electric circuit equation incorporating the membrane currents associated
+ with capacitance, leakage, ion channels, and synaptic inputs.  The 
+characteristics of the three voltage-sensitive ion-channels (fast 
+sodium, delayed-rectifier high-threshold potassium, and low-threshold 
+potassium) were derived from voltage-clamp data taken from the VCN 
+(Manis and Marx, 1991).  In addition to simulation of bushy cells, the 
+Rothman et al. 1993 model is the basis for models of neurons in the 
+medial superior olive (MSO) (Brughera, 1996) and inferior colliculus 
+(Cai, 1998).  Steady-state inhibition, used in the original Rothman 1993
+ model as a mechanism to produce variation in the inter-spike intervals 
+in bushy cells of high CF, has been omitted in this module.  Rothman and
+ Manis (2003) have introduced an updated model with additional 
+voltage-sensitive potassium channels and revised ion-channel dynamics.  
+The 2003 model incorporates responses of chopper cells and bushy cells, 
+and without inhibition it produces the physiologically observed 
+variability in inter-spike intervals.</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'BushyCell2 (RothmanManis2003)'" 
+href="http://eardev.bu.edu/databases/modules/modules/30.aspx">BushyCell2
+ (RothmanManis2003)</a></td>
+						<td align="left" valign="top">The BushyCell2 module simulates the 
+electrical activity of individual neurons of the ventral cochlear 
+nucleus (VCN) (Rothman and Manis 2003c, 2003b, and 2003a).  Each 
+BushyCell2 instance incorporates a single-compartment Hodgkin-Huxley 
+neuron model with expressions for IKA, IKLT, IKHT, INa, ILEAK, and Ih.  
+The BushyCell2 module can simulate either bushy cells which project to 
+the superior olivary complex or medial nucleus of the trapezoid body, or
+ stellate cells which project to the inferior colliculus or dorsal 
+cochlear nucleus.</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'BushyCell2 (RothmanManis2003)'" 
+href="http://eardev.bu.edu/databases/modules/modules/29.aspx">BushyCell2
+ (RothmanManis2003)</a></td>
+						<td align="left" valign="top">The BushyCell2 module simulates the 
+electrical activity of individual neurons of the ventral cochlear 
+nucleus (VCN) (Rothman and Manis 2003c, 2003b, and 2003a).  Each 
+BushyCell2 instance incorporates a single-compartment Hodgkin-Huxley 
+neuron model that incorporates expressions for currents IKA, IKLT, IKHT,
+ INa, ILEAK, and Ih.  In the HRC we often employ this module to simulate
+ bushy cells, which project from the VCN to the medial superior olive or
+ medial nucleus of the trapezoid body.  In addition this module captures
+ the equal facility provided by the Rothman and Manis model (2003c) for 
+simulating stellate cells, which project to the inferior colliculus or 
+dorsal cochlear nucleus.</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'CaiIC'" href="http://eardev.bu.edu/databases/modules/modules/32.aspx">CaiIC</a></td>
+						<td align="left" valign="top">The CaiIC module implements the Cai 
+et al. (1998) model for neurons of the central nucleus of the inferior 
+colliculus (ICC).  While there is wide variation in membrane 
+characteristics between the neurons of this nucleus, and across their 
+population they receive inputs from a number of sources, the Cai et al. 
+IC model focuses primarily on the subpopulation of ICC neurons that are 
+sensitive to interaural time delay (ITD) and respond best to 
+low-frequency auditory inputs.</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'CaiIC2'" href="http://eardev.bu.edu/databases/modules/modules/33.aspx">CaiIC2</a></td>
+						<td align="left" valign="top">The CaiIC2 module simulates 
+individual neurons of the central nucleus of the inferior colliculus 
+(ICC) that are sensitive to interaural time delay (ITD) and respond best
+ to low-frequency auditory inputs.  While the input structure is the 
+same as the CaiIC module, and the hyperpolarization conductance for 
+adaptation of Cai et al. (1998) is included, the single-compartment 
+Hodgkin-Huxley model is otherwise that of Rothman and Manis (2003c), 
+with kinetics based on their measurements of three types of K+ channels 
+in the ventral cochlear nucleus (Rothman and Manis 2003a) and additional
+ studies describing the kinetics of INa and Ih elsewhere in the 
+mammalian nervous system.</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'Compound Action Potential (Instantaneous Firing Rate)'" 
+href="http://eardev.bu.edu/databases/modules/modules/4.aspx">Compound 
+Action Potential (Instantaneous Firing Rate)</a></td>
+						<td align="left" valign="top">Compound Action Potential 
+(Instantaneous Firing Rate)</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'CurrentSpread'" 
+href="http://eardev.bu.edu/databases/modules/modules/28.aspx">CurrentSpread</a></td>
+						<td align="left" valign="top">Simple model of current spread 
+through tissue.  Originally intended for cochlear implant research, this
+ module takes a multi-channel pulsetrain of currents from the CIS 
+module, multiplies those currents by a supplied weighting matrix, and 
+produces a membrane potential field intended to be used by the auditory 
+nerve IFR module</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 'Data 
+Sink'" href="http://eardev.bu.edu/databases/modules/modules/9.aspx">Data
+ Sink</a></td>
+						<td align="left" valign="top">Data Sink logs an individual EarLab 
+stream to a file or a live data visualizer or both</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 'Data 
+Source'" href="http://eardev.bu.edu/databases/modules/modules/8.aspx">Data
+ Source</a></td>
+						<td align="left" valign="top">Data Source reads signal files and 
+presents their contents to the simulation</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'EnvelopeExtractor'" 
+href="http://eardev.bu.edu/databases/modules/modules/27.aspx">EnvelopeExtractor</a></td>
+						<td align="left" valign="top">Extract envelope information from an
+ input stream</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'FIRfilterbank'" 
+href="http://eardev.bu.edu/databases/modules/modules/25.aspx">FIRfilterbank</a></td>
+						<td align="left" valign="top">Implements a finite impulse response
+ (FIR) filering algorithm</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 'IC 
+Neuron (Cai98)'" 
+href="http://eardev.bu.edu/databases/modules/modules/24.aspx">IC Neuron 
+(Cai98)</a></td>
+						<td align="left" valign="top">ICNeuronCai98 simulates individual 
+neurons in the central nucleus of the Inferior Colliculus (Cai et al., 
+1998).  Each neuron in ICNeuronCai98 is a single-compartment 
+Hodgkin-Huxley model similar to the MSOCellBrughera96 module, but with 
+an added adaptation mechanism.</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 'Inner 
+Hair Cell'" href="http://eardev.bu.edu/databases/modules/modules/5.aspx">Inner
+ Hair Cell</a></td>
+						<td align="left" valign="top">Inner Hair Cell</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 'Medial
+ Superior Olive (Cross Correlation)'" 
+href="http://eardev.bu.edu/databases/modules/modules/10.aspx">Medial 
+Superior Olive (Cross Correlation)</a></td>
+						<td align="left" valign="top">Simulate the functioning of the MSO 
+in determining Interaural Time Delay</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 'Middle
+ Ear (Simple Filter)'" 
+href="http://eardev.bu.edu/databases/modules/modules/6.aspx">Middle Ear 
+(Simple Filter)</a></td>
+						<td align="left" valign="top">Simple filter implementation of a 
+Middle Ear Transfer Function</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 'MSO 
+Cell (Brughera96)'" 
+href="http://eardev.bu.edu/databases/modules/modules/23.aspx">MSO Cell 
+(Brughera96)</a></td>
+						<td align="left" valign="top">The MSOCellBrughera96 module 
+(Brughera et al., 1996) simulates neural discharge patterns of a 
+principal cell in the medial superior olive (MSO).  The module is a 
+single-compartment Hodgkin-Huxley neural membrane model very similar to 
+the BushyCellRothman93 module (Rothman et al., 1993).  The two differ in
+ that the MSO receives binaural inputs, and in two of their eight 
+ion-channel activation equations.  </td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 'Simple
+ Signal Generator'" 
+href="http://eardev.bu.edu/databases/modules/modules/7.aspx">Simple 
+Signal Generator</a></td>
+						<td align="left" valign="top">Simple Signal Generator</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'Vocoder'" href="http://eardev.bu.edu/databases/modules/modules/26.aspx">Vocoder</a></td>
+						<td align="left" valign="top">an N-band vocoder module, which 
+takes envelope information from the EnvelopeExtractor module and 
+multiplies that envelope with N bands of sinusoids at the requested 
+center frequencies</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'VoigtDCNCell'" 
+href="http://eardev.bu.edu/databases/modules/modules/35.aspx">VoigtDCNCell</a></td>
+						<td align="left" valign="top">The VoigtDCNCell module implements 
+sets of model dorsal cochlear nucleus (DCN) neurons as in the Zheng and 
+Voigt (2006) model for response maps of the DCN.</td>
+					</tr>
+				
+					<tr class="tablerow">
+						<td align="left" valign="top"><a title="Versions of module 
+'ZhouLSO'" href="http://eardev.bu.edu/databases/modules/modules/34.aspx">ZhouLSO</a></td>
+						<td align="left" valign="top">The ZhouLSO module simulates neurons
+ in the lateral superior olive (LSO) that are sensitive to interaural 
+level difference.  Each model LSO neuron is a leaky “integrate and fire”
+ model with adaptation.  Discharge properties of the model cell suggest 
+that the strength and time constant of adaptation determine four basic 
+response types observed in LSO neurons (Zhou and Colburn 2008).</td>
+					</tr>
+				
+					</tbody></table>
+				</div>
+			
+		</div>
+	</div>
+	<div id="footer"></div>
+</div>
+
+		</form>
+	</body></html>

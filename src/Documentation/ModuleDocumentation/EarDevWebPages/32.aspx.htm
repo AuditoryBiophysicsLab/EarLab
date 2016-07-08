@@ -1,0 +1,734 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+	
+		<title>EarLab: EarLab Functional Interface Module Version</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="CODE_LANGUAGE" content="C#">
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" 
+content="http://schemas.microsoft.com/intellisense/ie5">
+		<link media="screen" href="32.aspx_files/DefaultStyle.css" 
+type="text/css" rel="stylesheet">
+	</head><body>
+		<script language="javascript">
+		<!--
+		function PopupWindow(pageURL, height, width)
+		{
+			window.open(pageURL,"PopupWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=" + width + ",height=" + height);
+		}
+		-->
+		</script>
+		<form name="Default" method="post" action="32.aspx" id="Default">
+<div>
+<input name="__VIEWSTATE" id="__VIEWSTATE" 
+value="/wEPDwUKMTM0Mzk2NTg0Nw9kFgICAg9kFgoCAQ9kFgICAQ9kFghmDw8WAh4EVGV4dAUFQ2FpSUNkZAIBDw8WAh8ABQcxLjAuMC4wZGQCAg8PFgIfAAUJOS8xOC8yMDA4ZGQCAw8PFgIfAAU/PGEgaHJlZj0iL2RhdGFiYXNlcy9wdWJsaXNoZWQvYXV0aG9ycy8zNTcuYXNweCI+QW5kZXJzb24gREo8L2E+ZGQCAg8WAh4LXyFJdGVtQ291bnQCARYCAgEPZBYCZg8VA0NpbmZlcmlvciBjb2xsaWN1bHVzIFtJQ10sIGNvbGxpY3VsdXMgY2F1ZGFsaXMsIHBvc3RlcmlvciBjb2xsaWN1bHVzZWNlbnRyYWwgbnVjbGV1cyBvZiBpbmZlcmlvciBjb2xsaWN1bHVzIFtDSUNdLCBOdWNsZXVzIGNlbnRyYWxpcywgY2hpZWYgbnVjbGV1cyBvZiBpbmZlcmlvciBjb2xsaWN1bHVzAGQCAw8WAh8BAgMWBgIBD2QWAmYPFQQcSXBzaWxhdGVyYWwgRXhjaXRhdG9yeSBJbnB1dAExKlNwaWtlIFRpbWVzICBbc2Vjb25kcyBmcm9tIHN0YXJ0IG9mIGZyYW1lXQVJbnB1dGQCAg9kFgJmDxUEHkNvbnRyYWxhdGVyYWwgSW5oaWJpdG9yeSBJbnB1dAEyKlNwaWtlIFRpbWVzICBbc2Vjb25kcyBmcm9tIHN0YXJ0IG9mIGZyYW1lXQVJbnB1dGQCAw9kFgJmDxUEBk91dHB1dAExKlNwaWtlIFRpbWVzICBbc2Vjb25kcyBmcm9tIHN0YXJ0IG9mIGZyYW1lXQZPdXRwdXRkAgQPFgIfAQISFiQCAQ9kFgJmDxUDDVNhbXBsZVJhdGVfSHoFZmxvYXSuAVRoZSBzYW1wbGUgcmF0ZSwgaW4gaGVydHosIHNldHMgdGhlIGVmZmVjdGl2ZSB0aW1lIHJlc29sdXRpb24gb2YgdGhlIGlucHV0IGFuZCBvdXRwdXQgc3RyZWFtcywgYW5kIHRoZSBvdXRwdXQgdGltZSByZXNvbHV0aW9uIG9mIHRoZSBSdW5nZSBLdXR0YSBkaWZmZXJlbnRpYWwgZXF1YXRpb24gc29sdmVyLmQCAg9kFgJmDxUDE0ZyYW1lTGVuZ3RoX1NlY29uZHMFZmxvYXQeZHVyYXRpb24gb2YgYSBwcm9jZXNzaW5nIGJsb2NrZAIDD2QWAmYPFQMSRXhTeW5hcHRpY1N0cmVuZ3RoBWZsb2F02wJFeFN5bmFwdGljU3RyZW5ndGgsIEdlLCBnaXZlbiB0aGUgdW5pdCBuYW5vc2llbWVucyAoblMpLCBzZXRzIHRoZSBtYXhpbXVtIHZhbHVlIG9mIHRoZSBpbmNyZW1lbnQgaW4gZXhjaXRhdG9yeSBjb25kdWN0YW5jZSBhc3NvY2lhdGVkIHdpdGggYW4gZXhjaXRhdG9yeSBzeW5hcHRpYyBpbnB1dCBmaXJpbmcuIFRoZSB0aW1lIGNvdXJzZSBvZiB0aGUgY29uZHVjdGFuY2UgaW5jcmVtZW50IGlzIGEgc2NhbGVkIGFscGhhIGZ1bmN0aW9uLCB0KEdlL1RhdSlleHAoMSAtIHQvVGF1KSwgd2l0aCB0aGUgdGltZSBjb25zdGFudCBvZiBkZWNheSwgVGF1LCBzcGVjaWZpZWQgYnkgRXhTeW5hcHRpY1RhdV9TZWNvbmRzLmQCBA9kFgJmDxUDFUV4U3luYXB0aWNUYXVfU2Vjb25kcwVmbG9hdDR0aW1lIGNvbnN0YW50IG9mIHRoZSBleGNpdGF0b3J5IHN5bmFwdGljIGNvbmR1Y3RhbmNlZAIFD2QWAmYPFQMTSW5oU3luYXB0aWNTdHJlbmd0aAVmbG9hdN0CSW5oU3luYXB0aWNTdHJlbmd0aCwgR2ksIGdpdmVuIHRoZSB1bml0IG5hbm9zaWVtZW5zIChuUyksIHNldHMgdGhlIG1heGltdW0gdmFsdWUgb2YgdGhlIGluY3JlbWVudCBpbiBpbmhpYml0b3J5IGNvbmR1Y3RhbmNlIGFzc29jaWF0ZWQgd2l0aCBhbiBpbmhpYml0b3J5IHN5bmFwdGljIGlucHV0IGZpcmluZy4gVGhlIHRpbWUgY291cnNlIG9mIHRoZSBjb25kdWN0YW5jZSBpbmNyZW1lbnQgaXMgYSBzY2FsZWQgYWxwaGEgZnVuY3Rpb24sIHQoR2kvVGF1KWV4cCgxIC0gdC9UYXUpLCB3aXRoIHRoZSB0aW1lIGNvbnN0YW50IG9mIGRlY2F5LCBUYXUsIHNwZWNpZmllZCBieSBJbmhTeW5hcHRpY1RhdV9TZWNvbmRzLmQCBg9kFgJmDxUDFkluaFN5bmFwdGljVGF1X1NlY29uZHMFZmxvYXQ0dGltZSBjb25zdGFudCBvZiB0aGUgaW5oaWJpdG9yeSBzeW5hcHRpYyBjb25kdWN0YW5jZWQCBw9kFgJmDxUDGENlbGxUZW1wZXJhdHVyZV9EZWdyZWVzQwVmbG9hdJwBVGhlIGNlbGwgdGVtcGVyYXR1cmUgKGluIGRlZ3JlZXMgQ2Vsc2l1cykgaXMgdHlwaWNhbGx5IGEgbWFtbWFsaWFuIGJvZHkgdGVtcGVyYXR1cmUsIHN1Y2ggYXMgMzgsIGZvciBzaW11bGF0aW9uIG9mIGluIHZpdm8gZXhwZXJpbWVudHMsIGFuZCAyMiBmb3IgaW4gdml0cm8uZAIID2QWAmYPFQMUQUhQSW5jcmVtZW50X1NpZW1lbnMFZmxvYXTfA0FIUEluY3JlbWVudF9TaWVtZW5zIGlzIGFuIG9wdGlvbmFsIHBhcmFtZXRlciwgYWRkZWQgdG8gdGhlIFJvdGhtYW4gYW5kIE1hbmlzIDIwMDNjIGNvbXBhcnRtZW50LCB3aXRoIGEgZGVmYXVsdCB2YWx1ZSBvZiB6ZXJvLiBXaGVuIHNldCB0byBhIG5vbi16ZXJvIHZhbHVlLCBBSFBJbmNyZW1lbnRfU2llbWVucyBpbiBjb21iaW5hdGlvbiB3aXRoIFRhdUFIUF9TZWNvbmRzIGltcGxlbWVudHMgYWRhcHRhdGlvbiBieSBtZWFucyBvZiBhIHBvdGFzc2l1bSBjb25kdWN0YW5jZSB3aXRoIGEgc3RlcCBpbmNyZWFzZSBhbmQgYSBmaXJzdC1vcmRlciBleHBvbmVudGlhbCBkZWNheS4gRXhhY3RseSAwLjUgbXMgYWZ0ZXIgZWFjaCBhY3Rpb24gcG90ZW50aWFsLCB0aGUgY29uZHVjdGFuY2UgaXMgaW5jcmVtZW50ZWQgYnkgQUhQSW5jcmVtZW50X1NpZW1lbnMsIGFuZCB0aGVuIGRlY2F5cyB3aXRoIHRpbWUgY29uc3RhbnQgVGF1QUhQX1NlY29uZHMuZAIJD2QWAmYPFQMVSW5oSW5wdXREZWxheV9TZWNvbmRzBWZsb2F0NVRoZSBkZWxheSBpbiBzZWNvbmRzIGFwcGxpZWQgdG8gdGhlIGluaGliaXRvcnkgaW5wdXQuZAIKD2QWAmYPFQMWRXhjaXRhdG9yeU1TT0xhZ051bWJlcgNpbnS2AlNldHRpbmcgdGhlIEV4Y2l0YXRvcnlNU09MYWdOdW1iZXIgcGFyYW1ldGVyICh0byBhIHZhbHVlIGJldHdlZW4gemVybyBhbmQgdGhlIG51bWJlciBvZiBjaGFyYWN0ZXJpc3RpYyBkZWxheXMgbWludXMgb25lKSBzZWxlY3RzIGV4YWN0bHkgb25lIGlwc2lsYXRlcmFsIG1vZGVsIE1TTyBjZWxsIG9mIHRoYXQgcGFydGljdWxhciBjaGFyYWN0ZXJpc3RpYyBkZWxheSBzbyB0aGF0IGl0IHByb2plY3RzIGFuIGV4Y2l0YXRvcnkgaW5wdXQgdG8gZWFjaCBvZiB0aGUgbW9kZWwgSUMgbmV1cm9ucyB3aXRoaW4gdGhhdCBmcmVxdWVuY3kgY2hhbm5lbC5kAgsPZBYCZg8VAwxSZXNwb25zZVR5cGUDaW50hgFBbiBvcHRpb25hbCBwYXJhbWV0ZXIsIHdpdGggYSBkZWZhdWx0IHZhbHVlIG9mIDIgKFR5cGUgSUkpLiAgICAgICAgICAgICAgICAgICAgIFR5cGUgSTogUmVzcG9uc2VUeXBlID0gMTsgIFR5cGUgSUk6IFJlc3BvbnNlVHlwZSA9IDIuIGQCDA9kFgJmDxUDCmdlRmlsZW5hbWUGc3RyaW5naEFuIG9wdGlvbmFsIHBhcmFtZXRlciwgd2hpY2ggd3JpdGVzIHRoZSBleGNpdGF0b3J5IHN5bmFwdGljIGNvbmR1Y3RhbmNlICh1bml0IG5TKSB0byB0aGUgc3BlY2lmaWVkIGZpbGUuZAIND2QWAmYPFQMKZ2lGaWxlbmFtZQZzdHJpbmdoQW4gb3B0aW9uYWwgcGFyYW1ldGVyLCB3aGljaCB3cml0ZXMgdGhlIGluaGliaXRvcnkgc3luYXB0aWMgY29uZHVjdGFuY2UgKHVuaXQgblMpIHRvIHRoZSBzcGVjaWZpZWQgZmlsZS5kAg4PZBYCZg8VAwtnTmFGaWxlbmFtZQZzdHJpbmdbQW4gb3B0aW9uYWwgcGFyYW1ldGVyLCB3aGljaCB3cml0ZXMgdGhlIHNvZGl1bSBjb25kdWN0YW5jZSAodW5pdCBuUykgdG8gdGhlIHNwZWNpZmllZCBmaWxlLmQCDw9kFgJmDxUDDGdLSFRGaWxlbmFtZQZzdHJpbmdtQW4gb3B0aW9uYWwgcGFyYW1ldGVyLCB3aGljaCB3cml0ZXMgdGhlIGhpZ2gtdGhyZXNob2xkIHBvdGFzc2l1bSBjb25kdWN0YW5jZSAodW5pdCBuUykgdG8gdGhlIHNwZWNpZmllZCBmaWxlLmQCEA9kFgJmDxUDDGdLTFRGaWxlbmFtZQZzdHJpbmdsQW4gb3B0aW9uYWwgcGFyYW1ldGVyLCB3aGljaCB3cml0ZXMgdGhlIGxvdy10aHJlc2hvbGQgcG90YXNzaXVtIGNvbmR1Y3RhbmNlICh1bml0IG5TKSB0byB0aGUgc3BlY2lmaWVkIGZpbGUuZAIRD2QWAmYPFQMMZ0FIUEZpbGVuYW1lBGJvb2xoQW4gb3B0aW9uYWwgcGFyYW1ldGVyLCB3aGljaCB3cml0ZXMgdGhlIG9wdGlvbmFsIGFkYXB0YXRpb24gY29uZHVjdGFuY2UgKHVuaXQgblMpIHRvIHRoZSBzcGVjaWZpZWQgZmlsZS5kAhIPZBYCZg8VAw5UYXVBSFBfU2Vjb25kcwVmbG9hdOYDVGF1QUhQX1NlY29uZHMgaXMgYW4gb3B0aW9uYWwgcGFyYW1ldGVyLCBhZGRlZCB0byB0aGUgUm90aG1hbiBhbmQgTWFuaXMgMjAwM2MgY29tcGFydG1lbnQsIHdpdGggYSBkZWZhdWx0IHZhbHVlIG9mICgxLjAvU2FtcGxlUmF0ZV9IeikuIFdoZW4gcGFyYW1ldGVyIEFIUEluY3JlbWVudF9TaWVtZW5zIGlzIHNldCB0byBhIG5vbi16ZXJvIHZhbHVlLCB0aGVzZSB0d28gcGFyYW1ldGVycyBpbXBsZW1lbnQgYWRhcHRhdGlvbiBieSBtZWFucyBvZiBhIHBvdGFzc2l1bSBjb25kdWN0YW5jZSB3aXRoIGEgc3RlcCBpbmNyZWFzZSBhbmQgYSBmaXJzdC1vcmRlciBleHBvbmVudGlhbCBkZWNheS4gRXhhY3RseSAwLjUgbXMgYWZ0ZXIgZWFjaCBhY3Rpb24gcG90ZW50aWFsLCB0aGUgY29uZHVjdGFuY2UgaXMgaW5jcmVtZW50ZWQgYnkgQUhQSW5jcmVtZW50X1NpZW1lbnMsIGFuZCB0aGVuIGRlY2F5cyB3aXRoIHRpbWUgY29uc3RhbnQgVGF1QUhQX1NlY29uZHMuZAIFDxYCHwECBhYMAgEPZBYCZg8VAe8BQ2FpIEgsIENhcm5leSBMSCwgQ29sYnVybiBIUy4gQSBtb2RlbCBmb3IgYmluYXVyYWwgcmVzcG9uc2UgcHJvcGVydGllcyBvZiBpbmZlcmlvciBjb2xsaWN1bHVzIG5ldXJvbnMuIEkuIEEgbW9kZWwgd2l0aCBpbnRlcmF1cmFsIHRpbWUgZGlmZmVyZW5jZS1zZW5zaXRpdmUgZXhjaXRhdG9yeSBhbmQgaW5oaWJpdG9yeSBpbnB1dHMuIEogQWNvdXN0IFNvYyBBbSAxOTk4OzEwMygxKTo0NzUtOTMuIFBNSUQ6IDk0NDAzMzRkAgIPZBYCZg8VAfQBQ2FpIEgsIENhcm5leSBMSCwgQ29sYnVybiBIUy4gQSBtb2RlbCBmb3IgYmluYXVyYWwgcmVzcG9uc2UgcHJvcGVydGllcyBvZiBpbmZlcmlvciBjb2xsaWN1bHVzIG5ldXJvbnMuIElJLiBBIG1vZGVsIHdpdGggaW50ZXJhdXJhbCB0aW1lIGRpZmZlcmVuY2Utc2Vuc2l0aXZlIGV4Y2l0YXRvcnkgYW5kIGluaGliaXRvcnkgaW5wdXRzIGFuZCBhbiBhZGFwdGF0aW9uIG1lY2hhbmlzbS4gSkFTQSAxOTk4OzEwMygxKTo0OTQtNTA2LmQCAw9kFgJmDxUBxQFSb3RobWFuIEpTLCBZb3VuZyBFRCwgTWFuaXMgUEIuIENvbnZlcmdlbmNlIG9mIGF1ZGl0b3J5IG5lcnZlIGZpYmVycyBvbnRvIGJ1c2h5IGNlbGxzIGluIHRoZSB2ZW50cmFsIGNvY2hsZWFyIG51Y2xldXM6IGltcGxpY2F0aW9ucyBvZiBhIGNvbXB1dGF0aW9uYWwgbW9kZWwuIEogTmV1cm9waHlzaW9sLiAxOTkzIERlYzs3MCg2KToyNTYyLTgzLmQCBA9kFgJmDxUBdU1hbmlzIFBCLCBNYXJ4IFNPLiBPdXR3YXJkIGN1cnJlbnRzIGluIGlzb2xhdGVkIHZlbnRyYWwgY29jaGxlYXIgbnVjbGV1cyBuZXVyb25zLiBKIE5ldXJvc2NpLiAxOTkxIFNlcDsxMSg5KToyODY1LTgwLmQCBQ9kFgJmDxUBoQFCcnVnaGVyYSBBUiwgU3R1dG1hbiBFUiwgQ2FybmV5LCBMSCwgQ29sYnVybiwgU0guIEEgbW9kZWwgd2l0aCBleGNpdGF0aW9uIGFuZCBpbmhpYml0aW9uIGZvciBjZWxscyBpbiB0aGUgbWVkaWFsIHN1cGVyaW9yIG9saXZlLiBBdWQuIE5ldXJvc2NpLiAxOTk2LiAyOjIxOeKAkzIzLmQCBg9kFgJmDxUBvQFTaXZhcmFtYWtyaXNobmFuIFMsIE9saXZlciBETC4gRGlzdGluY3QgSyBjdXJyZW50cyByZXN1bHQgaW4gcGh5c2lvbG9naWNhbGx5IGRpc3RpbmN0IGNlbGwgdHlwZXMgaW4gdGhlIGluZmVyaW9yIGNvbGxpY3VsdXMgb2YgdGhlIHJhdC4gSiBOZXVyb3NjaS4gMjAwMSBBcHIgMTU7MjEoOCk6Mjg2MS03Ny4gUE1JRDogMTEzMDY2MzhkZMldHfiM03LYXqTFX/id07XGpJH9"
+ type="hidden">
+</div>
+
+			
+<script language="JavaScript1.2" src="32.aspx_files/menu_bu.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="32.aspx_files/menu_earlab.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="32.aspx_files/switch_bu.js" type="text/javascript"></script>
+<script language="JavaScript1.2">PreloadImages('/images/site/software_blue.gif','/images/site/databases_blue.gif','/images/site/modeling_blue.gif','/images/site/support_blue.gif','/images/site/tutorials_blue.gif');</script>
+<script language="JavaScript1.2">mmLoadMenus();</script><span 
+id="menuContainer"><div id="menuLayer0" style="position: absolute; 
+z-index: 10; left: -300px; top: -300px; visibility: hidden; color: 
+rgb(153, 153, 153); background-color: rgb(153, 153, 153); width: 194px; 
+height: 40px;">
+  <div id="menuLite0" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 38px; width: 192px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg0" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 37px; width: 191px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem0" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 190px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText0" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Desktop
+ Modeling Environment&nbsp;</div>
+<div id="menuItemHilite0" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Desktop 
+Modeling Environment&nbsp;</div></div><div id="menuItem1" 
+style="position: absolute; z-index: 10; left: 0px; top: 20px; 
+font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width:
+ 190px; height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText1" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">DataViewer 
+Application&nbsp;</div>
+<div id="menuItemHilite1" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">DataViewer
+ Application&nbsp;</div></div><div id="focusItem0" style="position: 
+absolute; z-index: 10; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer1" style="position: absolute; z-index: 10; left: 
+-300px; top: -300px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 159px; height: 80px;">
+  <div id="menuLite1" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 78px; width: 157px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg1" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 77px; width: 156px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem2" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 155px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText2" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Revcor
+ Database&nbsp;</div>
+<div id="menuItemHilite2" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Revcor 
+Database&nbsp;</div></div><div id="menuItem3" style="position: absolute;
+ z-index: 10; left: 0px; top: 20px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 155px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText3" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">CIPIC HRTF 
+Database&nbsp;</div>
+<div id="menuItemHilite3" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">CIPIC 
+HRTF Database&nbsp;</div></div><div id="menuItem4" style="position: 
+absolute; z-index: 10; left: 0px; top: 40px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 155px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText4" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Published Data 
+Database&nbsp;</div>
+<div id="menuItemHilite4" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Published
+ Data Database&nbsp;</div></div><div id="menuItem5" style="position: 
+absolute; z-index: 10; left: 0px; top: 60px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 155px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText5" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">EFI Modules 
+Database&nbsp;</div>
+<div id="menuItemHilite5" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">EFI 
+Modules Database&nbsp;</div></div><div id="focusItem1" style="position: 
+absolute; z-index: 10; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer2" style="position: absolute; z-index: 10; left: 
+-200px; top: -200px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 149px; height: 40px;">
+  <div id="menuLite2" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 38px; width: 147px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg2" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 37px; width: 146px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem6" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 145px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText6" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Tutorial
+ &amp; Instructions&nbsp;</div>
+<div id="menuItemHilite6" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Tutorial 
+&amp; Instructions&nbsp;</div></div><div id="menuItem7" style="position:
+ absolute; z-index: 10; left: 0px; top: 20px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 145px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText7" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">My Modeling 
+Home&nbsp;</div>
+<div id="menuItemHilite7" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">My 
+Modeling Home&nbsp;</div></div><div id="focusItem2" style="position: 
+absolute; z-index: 11; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer3" style="position: absolute; z-index: 10; left: 
+-300px; top: -300px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 149px; height: 40px;">
+  <div id="menuLite3" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 38px; width: 147px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg3" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 37px; width: 146px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem8" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 145px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText8" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">File 
+Specs &amp; Schemas&nbsp;</div>
+<div id="menuItemHilite8" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">File 
+Specs &amp; Schemas&nbsp;</div></div><div id="menuItem9" 
+style="position: absolute; z-index: 10; left: 0px; top: 20px; 
+font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width:
+ 145px; height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText9" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Contact EarLab 
+Team&nbsp;</div>
+<div id="menuItemHilite9" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Contact 
+EarLab Team&nbsp;</div></div><div id="focusItem3" style="position: 
+absolute; z-index: 10; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer4" style="position: absolute; z-index: 10; left: 
+-300px; top: -300px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 94px; height: 60px;">
+  <div id="menuLite4" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 58px; width: 92px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg4" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 57px; width: 91px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem10" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 90px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText10" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Introduction&nbsp;</div>
+<div id="menuItemHilite10" style="z-index: 10; position: absolute; left:
+ 7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Introduction&nbsp;</div></div><div
+ id="menuItem11" style="position: absolute; z-index: 10; left: 0px; top:
+ 20px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px;
+ width: 90px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText11" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Anatomy&nbsp;</div>
+<div id="menuItemHilite11" style="z-index: 10; position: absolute; left:
+ 7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Anatomy&nbsp;</div></div><div
+ id="menuItem12" style="position: absolute; z-index: 10; left: 0px; top:
+ 40px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px;
+ width: 90px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText12" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Physiology&nbsp;</div>
+<div id="menuItemHilite12" style="z-index: 10; position: absolute; left:
+ 7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Physiology&nbsp;</div></div><div
+ id="focusItem4" style="position: absolute; z-index: 10; left: 0px; top:
+ -30px;" onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+</span>
+
+<script language="javascript">function DatabaseGo(){ document.location.href = '/databases/' + document.getElementById('databaseList').options[document.getElementById('databaseList').selectedIndex].value + '/'; }</script>
+<script language="javascript">function SoftwareGo(){ document.location.href = '/software/' + document.getElementById('softwareList').options[document.getElementById('softwareList').selectedIndex].value; }</script>
+<div id="wrapper">
+	<div id="header"><h1>EarLab: A Virtual Laboratory for Auditory Research</h1><a
+ title="Go to EarLab home" href="http://eardev.bu.edu/"><img alt="Go to 
+EarLab home" id="earlab" src="32.aspx_files/earlab.gif"></a><a 
+onmouseover="SwapImage('logo_bu','','/images/site/logo_bu_red.gif',1)" 
+onmouseout="SwapImageRestore()" href="http://www.bu.edu/" 
+target="_blank" title="Boston University Homepage"><img id="logo_bu" 
+src="32.aspx_files/logo_bu_gray.gif" alt="Boston University Homepage"></a><a
+ 
+onmouseover="SwapImage('logo_nih','','/images/site/logo_nih_blue.gif',1)"
+ onmouseout="SwapImageRestore()" href="http://www.nih.gov/" 
+target="_blank" title="National Institutes of Health"><img id="logo_nih"
+ src="32.aspx_files/logo_nih_gray.gif" alt="National Institutes of 
+Health"></a><a 
+onmouseover="SwapImage('logo_nidcd','','/images/site/logo_nidcd_color.gif',1)"
+ onmouseout="SwapImageRestore()" href="http://www.nidcd.nih.gov/" 
+target="_blank" title="National Institute on Deafness and Other 
+Communication Disorders"><img id="logo_nidcd" 
+src="32.aspx_files/logo_nidcd_gray.gif" alt="National Institute on 
+Deafness and Other Communication Disorders"></a><a 
+onmouseover="SwapImage('logo_nimh','','/images/site/logo_nimh_color.gif',1)"
+ onmouseout="SwapImageRestore()" href="http://www.nimh.nih.gov/" 
+target="_blank" title="National Institute of Mental Health"><img 
+id="logo_nimh" src="32.aspx_files/logo_nimh_gray.gif" alt="National 
+Institute of Mental Health"></a><a 
+onmouseover="SwapImage('logo_hbp','','/images/site/logo_hbp_color.gif',1)"
+ onmouseout="SwapImageRestore()" 
+href="http://www.nimh.nih.gov/neuroinformatics/index.cfm" 
+target="_blank" title="The Human Brain Project"><img id="logo_hbp" 
+src="32.aspx_files/logo_hbp_gray.gif" alt="The Human Brain Project"></a><img
+ id="cochlea" src="32.aspx_files/cochlea_gray.gif" alt="Learn About the 
+Cochlea" 
+onmouseover="SwapImage('cochlea','','/images/site/cochlea_blue.gif',1)" 
+onmouseout="SwapImageRestore()">
+	</div>
+	<div id="menu"><img name="software" 
+src="32.aspx_files/software_gray.gif" alt="Software and Tools" 
+onmouseover="MM_showMenu(window.softwaremenu,-1,20,null,'software');SwapImage('software','','/images/site/software_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img 
+name="databases" src="32.aspx_files/databases_gray.gif" alt="Databases 
+and Tables" 
+onmouseover="MM_showMenu(window.databasesmenu,-1,20,null,'databases');SwapImage('databases','','/images/site/databases_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img name="modeling"
+ src="32.aspx_files/modeling_gray.gif" alt="Online Modeling" 
+onmouseover="MM_showMenu(window.modelingmenu,-1,20,null,'modeling');SwapImage('modeling','','/images/site/modeling_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img name="support" 
+src="32.aspx_files/support_gray.gif" alt="Support" 
+onmouseover="MM_showMenu(window.supportmenu,-1,20,null,'support');SwapImage('support','','/images/site/support_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img 
+name="tutorials" src="32.aspx_files/tutorials_gray.gif" alt="Auditory 
+Tutorials" 
+onmouseover="MM_showMenu(window.tutorialsmenu,-1,20,null,'tutorials');SwapImage('tutorials','','/images/site/tutorials_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"></div>
+	<div id="content">
+		<div id="right">
+			<div id="authenticationlinks"><a 
+href="http://eardev.bu.edu/authentication/">Login</a> | <a 
+href="http://eardev.bu.edu/authentication/Register.aspx">Register</a></div>
+			<div class="leftitem"><div class="titleimage"><img alt="Overview" 
+src="32.aspx_files/right_overview.gif"></div>The EarLab Functional 
+Interface Modules Database contains documentation and code for modules 
+compatible with the <a href="http://eardev.bu.edu/software/desktop/" 
+title="Desktop Modeling Environment">Desktop Modeling Environment</a>.</div>
+			<div class="leftitem"><div class="titleimage"><img alt="Recent News" 
+src="32.aspx_files/right_news.gif"></div>
+			
+			</div>
+			<div class="rightitem"><div class="titleimage"><img alt="Downloads" 
+src="32.aspx_files/right_downloads.gif"></div>
+				<select id="softwareList" name="softwareList" class="dropdownlist"><option
+ selected="selected" value="">Modeling Tools Suite</option><option 
+value="desktop">Desktop Modeling Environment</option><option 
+value="dataviewer">DataViewer Application</option></select>
+				<input title="Go to selected download" name="softwareButton" 
+value="Go Now" onclick="SoftwareGo();" class="smallbutton" type="button"></div>
+			<div class="rightitem"><div class="titleimage"><img alt="Databases" 
+src="32.aspx_files/right_databases.gif"></div>
+				<select id="databaseList" name="databaseList" class="dropdownlist"><option
+ selected="selected" value="revcor">Revcor Database</option><option 
+value="cipic">Cipic HRTF Database</option><option value="published">Published
+ Data Database</option><option value="modules">EFI Module Database</option></select><input
+ title="Go to selected database" name="databaseButton" value="Go Now" 
+onclick="DatabaseGo();" class="smallbutton" type="button"></div>
+			<div class="leftitem"><div class="titleimage"><img alt="Contact Info"
+ src="32.aspx_files/right_contact.gif"></div>
+				EarLab Project<br>
+				Boston University<br>
+				Biomed. Eng. 403<br>
+				44 Cummington Street<br>
+				Boston, MA 02215<br>
+				<a href="mailto:earlab@bu.edu">earlab@bu.edu</a></div>
+		</div>
+		<div id="main">
+
+			<img class="titleimage" src="32.aspx_files/version.gif" alt="EarLab 
+Functional Interface Module Version">
+			<div class="paragraph"><table align="left" border="0" cellpadding="0"
+ cellspacing="4" width="100%">
+				<tbody><tr>
+					<td colspan="2"><table id="versionTable" class="tablerows" 
+style="border: 1px solid rgb(85, 85, 85); width: 100%; border-collapse: 
+collapse;" border="1" cellpadding="4" cellspacing="0" rules="rows">
+	<tbody><tr class="tableheader" align="center" valign="top">
+		<th>Module</th><th>Version</th><th>Release</th><th>Contact</th>
+	</tr><tr class="tablerow" align="center" valign="top">
+		<td>CaiIC</td><td>1.0.0.0</td><td>9/18/2008</td><td><a 
+href="http://eardev.bu.edu/databases/published/authors/357.aspx">Anderson
+ DJ</a></td>
+	</tr>
+</tbody></table></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Classification:</b></td>
+					<td align="left" width="100%">
+					
+								<table class="tablerow" border="1" bordercolor="#777777" 
+cellpadding="4" cellspacing="0" width="100%" rules="rows">
+									<tbody><tr class="tableheader">
+										<td align="left" nowrap="nowrap">Structure</td>
+										<td align="left" nowrap="nowrap">Substructure</td>
+										<td align="left" nowrap="nowrap">Cell</td>
+									</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">inferior colliculus [IC], 
+colliculus caudalis, posterior colliculus</td>
+									<td align="left" valign="top">central nucleus of inferior 
+colliculus [CIC], Nucleus centralis, chief nucleus of inferior 
+colliculus</td>
+									<td align="left" valign="top"></td>
+								</tr>
+							
+								</tbody></table>
+							
+						</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Abstract:</b></td>
+					<td align="left"><div style="border: 1px solid rgb(119, 119, 119);"><div
+ style="margin: 4px;">The CaiIC module implements the Cai et al. (1998) 
+model for neurons of the central nucleus of the inferior colliculus 
+(ICC).  While there is wide variation in membrane characteristics 
+between the neurons of this nucleus, and across their population they 
+receive inputs from a number of sources, the Cai et al. IC model focuses
+ on the subpopulation of ICC neurons that are sensitive to interaural 
+time delay (ITD) and respond best to low-frequency auditory inputs. Each
+ instance of the CaiIC module incorporates a single-compartment 
+Hodgkin-Huxley neuron model defined by an electric circuit equation 
+incorporating membrane currents associated with capacitance, leakage, 
+ion channels, and synaptic inputs.  The characteristics of the three 
+voltage-sensitive ion-channel conductances (inactivating sodium gNa, 
+delayed-rectifier high-threshold potassium gKHT, and low-threshold 
+potassium gKLT) were derived from voltage-clamp data taken from the 
+ventral cochlear nucleus (VCN) (Rothman et al. 1993; Manis and Marx, 
+1991).  The Cai98 compartment incorporates an additional conductance for
+ additive long-lasting adaptation following each action potential, a 
+characteristic of certain ICC neurons.  With the exception of this added
+ conductance, the neural compartment is that of Brughera et al. (1996), 
+including its modifications from the Rothman et al. (1993) compartment, 
+which smooth and slow the ion-channel activity slightly and increase the
+ overall potassium conductance near resting potential.  The module’s 
+ResponseType parameter can be used to select Type I or II responses.  
+The default response is Type II (phasic), characteristic of cells that 
+are effective in phase-locking and entraining to low frequency auditory 
+stimuli.  Selecting a Type I (sustained) response eliminates gKLT, and 
+modifies the strengths of capacitance, gNa, and gKHT.  Although adaption
+ characteristics and response type are selected through independent 
+parameters,  in IC neurons the K+ current that supports adaptation is 
+co-expressed with the basic ion-channel currents that support a Type I 
+response, but not with the additional currents associated with a Type II
+ response (Sivaramakrishnan and Oliver, 2001).</div></div></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Description:</b></td>
+					<td align="left"><div style="border: 1px solid rgb(119, 119, 119);"><div
+ style="margin: 4px;">The CaiIC module implements an array of ICC 
+neurons with two dimensions of lengths that are specified in the runtime
+ gui or diagram file.  The length of the first dimension sets the number
+ of frequency channels, and the length of the second dimension sets the 
+number of model cells per frequency channel equal to the number of 
+characteristic delays in each of two MSO modules acting as an input.  In
+ order to implement the Cai et al. model (1998), the CaiIC module 
+receives one excitatory input stream driven by an ipsilateral MSO 
+module, and one inhibitory input stream driven by a contralateral MSO 
+module.  Each model ICC neuron receives one excitatory synaptic input, 
+and one inhibitory synaptic input.  While this strict adherence to the 
+original model may be restrictive, the CaiIC module thus incorporates 
+the original model’s convergent inputs of same and different 
+characteristic delays.  The inputs, individual cells within the 
+BrugheraMSO module, are organized by frequency channel and 
+characteristic delay.  The number of frequency channels is equal between
+ ipsilateral and contralateral MSO modules, as are the number of 
+characteristic delays.  Within a frequency channel in the MSO modules, 
+the characteristic delays progress from zero to the maximum value in 
+equal increments.  The CaiIC module has the same number of frequency 
+channels as each MSO module.  Within a frequency channel the CaiIC 
+module has a number of neurons equal to the number of characteristic 
+delays in each MSO module, and within that frequency channel each 
+contralateral model MSO cell (with its different characteristic delay) 
+projects an inhibitory input to a different model IC neuron. Setting the
+ ExcitatoryMSOLagNumber parameter (to a value between zero and the 
+number of characteristic delays minus one) selects exactly one 
+ipsilateral model MSO cell of that particular characteristic delay so 
+that it projects an excitatory input to each of the model IC neurons 
+within that frequency channel.  In this way the effects of similarity 
+and differences in the characteristic delays between the excitatory 
+input and inhibitory input can be examined.</div></div></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Data Types:</b></td>
+					<td align="left">
+								<table class="tablerow" border="1" bordercolor="#777777" 
+cellpadding="4" cellspacing="0" width="100%" rules="rows">
+									<tbody><tr class="tableheader">
+										<td align="left" nowrap="nowrap">Name</td>
+										<td align="center" nowrap="nowrap">#</td>
+										<td align="left" nowrap="nowrap">Waveform</td>
+										<td align="center" nowrap="nowrap">Direction</td>
+									</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Ipsilateral Excitatory Input</td>
+									<td align="center" valign="top">1</td>
+									<td align="left" valign="top">Spike Times  [seconds from start 
+of frame]</td>
+									<td align="center" valign="top">Input</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Contralateral Inhibitory Input</td>
+									<td align="center" valign="top">2</td>
+									<td align="left" valign="top">Spike Times  [seconds from start 
+of frame]</td>
+									<td align="center" valign="top">Input</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Output</td>
+									<td align="center" valign="top">1</td>
+									<td align="left" valign="top">Spike Times  [seconds from start 
+of frame]</td>
+									<td align="center" valign="top">Output</td>
+								</tr>
+							
+								</tbody></table>
+							
+						</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top"><b>Parameters:</b></td>
+					<td align="left">
+								<table class="tablerow" border="1" bordercolor="#777777" 
+cellpadding="4" cellspacing="0" width="100%" rules="rows">
+									<tbody><tr class="tableheader">
+										<td align="left" nowrap="nowrap">Name</td>
+										<td align="center" nowrap="nowrap">Type</td>
+										<td align="left" nowrap="nowrap">Description</td>
+									</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">SampleRate_Hz</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The sample rate, in hertz, sets 
+the effective time resolution of the input and output streams, and the 
+output time resolution of the Runge Kutta differential equation solver.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">FrameLength_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">duration of a processing block</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">ExSynapticStrength</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">ExSynapticStrength, Ge, given the
+ unit nanosiemens (nS), sets the maximum value of the increment in 
+excitatory conductance associated with an excitatory synaptic input 
+firing. The time course of the conductance increment is a scaled alpha 
+function, t(Ge/Tau)exp(1 - t/Tau), with the time constant of decay, Tau,
+ specified by ExSynapticTau_Seconds.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">ExSynapticTau_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">time constant of the excitatory 
+synaptic conductance</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">InhSynapticStrength</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">InhSynapticStrength, Gi, given 
+the unit nanosiemens (nS), sets the maximum value of the increment in 
+inhibitory conductance associated with an inhibitory synaptic input 
+firing. The time course of the conductance increment is a scaled alpha 
+function, t(Gi/Tau)exp(1 - t/Tau), with the time constant of decay, Tau,
+ specified by InhSynapticTau_Seconds.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">InhSynapticTau_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">time constant of the inhibitory 
+synaptic conductance</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">CellTemperature_DegreesC</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The cell temperature (in degrees 
+Celsius) is typically a mammalian body temperature, such as 38, for 
+simulation of in vivo experiments, and 22 for in vitro.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">AHPIncrement_Siemens</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">AHPIncrement_Siemens is an 
+optional parameter, added to the Rothman and Manis 2003c compartment, 
+with a default value of zero. When set to a non-zero value, 
+AHPIncrement_Siemens in combination with TauAHP_Seconds implements 
+adaptation by means of a potassium conductance with a step increase and a
+ first-order exponential decay. Exactly 0.5 ms after each action 
+potential, the conductance is incremented by AHPIncrement_Siemens, and 
+then decays with time constant TauAHP_Seconds.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">InhInputDelay_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The delay in seconds applied to 
+the inhibitory input.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">ExcitatoryMSOLagNumber</td>
+									<td align="center" valign="top">int</td>
+									<td align="left" valign="top">Setting the 
+ExcitatoryMSOLagNumber parameter (to a value between zero and the number
+ of characteristic delays minus one) selects exactly one ipsilateral 
+model MSO cell of that particular characteristic delay so that it 
+projects an excitatory input to each of the model IC neurons within that
+ frequency channel.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">ResponseType</td>
+									<td align="center" valign="top">int</td>
+									<td align="left" valign="top">An optional parameter, with a 
+default value of 2 (Type II).                     Type I: ResponseType =
+ 1;  Type II: ResponseType = 2. </td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">geFilename</td>
+									<td align="center" valign="top">string</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the excitatory synaptic conductance (unit nS) to the specified 
+file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">giFilename</td>
+									<td align="center" valign="top">string</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the inhibitory synaptic conductance (unit nS) to the specified 
+file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">gNaFilename</td>
+									<td align="center" valign="top">string</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the sodium conductance (unit nS) to the specified file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">gKHTFilename</td>
+									<td align="center" valign="top">string</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the high-threshold potassium conductance (unit nS) to the 
+specified file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">gKLTFilename</td>
+									<td align="center" valign="top">string</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the low-threshold potassium conductance (unit nS) to the 
+specified file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">gAHPFilename</td>
+									<td align="center" valign="top">bool</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the optional adaptation conductance (unit nS) to the specified 
+file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">TauAHP_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">TauAHP_Seconds is an optional 
+parameter, added to the Rothman and Manis 2003c compartment, with a 
+default value of (1.0/SampleRate_Hz). When parameter 
+AHPIncrement_Siemens is set to a non-zero value, these two parameters 
+implement adaptation by means of a potassium conductance with a step 
+increase and a first-order exponential decay. Exactly 0.5 ms after each 
+action potential, the conductance is incremented by 
+AHPIncrement_Siemens, and then decays with time constant TauAHP_Seconds.</td>
+								</tr>
+							
+								</tbody></table>
+							
+						</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Oper. System</b></td>
+					<td align="left"><div style="border: 1px solid rgb(119, 119, 119);"><div
+ style="margin: 4px;">Windows NT, Windows 2000</div></div></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Language:</b></td>
+					<td align="left"><div style="border: 1px solid rgb(119, 119, 119);"><div
+ style="margin: 4px;">C++</div></div></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Compliance:</b></td>
+					<td align="left"><div style="border: 1px solid rgb(119, 119, 119);"><div
+ style="margin: 4px;">EarLab 1.0</div></div></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>References:</b></td>
+					<td align="left">
+								<table class="tablerow" border="1" bordercolor="#777777" 
+cellpadding="4" cellspacing="0" width="100%" rules="rows">
+							
+								<tbody><tr class="tablerow">
+									<td align="left" valign="top">Cai H, Carney LH, Colburn HS. A 
+model for binaural response properties of inferior colliculus neurons. 
+I. A model with interaural time difference-sensitive excitatory and 
+inhibitory inputs. J Acoust Soc Am 1998;103(1):475-93. PMID: 9440334</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Cai H, Carney LH, Colburn HS. A 
+model for binaural response properties of inferior colliculus neurons. 
+II. A model with interaural time difference-sensitive excitatory and 
+inhibitory inputs and an adaptation mechanism. JASA 1998;103(1):494-506.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Rothman JS, Young ED, Manis PB. 
+Convergence of auditory nerve fibers onto bushy cells in the ventral 
+cochlear nucleus: implications of a computational model. J Neurophysiol.
+ 1993 Dec;70(6):2562-83.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Manis PB, Marx SO. Outward 
+currents in isolated ventral cochlear nucleus neurons. J Neurosci. 1991 
+Sep;11(9):2865-80.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Brughera AR, Stutman ER, Carney, 
+LH, Colburn, SH. A model with excitation and inhibition for cells in the
+ medial superior olive. Aud. Neurosci. 1996. 2:219–23.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Sivaramakrishnan S, Oliver DL. 
+Distinct K currents result in physiologically distinct cell types in the
+ inferior colliculus of the rat. J Neurosci. 2001 Apr 15;21(8):2861-77. 
+PMID: 11306638</td>
+								</tr>
+							
+								</tbody></table>
+							
+						</td>
+				</tr>
+			</tbody></table></div>
+			<div class="block">To view another module class, <a title="EFI 
+Modules Database" href="http://eardev.bu.edu/databases/modules/">return 
+to the EFI Modules Database main page</a>.</div>
+			
+		</div>
+	</div>
+	<div id="footer"></div>
+</div>
+
+		</form>
+	</body></html>

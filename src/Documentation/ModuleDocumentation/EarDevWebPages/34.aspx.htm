@@ -1,0 +1,705 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+	
+		<title>EarLab: EarLab Functional Interface Module Version</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="CODE_LANGUAGE" content="C#">
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" 
+content="http://schemas.microsoft.com/intellisense/ie5">
+		<link media="screen" href="34.aspx_files/DefaultStyle.css" 
+type="text/css" rel="stylesheet">
+	</head><body>
+		<script language="javascript">
+		<!--
+		function PopupWindow(pageURL, height, width)
+		{
+			window.open(pageURL,"PopupWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=" + width + ",height=" + height);
+		}
+		-->
+		</script>
+		<form name="Default" method="post" action="34.aspx" id="Default">
+<div>
+<input name="__VIEWSTATE" id="__VIEWSTATE" 
+value="/wEPDwUKMTM0Mzk2NTg0Nw9kFgICAg9kFgoCAQ9kFgICAQ9kFghmDw8WAh4EVGV4dAUHWmhvdUxTT2RkAgEPDxYCHwAFBzEuMC4wLjBkZAICDw8WAh8ABQk5LzIyLzIwMDhkZAIDDw8WAh8ABT88YSBocmVmPSIvZGF0YWJhc2VzL3B1Ymxpc2hlZC9hdXRob3JzLzM1Ny5hc3B4Ij5BbmRlcnNvbiBESjwvYT5kZAICDxYCHgtfIUl0ZW1Db3VudAIBFgICAQ9kFgJmDxUDU3N1cGVyaW9yIG9saXZhcnkgY29tcGxleCBbU29sXSwgcmVnaW8gb2xpdmFyaXMgc3VwZXJpb3Jpcywgc3VwZXJpb3Igb2xpdmFyeSBudWNsZXVzWGxhdGVyYWwgc3VwZXJpb3Igb2xpdmFyeSBudWNsZXVzIFtMU09dLCBsYXRlcmFsIHN1cGVyaW9yIG9saXZlLCBhY2Nlc3Nvcnkgc3VwZXJpb3Igb2xpdmUAZAIDDxYCHwECBBYIAgEPZBYCZg8VBA1JbnB1dCBjdXJyZW50ATEMQ3VycmVudCBbbkFdBUlucHV0ZAICD2QWAmYPFQQZRXhjaXRhdG9yeSBzeW5hcHRpYyBpbnB1dAExKlNwaWtlIFRpbWVzICBbc2Vjb25kcyBmcm9tIHN0YXJ0IG9mIGZyYW1lXQVJbnB1dGQCAw9kFgJmDxUEGUluaGliaXRvcnkgc3luYXB0aWMgaW5wdXQBMipTcGlrZSBUaW1lcyAgW3NlY29uZHMgZnJvbSBzdGFydCBvZiBmcmFtZV0FSW5wdXRkAgQPZBYCZg8VBAZPdXRwdXQBMSpTcGlrZSBUaW1lcyAgW3NlY29uZHMgZnJvbSBzdGFydCBvZiBmcmFtZV0GT3V0cHV0ZAIEDxYCHwECGhY0AgEPZBYCZg8VAw1TYW1wbGVSYXRlX0h6BWZsb2F0rgFUaGUgc2FtcGxlIHJhdGUsIGluIGhlcnR6LCBzZXRzIHRoZSBlZmZlY3RpdmUgdGltZSByZXNvbHV0aW9uIG9mIHRoZSBpbnB1dCBhbmQgb3V0cHV0IHN0cmVhbXMsIGFuZCB0aGUgb3V0cHV0IHRpbWUgcmVzb2x1dGlvbiBvZiB0aGUgUnVuZ2UgS3V0dGEgZGlmZmVyZW50aWFsIGVxdWF0aW9uIHNvbHZlci5kAgIPZBYCZg8VAxNGcmFtZUxlbmd0aF9TZWNvbmRzBWZsb2F0HmR1cmF0aW9uIG9mIGEgcHJvY2Vzc2luZyBibG9ja2QCAw9kFgJmDxUDCkNfbV9GYXJhZHMFZmxvYXQjVGhlIG1lbWJyYW5lIGNhcGFjaXRhbmNlIGluIEZhcmFkcy5kAgQPZBYCZg8VAwtHX0xfU2llbWVucwVmbG9hdB5MZWFrYWdlIGNvbmR1Y3RhbmNlIGluIFNpZW1lbnNkAgUPZBYCZg8VAwlFX0xfVm9sdHMFZmxvYXQnUmV2ZXJzYWwgcG90ZW50aWFsIGZvciBsZWFrYWdlIGluIFZvbHRzZAIGD2QWAmYPFQMLRV9hYnNfVm9sdHMFZmxvYXREVGhlIHJldmVyc2FsIHBvdGVuaWFsLCBpbiBWb2x0cywgb2YgdGhlIGFic29sdXRlIHJlZnJhY3RvcnkgY3VycmVudC5kAgcPZBYCZg8VAwtFX0FIUF9Wb2x0cwVmbG9hdDRUaGUgcmV2ZXJzYWwgcG90ZW5pYWwsIGluIFZvbHRzLCBvZiB0aGUgQUhQIGN1cnJlbnQuZAIID2QWAmYPFQMPVGF1X0FIUF9TZWNvbmRzBWZsb2F0NlRoZSB0aW1lIGNvbnN0YW50LCBpbiBzZWNvbmRzLCBvZiB0aGUgQUhQIGNvbmR1Y3RhbmNlLmQCCQ9kFgJmDxUDClZfdGhfVm9sdHMFZmxvYXTWAVRoZSB0aHJlc2hvbGQgdm9sdGFnZSBpbiBWb2x0cy4gIFdoZW4gdGhlIG1lbWJyYW5lIHJlYWNoZXMgdGhlIHRocmVzaG9sZCB2b2x0YWdlLCBhbiBhY3Rpb24gcG90ZW50aWFsIGlzIGNvbnNpZGVyZWQgdG8gaGF2ZSBvY2N1cnJlZCwgYW5kIHRoZSBjb25kdWN0YW5jZXMgZm9yIGFic29sdXRlIHJlZnJhY3RvcmluZXNzIGFuZCBhZGFwdGF0aW9uIGFyZSBpbmNyZW1lbnRlZC5kAgoPZBYCZg8VAwtHX2VfU2llbWVucwVmbG9hdE5UaGUgcGVhayBpbmNyZWFzZSBpbiBjb25kdXRhbmNlLCBpbiBTaWVtZW5zLCBkdWUgdG8gYW4gZXhjaXRhdG9yeSBpbnB1dCBldmVudC5kAgsPZBYCZg8VAwlFX2VfVm9sdHMFZmxvYXRBVGhlIHJldmVyc2FsIHBvdGVudGlhbCBmb3IgdGhlIGV4Y2l0YXRvcnkgc3luYXB0aWMgaW5wdXQgY3VycmVudC5kAgwPZBYCZg8VAxJUYXVfZV9yaXNlX1NlY29uZHMFZmxvYXSmAVRoZSByaXNlIHRpbWUtY29uc3RhbnQgZm9yIHRoZSBleGNpdGF0b3J5IHN5bmFwdGljIGNvbmR1Y3RhbmNlLiAgTm90ZSB0aGF0IFRhdV9lX3Jpc2VfU2Vjb25kcyBtdXN0IGJlIGxlc3MgdGhhbiBUYXVfZV9mYWxsX1NlY29uZHMgdG8gZGVzY3JpYmUgbm9ybWFsIGNhdXNhbCBiZWhhdmlvci5kAg0PZBYCZg8VAxJUYXVfZV9mYWxsX1NlY29uZHMFZmxvYXSmAVRoZSBmYWxsIHRpbWUtY29uc3RhbnQgZm9yIHRoZSBleGNpdGF0b3J5IHN5bmFwdGljIGNvbmR1Y3RhbmNlLiAgTm90ZSB0aGF0IFRhdV9lX3Jpc2VfU2Vjb25kcyBtdXN0IGJlIGxlc3MgdGhhbiBUYXVfZV9mYWxsX1NlY29uZHMgdG8gZGVzY3JpYmUgbm9ybWFsIGNhdXNhbCBiZWhhdmlvci5kAg4PZBYCZg8VAwtHX2lfU2llbWVucwVmbG9hdE5UaGUgcGVhayBpbmNyZWFzZSBpbiBjb25kdXRhbmNlLCBpbiBTaWVtZW5zLCBkdWUgdG8gYW4gaW5oaWJpdG9yeSBpbnB1dCBldmVudC5kAg8PZBYCZg8VAwlFX2lfVm9sdHMFZmxvYXRMVGhlIHJldmVyc2FsIHBvdGVudGlhbCwgaW4gVm9sdHMsIGZvciB0aGUgaW5oaWJpdG9yeSBzeW5hcHRpYyBpbnB1dCBjdXJyZW50LmQCEA9kFgJmDxUDElRhdV9pX3Jpc2VfU2Vjb25kcwVmbG9hdKYBVGhlIHJpc2UgdGltZS1jb25zdGFudCBmb3IgdGhlIGluaGliaXRvcnkgc3luYXB0aWMgY29uZHVjdGFuY2UuICBOb3RlIHRoYXQgVGF1X2lfcmlzZV9TZWNvbmRzIG11c3QgYmUgbGVzcyB0aGFuIFRhdV9pX2ZhbGxfU2Vjb25kcyB0byBkZXNjcmliZSBub3JtYWwgY2F1c2FsIGJlaGF2aW9yLmQCEQ9kFgJmDxUDElRhdV9pX2ZhbGxfU2Vjb25kcwVmbG9hdKYBVGhlIGZhbGwgdGltZS1jb25zdGFudCBmb3IgdGhlIGluaGliaXRvcnkgc3luYXB0aWMgY29uZHVjdGFuY2UuICBOb3RlIHRoYXQgVGF1X2lfcmlzZV9TZWNvbmRzIG11c3QgYmUgbGVzcyB0aGFuIFRhdV9pX2ZhbGxfU2Vjb25kcyB0byBkZXNjcmliZSBub3JtYWwgY2F1c2FsIGJlaGF2aW9yLmQCEg9kFgJmDxUDDFZtZW1GaWxlbmFtZQZzdHJpbmddQW4gb3B0aW9uYWwgcGFyYW1ldGVyLCB3aGljaCB3cml0ZXMgdGhlIG1lbWJyYW5lIHZvbHRhZ2UgaW4gbWlsbGlWb2x0cyB0byB0aGUgc3BlY2lmaWVkIGZpbGUuZAITD2QWAmYPFQMKZ2VGaWxlbmFtZQZzdHJpbmdoQW4gb3B0aW9uYWwgcGFyYW1ldGVyLCB3aGljaCB3cml0ZXMgdGhlIGV4Y2l0YXRvcnkgc3luYXB0aWMgY29uZHVjdGFuY2UgKHVuaXQgblMpIHRvIHRoZSBzcGVjaWZpZWQgZmlsZS5kAhQPZBYCZg8VAwpnaUZpbGVuYW1lBnN0cmluZ2hBbiBvcHRpb25hbCBwYXJhbWV0ZXIsIHdoaWNoIHdyaXRlcyB0aGUgaW5oaWJpdG9yeSBzeW5hcHRpYyBjb25kdWN0YW5jZSAodW5pdCBuUykgdG8gdGhlIHNwZWNpZmllZCBmaWxlLmQCFQ9kFgJmDxUDDGdhYnNGaWxlbmFtZQZzdHJpbmdwQW4gb3B0aW9uYWwgcGFyYW1ldGVyLCB3aGljaCB3cml0ZXMgdGhlIGNvbmR1Y3RhbmNlIGZvciBhYnNvbHV0ZSByZWZyYWN0b3JpbmVzcyAodW5pdCBuUykgdG8gdGhlIHNwZWNpZmllZCBmaWxlLmQCFg9kFgJmDxUDDWdBSFBGaWxlbmFtZSAGc3RyaW5nX0FuIG9wdGlvbmFsIHBhcmFtZXRlciwgd2hpY2ggd3JpdGVzIHRoZSBhZGFwdGF0aW9uIGNvbmR1Y3RhbmNlICh1bml0IG5TKSB0byB0aGUgc3BlY2lmaWVkIGZpbGUuZAIXD2QWAmYPFQMXR19hYnNfaW5jcmVtZW50X1NpZW1lbnMFZmxvYXSdAVRoZSBpbmNyZW1lbnQgaW4gdGhlIHNodW50aW5nIGNvbmR1Y3RhbmNlIGZvciBhYnNvbHV0ZSByZWZyYWN0b3JpbmVzcyAoZXhwcmVzc2VkIGluIHVuaXQgU2llbWVucyksIHdoaWNoIG9jY3VycyB3aGVuIHRoZSBtZW1icmFuZSByZWFjaGVzIHRocmVzaG9sZCB2b2x0YWdlLiBkAhgPZBYCZg8VAw10X2Fic19zZWNvbmRzBWZsb2F0kANUaGUgYWJzb2x1dGUgcmVmcmFjdG9yeSBwZXJpb2QgaW4gc2Vjb25kcywgd2hpY2ggYmVnaW5zIHdoZW4gdGhlIG1lbWJyYW5lIHJlYWNoZXMgdGhyZXNob2xkIHZvbHRhZ2UsIGFuZCBkdXJpbmcgd2hpY2ggdGltZSB0aGUgdmVyeSBsYXJnZSBhYnNvbHV0ZSByZWZyYWN0b3J5IGNvbmR1bmN0YW5jZSBlZmZlY3RpdmVseSBzaHVudHMgdGhlIG1lbWJyYW5lIHRvIGl0cyByZXZlcnNhbCBwb3RlbnRpYWwgKHdoaWNoIGlzIHR5cGljYWxseSBzZXQgdG8gZXF1YWwgdGhlIHJlc3RpbmcgbWVtYnJhbmUgcG90ZW50aWFsKS4gIEF0IHRoZSBlbmQgdGhlIGFic29sdXRlIHJlZnJhY3RvcnkgcGVyaW9kLCB0aGUgY29uZHVjdGFuY2UgZm9yIGFic29sdXRlIHJlZnJhY3RvcmluZXNzIGlzIHJlc2V0IHRvIHplcm8uZAIZD2QWAmYPFQMXR19BSFBfaW5jcmVtZW50X1NpZW1lbnMFZmxvYXTEAlRoZSBpbmNyZW1lbnQgaW4gY29uZHVjdGFuY2UgZm9yIGFkYXB0YXRpb24sIGluIFNpZW1lbnMsIHdoaWNoIG9jY3VycyBlYWNoIHRpbWUgdGhlIG1lbWJyYW5lIHJlYWNoZXMgdGhyZXNob2xkIHZvbHRhZ2UsIGFuZCBjYXVzZXMgYWZ0ZXItaHlwZXJwb2xhcml6aW9uIChBSFApLiAgVW5saWtlIGFic29sdXRlIHJlZnJhY3RvcmluZXNzLCBnQUhQIGRvZXMgbm90IHJlc2V0LiAgZ0FIUCBpcyBhZGRpdGl2ZSB3aXRoIHN1Y2Nlc2l2ZSB0aHJlc2hvbGQgY3Jvc3NpbmdzLCBhbmQgZGVjYXlzIGV4cG9uZW50aWFsbHkgYWNjb3JkaW5nIHRvIGl0cyB0aW1lIGNvbnN0YW50LmQCGg9kFgJmDxUDDFZfcmVzdF9Wb2x0cwVmbG9hdIoCVGhlIG1lbWJyYW5lIHJlc3RpbmcgcG90ZW50aWFsIGluIFZvbHRzLCBWX3Jlc3RfVm9sdHMsIHNldHMgdGhlIGluaXRpYWwgbWVtYnJhbmUgdm9sdGFnZSBpbiB0aGUgc2ltdWxhdGlvbi4gIE5vcm1hbGx5IHRoZSByZXZlcnNhbCBwb3RlbnRpYWxzIGZvciBhYnNvbHV0ZSByZWZyYWN0b3JpbmVzcyBhbmQgYWRhcHRhdGlvbiBhcmUgc2V0IHRvIHRoZSBzYW1lIHZhbHVlIGFzIFZfcmVzdF9Wb2x0cywgYnV0IHRoaXMgY29udmVudGlvbiBpcyBub3QgZW5mb3JjZWQuICBkAgUPFgIfAQIBFgICAQ9kFgJmDxUBJ1pob3UgWSBhbmQgQ29sYnVybiBIUy4gMjAwOCAoaW4gcHJlc3MpLmRkOEYJiQp255fKJc6H2dhjXCS7MPg="
+ type="hidden">
+</div>
+
+			
+<script language="JavaScript1.2" src="34.aspx_files/menu_bu.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="34.aspx_files/menu_earlab.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="34.aspx_files/switch_bu.js" type="text/javascript"></script>
+<script language="JavaScript1.2">PreloadImages('/images/site/software_blue.gif','/images/site/databases_blue.gif','/images/site/modeling_blue.gif','/images/site/support_blue.gif','/images/site/tutorials_blue.gif');</script>
+<script language="JavaScript1.2">mmLoadMenus();</script><span 
+id="menuContainer"><div id="menuLayer0" style="position: absolute; 
+z-index: 10; left: -200px; top: -200px; visibility: hidden; color: 
+rgb(153, 153, 153); background-color: rgb(153, 153, 153); width: 194px; 
+height: 40px;">
+  <div id="menuLite0" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 38px; width: 192px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg0" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 37px; width: 191px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem0" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 190px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText0" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Desktop
+ Modeling Environment&nbsp;</div>
+<div id="menuItemHilite0" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Desktop 
+Modeling Environment&nbsp;</div></div><div id="menuItem1" 
+style="position: absolute; z-index: 10; left: 0px; top: 20px; 
+font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width:
+ 190px; height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText1" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">DataViewer 
+Application&nbsp;</div>
+<div id="menuItemHilite1" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">DataViewer
+ Application&nbsp;</div></div><div id="focusItem0" style="position: 
+absolute; z-index: 10; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer1" style="position: absolute; z-index: 10; left: 
+-300px; top: -300px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 159px; height: 80px;">
+  <div id="menuLite1" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 78px; width: 157px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg1" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 77px; width: 156px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem2" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 155px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText2" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Revcor
+ Database&nbsp;</div>
+<div id="menuItemHilite2" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Revcor 
+Database&nbsp;</div></div><div id="menuItem3" style="position: absolute;
+ z-index: 10; left: 0px; top: 20px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 155px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText3" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">CIPIC HRTF 
+Database&nbsp;</div>
+<div id="menuItemHilite3" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">CIPIC 
+HRTF Database&nbsp;</div></div><div id="menuItem4" style="position: 
+absolute; z-index: 10; left: 0px; top: 40px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 155px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText4" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Published Data 
+Database&nbsp;</div>
+<div id="menuItemHilite4" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Published
+ Data Database&nbsp;</div></div><div id="menuItem5" style="position: 
+absolute; z-index: 10; left: 0px; top: 60px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 155px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText5" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">EFI Modules 
+Database&nbsp;</div>
+<div id="menuItemHilite5" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">EFI 
+Modules Database&nbsp;</div></div><div id="focusItem1" style="position: 
+absolute; z-index: 10; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer2" style="position: absolute; z-index: 10; left: 
+-300px; top: -300px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 149px; height: 40px;">
+  <div id="menuLite2" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 38px; width: 147px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg2" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 37px; width: 146px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem6" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 145px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText6" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Tutorial
+ &amp; Instructions&nbsp;</div>
+<div id="menuItemHilite6" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Tutorial 
+&amp; Instructions&nbsp;</div></div><div id="menuItem7" style="position:
+ absolute; z-index: 10; left: 0px; top: 20px; font-family: 
+Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width: 145px; 
+height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText7" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">My Modeling 
+Home&nbsp;</div>
+<div id="menuItemHilite7" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">My 
+Modeling Home&nbsp;</div></div><div id="focusItem2" style="position: 
+absolute; z-index: 10; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer3" style="position: absolute; z-index: 10; left: 
+-300px; top: -300px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 149px; height: 40px;">
+  <div id="menuLite3" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 38px; width: 147px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg3" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 37px; width: 146px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem8" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 145px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText8" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">File 
+Specs &amp; Schemas&nbsp;</div>
+<div id="menuItemHilite8" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">File 
+Specs &amp; Schemas&nbsp;</div></div><div id="menuItem9" 
+style="position: absolute; z-index: 10; left: 0px; top: 20px; 
+font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px; width:
+ 145px; height: 16px; background-color: rgb(255, 255, 255); visibility: 
+inherit;"><div id="menuItemText9" style="z-index: 10; position: 
+absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Contact EarLab 
+Team&nbsp;</div>
+<div id="menuItemHilite9" style="z-index: 10; position: absolute; left: 
+7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Contact 
+EarLab Team&nbsp;</div></div><div id="focusItem3" style="position: 
+absolute; z-index: 10; left: 0px; top: -30px;" 
+onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+<div id="menuLayer4" style="position: absolute; z-index: 10; left: 
+-300px; top: -300px; visibility: hidden; color: rgb(153, 153, 153); 
+background-color: rgb(153, 153, 153); width: 94px; height: 60px;">
+  <div id="menuLite4" style="position: absolute; z-index: 10; left: 1px;
+ top: 1px; height: 58px; width: 92px; background-color: rgb(255, 255, 
+255);" onmouseout="mouseoutMenu();">
+	 <div id="menuFg4" style="position: absolute; z-index: 10; left: 1px; 
+top: 1px; height: 57px; width: 91px; background-color: rgb(255, 255, 
+255);">
+<div id="menuItem10" style="position: absolute; z-index: 10; left: 0px; 
+top: 0px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 
+10px; width: 90px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText10" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Introduction&nbsp;</div>
+<div id="menuItemHilite10" style="z-index: 10; position: absolute; left:
+ 7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Introduction&nbsp;</div></div><div
+ id="menuItem11" style="position: absolute; z-index: 10; left: 0px; top:
+ 20px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px;
+ width: 90px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText11" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Anatomy&nbsp;</div>
+<div id="menuItemHilite11" style="z-index: 10; position: absolute; left:
+ 7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Anatomy&nbsp;</div></div><div
+ id="menuItem12" style="position: absolute; z-index: 10; left: 0px; top:
+ 40px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px;
+ width: 90px; height: 16px; background-color: rgb(255, 255, 255); 
+visibility: inherit;"><div id="menuItemText12" style="z-index: 10; 
+position: absolute; left: 7px; top: 2px; color: rgb(85, 85, 85);">Physiology&nbsp;</div>
+<div id="menuItemHilite12" style="z-index: 10; position: absolute; left:
+ 7px; top: 2px; color: rgb(101, 133, 163); visibility: hidden;">Physiology&nbsp;</div></div><div
+ id="focusItem4" style="position: absolute; z-index: 10; left: 0px; top:
+ -30px;" onclick="onMenuItemAction(null,this);"></div>
+</div>
+</div>
+</div>
+</span>
+
+<script language="javascript">function DatabaseGo(){ document.location.href = '/databases/' + document.getElementById('databaseList').options[document.getElementById('databaseList').selectedIndex].value + '/'; }</script>
+<script language="javascript">function SoftwareGo(){ document.location.href = '/software/' + document.getElementById('softwareList').options[document.getElementById('softwareList').selectedIndex].value; }</script>
+<div id="wrapper">
+	<div id="header"><h1>EarLab: A Virtual Laboratory for Auditory Research</h1><a
+ title="Go to EarLab home" href="http://eardev.bu.edu/"><img alt="Go to 
+EarLab home" id="earlab" src="34.aspx_files/earlab.gif"></a><a 
+onmouseover="SwapImage('logo_bu','','/images/site/logo_bu_red.gif',1)" 
+onmouseout="SwapImageRestore()" href="http://www.bu.edu/" 
+target="_blank" title="Boston University Homepage"><img id="logo_bu" 
+src="34.aspx_files/logo_bu_gray.gif" alt="Boston University Homepage"></a><a
+ 
+onmouseover="SwapImage('logo_nih','','/images/site/logo_nih_blue.gif',1)"
+ onmouseout="SwapImageRestore()" href="http://www.nih.gov/" 
+target="_blank" title="National Institutes of Health"><img id="logo_nih"
+ src="34.aspx_files/logo_nih_gray.gif" alt="National Institutes of 
+Health"></a><a 
+onmouseover="SwapImage('logo_nidcd','','/images/site/logo_nidcd_color.gif',1)"
+ onmouseout="SwapImageRestore()" href="http://www.nidcd.nih.gov/" 
+target="_blank" title="National Institute on Deafness and Other 
+Communication Disorders"><img id="logo_nidcd" 
+src="34.aspx_files/logo_nidcd_gray.gif" alt="National Institute on 
+Deafness and Other Communication Disorders"></a><a 
+onmouseover="SwapImage('logo_nimh','','/images/site/logo_nimh_color.gif',1)"
+ onmouseout="SwapImageRestore()" href="http://www.nimh.nih.gov/" 
+target="_blank" title="National Institute of Mental Health"><img 
+id="logo_nimh" src="34.aspx_files/logo_nimh_gray.gif" alt="National 
+Institute of Mental Health"></a><a 
+onmouseover="SwapImage('logo_hbp','','/images/site/logo_hbp_color.gif',1)"
+ onmouseout="SwapImageRestore()" 
+href="http://www.nimh.nih.gov/neuroinformatics/index.cfm" 
+target="_blank" title="The Human Brain Project"><img id="logo_hbp" 
+src="34.aspx_files/logo_hbp_gray.gif" alt="The Human Brain Project"></a><img
+ id="cochlea" src="34.aspx_files/cochlea_gray.gif" alt="Learn About the 
+Cochlea" 
+onmouseover="SwapImage('cochlea','','/images/site/cochlea_blue.gif',1)" 
+onmouseout="SwapImageRestore()">
+	</div>
+	<div id="menu"><img name="software" 
+src="34.aspx_files/software_gray.gif" alt="Software and Tools" 
+onmouseover="MM_showMenu(window.softwaremenu,-1,20,null,'software');SwapImage('software','','/images/site/software_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img 
+name="databases" src="34.aspx_files/databases_gray.gif" alt="Databases 
+and Tables" 
+onmouseover="MM_showMenu(window.databasesmenu,-1,20,null,'databases');SwapImage('databases','','/images/site/databases_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img name="modeling"
+ src="34.aspx_files/modeling_gray.gif" alt="Online Modeling" 
+onmouseover="MM_showMenu(window.modelingmenu,-1,20,null,'modeling');SwapImage('modeling','','/images/site/modeling_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img name="support" 
+src="34.aspx_files/support_gray.gif" alt="Support" 
+onmouseover="MM_showMenu(window.supportmenu,-1,20,null,'support');SwapImage('support','','/images/site/support_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"><img 
+name="tutorials" src="34.aspx_files/tutorials_gray.gif" alt="Auditory 
+Tutorials" 
+onmouseover="MM_showMenu(window.tutorialsmenu,-1,20,null,'tutorials');SwapImage('tutorials','','/images/site/tutorials_blue.gif',1);"
+ onmouseout="SwapImageRestore();MM_startTimeout();"></div>
+	<div id="content">
+		<div id="right">
+			<div id="authenticationlinks"><a 
+href="http://eardev.bu.edu/authentication/">Login</a> | <a 
+href="http://eardev.bu.edu/authentication/Register.aspx">Register</a></div>
+			<div class="leftitem"><div class="titleimage"><img alt="Overview" 
+src="34.aspx_files/right_overview.gif"></div>The EarLab Functional 
+Interface Modules Database contains documentation and code for modules 
+compatible with the <a href="http://eardev.bu.edu/software/desktop/" 
+title="Desktop Modeling Environment">Desktop Modeling Environment</a>.</div>
+			<div class="leftitem"><div class="titleimage"><img alt="Recent News" 
+src="34.aspx_files/right_news.gif"></div>
+			
+			</div>
+			<div class="rightitem"><div class="titleimage"><img alt="Downloads" 
+src="34.aspx_files/right_downloads.gif"></div>
+				<select id="softwareList" name="softwareList" class="dropdownlist"><option
+ selected="selected" value="">Modeling Tools Suite</option><option 
+value="desktop">Desktop Modeling Environment</option><option 
+value="dataviewer">DataViewer Application</option></select>
+				<input title="Go to selected download" name="softwareButton" 
+value="Go Now" onclick="SoftwareGo();" class="smallbutton" type="button"></div>
+			<div class="rightitem"><div class="titleimage"><img alt="Databases" 
+src="34.aspx_files/right_databases.gif"></div>
+				<select id="databaseList" name="databaseList" class="dropdownlist"><option
+ selected="selected" value="revcor">Revcor Database</option><option 
+value="cipic">Cipic HRTF Database</option><option value="published">Published
+ Data Database</option><option value="modules">EFI Module Database</option></select><input
+ title="Go to selected database" name="databaseButton" value="Go Now" 
+onclick="DatabaseGo();" class="smallbutton" type="button"></div>
+			<div class="leftitem"><div class="titleimage"><img alt="Contact Info"
+ src="34.aspx_files/right_contact.gif"></div>
+				EarLab Project<br>
+				Boston University<br>
+				Biomed. Eng. 403<br>
+				44 Cummington Street<br>
+				Boston, MA 02215<br>
+				<a href="mailto:earlab@bu.edu">earlab@bu.edu</a></div>
+		</div>
+		<div id="main">
+
+			<img class="titleimage" src="34.aspx_files/version.gif" alt="EarLab 
+Functional Interface Module Version">
+			<div class="paragraph"><table align="left" border="0" cellpadding="0"
+ cellspacing="4" width="100%">
+				<tbody><tr>
+					<td colspan="2"><table id="versionTable" class="tablerows" 
+style="border: 1px solid rgb(85, 85, 85); width: 100%; border-collapse: 
+collapse;" border="1" cellpadding="4" cellspacing="0" rules="rows">
+	<tbody><tr class="tableheader" align="center" valign="top">
+		<th>Module</th><th>Version</th><th>Release</th><th>Contact</th>
+	</tr><tr class="tablerow" align="center" valign="top">
+		<td>ZhouLSO</td><td>1.0.0.0</td><td>9/22/2008</td><td><a 
+href="http://eardev.bu.edu/databases/published/authors/357.aspx">Anderson
+ DJ</a></td>
+	</tr>
+</tbody></table></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Classification:</b></td>
+					<td align="left" width="100%">
+					
+								<table class="tablerow" border="1" bordercolor="#777777" 
+cellpadding="4" cellspacing="0" width="100%" rules="rows">
+									<tbody><tr class="tableheader">
+										<td align="left" nowrap="nowrap">Structure</td>
+										<td align="left" nowrap="nowrap">Substructure</td>
+										<td align="left" nowrap="nowrap">Cell</td>
+									</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">superior olivary complex [Sol], 
+regio olivaris superioris, superior olivary nucleus</td>
+									<td align="left" valign="top">lateral superior olivary nucleus 
+[LSO], lateral superior olive, accessory superior olive</td>
+									<td align="left" valign="top"></td>
+								</tr>
+							
+								</tbody></table>
+							
+						</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Abstract:</b></td>
+					<td align="left"><div style="border: 1px solid rgb(119, 119, 119);"><div
+ style="margin: 4px;">The ZhouLSO module simulates neurons in the 
+lateral superior olive (LSO) that are sensitive to interaural level 
+difference.  Each model LSO neuron is an “integrate and fire” electric 
+circuit model with parallel branches containing membrane capacitance and
+ conductances representing leakage, synaptic inputs, refractory 
+behavior, and adaptation (Zhou and Colburn 2008).   A voltage source 
+equal to the reversal potential is included in series with each 
+conductance, except leakage.  Discharge properties of the model cell 
+suggest that the strength and time constant of adaptation determine four
+ basic response types observed in LSO neurons. </div></div></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Description:</b></td>
+					<td align="left"><div style="border: 1px solid rgb(119, 119, 119);"><div
+ style="margin: 4px;">Each simulation implements a vector array of model
+ LSO neurons, with the vector length equal to the number of frequency 
+channels.  Current and synaptic inputs cannot be combined.  The module 
+accepts either two synaptic inputs or a single current input.  The first
+ synaptic input stream is excitatory, and the second is inhibitory.  The
+ excitatory and inhibitory input spike streams can contain multiple 
+inputs, with the number of inhibitory inputs being equal to the number 
+of excitatory inputs.</div></div></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Data Types:</b></td>
+					<td align="left">
+								<table class="tablerow" border="1" bordercolor="#777777" 
+cellpadding="4" cellspacing="0" width="100%" rules="rows">
+									<tbody><tr class="tableheader">
+										<td align="left" nowrap="nowrap">Name</td>
+										<td align="center" nowrap="nowrap">#</td>
+										<td align="left" nowrap="nowrap">Waveform</td>
+										<td align="center" nowrap="nowrap">Direction</td>
+									</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Input current</td>
+									<td align="center" valign="top">1</td>
+									<td align="left" valign="top">Current [nA]</td>
+									<td align="center" valign="top">Input</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Excitatory synaptic input</td>
+									<td align="center" valign="top">1</td>
+									<td align="left" valign="top">Spike Times  [seconds from start 
+of frame]</td>
+									<td align="center" valign="top">Input</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Inhibitory synaptic input</td>
+									<td align="center" valign="top">2</td>
+									<td align="left" valign="top">Spike Times  [seconds from start 
+of frame]</td>
+									<td align="center" valign="top">Input</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Output</td>
+									<td align="center" valign="top">1</td>
+									<td align="left" valign="top">Spike Times  [seconds from start 
+of frame]</td>
+									<td align="center" valign="top">Output</td>
+								</tr>
+							
+								</tbody></table>
+							
+						</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top"><b>Parameters:</b></td>
+					<td align="left">
+								<table class="tablerow" border="1" bordercolor="#777777" 
+cellpadding="4" cellspacing="0" width="100%" rules="rows">
+									<tbody><tr class="tableheader">
+										<td align="left" nowrap="nowrap">Name</td>
+										<td align="center" nowrap="nowrap">Type</td>
+										<td align="left" nowrap="nowrap">Description</td>
+									</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">SampleRate_Hz</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The sample rate, in hertz, sets 
+the effective time resolution of the input and output streams, and the 
+output time resolution of the Runge Kutta differential equation solver.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">FrameLength_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">duration of a processing block</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">C_m_Farads</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The membrane capacitance in 
+Farads.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">G_L_Siemens</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">Leakage conductance in Siemens</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">E_L_Volts</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">Reversal potential for leakage in
+ Volts</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">E_abs_Volts</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The reversal potenial, in Volts, 
+of the absolute refractory current.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">E_AHP_Volts</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The reversal potenial, in Volts, 
+of the AHP current.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Tau_AHP_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The time constant, in seconds, of
+ the AHP conductance.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">V_th_Volts</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The threshold voltage in Volts.  
+When the membrane reaches the threshold voltage, an action potential is 
+considered to have occurred, and the conductances for absolute 
+refractoriness and adaptation are incremented.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">G_e_Siemens</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The peak increase in condutance, 
+in Siemens, due to an excitatory input event.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">E_e_Volts</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The reversal potential for the 
+excitatory synaptic input current.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Tau_e_rise_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The rise time-constant for the 
+excitatory synaptic conductance.  Note that Tau_e_rise_Seconds must be 
+less than Tau_e_fall_Seconds to describe normal causal behavior.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Tau_e_fall_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The fall time-constant for the 
+excitatory synaptic conductance.  Note that Tau_e_rise_Seconds must be 
+less than Tau_e_fall_Seconds to describe normal causal behavior.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">G_i_Siemens</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The peak increase in condutance, 
+in Siemens, due to an inhibitory input event.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">E_i_Volts</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The reversal potential, in Volts,
+ for the inhibitory synaptic input current.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Tau_i_rise_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The rise time-constant for the 
+inhibitory synaptic conductance.  Note that Tau_i_rise_Seconds must be 
+less than Tau_i_fall_Seconds to describe normal causal behavior.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">Tau_i_fall_Seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The fall time-constant for the 
+inhibitory synaptic conductance.  Note that Tau_i_rise_Seconds must be 
+less than Tau_i_fall_Seconds to describe normal causal behavior.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">VmemFilename</td>
+									<td align="center" valign="top">string</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the membrane voltage in milliVolts to the specified file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">geFilename</td>
+									<td align="center" valign="top">string</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the excitatory synaptic conductance (unit nS) to the specified 
+file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">giFilename</td>
+									<td align="center" valign="top">string</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the inhibitory synaptic conductance (unit nS) to the specified 
+file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">gabsFilename</td>
+									<td align="center" valign="top">string</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the conductance for absolute refractoriness (unit nS) to the 
+specified file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">gAHPFilename </td>
+									<td align="center" valign="top">string</td>
+									<td align="left" valign="top">An optional parameter, which 
+writes the adaptation conductance (unit nS) to the specified file.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">G_abs_increment_Siemens</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The increment in the shunting 
+conductance for absolute refractoriness (expressed in unit Siemens), 
+which occurs when the membrane reaches threshold voltage. </td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">t_abs_seconds</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The absolute refractory period in
+ seconds, which begins when the membrane reaches threshold voltage, and 
+during which time the very large absolute refractory condunctance 
+effectively shunts the membrane to its reversal potential (which is 
+typically set to equal the resting membrane potential).  At the end the 
+absolute refractory period, the conductance for absolute refractoriness 
+is reset to zero.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">G_AHP_increment_Siemens</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The increment in conductance for 
+adaptation, in Siemens, which occurs each time the membrane reaches 
+threshold voltage, and causes after-hyperpolarizion (AHP).  Unlike 
+absolute refractoriness, gAHP does not reset.  gAHP is additive with 
+succesive threshold crossings, and decays exponentially according to its
+ time constant.</td>
+								</tr>
+							
+								<tr class="tablerow">
+									<td align="left" valign="top">V_rest_Volts</td>
+									<td align="center" valign="top">float</td>
+									<td align="left" valign="top">The membrane resting potential in
+ Volts, V_rest_Volts, sets the initial membrane voltage in the 
+simulation.  Normally the reversal potentials for absolute 
+refractoriness and adaptation are set to the same value as V_rest_Volts,
+ but this convention is not enforced.  </td>
+								</tr>
+							
+								</tbody></table>
+							
+						</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Oper. System</b></td>
+					<td align="left"><div style="border: 1px solid rgb(119, 119, 119);"><div
+ style="margin: 4px;">Windows 2000, Windows XP</div></div></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Language:</b></td>
+					<td align="left"><div style="border: 1px solid rgb(119, 119, 119);"><div
+ style="margin: 4px;">C++</div></div></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>Compliance:</b></td>
+					<td align="left"><div style="border: 1px solid rgb(119, 119, 119);"><div
+ style="margin: 4px;">EarLab 1.0</div></div></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top" nowrap="nowrap"><b>References:</b></td>
+					<td align="left">
+								<table class="tablerow" border="1" bordercolor="#777777" 
+cellpadding="4" cellspacing="0" width="100%" rules="rows">
+							
+								<tbody><tr class="tablerow">
+									<td align="left" valign="top">Zhou Y and Colburn HS. 2008 (in 
+press).</td>
+								</tr>
+							
+								</tbody></table>
+							
+						</td>
+				</tr>
+			</tbody></table></div>
+			<div class="block">To view another module class, <a title="EFI 
+Modules Database" href="http://eardev.bu.edu/databases/modules/">return 
+to the EFI Modules Database main page</a>.</div>
+			
+		</div>
+	</div>
+	<div id="footer"></div>
+</div>
+
+		</form>
+	</body></html>

@@ -1,0 +1,56 @@
+Updated Documentation Required 
+
+Process:
+Open Repo-Browser, view Modules by date, show logs, unified diffs, review source code, document updates
+
+
+Documentation Required:
+
+ANCurrentDrivenSpikes - should this be a module?
+Cardio, CardioPressureFeedback, CardioVentricularDriver - Did Dave Anderson release these?
+ToddIC - don't release until published
+
+Minor revisons required:
+Double-Check functionality of non-specific afferents (NSAs) in VoigtDCNCell
+Incorporate NSAs into the documentation. 
+
+New Documentation Completed:
+
+MSOXCorr and MSOCombiner (revised Dec 2010 including sample stepsize)
+GlobularBushyCell2
+
+Revisions completed:
+
+CaiIC2, BrugheraMSO2 and BushyCell2 -  
+(Described default, Response Type = 0, which then defaults to conductances for Type2
+individual max conductances can be set without specfying ResponseType = 0)
+
+CaiIC and CaiIC2, BushyCell2, BrugheraMSO2 revised TauAHP to 1/sampleRate_Hz (check all modules) 
+
+AuditoryNerveIFR (find a place to store this description, add to AuditoryNerveIFR on EarDev):
+Externalized parameters v0, ks, which determine the Calcium activation, p
+at the input to the two-stage depletion model of the AN synapse.
+%
+% Ca++ activation p is a sigmoid function 
+% that varies between 0 and 1 as a function of Vin:
+% p = 1./(1 + exp(1).^(2*ks*(v0-Vin))) .
+% Parameter v0 sets the Vin value at which p = 0.5.
+% Parameter ks sets the steepness of p as a function of Vin.
+% For Vin = 0, p = 1/(1 + exp(2*ks*v0)).
+%
+% CaActivationP.m script (from Andrew Brughera) 
+% calculates and plot the Ca++ activation, p, 
+% for examples of low to high spontaneous rate AN fibers.
+% Based on the voltage input Vin (in millivolts) from the InnerHairCell module. 
+% Ca++ activation is the first stage of the auditory nerve synapse model
+% (The AGC Model in Section 1.2.3. of Socrates Deligeorges dissertation).
+
+Documentation already up to date:
+
+BushyCell. ZhouLSO, DataSource
+
+Only the VS2008 update since release 4/2008:
+AudioMixer, BandpassFilterBank, BasilarMembraneLinearGammatone, BasilarMembraneNonlinearGammatone, 
+CarneyInnerHarCell, CIS, Combiner, CompoundActionPotentialIFR, DataSink, Downsampler, Dummy, EnvelopeExtractor, Fanout, FIRfilterbank, 
+InnerHairCell, IntegrateAndFire, ITDAzimuth, LSO, MiddleEarSimpleFilter, Periodicity, SimpleIFR, SimpleSignalGenerator, SimpleSpikeGenerator, 
+SpikeToPulsetrain, Splitter, StatisticalAnalysis, Vocoder, 
