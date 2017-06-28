@@ -9,7 +9,7 @@ DEPENDS:=$(patsubst %.cpp,%.d,$(SOURCES))
 include $(DEPENDS)
 
 CPP      = g++
-CPPFLAGS = -I. -Dstricmp=strcasecmp -DNOTWINDOWS -DUSE_PTHREADS -fPIC -g -O3
+CPPFLAGS = -I. -Dstricmp=strcasecmp -DNOTWINDOWS -fPIC -g -O3
 
 all:	$(DEPENDS) $(TARGET) Makefile
 

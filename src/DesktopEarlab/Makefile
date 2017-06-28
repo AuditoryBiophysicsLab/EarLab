@@ -18,7 +18,7 @@ INCLUDE  = ../SupportClasses
 LIBDIR   = ../../lib
 LIBRARY	 = libearlab.a
 CPP      = g++
-CPPFLAGS = -g -I. -I$(INCLUDE) -Dstricmp=strcasecmp -DNOTWINDOWS -DUSE_PTHREADS -fPIC -O3
+CPPFLAGS = -g -I. -I$(INCLUDE) -Dstricmp=strcasecmp -DNOTWINDOWS -fPIC -O3
 # CPPFLAGS = -g -I. -I$(INCLUDE) -Dstricmp=strcasecmp -DNOTWINDOWS -fPIC -O0
 
 all:	$(TARGET) Makefile
